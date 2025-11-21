@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wei Ai · Future Interface</title>
+  <meta name="description" content="Wei Ai - iOS Developer Portfolio, SwiftUI, CoreML Apps">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: { 
+             sciDark: '#0f172a',
+             sciLight: '#f8fafc',
+             neonBlue: '#3b82f6',
+             neonPurple: '#a855f7',
+             neonTeal: '#14b8a6',
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <style>
+    body { 
+      background-color: #f8fafc; 
+      color: #1e293b; 
+      overflow-x: hidden; 
+    }
+
+    /* --- 1. 动态背景 --- */
+    .bg-grid-pattern {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.4;
+        z-index: -2;
+    }
+    .ambient-light {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        overflow: hidden; z-index: -1; pointer-events: none;
+    }
+    .blob {
+        position: absolute; filter: blur(80px); opacity: 0.6;
+        animation: blob 10s infinite ease-in-out;
+    }
+    .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; animation-delay: 0s; }
+    .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
+    .blob-3 { bottom: -10%; left: 20%; width: 600px; height: 600px; background: #14b8a6; animation-delay: 4s; }
+
+    /* --- 2. 玻璃导航 --- */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* --- 3. Hero Card (高度优化版) --- */
+    .hero-gradient-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 20px 40px -10px rgba(168, 85, 247, 0.15);
+        position: relative; overflow: hidden;
+    }
+    .hero-gradient-card::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, #a855f7, #3b82f6, transparent);
+        opacity: 0.7;
+    }
+
+    /* --- 4. Holographic Card --- */
+    .holo-card {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative; z-index: 1;
+    }
+    .holo-card:hover {
+        transform: translateY(-4px) scale(1.01);
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(59, 130, 246, 0.3);
+        box-shadow: 0 20px 40px -12px rgba(59, 130, 246, 0.25);
+    }
+
+    .app-icon { 
+      width: 80px; height: 80px; 
+      border-radius: 20px; 
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+      overflow: hidden; 
+      background: #f1f5f9; 
+      flex-shrink: 0; position: relative; 
+    }
+
+    /* --- 5. Phone Mockup (Aligned) --- */
+    .phone-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px; /* 给虚线框留出空间 */
+    }
+    
+    /* 虚线框 - 绝对定位居中 */
+    .dashed-border {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 320px; height: 620px; /* 比手机稍大 */
+        border: 1px dashed #cbd5e1;
+        border-radius: 60px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .phone-mock { 
+      width: 280px; height: 580px; 
+      border-radius: 48px; 
+      background: #0f172a; 
+      box-shadow: 0 0 0 2px #334155, 0 0 40px rgba(59, 130, 246, 0.2); 
+      position: relative; padding: 12px; 
+      transition: transform 0.5s ease;
+      z-index: 10;
+    }
+    
+    .phone-screen { 
+      width: 100%; height: 100%; 
+      background: #000; 
+      border-radius: 36px; 
+      overflow: hidden; position: relative; 
+    }
+    .screenshot { 
+      width: 100%; height: 100%; 
+      object-fit: cover; opacity: 0; 
+      transition: opacity 0.4s ease; 
+    }
+    
+    .slider-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 36px; height: 36px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: white; cursor: pointer; transition: all 0.3s;
+        z-index: 30; opacity: 0; pointer-events: none;
+    }
+    .phone-mock:hover .slider-btn.active { opacity: 1; pointer-events: auto; }
+    .slider-btn:hover { background: rgba(59, 130, 246, 0.8); border-color: transparent; scale: 1.1; }
+    .slider-btn.left { left: 10px; }
+    .slider-btn.right { right: 10px; }
+
+    .slider-dots {
+        position: absolute; bottom: 20px; left: 0; width: 100%;
+        display: flex; justify-content: center; gap: 8px; z-index: 30;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; }
+    .dot.active { background: #3b82f6; width: 20px; border-radius: 100px; }
+
+    .spinner { 
+      width: 40px; height: 40px; 
+      border: 3px solid #cbd5e1; border-top-color: #3b82f6; 
+      border-radius: 50%; 
+      animation: spin 1s linear infinite; margin: 50px auto; 
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 1024px) { #demo-section { display: none; } }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-neonBlue selection:text-white">
+
+  <!-- Background -->
+  <div class="bg-grid-pattern"></div>
+  <div class="ambient-light">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-lg shadow-lg relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <span class="relative z-10 font-mono">WA</span>
+        </div>
+        <div>
+          <h1 class="text-sm font-bold leading-none text-slate-800 tracking-wide">WEI AI</h1>
+          <span class="text-[10px] text-slate-500 uppercase tracking-[0.15em] font-semibold">Lab & Portfolio</span>
+        </div>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 text-[10px] font-mono text-slate-400 border border-slate-200 rounded-full px-3 py-1 bg-white/50">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        SYSTEM ONLINE
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (Height Reduced) -->
+  <section class="pt-12 pb-10 px-6 relative z-10">
+    <div class="mx-auto max-w-4xl">
+      <!-- 调整了 padding: p-8 md:p-10 (减小高度) -->
+      <div class="hero-gradient-card rounded-[32px] p-8 md:p-10 text-center animate-fade-in-up">
+          <div class="inline-block mb-4 px-3 py-1 rounded-full border border-blue-200 bg-blue-50/50 text-blue-600 text-[10px] font-mono tracking-widest uppercase">
+              CoreML // Swift Architecture
+          </div>
+          
+          <h2 id="heroTitle" class="text-4xl md:text-6xl font-black mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-600 to-purple-600 min-h-[4rem] drop-shadow-sm leading-tight">
+            <!-- JS Filled -->
+          </h2>
+          
+          <p id="heroDesc" class="text-lg md:text-xl text-slate-600 leading-relaxed font-light max-w-2xl mx-auto min-h-[2rem]">
+            <!-- JS Filled -->
+          </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="px-6 pb-24 max-w-7xl mx-auto flex-grow z-10 relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- List -->
+      <section class="lg:col-span-7 space-y-6" id="apps">
+        <div class="flex items-center justify-between px-2 border-l-4 border-blue-500 pl-4">
+           <h3 class="text-xl font-bold text-slate-800 tracking-tight">ACCESS MODULES</h3>
+           <span class="text-[10px] font-mono text-slate-500 bg-white/80 backdrop-blur px-3 py-1 rounded border border-slate-200" id="osHint">
+             DETECTING ENV...
+           </span>
+        </div>
+
+        <div id="appsGrid" class="grid grid-cols-1 gap-5 min-h-[200px]">
+            <div id="loader" class="spinner"></div>
+            <div id="errorMsg" class="hidden text-center text-red-500 py-10 font-mono text-sm"></div>
+        </div>
+      </section>
+
+      <!-- Demo Sidebar -->
+      <aside class="lg:col-span-5 hidden lg:block relative">
+        <div class="sticky top-28 space-y-6" id="demo-section">
+          <div class="flex flex-col items-center">
+            
+            <!-- Demo Container (Aligned) -->
+            <div class="phone-wrapper">
+              <!-- 虚线框 (Dashed Border) - Aligned with phone -->
+              <div class="dashed-border"></div>
+
+              <div class="phone-mock" id="phoneMock">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                
+                <div class="phone-screen relative">
+                  <img id="phoneScreenshot" class="screenshot" src="" alt="Demo">
+                  
+                  <!-- Controls -->
+                  <div id="prevBtn" class="slider-btn left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                  <div id="nextBtn" class="slider-btn right"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                  <div id="dotsContainer" class="slider-dots"></div>
+
+                  <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
+                        <span class="text-2xl">⚡️</span>
+                    </div>
+                    <span class="text-sm font-mono uppercase tracking-widest text-slate-400">System Ready</span>
+                    <span class="text-xs text-slate-600 mt-2">Select App to Initialize</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-4">
+              <!-- 名称大小写修改: 移除了 toUpperCase/uppercase class, 保持配置原样 -->
+              <h4 class="font-bold text-slate-800 tracking-tight text-lg" id="demoTitle">Interface Preview</h4>
+              <div class="flex justify-center gap-1 mt-2">
+                  <div class="w-1 h-1 rounded-full bg-blue-400"></div>
+                  <div class="w-1 h-1 rounded-full bg-purple-400"></div>
+                  <div class="w-1 h-1 rounded-full bg-teal-400"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-200 mt-auto bg-white/50 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
+      <span class="text-blue-500">●</span> SYSTEM STATUS: OPERATIONAL // © 2025 WEI AI
+    </div>
+  </footer>
+
+  <script>
+    const grid = document.getElementById('appsGrid');
+    const loader = document.getElementById('loader');
+    const errorMsg = document.getElementById('errorMsg');
+    const osHint = document.getElementById('osHint');
+    
+    const phoneMock = document.getElementById('phoneMock');
+    const phoneScreenshot = document.getElementById('phoneScreenshot');
+    const screenPlaceholder = document.getElementById('screenPlaceholder');
+    const demoTitle = document.getElementById('demoTitle');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+
+    let currentSlides = [];
+    let currentIndex = 0;
+    
+    // 定义两个 Apple Icon 变量
+    let appleIconIOS = "";
+    let appleIconMac = "";
+
+    const detectOS = () => {
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('mac')) return 'mac';
+        if (/iphone|ipad|ipod/.test(ua)) return 'ios';
+        return 'other';
+    };
+    const currentOS = detectOS();
+    osHint.innerHTML = currentOS === 'mac' ? 'Detected: <span class="text-blue-600">macOS</span>' : (currentOS === 'ios' ? 'Detected: <span class="text-blue-600">iOS</span>' : 'Detected: <span class="text-gray-600">Web</span>');
+
+    async function fetchApps() {
+        try {
+            const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            loader.style.display = 'none';
+
+            if (data.hero) {
+                if (data.hero.title) document.getElementById('heroTitle').innerHTML = data.hero.title;
+                if (data.hero.subtitle) document.getElementById('heroDesc').textContent = data.hero.subtitle;
+            }
+
+            // 读取两个配置
+            if (data.ui) {
+                if (data.ui.appleIconIOS) appleIconIOS = data.ui.appleIconIOS;
+                if (data.ui.appleIconMac) appleIconMac = data.ui.appleIconMac;
+            }
+
+            const appsList = Array.isArray(data) ? data : (data.apps || []);
+            if (appsList.length === 0) {
+                grid.innerHTML = '<div class="p-4 text-gray-500 font-mono">No data stream detected.</div>';
+                return;
+            }
+            buildGrid(appsList);
+
+        } catch (error) {
+            console.error("Config Load Error:", error);
+            loader.style.display = 'none';
+            errorMsg.classList.remove('hidden');
+            errorMsg.innerHTML = `DATA LOAD FAILED<br>${error.message}`;
+        }
+    }
+
+    function buildGrid(apps) {
+      apps.forEach((app) => {
+        try {
+            const safeName = encodeURIComponent(app.name);
+            const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
+            const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
+            
+            let iconLayer = `
+              <div class="absolute inset-0 flex items-center justify-center z-0">
+                <span class="text-slate-300 font-mono font-bold text-2xl select-none">${fallbackText}</span>
+              </div>
+            `;
+            if (iconPath) {
+               iconLayer += `<img src="${iconPath}" alt="${app.name}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
+            }
+
+            const promoBadge = app.promotional 
+                ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${app.promotional}</span>`
+                : '';
+
+            let storeLink = `https://apps.apple.com/us/app/id${app.id}`;
+            let storeLabel = "App Store";
+            
+            // 自动选择图标
+            let currentBadgeFile = appleIconIOS; // 默认 iOS
+
+            if (app.links) {
+                if (currentOS === 'mac' && app.links.macos) {
+                    storeLink = app.links.macos;
+                    storeLabel = "Mac App Store";
+                    if (appleIconMac) currentBadgeFile = appleIconMac; // 切换为 Mac 图标
+                } else if (currentOS === 'ios' && app.links.ios) {
+                    storeLink = app.links.ios;
+                    storeLabel = "App Store";
+                } else {
+                    storeLink = app.links.ios || app.links.macos;
+                    storeLabel = "App Store";
+                }
+            }
+
+            // 原生显示 Apple 图片 (h-8 约 32px)
+            const appleImg = currentBadgeFile 
+                ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">`
+                : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
+
+            const card = document.createElement('div');
+            card.className = 'holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group';
+            
+            card.innerHTML = `
+              <div class="app-icon group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-shadow duration-300">${iconLayer}</div>
+              <div class="flex-1 min-w-0">
+                ${promoBadge}
+                <div class="flex justify-between items-start">
+                  <h4 class="text-xl font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors">${app.name || 'Untitled'}</h4>
+                </div>
+                <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">${app.desc || 'No description.'}</p>
+                
+                <div class="flex gap-4 items-center">
+                  <a href="${storeLink}" target="_blank" onclick="event.stopPropagation()" 
+                     title="Download on the ${storeLabel}"
+                     class="hover:opacity-70 transition-opacity transform active:scale-95">
+                     ${appleImg}
+                  </a>
+                  
+                  <button class="px-4 py-1.5 rounded-full border border-slate-200 text-slate-600 text-xs font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-2 demo-trigger">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> PREVIEW
+                  </button>
+                </div>
+              </div>
+            `;
+
+            const initDemo = () => {
+                const safeName = encodeURIComponent(app.name);
+                if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
+                    currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
+                } else {
+                    currentSlides = [];
+                }
+                currentIndex = 0;
+                // 名字大小写修正：直接使用 app.name
+                demoTitle.textContent = app.name;
+                renderSlide();
+                if(window.gsap) gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
+            };
+
+            card.addEventListener('click', initDemo);
+            card.querySelector('.demo-trigger').addEventListener('click', (e) => { e.stopPropagation(); initDemo(); });
+            grid.appendChild(card);
+
+        } catch (err) {
+            console.error("Build Error:", err);
+        }
+      });
+    }
+
+    // Slideshow (Keep same)
+    function renderSlide() {
+        if (currentSlides.length === 0) {
+            screenPlaceholder.style.display = 'flex';
+            screenPlaceholder.innerHTML = `<div class="text-center text-slate-400 text-xs p-4 font-mono">NO IMAGE DATA</div>`;
+            phoneScreenshot.style.opacity = 0;
+            updateControls();
+            return;
+        }
+        screenPlaceholder.style.display = 'none';
+        phoneScreenshot.style.opacity = 0;
+        const imgUrl = currentSlides[currentIndex];
+        setTimeout(() => {
+            phoneScreenshot.src = imgUrl;
+            phoneScreenshot.onload = () => { phoneScreenshot.style.opacity = 1; updateControls(); };
+            phoneScreenshot.onerror = () => {
+                screenPlaceholder.style.display = 'flex';
+                screenPlaceholder.innerHTML = `<div class="text-center text-red-400 text-xs p-4 font-mono">FILE CORRUPT<br>${decodeURIComponent(imgUrl)}</div>`;
+                updateControls();
+            };
+        }, 50);
+    }
+    function updateControls() {
+        dotsContainer.innerHTML = '';
+        if (currentSlides.length <= 1) {
+            prevBtn.classList.remove('active');
+            nextBtn.classList.remove('active');
+        } else {
+            prevBtn.classList.add('active');
+            nextBtn.classList.add('active');
+            currentSlides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
+                dotsContainer.appendChild(dot);
+            });
+        }
+    }
+    function nextSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex + 1) % currentSlides.length; renderSlide(); }
+    function prevSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length; renderSlide(); }
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+    document.addEventListener('keydown', (e) => {
+        if (currentSlides.length > 1 && phoneMock.matches(':hover')) {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        }
+    });
+
+    fetchApps();
+  </script>
+</body>
+</html>

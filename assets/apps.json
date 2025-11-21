@@ -1,0 +1,103 @@
+{
+  "hero": {
+    "title": "Privacy First.<br>Local Intelligence.",
+    "subtitle": "A collection of utility tools built with SwiftUI & CoreML."
+  },
+  "ui": {
+	"appleIcon": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+	"appleIconIOS": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+	"appleIconMac": "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+    "appleIconPath": "M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-24.1-73-92.8-71.7-108.5q20.7-24.9 22.8-57.7c-27.7 6.3-62.2 29.7-75.4 54.3z"
+  },
+  "apps": [
+    {
+      "id": "6752704315",
+      "name": "ShareGuard",
+      "desc": "Remove metadata before sharing photos. Protect your location privacy.",
+      "promotional": "Privacy First",
+      "icon": "icon.png",
+      "screenshots": ["screen1.jpg", "screen2.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
+        "macos": "https://apps.apple.com/us/app/shareguard/id6752704315"
+      }
+    },
+    {
+      "id": "6752116587",
+      "name": "P2V Converter",
+      "desc": "Convert raster images (PNG/JPG) to Vector SVG instantly on device.",
+      "promotional": "Vector Magic",
+      "icon": "icon.png",
+      "screenshots": ["demo.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
+        "macos": "https://apps.apple.com/us/app/p2v-converter/id6752116587"
+      }
+    },
+    {
+      "id": "6751140211",
+      "name": "pcAI Photo Retouch",
+      "desc": "Local AI driven object removal and photo enhancement tools.",
+      "promotional": "Offline AI",
+      "icon": "icon.png",
+      "screenshots": ["preview.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
+        "macos": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
+      }
+    },
+    {
+      "id": "6748610196",
+      "name": "3D Model Viewer",
+      "desc": "Import, view and convert OBJ, USDZ, STL files seamlessly.",
+      "promotional": "Pro Tool",
+      "icon": "icon.png",
+      "screenshots": ["screen.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
+        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+      }
+    },
+    {
+      "id": "6745748800",
+      "name": "CutoutCraft",
+      "desc": "Offline background removal powered by Apple CoreML.",
+      "promotional": "Editor's Choice",
+      "icon": "icon.png",
+      "screenshots": ["screen.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
+        "macos": "https://apps.apple.com/us/app/cutoutcraft/id6745748800"
+      }
+    },
+    {
+      "id": "6742348600",
+      "name": "DXF Assistant",
+      "desc": "View CAD drawings on the go. Lightweight and fast.",
+      "promotional": "For Engineers",
+      "icon": "icon.png",
+      "screenshots": ["screen.jpg"],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
+        "macos": "https://apps.apple.com/us/app/dxf-assistant/id6742348600"
+      }
+    },
+    {
+      "id": "6733222153",
+      "name": "SheetCollector",
+      "desc": "Scan and organize physical documents into digital sheets.",
+      "promotional": "Productivity",
+      "icon": "icon.png",
+      "screenshots": [
+				"screen.png",
+				"screen1.png",
+				"screen2.png",
+				"screen3.png"
+			],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
+        "macos": "https://apps.apple.com/us/app/sheetcollector/id6733222153"
+      }
+    }
+  ]
+}
