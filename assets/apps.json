@@ -6,8 +6,7 @@
   "ui": {
 	"appleIcon": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
 	"appleIconIOS": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
-	"appleIconMac": "Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg",
-    "appleIconPath": "M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-24.1-73-92.8-71.7-108.5q20.7-24.9 22.8-57.7c-27.7 6.3-62.2 29.7-75.4 54.3z"
+	"appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
   },
   "apps": [
     {
