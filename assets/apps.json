@@ -16,7 +16,13 @@
       "desc": "Remove metadata before sharing photos. Protect your location privacy.",
       "promotional": "Privacy First",
       "icon": "icon.png",
-      "screenshots": ["screen1.jpg", "screen2.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png",
+		"screen2.png",
+		"screen3.png",
+		"screen4.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
         "macos": "https://apps.apple.com/us/app/shareguard/id6752704315"
@@ -28,7 +34,11 @@
       "desc": "Convert raster images (PNG/JPG) to Vector SVG instantly on device.",
       "promotional": "Vector Magic",
       "icon": "icon.png",
-      "screenshots": ["demo.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png",
+		"screen2.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
         "macos": "https://apps.apple.com/us/app/p2v-converter/id6752116587"
@@ -40,7 +50,10 @@
       "desc": "Local AI driven object removal and photo enhancement tools.",
       "promotional": "Offline AI",
       "icon": "icon.png",
-      "screenshots": ["preview.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
         "macos": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
@@ -52,7 +65,12 @@
       "desc": "Import, view and convert OBJ, USDZ, STL files seamlessly.",
       "promotional": "Pro Tool",
       "icon": "icon.png",
-      "screenshots": ["screen.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png",
+		"screen2.png",
+		"screen3.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
         "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
@@ -64,7 +82,13 @@
       "desc": "Offline background removal powered by Apple CoreML.",
       "promotional": "Editor's Choice",
       "icon": "icon.png",
-      "screenshots": ["screen.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png",
+		"screen2.png",
+		"screen3.png",
+		"screen4.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
         "macos": "https://apps.apple.com/us/app/cutoutcraft/id6745748800"
@@ -76,7 +100,12 @@
       "desc": "View CAD drawings on the go. Lightweight and fast.",
       "promotional": "For Engineers",
       "icon": "icon.png",
-      "screenshots": ["screen.jpg"],
+      "screenshots": [
+		"screen.png",
+		"screen1.png",
+		"screen2.png",
+		"screen3.png"
+	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
         "macos": "https://apps.apple.com/us/app/dxf-assistant/id6742348600"
@@ -92,7 +121,10 @@
 				"screen.png",
 				"screen1.png",
 				"screen2.png",
-				"screen3.png"
+				"screen3.png",
+				"screen4.png",
+				"screen5.png",
+				"screen6.png"
 			],
       "links": {
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
