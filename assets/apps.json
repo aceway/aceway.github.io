@@ -14,7 +14,7 @@
       "name": "ShareGuard",
       "desc": "Remove metadata before sharing photos. Protect your location privacy.",
       "promotional": "Privacy First",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png",
@@ -32,7 +32,7 @@
       "name": "P2V Converter",
       "desc": "Convert raster images (PNG/JPG) to Vector SVG instantly on device.",
       "promotional": "Vector Magic",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png",
@@ -48,7 +48,7 @@
       "name": "pcAI Photo Retouch",
       "desc": "Local AI driven object removal and photo enhancement tools.",
       "promotional": "Offline AI",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png"
@@ -63,7 +63,7 @@
       "name": "3D Model Viewer",
       "desc": "Import, view and convert OBJ, USDZ, STL files seamlessly.",
       "promotional": "Pro Tool",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png",
@@ -80,7 +80,7 @@
       "name": "CutoutCraft",
       "desc": "Offline background removal powered by Apple CoreML.",
       "promotional": "Editor's Choice",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png",
@@ -98,7 +98,7 @@
       "name": "DXF Assistant",
       "desc": "View CAD drawings on the go. Lightweight and fast.",
       "promotional": "For Engineers",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 		"screen.png",
 		"screen1.png",
@@ -115,7 +115,7 @@
       "name": "SheetCollector",
       "desc": "Scan and organize physical documents into digital sheets.",
       "promotional": "Productivity",
-      "icon": "icon.png",
+      "icon": "icon.jpg",
       "screenshots": [
 				"screen.png",
 				"screen1.png",
