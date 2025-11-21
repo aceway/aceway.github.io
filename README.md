@@ -1,5 +1,2 @@
-blog
-=====
-
-my blog.
 Welcome
+Here is my product showcase.

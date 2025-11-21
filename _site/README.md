@@ -1,5 +1,0 @@
-blog
-=====
-
-my blog.
-Welcome
