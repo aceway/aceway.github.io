@@ -24,7 +24,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
-        "macos": "https://apps.apple.com/us/app/shareguard/id6752704315"
+        "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
       }
     },
     {
@@ -40,7 +40,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
-        "macos": "https://apps.apple.com/us/app/p2v-converter/id6752116587"
+        "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
       }
     },
     {
@@ -55,7 +55,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
-        "macos": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
+        "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
       }
     },
     {
@@ -72,7 +72,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
-        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+        "macos": "macappstore://apps.apple.com/us/app/3d-model-viewer/id6748610196"
       }
     },
     {
@@ -90,7 +90,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
-        "macos": "https://apps.apple.com/us/app/cutoutcraft/id6745748800"
+        "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800"
       }
     },
     {
@@ -107,7 +107,7 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
-        "macos": "https://apps.apple.com/us/app/dxf-assistant/id6742348600"
+        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
       }
     },
     {
@@ -127,7 +127,7 @@
 			],
       "links": {
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
-        "macos": "https://apps.apple.com/us/app/sheetcollector/id6733222153"
+        "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
       }
     }
   ]
