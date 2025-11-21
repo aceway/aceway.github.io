@@ -227,7 +227,7 @@
       </div>
       <div class="hidden sm:flex items-center gap-2 text-[10px] font-mono text-slate-400 border border-slate-200 rounded-full px-3 py-1 bg-white/50">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        SYSTEM ONLINE
+        Welcome :)
       </div>
     </div>
   </header>
@@ -259,8 +259,8 @@
       <!-- List -->
       <section class="lg:col-span-7 space-y-6" id="apps">
         <div class="flex items-center justify-between px-2 border-l-4 border-blue-500 pl-4">
-           <h3 class="text-xl font-bold text-slate-800 tracking-tight">ACCESS MODULES</h3>
-           <span class="text-[10px] font-mono text-slate-500 bg-white/80 backdrop-blur px-3 py-1 rounded border border-slate-200" id="osHint">
+           <h3 class="text-xl font-bold text-slate-800 tracking-tight">Apps Collection</h3>
+           <span style="display:none;" class="text-[10px] font-mono text-slate-500 bg-white/80 backdrop-blur px-3 py-1 rounded border border-slate-200" id="osHint">
              DETECTING ENV...
            </span>
         </div>
@@ -321,11 +321,12 @@
 
   <footer class="border-t border-slate-200 mt-auto bg-white/50 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
-      <span class="text-blue-500">●</span> SYSTEM STATUS: OPERATIONAL // © 2025 WEI AI
+      <span class="text-blue-500">© 2025 WEI AI</span>
     </div>
   </footer>
 
-  <script>
+<script>
+    // --- DOM Elements ---
     const grid = document.getElementById('appsGrid');
     const loader = document.getElementById('loader');
     const errorMsg = document.getElementById('errorMsg');
@@ -339,13 +340,13 @@
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
 
+    // --- Global State ---
     let currentSlides = [];
     let currentIndex = 0;
-    
-    // 定义两个 Apple Icon 变量
     let appleIconIOS = "";
     let appleIconMac = "";
 
+    // --- OS Detection ---
     const detectOS = () => {
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('mac')) return 'mac';
@@ -355,6 +356,7 @@
     const currentOS = detectOS();
     osHint.innerHTML = currentOS === 'mac' ? 'Detected: <span class="text-blue-600">macOS</span>' : (currentOS === 'ios' ? 'Detected: <span class="text-blue-600">iOS</span>' : 'Detected: <span class="text-gray-600">Web</span>');
 
+    // --- Main Logic ---
     async function fetchApps() {
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -362,23 +364,38 @@
             const data = await response.json();
             loader.style.display = 'none';
 
+            // 1. Hero Text
             if (data.hero) {
                 if (data.hero.title) document.getElementById('heroTitle').innerHTML = data.hero.title;
                 if (data.hero.subtitle) document.getElementById('heroDesc').textContent = data.hero.subtitle;
             }
 
-            // 读取两个配置
+            // 2. UI Config
             if (data.ui) {
                 if (data.ui.appleIconIOS) appleIconIOS = data.ui.appleIconIOS;
                 if (data.ui.appleIconMac) appleIconMac = data.ui.appleIconMac;
             }
 
+            // 3. Apps List
             const appsList = Array.isArray(data) ? data : (data.apps || []);
             if (appsList.length === 0) {
                 grid.innerHTML = '<div class="p-4 text-gray-500 font-mono">No data stream detected.</div>';
                 return;
             }
+            
+            // 4. Build Grid
             buildGrid(appsList);
+
+            // --- 新增功能：随机预览一个产品 ---
+            if (appsList.length > 0) {
+                const randomIndex = Math.floor(Math.random() * appsList.length);
+                const randomApp = appsList[randomIndex];
+                console.log("Auto-previewing:", randomApp.name);
+                // 延迟一点点执行，让页面元素先渲染完
+                setTimeout(() => {
+                    triggerPreview(randomApp);
+                }, 100);
+            }
 
         } catch (error) {
             console.error("Config Load Error:", error);
@@ -388,6 +405,33 @@
         }
     }
 
+    // --- Helper: Load Demo Logic (Extracted) ---
+    function triggerPreview(app) {
+        const safeName = encodeURIComponent(app.name);
+        
+        // Reset Slides
+        if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
+            currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
+        } else {
+            currentSlides = [];
+        }
+
+        currentIndex = 0;
+        demoTitle.textContent = app.name;
+        
+        // Render
+        renderSlide();
+        
+        // Animate Phone (Subtle bounce)
+        if(window.gsap) {
+            gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
+        }
+        
+        // Optional: Scroll the active card into view (if needed) or highlight it
+        // const activeCard = document.getElementById(`card-${app.id}`);
+        // if(activeCard) activeCard.classList.add('ring-2', 'ring-blue-400');
+    }
+
     function buildGrid(apps) {
       apps.forEach((app) => {
         try {
@@ -395,6 +439,7 @@
             const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
             const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
             
+            // Icon
             let iconLayer = `
               <div class="absolute inset-0 flex items-center justify-center z-0">
                 <span class="text-slate-300 font-mono font-bold text-2xl select-none">${fallbackText}</span>
@@ -404,21 +449,21 @@
                iconLayer += `<img src="${iconPath}" alt="${app.name}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
             }
 
+            // Badge
             const promoBadge = app.promotional 
                 ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${app.promotional}</span>`
                 : '';
 
+            // Store Link Logic
             let storeLink = `https://apps.apple.com/us/app/id${app.id}`;
             let storeLabel = "App Store";
-            
-            // 自动选择图标
-            let currentBadgeFile = appleIconIOS; // 默认 iOS
+            let currentBadgeFile = appleIconIOS; 
 
             if (app.links) {
                 if (currentOS === 'mac' && app.links.macos) {
                     storeLink = app.links.macos;
                     storeLabel = "Mac App Store";
-                    if (appleIconMac) currentBadgeFile = appleIconMac; // 切换为 Mac 图标
+                    if (appleIconMac) currentBadgeFile = appleIconMac;
                 } else if (currentOS === 'ios' && app.links.ios) {
                     storeLink = app.links.ios;
                     storeLabel = "App Store";
@@ -428,12 +473,14 @@
                 }
             }
 
-            // 原生显示 Apple 图片 (h-8 约 32px)
+            // Apple Icon Image
             const appleImg = currentBadgeFile 
                 ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">`
                 : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
 
+            // Create Card
             const card = document.createElement('div');
+            card.id = `card-${app.id}`; // Add ID for potential future reference
             card.className = 'holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group';
             
             card.innerHTML = `
@@ -459,22 +506,13 @@
               </div>
             `;
 
-            const initDemo = () => {
-                const safeName = encodeURIComponent(app.name);
-                if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
-                    currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
-                } else {
-                    currentSlides = [];
-                }
-                currentIndex = 0;
-                // 名字大小写修正：直接使用 app.name
-                demoTitle.textContent = app.name;
-                renderSlide();
-                if(window.gsap) gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
-            };
-
-            card.addEventListener('click', initDemo);
-            card.querySelector('.demo-trigger').addEventListener('click', (e) => { e.stopPropagation(); initDemo(); });
+            // Click Events -> Call the global triggerPreview
+            card.addEventListener('click', () => triggerPreview(app));
+            card.querySelector('.demo-trigger').addEventListener('click', (e) => { 
+                e.stopPropagation(); 
+                triggerPreview(app); 
+            });
+            
             grid.appendChild(card);
 
         } catch (err) {
@@ -483,7 +521,7 @@
       });
     }
 
-    // Slideshow (Keep same)
+    // --- Slideshow System ---
     function renderSlide() {
         if (currentSlides.length === 0) {
             screenPlaceholder.style.display = 'flex';
@@ -495,6 +533,8 @@
         screenPlaceholder.style.display = 'none';
         phoneScreenshot.style.opacity = 0;
         const imgUrl = currentSlides[currentIndex];
+        
+        // Slight delay for fade effect
         setTimeout(() => {
             phoneScreenshot.src = imgUrl;
             phoneScreenshot.onload = () => { phoneScreenshot.style.opacity = 1; updateControls(); };
@@ -505,6 +545,7 @@
             };
         }, 50);
     }
+
     function updateControls() {
         dotsContainer.innerHTML = '';
         if (currentSlides.length <= 1) {
@@ -520,10 +561,13 @@
             });
         }
     }
+
     function nextSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex + 1) % currentSlides.length; renderSlide(); }
     function prevSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length; renderSlide(); }
+    
     nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+    
     document.addEventListener('keydown', (e) => {
         if (currentSlides.length > 1 && phoneMock.matches(':hover')) {
             if (e.key === 'ArrowRight') nextSlide();
@@ -531,7 +575,8 @@
         }
     });
 
+    // Initialize
     fetchApps();
-  </script>
+</script>
 </body>
 </html>
