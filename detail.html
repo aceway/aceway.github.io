@@ -16,9 +16,20 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-          colors: { sciDark: '#0f172a', sciLight: '#f8fafc', neonBlue: '#3b82f6', neonPurple: '#a855f7', neonTeal: '#14b8a6' },
-          animation: { 'blob': 'blob 7s infinite' },
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: { 
+             sciDark: '#0f172a',
+             sciLight: '#f8fafc',
+             neonBlue: '#3b82f6',
+             neonPurple: '#a855f7',
+             neonTeal: '#14b8a6',
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+          },
           keyframes: {
             blob: {
               '0%': { transform: 'translate(0px, 0px) scale(1)' },
@@ -36,80 +47,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   
   <style>
-    /* --- 关键优化 1: 锁定滚动条 --- */
     html { overflow-y: scroll; }
+    body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
+    #page-wrapper { will-change: transform, opacity; transform-style: preserve-3d; min-height: 100vh; display: flex; flex-direction: column; opacity: 0; }
 
-    body { 
-      background-color: #f8fafc; 
-      color: #1e293b; 
-      overflow-x: hidden; 
-    }
-    
-    #page-wrapper {
-        will-change: transform, opacity;
-        transform-style: preserve-3d;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        /* 内联 opacity: 0 已在 HTML 中添加 */
-    }
-
-    .bg-grid-pattern {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-        background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none;
-    }
-    .ambient-light {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        overflow: hidden; z-index: -1; pointer-events: none;
-    }
+    .bg-grid-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none; }
+    .ambient-light { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
     .blob { position: absolute; filter: blur(80px); opacity: 0.6; animation: blob 10s infinite ease-in-out; }
     .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; }
     .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
 
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    .glass-panel {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-        border-radius: 24px;
-    }
+    .glass-nav { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+    .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border-radius: 24px; }
 
-    .feature-card {
-        background: rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 16px; padding: 16px; transition: all 0.3s ease;
-    }
-    .feature-card:hover {
-        background: rgba(255, 255, 255, 0.9);
-        border-color: #3b82f6;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
-    }
+    .feature-card { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 16px; padding: 16px; transition: all 0.3s ease; }
+    .feature-card:hover { background: rgba(255, 255, 255, 0.9); border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15); }
 
-    .knowledge-gradient {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        border-left: 4px solid #3b82f6;
-    }
+    .knowledge-gradient { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #3b82f6; }
 
-    .app-icon-lg { 
-      width: 120px; height: 120px; border-radius: 28px; 
-      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); 
-      overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0;
-    }
+    .app-icon-lg { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0; }
 
-    .phone-mock-static { 
-      width: 280px; height: 580px; border-radius: 48px; 
-      background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
-      position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto;
-    }
+    .phone-mock-static { width: 280px; height: 580px; border-radius: 48px; background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto; }
     .phone-screen { width: 100%; height: 100%; background: #000; border-radius: 36px; overflow: hidden; position: relative; }
     
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s; z-index: 30; opacity: 0; pointer-events: none; }
+    .phone-mock-static:hover .slider-btn.active { opacity: 1; pointer-events: auto; }
+    .slider-btn:hover { background: rgba(59, 130, 246, 0.8); border-color: transparent; scale: 1.1; }
+    .slider-btn.left { left: 10px; }
+    .slider-btn.right { right: 10px; }
+    .slider-dots { position: absolute; bottom: 20px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 30; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+    .dot:hover { transform: scale(1.2); background: rgba(255,255,255,0.6); }
+    .dot.active { background: #3b82f6; width: 20px; border-radius: 100px; }
+
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
@@ -122,7 +92,6 @@
       <div class="blob blob-2"></div>
   </div>
 
-  <!-- 关键优化 2: 内联样式 opacity:0，彻底防止闪烁 -->
   <div id="page-wrapper" style="opacity: 0;">
 
       <header class="sticky top-0 z-50 glass-nav">
@@ -144,9 +113,11 @@
           </div>
       </div>
 
-      <!-- 内容区域 (默认不隐藏，由 wrapper 整体控制显隐) -->
-      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow">
+      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow hidden">
+        
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10">
                 <div class="flex gap-6 items-start">
                     <div id="detailIcon" class="app-icon-lg"></div>
@@ -154,15 +125,19 @@
                         <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
+                        
                         <div class="mt-6 flex items-center gap-4">
-                            <a id="detailLink" href="#" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 bg-[#1d1d1f] text-white rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20 group">
-                                <img id="appleBadgeIcon" src="" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform" alt="Apple">
-                                <span class="font-semibold text-sm" id="storeLabel">Download on App Store</span>
+                            <!-- 核心修改：原生显示 Apple 图标，无文字，无背景 -->
+                            <a id="detailLink" href="#" target="_blank" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+                                <!-- h-10 约等于 40px，适合详情页尺寸 -->
+                                <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
                         </div>
                     </div>
                 </div>
+
                 <div class="h-px bg-slate-200 w-full"></div>
+
                 <div id="knowledgeSection" class="glass-panel p-8 knowledge-gradient relative overflow-hidden group">
                     <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-400 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
                     <h3 class="text-sm font-bold text-blue-600 font-mono mb-3 flex items-center gap-2">
@@ -172,6 +147,7 @@
                     <h2 id="knowledgeTitle" class="text-xl font-bold text-slate-800 mb-3"></h2>
                     <p id="knowledgeContent" class="text-slate-600 leading-relaxed text-sm text-justify"></p>
                 </div>
+
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <span class="w-1 h-6 bg-teal-400 rounded-full"></span>
@@ -179,6 +155,7 @@
                     </h3>
                     <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                 </div>
+
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <span class="w-1 h-6 bg-purple-400 rounded-full"></span>
@@ -187,12 +164,21 @@
                     <div id="audienceContainer" class="flex flex-wrap gap-2"></div>
                 </div>
             </div>
+
+            <!-- Right Column -->
             <div class="lg:col-span-5 relative">
                 <div class="sticky top-24">
                     <div class="phone-mock-static">
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
-                        <div class="phone-screen">
-                            <img id="detailScreenshot" class="w-full h-full object-cover" src="" alt="Screenshot">
+                        <div class="phone-screen relative bg-black overflow-hidden">
+                            <div id="sliderContainer" class="absolute inset-0 w-full h-full"></div>
+                            <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                            <div id="dotsContainer" class="slider-dots z-20"></div>
+                            <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
+                                <span class="text-4xl mb-2">📱</span>
+                                <span class="text-sm font-mono">NO PREVIEW</span>
+                            </div>
                         </div>
                     </div>
                     <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
@@ -201,6 +187,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
       </main>
 
@@ -213,16 +200,11 @@
   </div>
 
   <script>
-    // 1. 初始化转场逻辑 (立即执行)
     const transitionType = sessionStorage.getItem('page-transition');
     const wrapper = document.getElementById('page-wrapper');
-    
-    // 设置初始状态 (在第一帧渲染前完成)
     if (transitionType === 'forward') {
-        // 从 Index 进来的：放在右边屏幕外 (50%)
         gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
     } else {
-        // 刷新或直接打开：原地淡入
         gsap.set(wrapper, { x: 0, opacity: 0, y: 20 });
     }
 
@@ -240,11 +222,18 @@
     let appleIconIOS = "";
     let appleIconMac = "";
 
+    const sliderContainer = document.getElementById('sliderContainer');
+    const screenPlaceholder = document.getElementById('screenPlaceholder');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    let currentSlides = [];
+    let currentIndex = 0;
+    let isAnimating = false;
+
     async function initDetail() {
-        if (!appId) {
-            goBack();
-            return;
-        }
+        if (!appId) { goBack(); return; }
 
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -259,11 +248,7 @@
             const appsList = Array.isArray(data) ? data : (data.apps || []);
             const app = appsList.find(a => a.id === appId);
 
-            if (!app) {
-                alert("App not found");
-                goBack();
-                return;
-            }
+            if (!app) { alert("App not found"); goBack(); return; }
 
             renderApp(app);
 
@@ -291,16 +276,13 @@
 
         const linkEl = document.getElementById('detailLink');
         const badgeEl = document.getElementById('appleBadgeIcon');
-        const labelEl = document.getElementById('storeLabel');
         
         let targetLink = `https://apps.apple.com/us/app/id${app.id}`;
-        let targetLabel = "App Store";
         let targetIcon = appleIconIOS;
 
         if (app.links) {
             if (currentOS === 'mac' && app.links.macos) {
                 targetLink = app.links.macos;
-                targetLabel = "Mac App Store";
                 if(appleIconMac) targetIcon = appleIconMac;
             } else if (currentOS === 'ios' && app.links.ios) {
                 targetLink = app.links.ios;
@@ -310,19 +292,19 @@
         }
         
         linkEl.href = targetLink;
-        labelEl.textContent = `Download on ${targetLabel}`;
         if (targetIcon) {
             badgeEl.src = `assets/${targetIcon}`;
         } else {
             badgeEl.style.display = 'none';
         }
 
-        const screenImg = document.getElementById('detailScreenshot');
-        if (app.screenshots && app.screenshots.length > 0) {
-            screenImg.src = `assets/${safeName}/${app.screenshots[0]}`;
+        if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
+            currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
         } else {
-            screenImg.parentElement.innerHTML = `<div class="flex items-center justify-center h-full text-slate-500 text-xs font-mono">NO PREVIEW</div>`;
+            currentSlides = [];
         }
+        currentIndex = 0;
+        loadFirstSlide();
 
         const featureGrid = document.getElementById('featureGrid');
         if (app.features && app.features.length > 0) {
@@ -361,47 +343,125 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        // --- 显示逻辑 ---
-        // 1. 隐藏 Loader
         document.getElementById('loader').style.display = 'none';
-        // (无需显式移除 hidden，因为本来就不 hidden，只是 opacity:0)
-
-        // 2. 执行入场动画
+        const main = document.getElementById('mainContent');
+        main.classList.remove('hidden');
+        
         if (transitionType === 'forward') {
-            // 从右侧滑入
-            gsap.to(wrapper, { 
-                x: 0, 
-                opacity: 1, 
-                duration: 0.5, 
-                ease: "back.out(0.8)", // 加一点回弹，更有动感
-                clearProps: "transform" 
-            });
+            gsap.to(wrapper, { x: 0, opacity: 1, duration: 0.5, ease: "back.out(0.8)", clearProps: "transform" });
         } else {
-            // 淡入
-            gsap.to(wrapper, { 
-                y: 0, 
-                opacity: 1, 
-                duration: 0.6, 
-                ease: "power2.out", 
-                clearProps: "all" 
-            });
+            gsap.to(wrapper, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", clearProps: "all" });
         }
         sessionStorage.removeItem('page-transition');
     }
 
+    function loadFirstSlide() {
+        sliderContainer.innerHTML = '';
+        if (currentSlides.length === 0) {
+            screenPlaceholder.style.display = 'flex';
+            updateControls();
+            return;
+        }
+        screenPlaceholder.style.display = 'none';
+        const img = document.createElement('img');
+        img.src = currentSlides[currentIndex];
+        img.className = "absolute top-0 left-0 w-full h-full object-cover";
+        sliderContainer.appendChild(img);
+        updateControls();
+    }
+
+    function transitionSlide(direction) {
+        if (isAnimating || currentSlides.length <= 1) return;
+        isAnimating = true;
+
+        const nextIndex = direction === 'next' 
+            ? (currentIndex + 1) % currentSlides.length 
+            : (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[nextIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        sliderContainer.appendChild(nextImg);
+
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
+        gsap.to(nextImg, {
+            x: '0%',
+            duration: 0.4,
+            ease: "power2.inOut",
+            onComplete: () => {
+                if(currentImg) currentImg.remove();
+                currentIndex = nextIndex;
+                isAnimating = false;
+                updateControls();
+            }
+        });
+    }
+
+    function jumpToSlide(targetIndex) {
+        if (isAnimating || targetIndex === currentIndex) return;
+        const direction = targetIndex > currentIndex ? 'next' : 'prev';
+        isAnimating = true;
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[targetIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        sliderContainer.appendChild(nextImg);
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
+        gsap.to(nextImg, { 
+            x: '0%', 
+            duration: 0.4, 
+            ease: "power2.inOut", 
+            onComplete: () => {
+                if(currentImg) currentImg.remove();
+                currentIndex = targetIndex;
+                isAnimating = false;
+                updateControls();
+            }
+        });
+    }
+
+    function updateControls() {
+        dotsContainer.innerHTML = '';
+        if (currentSlides.length <= 1) {
+            prevBtn.classList.remove('active');
+            nextBtn.classList.remove('active');
+        } else {
+            prevBtn.classList.add('active');
+            nextBtn.classList.add('active');
+            currentSlides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
+                dot.addEventListener('click', (e) => { e.stopPropagation(); jumpToSlide(i); });
+                dotsContainer.appendChild(dot);
+            });
+        }
+    }
+
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
+    
+    document.addEventListener('keydown', (e) => {
+        if (currentSlides.length > 1) {
+            if (e.key === 'ArrowRight') transitionSlide('next');
+            if (e.key === 'ArrowLeft') transitionSlide('prev');
+        }
+    });
+
     function goBack(e) {
         if(e) e.preventDefault();
         sessionStorage.setItem('page-transition', 'back');
-        
-        // 离场：向右滑出 (0.3s 快速响应)
         gsap.to('#page-wrapper', {
             x: window.innerWidth * 0.5,
             opacity: 0,
-            duration: 0.3, 
+            duration: 0.3,
             ease: "power2.in",
-            onComplete: () => {
-                window.location.href = 'index.html';
-            }
+            onComplete: () => { window.location.href = 'index.html'; }
         });
     }
 

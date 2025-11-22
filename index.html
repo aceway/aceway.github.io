@@ -205,22 +205,31 @@
               <div class="flex flex-col items-center">
                 <div class="phone-wrapper">
                   <div class="dashed-border"></div>
-                  <div class="phone-mock" id="phoneMock">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
-                    <div class="phone-screen relative">
-                      <img id="phoneScreenshot" class="screenshot" src="" alt="Demo">
-                      <div id="prevBtn" class="slider-btn left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
-                      <div id="nextBtn" class="slider-btn right"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
-                      <div id="dotsContainer" class="slider-dots"></div>
-                      <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none">
-                        <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
-                            <span class="text-2xl">⚡️</span>
-                        </div>
-                        <span class="text-sm font-mono uppercase tracking-widest text-slate-400">System Ready</span>
-                        <span class="text-xs text-slate-600 mt-2">Select App to Initialize</span>
-                      </div>
-                    </div>
+			<div class="phone-mock" id="phoneMock">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-30"></div>
+                
+                <div class="phone-screen relative bg-black overflow-hidden">
+                  <!-- 1. 图片滑动容器 (新增) -->
+                  <div id="sliderContainer" class="absolute inset-0 w-full h-full">
+                      <!-- JS 会在这里动态创建 img 标签 -->
                   </div>
+
+                  <!-- 2. 控件层 (z-index 调高，确保在图片上面) -->
+                  <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                  <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                  <div id="dotsContainer" class="slider-dots z-20"></div>
+
+                  <!-- 3. 占位/Loading 层 -->
+                  <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10 bg-black">
+                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
+                        <span class="text-2xl">⚡️</span>
+                    </div>
+                    <span class="text-sm font-mono uppercase tracking-widest text-slate-400">System Ready</span>
+                    <span class="text-xs text-slate-600 mt-2">Select App to Initialize</span>
+                  </div>
+                </div>
+            </div>
+
                 </div>
                 <div class="text-center mt-4">
                   <h4 class="font-bold text-slate-800 tracking-tight text-lg" id="demoTitle">Interface Preview</h4>
@@ -244,25 +253,28 @@
   </div>
 
   <script>
-    const appsSection = document.getElementById('apps');
-    const demoSection = document.getElementById('demo-section');
+    // --- DOM Elements ---
     const grid = document.getElementById('appsGrid');
     const loader = document.getElementById('loader');
     const errorMsg = document.getElementById('errorMsg');
     const osHint = document.getElementById('osHint');
+    
     const phoneMock = document.getElementById('phoneMock');
-    const phoneScreenshot = document.getElementById('phoneScreenshot');
+    const sliderContainer = document.getElementById('sliderContainer'); // 新容器
     const screenPlaceholder = document.getElementById('screenPlaceholder');
     const demoTitle = document.getElementById('demoTitle');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
 
+    // --- State ---
     let currentSlides = [];
     let currentIndex = 0;
     let appleIconIOS = "";
     let appleIconMac = "";
+    let isAnimating = false; // 防止动画冲突
 
+    // --- OS Detection ---
     const detectOS = () => {
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('mac') && !navigator.maxTouchPoints) return 'mac'; 
@@ -276,11 +288,17 @@
         osHint.innerHTML = 'DETECTED: <span class="text-blue-600">macOS</span>';
     } else {
         osHint.innerHTML = `DETECTED: <span class="text-gray-600">${currentOS.toUpperCase()}</span>`;
-        demoSection.style.display = 'none'; 
-        appsSection.classList.remove('lg:col-span-7');
-        appsSection.classList.add('lg:col-span-12');
+        // 只有在非Mac环境下才隐藏 Demo 区，Mac下保留
+        const demoSection = document.getElementById('demo-section');
+        const appsSection = document.getElementById('apps');
+        if (demoSection) {
+            demoSection.style.display = 'none'; 
+            appsSection.classList.remove('lg:col-span-7');
+            appsSection.classList.add('lg:col-span-12');
+        }
     }
 
+    // --- Main Load Logic ---
     async function fetchApps() {
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -321,18 +339,153 @@
 
     function triggerPreview(app) {
         if (!isMac) return;
+        
         const safeName = encodeURIComponent(app.name);
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
         } else {
             currentSlides = [];
         }
+        
         currentIndex = 0;
         demoTitle.textContent = app.name;
-        renderSlide();
+        
+        // 首次加载，直接显示（不滑动）
+        loadFirstSlide();
+        
         if(window.gsap) gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
     }
 
+    // --- Image Loading & Slider Logic ---
+
+    // 1. 首次加载 (无动画)
+    function loadFirstSlide() {
+        sliderContainer.innerHTML = ''; // 清空
+        if (currentSlides.length === 0) {
+            screenPlaceholder.style.display = 'flex';
+            screenPlaceholder.innerHTML = `<div class="text-center text-slate-400 text-xs p-4 font-mono">NO IMAGE DATA</div>`;
+            updateControls();
+            return;
+        }
+        
+        screenPlaceholder.style.display = 'none';
+        const img = document.createElement('img');
+        img.src = currentSlides[currentIndex];
+        img.className = "absolute top-0 left-0 w-full h-full object-cover";
+        sliderContainer.appendChild(img);
+        updateControls();
+    }
+
+    // 2. 切换动画 (核心优化)
+    function transitionSlide(direction) {
+        if (isAnimating || currentSlides.length <= 1) return;
+        isAnimating = true;
+
+        const nextIndex = direction === 'next' 
+            ? (currentIndex + 1) % currentSlides.length 
+            : (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[nextIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        
+        // 初始位置设置
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        
+        sliderContainer.appendChild(nextImg);
+
+        // 执行滑动动画
+        // 旧图移出
+        gsap.to(currentImg, {
+            x: direction === 'next' ? '-100%' : '100%',
+            duration: 0.4,
+            ease: "power2.inOut"
+        });
+
+        // 新图移入
+        gsap.to(nextImg, {
+            x: '0%',
+            duration: 0.4,
+            ease: "power2.inOut",
+            onComplete: () => {
+                if(currentImg) currentImg.remove();
+                currentIndex = nextIndex;
+                isAnimating = false;
+                updateControls(); // 更新点点状态
+            }
+        });
+    }
+
+    // 3. 跳转到指定页 (点击 Dot)
+    function jumpToSlide(targetIndex) {
+        if (isAnimating || targetIndex === currentIndex) return;
+        
+        // 判断方向
+        const direction = targetIndex > currentIndex ? 'next' : 'prev';
+        
+        // 临时改写逻辑以复用 transitionSlide 的部分代码，或者直接写动画
+        isAnimating = true;
+        
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[targetIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        sliderContainer.appendChild(nextImg);
+
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
+        gsap.to(nextImg, { 
+            x: '0%', 
+            duration: 0.4, 
+            ease: "power2.inOut", 
+            onComplete: () => {
+                if(currentImg) currentImg.remove();
+                currentIndex = targetIndex;
+                isAnimating = false;
+                updateControls();
+            }
+        });
+    }
+
+    function updateControls() {
+        dotsContainer.innerHTML = '';
+        if (currentSlides.length <= 1) {
+            prevBtn.classList.remove('active');
+            nextBtn.classList.remove('active');
+        } else {
+            prevBtn.classList.add('active');
+            nextBtn.classList.add('active');
+            
+            // 生成可点击的 Dots
+            currentSlides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                // 增加 cursor-pointer 和点击事件
+                dot.className = `dot ${i === currentIndex ? 'active' : ''} cursor-pointer hover:scale-125`;
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    jumpToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+    }
+
+    // --- Event Listeners ---
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
+    
+    document.addEventListener('keydown', (e) => {
+        if (isMac && currentSlides.length > 1 && phoneMock.matches(':hover')) {
+            if (e.key === 'ArrowRight') transitionSlide('next');
+            if (e.key === 'ArrowLeft') transitionSlide('prev');
+        }
+    });
+
+    // --- Grid Builder (保持不变，略去重复代码，仅为了完整性展示结构) ---
     function buildGrid(apps) {
       apps.forEach((app) => {
         try {
@@ -340,18 +493,10 @@
             const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
             const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
             
-            let iconLayer = `
-              <div class="absolute inset-0 flex items-center justify-center z-0">
-                <span class="text-slate-300 font-mono font-bold text-2xl select-none">${fallbackText}</span>
-              </div>
-            `;
-            if (iconPath) {
-               iconLayer += `<img src="${iconPath}" alt="${app.name}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
-            }
+            let iconLayer = `<div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-300 font-mono font-bold text-2xl select-none">${fallbackText}</span></div>`;
+            if (iconPath) iconLayer += `<img src="${iconPath}" alt="${app.name}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
 
-            const promoBadge = app.promotional 
-                ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${app.promotional}</span>`
-                : '';
+            const promoBadge = app.promotional ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${app.promotional}</span>` : '';
 
             let storeLink = `https://apps.apple.com/us/app/id${app.id}`;
             let storeLabel = "App Store";
@@ -359,28 +504,19 @@
 
             if (app.links) {
                 if (currentOS === 'mac' && app.links.macos) {
-                    storeLink = app.links.macos;
-                    storeLabel = "Mac App Store";
-                    if (appleIconMac) currentBadgeFile = appleIconMac;
+                    storeLink = app.links.macos; storeLabel = "Mac App Store"; if (appleIconMac) currentBadgeFile = appleIconMac;
                 } else if (currentOS === 'ios' && app.links.ios) {
-                    storeLink = app.links.ios;
-                    storeLabel = "App Store";
+                    storeLink = app.links.ios; storeLabel = "App Store";
                 } else {
                     storeLink = app.links.ios || app.links.macos;
-                    storeLabel = "App Store";
                 }
             }
 
-            const appleImg = currentBadgeFile 
-                ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">`
-                : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
+            const appleImg = currentBadgeFile ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">` : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
 
             let previewBtnHTML = '';
             if (isMac) {
-                previewBtnHTML = `
-                  <button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW
-                  </button>`;
+                previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
             }
 
             const card = document.createElement('div');
@@ -394,18 +530,10 @@
                   <h4 class="text-xl font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors">${app.name || 'Untitled'}</h4>
                 </div>
                 <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">${app.desc || 'No description.'}</p>
-                
                 <div class="flex gap-3 items-center flex-wrap">
-                  <a href="${storeLink}" target="_blank" onclick="event.stopPropagation()" 
-                     title="Download on the ${storeLabel}"
-                     class="hover:opacity-70 transition-opacity transform active:scale-95">
-                     ${appleImg}
-                  </a>
+                  <a href="${storeLink}" target="_blank" onclick="event.stopPropagation()" title="Download on the ${storeLabel}" class="hover:opacity-70 transition-opacity transform active:scale-95">${appleImg}</a>
                   ${previewBtnHTML}
-                  <a href="detail.html?id=${app.id}" class="px-3 py-1.5 rounded-full border border-blue-100 text-blue-500 text-[10px] font-bold font-mono hover:bg-blue-50 transition flex items-center gap-1 group/btn bg-white/50">
-                    DETAILS 
-                    <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                  </a>
+                  <a href="detail.html?id=${app.id}" class="px-3 py-1.5 rounded-full border border-blue-100 text-blue-500 text-[10px] font-bold font-mono hover:bg-blue-50 transition flex items-center gap-1 group/btn bg-white/50">DETAILS <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
                 </div>
               </div>
             `;
@@ -419,97 +547,29 @@
             const detailBtn = card.querySelector('a[href^="detail.html"]');
             if (detailBtn) {
                 detailBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    e.stopPropagation();
+                    e.preventDefault(); e.stopPropagation();
                     const targetUrl = detailBtn.getAttribute('href');
-                    
-                    // --- 页面跳转动画：向左滑出 ---
                     sessionStorage.setItem('page-transition', 'forward');
-                    gsap.to('#page-wrapper', {
-                        x: -window.innerWidth * 0.5, // 移动一半即可，视觉更好
-                        opacity: 0,
-                        duration: 0.3, // 提速
-                        ease: "power2.in",
-                        onComplete: () => { window.location.href = targetUrl; }
-                    });
+                    gsap.to('#page-wrapper', { x: -window.innerWidth * 0.5, opacity: 0, duration: 0.3, ease: "power2.in", onComplete: () => { window.location.href = targetUrl; } });
                 });
             }
-
             grid.appendChild(card);
-
         } catch (err) { console.error("Build Error:", err); }
       });
     }
 
-    function renderSlide() {
-        if (currentSlides.length === 0) {
-            screenPlaceholder.style.display = 'flex';
-            screenPlaceholder.innerHTML = `<div class="text-center text-slate-400 text-xs p-4 font-mono">NO IMAGE DATA</div>`;
-            phoneScreenshot.style.opacity = 0;
-            updateControls();
-            return;
-        }
-        screenPlaceholder.style.display = 'none';
-        phoneScreenshot.style.opacity = 0;
-        const imgUrl = currentSlides[currentIndex];
-        setTimeout(() => {
-            phoneScreenshot.src = imgUrl;
-            phoneScreenshot.onload = () => { phoneScreenshot.style.opacity = 1; updateControls(); };
-            phoneScreenshot.onerror = () => {
-                screenPlaceholder.style.display = 'flex';
-                screenPlaceholder.innerHTML = `<div class="text-center text-red-400 text-xs p-4 font-mono">FILE CORRUPT<br>${decodeURIComponent(imgUrl)}</div>`;
-                updateControls();
-            };
-        }, 50);
-    }
-    function updateControls() {
-        dotsContainer.innerHTML = '';
-        if (currentSlides.length <= 1) {
-            prevBtn.classList.remove('active');
-            nextBtn.classList.remove('active');
-        } else {
-            prevBtn.classList.add('active');
-            nextBtn.classList.add('active');
-            currentSlides.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
-                dotsContainer.appendChild(dot);
-            });
-        }
-    }
-    function nextSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex + 1) % currentSlides.length; renderSlide(); }
-    function prevSlide() { if (currentSlides.length <= 1) return; currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length; renderSlide(); }
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
-    document.addEventListener('keydown', (e) => {
-        if (isMac && currentSlides.length > 1 && phoneMock.matches(':hover')) {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-        }
-    });
-
-    // --- 页面入场动画控制 ---
+    // --- Page Entrance ---
     window.addEventListener('DOMContentLoaded', () => {
         const transitionType = sessionStorage.getItem('page-transition');
         const wrapper = document.getElementById('page-wrapper');
-        
         if (transitionType === 'back') {
-            // 从 Detail 返回：从左边滑入 (恢复原位)
-            gsap.fromTo(wrapper, 
-                { x: -window.innerWidth * 0.5, opacity: 0 },
-                { x: 0, opacity: 1, duration: 0.5, ease: "power2.out", clearProps: "all" }
-            );
+            gsap.fromTo(wrapper, { x: -window.innerWidth * 0.5, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out", clearProps: "all" });
         } else {
-            // 首次加载：淡入
-            gsap.fromTo(wrapper, 
-                { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "all" }
-            );
+            gsap.fromTo(wrapper, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "all" });
         }
         sessionStorage.removeItem('page-transition');
-        
         fetchApps();
     });
-  </script>
+</script>
 </body>
 </html>
