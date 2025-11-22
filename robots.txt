@@ -4,5 +4,7 @@ Allow: /
 Allow: /assets/
 
 # Disallow: /admin/
+Disallow: /admin/
+Disallow: .gitignore
 
 Sitemap: https://apps.h53d.xyz/sitemap.xml

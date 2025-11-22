@@ -1,0 +1,12 @@
+.history/
+.build/
+.tmp/
+.DS_Store
+*~
+*.tgz
+*.zip
+*.tar
+*.gz
+*.orig
+*.bak
+update_sitemap.js
