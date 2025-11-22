@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Allow: /assets/
+
+# Disallow: /admin/
+
+Sitemap: https://apps.h53d.xyz/sitemap.xml
