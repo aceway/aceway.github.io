@@ -268,13 +268,17 @@
 
   <script>
     // --- DOM Elements ---
+    const appsSection = document.getElementById('apps');
+    const demoSection = document.getElementById('demo-section');
     const grid = document.getElementById('appsGrid');
     const loader = document.getElementById('loader');
     const errorMsg = document.getElementById('errorMsg');
     const osHint = document.getElementById('osHint');
-    
+    const wrapper = document.getElementById('page-wrapper');
+
+    // Phone & Slider Elements
     const phoneMock = document.getElementById('phoneMock');
-    const sliderContainer = document.getElementById('sliderContainer'); // 新容器
+    const sliderContainer = document.getElementById('sliderContainer'); // 核心容器
     const screenPlaceholder = document.getElementById('screenPlaceholder');
     const demoTitle = document.getElementById('demoTitle');
     const prevBtn = document.getElementById('prevBtn');
@@ -286,7 +290,7 @@
     let currentIndex = 0;
     let appleIconIOS = "";
     let appleIconMac = "";
-    let isAnimating = false; // 防止动画冲突
+    let isAnimating = false; // 动画锁
 
     // --- OS Detection ---
     const detectOS = () => {
@@ -298,21 +302,24 @@
     const currentOS = detectOS();
     const isMac = currentOS === 'mac';
 
+    // UI Layout Adjustments
     if (isMac) {
         osHint.innerHTML = 'DETECTED: <span class="text-blue-600">macOS</span>';
     } else {
         osHint.innerHTML = `DETECTED: <span class="text-gray-600">${currentOS.toUpperCase()}</span>`;
-        // 只有在非Mac环境下才隐藏 Demo 区，Mac下保留
-        const demoSection = document.getElementById('demo-section');
-        const appsSection = document.getElementById('apps');
-        if (demoSection) {
-            demoSection.style.display = 'none'; 
-            appsSection.classList.remove('lg:col-span-7');
-            appsSection.classList.add('lg:col-span-12');
-        }
+        if(demoSection) demoSection.style.display = 'none'; 
+        appsSection.classList.remove('lg:col-span-7');
+        appsSection.classList.add('lg:col-span-12');
     }
 
-    // --- Main Load Logic ---
+    // --- Page Show/Hide Logic (BF Cache Fix) ---
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted || getComputedStyle(wrapper).opacity == '0') {
+            gsap.set(wrapper, { x: 0, y: 0, opacity: 1, clearProps: "transform" });
+        }
+    });
+
+    // --- Main Logic ---
     async function fetchApps() {
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -320,16 +327,19 @@
             const data = await response.json();
             loader.style.display = 'none';
 
+            // Hero
             if (data.hero) {
                 if (data.hero.title) document.getElementById('heroTitle').innerHTML = data.hero.title;
                 if (data.hero.subtitle) document.getElementById('heroDesc').textContent = data.hero.subtitle;
             }
 
+            // Config
             if (data.ui) {
                 if (data.ui.appleIconIOS) appleIconIOS = data.ui.appleIconIOS;
                 if (data.ui.appleIconMac) appleIconMac = data.ui.appleIconMac;
             }
 
+            // List
             const appsList = Array.isArray(data) ? data : (data.apps || []);
             if (appsList.length === 0) {
                 grid.innerHTML = '<div class="p-4 text-gray-500 font-mono">No data stream detected.</div>';
@@ -338,6 +348,7 @@
             
             buildGrid(appsList);
 
+            // Auto Preview (Mac only)
             if (isMac && appsList.length > 0) {
                 const randomIndex = Math.floor(Math.random() * appsList.length);
                 setTimeout(() => triggerPreview(appsList[randomIndex]), 100);
@@ -348,33 +359,32 @@
             loader.style.display = 'none';
             errorMsg.classList.remove('hidden');
             errorMsg.innerHTML = `DATA LOAD FAILED<br>${error.message}`;
+            gsap.set(wrapper, { opacity: 1 });
         }
     }
 
+    // --- Preview Logic ---
     function triggerPreview(app) {
         if (!isMac) return;
-        
+
         const safeName = encodeURIComponent(app.name);
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
         } else {
             currentSlides = [];
         }
-        
         currentIndex = 0;
         demoTitle.textContent = app.name;
         
-        // 首次加载，直接显示（不滑动）
+        // 使用 Slider 的加载逻辑，而不是旧的 renderSlide
         loadFirstSlide();
         
         if(window.gsap) gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
     }
 
-    // --- Image Loading & Slider Logic ---
-
-    // 1. 首次加载 (无动画)
+    // --- Slider Logic ---
     function loadFirstSlide() {
-        sliderContainer.innerHTML = ''; // 清空
+        sliderContainer.innerHTML = ''; // Clear previous
         if (currentSlides.length === 0) {
             screenPlaceholder.style.display = 'flex';
             screenPlaceholder.innerHTML = `<div class="text-center text-slate-400 text-xs p-4 font-mono">NO IMAGE DATA</div>`;
@@ -390,7 +400,6 @@
         updateControls();
     }
 
-    // 2. 切换动画 (核心优化)
     function transitionSlide(direction) {
         if (isAnimating || currentSlides.length <= 1) return;
         isAnimating = true;
@@ -404,21 +413,12 @@
         nextImg.src = currentSlides[nextIndex];
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         
-        // 初始位置设置
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
         
         sliderContainer.appendChild(nextImg);
 
-        // 执行滑动动画
-        // 旧图移出
-        gsap.to(currentImg, {
-            x: direction === 'next' ? '-100%' : '100%',
-            duration: 0.4,
-            ease: "power2.inOut"
-        });
-
-        // 新图移入
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
         gsap.to(nextImg, {
             x: '0%',
             duration: 0.4,
@@ -427,19 +427,14 @@
                 if(currentImg) currentImg.remove();
                 currentIndex = nextIndex;
                 isAnimating = false;
-                updateControls(); // 更新点点状态
+                updateControls();
             }
         });
     }
 
-    // 3. 跳转到指定页 (点击 Dot)
     function jumpToSlide(targetIndex) {
         if (isAnimating || targetIndex === currentIndex) return;
-        
-        // 判断方向
         const direction = targetIndex > currentIndex ? 'next' : 'prev';
-        
-        // 临时改写逻辑以复用 transitionSlide 的部分代码，或者直接写动画
         isAnimating = true;
         
         const currentImg = sliderContainer.querySelector('img');
@@ -473,22 +468,16 @@
         } else {
             prevBtn.classList.add('active');
             nextBtn.classList.add('active');
-            
-            // 生成可点击的 Dots
             currentSlides.forEach((_, i) => {
                 const dot = document.createElement('div');
-                // 增加 cursor-pointer 和点击事件
-                dot.className = `dot ${i === currentIndex ? 'active' : ''} cursor-pointer hover:scale-125`;
-                dot.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    jumpToSlide(i);
-                });
+                dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
+                dot.addEventListener('click', (e) => { e.stopPropagation(); jumpToSlide(i); });
                 dotsContainer.appendChild(dot);
             });
         }
     }
 
-    // --- Event Listeners ---
+    // Controls Event Listeners
     nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
     
@@ -499,7 +488,7 @@
         }
     });
 
-    // --- Grid Builder (保持不变，略去重复代码，仅为了完整性展示结构) ---
+    // --- Grid Construction ---
     function buildGrid(apps) {
       apps.forEach((app) => {
         try {
@@ -507,11 +496,14 @@
             const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
             const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
             
+            // Icon
             let iconLayer = `<div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-300 font-mono font-bold text-2xl select-none">${fallbackText}</span></div>`;
             if (iconPath) iconLayer += `<img src="${iconPath}" alt="${app.name}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
 
+            // Badge
             const promoBadge = app.promotional ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${app.promotional}</span>` : '';
 
+            // Links
             let storeLink = `https://apps.apple.com/us/app/id${app.id}`;
             let storeLabel = "App Store";
             let currentBadgeFile = appleIconIOS; 
@@ -526,16 +518,19 @@
                 }
             }
 
-            const appleImg = currentBadgeFile ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">` : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
+            const appleImg = currentBadgeFile 
+                ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">`
+                : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
 
+            // Preview Button HTML
             let previewBtnHTML = '';
             if (isMac) {
                 previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
             }
 
+            // Card HTML
             const card = document.createElement('div');
             card.className = 'holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group';
-            
             card.innerHTML = `
               <div class="app-icon group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-shadow duration-300">${iconLayer}</div>
               <div class="flex-1 min-w-0">
@@ -552,6 +547,7 @@
               </div>
             `;
 
+            // Event Binding
             if (isMac) {
                 card.addEventListener('click', () => triggerPreview(app));
                 const pBtn = card.querySelector('.demo-trigger');
@@ -564,7 +560,10 @@
                     e.preventDefault(); e.stopPropagation();
                     const targetUrl = detailBtn.getAttribute('href');
                     sessionStorage.setItem('page-transition', 'forward');
-                    gsap.to('#page-wrapper', { x: -window.innerWidth * 0.5, opacity: 0, duration: 0.3, ease: "power2.in", onComplete: () => { window.location.href = targetUrl; } });
+                    gsap.to('#page-wrapper', {
+                        x: -window.innerWidth * 0.5, opacity: 0, duration: 0.3, ease: "power2.in",
+                        onComplete: () => { window.location.href = targetUrl; }
+                    });
                 });
             }
             grid.appendChild(card);
@@ -572,10 +571,9 @@
       });
     }
 
-    // --- Page Entrance ---
+    // --- Entrance Animation ---
     window.addEventListener('DOMContentLoaded', () => {
         const transitionType = sessionStorage.getItem('page-transition');
-        const wrapper = document.getElementById('page-wrapper');
         if (transitionType === 'back') {
             gsap.fromTo(wrapper, { x: -window.innerWidth * 0.5, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out", clearProps: "all" });
         } else {

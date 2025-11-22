@@ -61,32 +61,88 @@
 	
 	  gtag('config', 'G-PZRNMBSR8K');
 	</script>
-  
-  <style>
+<style>
+    /* 1. 滚动条锁定 */
     html { overflow-y: scroll; }
-    body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
-    #page-wrapper { will-change: transform, opacity; transform-style: preserve-3d; min-height: 100vh; display: flex; flex-direction: column; opacity: 0; }
 
-    .bg-grid-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none; }
-    .ambient-light { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
+    body { 
+      background-color: #f8fafc; 
+      color: #1e293b; 
+      overflow-x: hidden; 
+    }
+    
+    /* 核心修复：移除所有隐藏和动画属性，回归普通文档流 */
+    #page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /* opacity: 0;  <-- 删除了这行 */
+    }
+
+    /* Backgrounds */
+    .bg-grid-pattern {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none;
+    }
+    .ambient-light {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        overflow: hidden; z-index: -1; pointer-events: none;
+    }
     .blob { position: absolute; filter: blur(80px); opacity: 0.6; animation: blob 10s infinite ease-in-out; }
     .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; }
     .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
 
-    .glass-nav { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
-    .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); border-radius: 24px; }
+    /* Glass UI */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        border-radius: 24px;
+    }
 
-    .feature-card { background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 16px; padding: 16px; transition: all 0.3s ease; }
-    .feature-card:hover { background: rgba(255, 255, 255, 0.9); border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15); }
+    .feature-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 16px; padding: 16px; transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: #3b82f6;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
+    }
 
-    .knowledge-gradient { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #3b82f6; }
+    .knowledge-gradient {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #3b82f6;
+    }
 
-    .app-icon-lg { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0; }
+    .app-icon-lg { 
+      width: 120px; height: 120px; border-radius: 28px; 
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); 
+      overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0;
+    }
 
-    .phone-mock-static { width: 280px; height: 580px; border-radius: 48px; background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto; }
+    .phone-mock-static { 
+      width: 280px; height: 580px; border-radius: 48px; 
+      background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
+      position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto;
+    }
     .phone-screen { width: 100%; height: 100%; background: #000; border-radius: 36px; overflow: hidden; position: relative; }
     
-    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s; z-index: 30; opacity: 0; pointer-events: none; }
+    .slider-btn {
+        position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px;
+        background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s;
+        z-index: 30; opacity: 0; pointer-events: none;
+    }
     .phone-mock-static:hover .slider-btn.active { opacity: 1; pointer-events: auto; }
     .slider-btn:hover { background: rgba(59, 130, 246, 0.8); border-color: transparent; scale: 1.1; }
     .slider-btn.left { left: 10px; }
@@ -218,17 +274,14 @@
   </div>
 
   <script>
-    const transitionType = sessionStorage.getItem('page-transition');
+    // --- 全局变量 ---
     const wrapper = document.getElementById('page-wrapper');
-    if (transitionType === 'forward') {
-        gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
-    } else {
-        gsap.set(wrapper, { x: 0, opacity: 0, y: 20 });
-    }
-
+    const loader = document.getElementById('loader');
+    const main = document.getElementById('mainContent');
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get('id');
-    
+
+    // --- 逻辑变量 ---
     const detectOS = () => {
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('mac')) return 'mac';
@@ -240,6 +293,7 @@
     let appleIconIOS = "";
     let appleIconMac = "";
 
+    // Slider Vars
     const sliderContainer = document.getElementById('sliderContainer');
     const screenPlaceholder = document.getElementById('screenPlaceholder');
     const prevBtn = document.getElementById('prevBtn');
@@ -250,8 +304,15 @@
     let currentIndex = 0;
     let isAnimating = false;
 
+    // --- 初始化 ---
     async function initDetail() {
-        if (!appId) { goBack(); return; }
+        // 清理首页传来的状态，保持干净
+        sessionStorage.removeItem('page-transition');
+
+        if (!appId) { 
+            window.location.href = 'index.html'; 
+            return; 
+        }
 
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -266,19 +327,26 @@
             const appsList = Array.isArray(data) ? data : (data.apps || []);
             const app = appsList.find(a => a.id === appId);
 
-            if (!app) { alert("App not found"); goBack(); return; }
+            if (!app) { 
+                alert("App not found"); 
+                window.location.href = 'index.html';
+                return; 
+            }
 
             renderApp(app);
 
         } catch (e) {
             console.error(e);
-            document.getElementById('loader').innerHTML = `<div class="text-red-500 font-mono">ERROR: ${e.message}</div>`;
+            loader.style.display = 'none';
+            main.classList.remove('hidden');
+            main.innerHTML = `<div class="text-center py-20 text-red-500 font-mono">ERROR: ${e.message}</div>`;
         }
     }
 
     function renderApp(app) {
         const safeName = encodeURIComponent(app.name);
         
+        // 1. 填充数据
         document.title = `${app.name} - Detail`;
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;
@@ -312,14 +380,16 @@
         linkEl.href = targetLink;
         if (targetIcon) {
             badgeEl.src = `assets/${targetIcon}`;
+            badgeEl.style.display = 'block';
         } else {
             badgeEl.style.display = 'none';
         }
         const appStoreLink = document.getElementById('appStoreLink');
 		if (appStoreLink) {
         	appStoreLink.href = targetLink;
-		}
+        }
 
+        // Slider
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
         } else {
@@ -328,6 +398,7 @@
         currentIndex = 0;
         loadFirstSlide();
 
+        // Features
         const featureGrid = document.getElementById('featureGrid');
         if (app.features && app.features.length > 0) {
             app.features.forEach(feat => {
@@ -345,14 +416,17 @@
             featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
         }
 
+        // Knowledge
         const kSection = document.getElementById('knowledgeSection');
         if (app.knowledge && app.knowledge.title) {
             document.getElementById('knowledgeTitle').textContent = app.knowledge.title;
             document.getElementById('knowledgeContent').textContent = app.knowledge.content;
+            kSection.style.display = 'block';
         } else {
             kSection.style.display = 'none';
         }
 
+        // Audience
         const audContainer = document.getElementById('audienceContainer');
         if (app.audience && app.audience.length > 0) {
             app.audience.forEach(tag => {
@@ -365,18 +439,14 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        document.getElementById('loader').style.display = 'none';
-        const main = document.getElementById('mainContent');
+        // --- 核心修复：直接显示，无入场动画 ---
+        loader.style.display = 'none';
         main.classList.remove('hidden');
-        
-        if (transitionType === 'forward') {
-            gsap.to(wrapper, { x: 0, opacity: 1, duration: 0.5, ease: "back.out(0.8)", clearProps: "transform" });
-        } else {
-            gsap.to(wrapper, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", clearProps: "all" });
-        }
-        sessionStorage.removeItem('page-transition');
+        // 简单的淡入，不涉及位移，最安全
+        gsap.fromTo(wrapper, { opacity: 0 }, { opacity: 1, duration: 0.4 });
     }
 
+    // --- Slider Logic ---
     function loadFirstSlide() {
         sliderContainer.innerHTML = '';
         if (currentSlides.length === 0) {
@@ -395,32 +465,16 @@
     function transitionSlide(direction) {
         if (isAnimating || currentSlides.length <= 1) return;
         isAnimating = true;
-
-        const nextIndex = direction === 'next' 
-            ? (currentIndex + 1) % currentSlides.length 
-            : (currentIndex - 1 + currentSlides.length) % currentSlides.length;
-
+        const nextIndex = direction === 'next' ? (currentIndex + 1) % currentSlides.length : (currentIndex - 1 + currentSlides.length) % currentSlides.length;
         const currentImg = sliderContainer.querySelector('img');
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[nextIndex];
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
-        
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
         sliderContainer.appendChild(nextImg);
-
         gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
-        gsap.to(nextImg, {
-            x: '0%',
-            duration: 0.4,
-            ease: "power2.inOut",
-            onComplete: () => {
-                if(currentImg) currentImg.remove();
-                currentIndex = nextIndex;
-                isAnimating = false;
-                updateControls();
-            }
-        });
+        gsap.to(nextImg, { x: '0%', duration: 0.4, ease: "power2.inOut", onComplete: () => { if(currentImg) currentImg.remove(); currentIndex = nextIndex; isAnimating = false; updateControls(); } });
     }
 
     function jumpToSlide(targetIndex) {
@@ -435,17 +489,7 @@
         gsap.set(nextImg, { x: startX });
         sliderContainer.appendChild(nextImg);
         gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
-        gsap.to(nextImg, { 
-            x: '0%', 
-            duration: 0.4, 
-            ease: "power2.inOut", 
-            onComplete: () => {
-                if(currentImg) currentImg.remove();
-                currentIndex = targetIndex;
-                isAnimating = false;
-                updateControls();
-            }
-        });
+        gsap.to(nextImg, { x: '0%', duration: 0.4, ease: "power2.inOut", onComplete: () => { if(currentImg) currentImg.remove(); currentIndex = targetIndex; isAnimating = false; updateControls(); } });
     }
 
     function updateControls() {
@@ -468,13 +512,7 @@
     nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
     
-    document.addEventListener('keydown', (e) => {
-        if (currentSlides.length > 1) {
-            if (e.key === 'ArrowRight') transitionSlide('next');
-            if (e.key === 'ArrowLeft') transitionSlide('prev');
-        }
-    });
-
+    // Back Button Logic (保留离场动画，因为离开是安全的)
     function goBack(e) {
         if(e) e.preventDefault();
         sessionStorage.setItem('page-transition', 'back');
@@ -491,6 +529,6 @@
     document.getElementById('footerHomeLink').addEventListener('click', goBack);
 
     initDetail();
-  </script>
+</script>
 </body>
 </html>
