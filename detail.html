@@ -200,7 +200,7 @@
                         
                         <div class="mt-6 flex items-center gap-4">
                             <!-- 核心修改：原生显示 Apple 图标，无文字，无背景 -->
-                            <a id="detailLink" href="#" target="_blank" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+                            <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 约等于 40px，适合详情页尺寸 -->
                                 <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
@@ -254,11 +254,11 @@
                         </div>
                     </div>
                     <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
-                    <div class="text-center mt-6">
-						 <a id="appStoreLink" href="#" target="_blank" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
-							Download on the App Store
-                         </a>
-                    </div>
+                </div>
+                <div class="text-center mt-6">
+					<a id="appStoreLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+						Download on the App Store
+                    </a>
                 </div>
             </div>
 
@@ -273,13 +273,48 @@
 
   </div>
 
-  <script>
+<script>
     // --- 全局变量 ---
     const wrapper = document.getElementById('page-wrapper');
     const loader = document.getElementById('loader');
     const main = document.getElementById('mainContent');
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get('id');
+
+    // --- 核心修复：判断是否为刷新操作 ---
+    const navEntry = performance.getEntriesByType("navigation")[0];
+    const isReload = navEntry && navEntry.type === 'reload';
+
+    // 获取转场状态
+    let transitionType = sessionStorage.getItem('page-transition');
+
+    // 如果是刷新，强制清除转场状态，确保原地淡入
+    if (isReload) {
+        transitionType = null;
+        sessionStorage.removeItem('page-transition');
+    }
+
+    // --- 设置初始状态 (立即执行) ---
+    if (transitionType === 'forward') {
+        // 真实的跳转：设置到右侧
+        gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
+    } else {
+        // 刷新或直连：设置在原地，但在数据加载前保持透明
+        gsap.set(wrapper, { x: 0, opacity: 0 });
+    }
+
+    // 立即清除状态，防止后续逻辑干扰
+    sessionStorage.removeItem('page-transition');
+
+    // --- 兜底：处理 BF Cache (后退按钮) ---
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            // 强行复位
+            gsap.set(wrapper, { x: 0, opacity: 1, clearProps: "all" });
+            loader.style.display = 'none';
+            main.classList.remove('hidden');
+        }
+    });
 
     // --- 逻辑变量 ---
     const detectOS = () => {
@@ -293,7 +328,6 @@
     let appleIconIOS = "";
     let appleIconMac = "";
 
-    // Slider Vars
     const sliderContainer = document.getElementById('sliderContainer');
     const screenPlaceholder = document.getElementById('screenPlaceholder');
     const prevBtn = document.getElementById('prevBtn');
@@ -306,13 +340,7 @@
 
     // --- 初始化 ---
     async function initDetail() {
-        // 清理首页传来的状态，保持干净
-        sessionStorage.removeItem('page-transition');
-
-        if (!appId) { 
-            window.location.href = 'index.html'; 
-            return; 
-        }
+        if (!appId) { goBack(); return; }
 
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -327,11 +355,7 @@
             const appsList = Array.isArray(data) ? data : (data.apps || []);
             const app = appsList.find(a => a.id === appId);
 
-            if (!app) { 
-                alert("App not found"); 
-                window.location.href = 'index.html';
-                return; 
-            }
+            if (!app) { alert("App not found"); goBack(); return; }
 
             renderApp(app);
 
@@ -340,13 +364,14 @@
             loader.style.display = 'none';
             main.classList.remove('hidden');
             main.innerHTML = `<div class="text-center py-20 text-red-500 font-mono">ERROR: ${e.message}</div>`;
+            // 出错也显示页面
+            gsap.to(wrapper, { opacity: 1 });
         }
     }
 
     function renderApp(app) {
         const safeName = encodeURIComponent(app.name);
         
-        // 1. 填充数据
         document.title = `${app.name} - Detail`;
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;
@@ -384,12 +409,12 @@
         } else {
             badgeEl.style.display = 'none';
         }
+
         const appStoreLink = document.getElementById('appStoreLink');
 		if (appStoreLink) {
         	appStoreLink.href = targetLink;
-        }
+		}
 
-        // Slider
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
         } else {
@@ -398,7 +423,6 @@
         currentIndex = 0;
         loadFirstSlide();
 
-        // Features
         const featureGrid = document.getElementById('featureGrid');
         if (app.features && app.features.length > 0) {
             app.features.forEach(feat => {
@@ -416,7 +440,6 @@
             featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
         }
 
-        // Knowledge
         const kSection = document.getElementById('knowledgeSection');
         if (app.knowledge && app.knowledge.title) {
             document.getElementById('knowledgeTitle').textContent = app.knowledge.title;
@@ -426,7 +449,6 @@
             kSection.style.display = 'none';
         }
 
-        // Audience
         const audContainer = document.getElementById('audienceContainer');
         if (app.audience && app.audience.length > 0) {
             app.audience.forEach(tag => {
@@ -439,11 +461,28 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        // --- 核心修复：直接显示，无入场动画 ---
-        loader.style.display = 'none';
+        // --- 4. 执行入场动画 ---
+        document.getElementById('loader').style.display = 'none';
         main.classList.remove('hidden');
-        // 简单的淡入，不涉及位移，最安全
-        gsap.fromTo(wrapper, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+        
+        if (transitionType === 'forward') {
+            // 滑入 (Slide In)
+            gsap.to(wrapper, { 
+                x: 0, 
+                opacity: 1, 
+                duration: 0.5, 
+                ease: "back.out(0.8)", 
+                clearProps: "transform" // 动画结束后清理 transform，防止影响固定定位元素
+            });
+        } else {
+            // 原地淡入 (Fade In) - 针对刷新
+            gsap.to(wrapper, { 
+                opacity: 1, 
+                duration: 0.6, 
+                ease: "power2.out", 
+                clearProps: "all" 
+            });
+        }
     }
 
     // --- Slider Logic ---
@@ -512,7 +551,6 @@
     nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
     
-    // Back Button Logic (保留离场动画，因为离开是安全的)
     function goBack(e) {
         if(e) e.preventDefault();
         sessionStorage.setItem('page-transition', 'back');
@@ -530,5 +568,6 @@
 
     initDetail();
 </script>
+
 </body>
 </html>
