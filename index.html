@@ -2,14 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wei Ai · Future Interface</title>
-  <meta name="description" content="Wei Ai - iOS Developer Portfolio, SwiftUI, CoreML Apps">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Wei Ai · iOS Developer Portfolio | Privacy-First & Local AI Apps</title>
+  <meta name="description" content="Discover a collection of privacy-first, offline AI utility apps built with SwiftUI & CoreML. Featuring ShareGuard, P2V Converter, and more tools for creative professionals.">
+  <meta name="keywords" content="iOS Developer, SwiftUI, CoreML, Privacy, Local AI, Indie Developer, Wei Ai, ShareGuard, App Showcase">
+  <meta name="author" content="Wei Ai">
+  <link rel="canonical" href="https://apps.h53d.xyz/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apps.h53d.xyz/">
+  <meta property="og:title" content="Wei Ai · Future Interface">
+  <meta property="og:description" content="Explore premium iOS utilities powered by on-device intelligence. No cloud, no tracking.">
+  <meta property="og:image" content="assets/social-preview.jpg">
+  <meta property="og:site_name" content="Wei Ai Portfolio">
 
-	<link rel="icon" type="image/png" href="assets/DXF Assistant/icon.png">
-	<meta name="description" content="Wei Ai - Independent iOS Developer Portfolio. Featuring DXF Assistant, 3D Model Viewer & Converter, P2V Converter, ShareGuard, and more.">
-	<meta name="keywords" content="iOS Developer, SwiftUI, CoreML, Indie Dev, Portfolio, Apps">
-	<meta name="author" content="Wei Ai">
+  <!-- 3. Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@aceway2024">
+  <meta name="twitter:title" content="Wei Ai · Future Interface">
+  <meta name="twitter:description" content="Privacy-first iOS apps built with CoreML.">
+  <meta name="twitter:image" content="assets/social-preview.jpg">
+
+  <!-- 4. PWA / mobile -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+  <link rel="icon" type="image/png" href="assets/icon.jpg">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- 5. SEO: JSON-LD (Google love) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Wei Ai",
+      "jobTitle": "iOS Developer",
+      "description": "Independent developer focused on local AI and privacy-first applications.",
+      "url": "https://your-domain.com",
+      "sameAs": [
+        "https://twitter.com/YourHandle",
+        "https://github.com/YourHandle"
+      ]
+    }
+  }
+  </script>
+ 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +83,7 @@
   </script>
 
   <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PZRNMBSR8K"></script>
@@ -174,7 +218,7 @@
       <div class="blob blob-3"></div>
   </div>
 
-  <!-- 关键优化 2: 内联样式 opacity:0，彻底防止闪烁 -->
+  <!-- 2: in-line style opacity:0-->
   <div id="page-wrapper" style="opacity: 0;">
       
       <header class="sticky top-0 z-50 glass-nav">
@@ -222,7 +266,6 @@
                 <div id="errorMsg" class="hidden text-center text-red-500 py-10 font-mono text-sm"></div>
             </div>
           </section>
-<!-- Demo Sidebar (Mac Only) -->
       <aside class="lg:col-span-5 hidden lg:block relative" id="demo-section">
         <!-- 关键：这里的 sticky 必须直接位于 aside 下面，且父级 aside 的高度必须由兄弟元素撑开 -->
         <!-- top-28 (约112px) 刚好避开 Header -->
@@ -280,7 +323,6 @@
       </footer>
   </div>
 <script>
-    // ... (变量声明保持不变) ...
     const appsSection = document.getElementById('apps');
     const demoSection = document.getElementById('demo-section');
     const grid = document.getElementById('appsGrid');
@@ -303,7 +345,7 @@
     let appleIconMac = "";
     let isAnimating = false;
 
-    // ... (OS Detection 保持不变) ...
+    // ... (OS Detection ) ...
     const detectOS = () => {
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('mac') && !navigator.maxTouchPoints) return 'mac'; 
@@ -322,14 +364,14 @@
         appsSection.classList.add('lg:col-span-12');
     }
 
-    // ... (BF Cache Logic 保持不变) ...
+    // ... (BF Cache Logic ) ...
     window.addEventListener('pageshow', (event) => {
         if (event.persisted || getComputedStyle(wrapper).opacity == '0') {
             gsap.set(wrapper, { x: 0, y: 0, opacity: 1, clearProps: "transform" });
         }
     });
 
-    // ... (Fetch Logic 保持不变) ...
+    // ... (Fetch Logic ) ...
     async function fetchApps() {
         try {
             const response = await fetch(`assets/apps.json?t=${new Date().getTime()}`);
@@ -535,8 +577,8 @@
         const transitionType = sessionStorage.getItem('page-transition');
         const wrapper = document.getElementById('page-wrapper');
         if (transitionType === 'back') {
-            // clearProps: "all" 非常重要，它会移除 GSAP 添加的内联 transform
-            // 这样 position: sticky 才能恢复工作
+            // clearProps: "all" GSAP transform
+            // position: sticky 
             gsap.fromTo(wrapper, { x: -window.innerWidth * 0.5, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power2.out", clearProps: "all" });
         } else {
             gsap.fromTo(wrapper, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", clearProps: "all" });
