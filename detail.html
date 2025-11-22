@@ -29,7 +29,6 @@
           },
           animation: {
             'blob': 'blob 7s infinite',
-            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
           },
           keyframes: {
             blob: {
@@ -37,10 +36,6 @@
               '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
               '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
               '100%': { transform: 'translate(0px, 0px) scale(1)' },
-            },
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
             }
           }
         }
@@ -52,26 +47,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   
   <style>
-    body { background-color: #f8fafc; color: #1e293b; overflow-x: hidden; }
+    body { 
+      background-color: #f8fafc; 
+      color: #1e293b; 
+      overflow-x: hidden; 
+    }
     
-    /* Background System */
+    /* Wrapper for Transitions */
+    #page-wrapper {
+        will-change: transform, opacity;
+        transform-style: preserve-3d;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        opacity: 0; /* 默认隐藏，由 JS 接管显示，防止闪烁 */
+    }
+
+    /* Backgrounds */
     .bg-grid-pattern {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-        background-size: 40px 40px; opacity: 0.4; z-index: -2;
+        background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none;
     }
     .ambient-light {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         overflow: hidden; z-index: -1; pointer-events: none;
     }
-    .blob {
-        position: absolute; filter: blur(80px); opacity: 0.6;
-        animation: blob 10s infinite ease-in-out;
-    }
+    .blob { position: absolute; filter: blur(80px); opacity: 0.6; animation: blob 10s infinite ease-in-out; }
     .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; }
     .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
 
-    /* Glass Components */
+    /* Glass UI */
     .glass-nav {
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -100,7 +106,7 @@
         box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
     }
 
-    /* Knowledge Section Gradient */
+    /* Knowledge Section */
     .knowledge-gradient {
         background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         border-left: 4px solid #3b82f6;
@@ -115,154 +121,158 @@
       position: relative; flex-shrink: 0;
     }
 
-    /* Phone Mockup (Smaller static version for Detail Page) */
+    /* Static Phone for Detail */
     .phone-mock-static { 
-      width: 260px; height: 540px; 
-      border-radius: 44px; 
+      width: 280px; height: 580px; 
+      border-radius: 48px; 
       background: #0f172a; 
       box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
-      position: relative; padding: 10px; 
+      position: relative; padding: 12px; 
       border: 4px solid #334155; 
       margin: 0 auto;
     }
-    .phone-screen { 
-      width: 100%; height: 100%; 
-      background: #000; border-radius: 34px; 
-      overflow: hidden; position: relative; 
-    }
+    .phone-screen { width: 100%; height: 100%; background: #000; border-radius: 36px; overflow: hidden; position: relative; }
     
-    .spinner { 
-      width: 40px; height: 40px; 
-      border: 3px solid #cbd5e1; border-top-color: #3b82f6; 
-      border-radius: 50%; 
-      animation: spin 1s linear infinite; margin: 50px auto; 
-    }
+    .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-neonBlue selection:text-white">
+<body class="antialiased font-sans selection:bg-neonBlue selection:text-white">
 
+  <!-- Fixed BG -->
   <div class="bg-grid-pattern"></div>
   <div class="ambient-light">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
   </div>
 
-  <!-- Navigation -->
-  <header class="sticky top-0 z-50 glass-nav">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group">
-        <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        <span class="font-mono text-sm font-bold tracking-wide">BACK TO SHOWCASE</span>
-      </a>
-      <div class="hidden sm:block text-[10px] font-mono text-slate-400">
-        SECURE CONNECTION // <span class="text-blue-500">ONLINE</span>
-      </div>
-    </div>
-  </header>
+  <!-- Page Transition Wrapper -->
+  <div id="page-wrapper">
 
-  <!-- Loading State -->
-  <div id="loader" class="fixed inset-0 flex items-center justify-center z-40 bg-slate-50/80 backdrop-blur">
-      <div class="text-center">
-          <div class="spinner mb-4"></div>
-          <div class="font-mono text-xs text-slate-500">INITIALIZING DATA...</div>
+      <!-- Navigation -->
+      <header class="sticky top-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="index.html" id="backBtn" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group">
+            <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
+          </a>
+          <div class="hidden sm:block text-[10px] font-mono text-slate-400">
+            SECURE CONNECTION // <span class="text-blue-500">ONLINE</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Loading (放在 wrapper 里面或外面都可以，这里放在外面不参与滑入动画，保持静止体验更好) -->
+      <div id="loader" class="fixed inset-0 flex items-center justify-center z-40 bg-slate-50/80 backdrop-blur">
+          <div class="text-center">
+              <div class="spinner mb-4"></div>
+              <div class="font-mono text-xs text-slate-500">INITIALIZING DATA...</div>
+          </div>
       </div>
+
+      <!-- Main Content -->
+      <!-- 修复：移除了 opacity-0 类，默认 hidden -->
+      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow hidden">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Column: Info -->
+            <div class="lg:col-span-7 space-y-10">
+                
+                <!-- Header -->
+                <div class="flex gap-6 items-start">
+                    <div id="detailIcon" class="app-icon-lg"></div>
+                    <div class="flex-1 pt-2">
+                        <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
+                        <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
+                        <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
+                        
+                        <!-- Store Button -->
+                        <div class="mt-6 flex items-center gap-4">
+                            <a id="detailLink" href="#" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 bg-[#1d1d1f] text-white rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20 group">
+                                <img id="appleBadgeIcon" src="" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform" alt="Apple">
+                                <span class="font-semibold text-sm" id="storeLabel">Download on App Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-px bg-slate-200 w-full"></div>
+
+                <!-- Knowledge -->
+                <div id="knowledgeSection" class="glass-panel p-8 knowledge-gradient relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-400 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
+                    <h3 class="text-sm font-bold text-blue-600 font-mono mb-3 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        DOMAIN INSIGHT
+                    </h3>
+                    <h2 id="knowledgeTitle" class="text-xl font-bold text-slate-800 mb-3"></h2>
+                    <p id="knowledgeContent" class="text-slate-600 leading-relaxed text-sm text-justify"></p>
+                </div>
+
+                <!-- Features -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-teal-400 rounded-full"></span>
+                        CORE FEATURES
+                    </h3>
+                    <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                </div>
+
+                <!-- Audience -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-purple-400 rounded-full"></span>
+                        DESIGNED FOR
+                    </h3>
+                    <div id="audienceContainer" class="flex flex-wrap gap-2"></div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Visual -->
+            <div class="lg:col-span-5 relative">
+                <div class="sticky top-24">
+                    <div class="phone-mock-static">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                        <div class="phone-screen">
+                            <img id="detailScreenshot" class="w-full h-full object-cover" src="" alt="Screenshot">
+                        </div>
+                    </div>
+                    <!-- Decoration -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
+                    <div class="text-center mt-6">
+                        <p class="text-[10px] font-mono text-slate-400">INTERFACE RENDER // v1.0</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </main>
+
+      <footer class="border-t border-slate-200 mt-20 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
+          <a href="#" id="footerHomeLink" class="hover:text-blue-500 transition-colors">HOME</a> // © 2025 WEI AI
+        </div>
+      </footer>
+
   </div>
 
-  <!-- Main Content -->
-  <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow opacity-0 transition-opacity duration-700 hidden">
-    
-    <!-- Grid Layout: Info (Left) | Visual (Right) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        <!-- Left Column: Details -->
-        <div class="lg:col-span-7 space-y-10">
-            
-            <!-- 1. Hero / Header -->
-            <div class="flex gap-6 items-start">
-                <div id="detailIcon" class="app-icon-lg">
-                    <!-- Icon injected here -->
-                </div>
-                <div class="flex-1 pt-2">
-                    <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
-                    <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
-                    <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
-                    
-                    <!-- Store Button -->
-                    <div class="mt-6 flex items-center gap-4">
-                        <a id="detailLink" href="#" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 bg-[#1d1d1f] text-white rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20 group">
-                            <img id="appleBadgeIcon" src="" class="w-5 h-5 object-contain invert group-hover:scale-110 transition-transform" alt="Apple">
-                            <span class="font-semibold text-sm" id="storeLabel">Download on App Store</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-px bg-slate-200 w-full"></div>
-
-            <!-- 2. Knowledge / Domain Insight -->
-            <div id="knowledgeSection" class="glass-panel p-8 knowledge-gradient relative overflow-hidden group">
-                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-400 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
-                <h3 class="text-sm font-bold text-blue-600 font-mono mb-3 flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    DOMAIN INSIGHT
-                </h3>
-                <h2 id="knowledgeTitle" class="text-xl font-bold text-slate-800 mb-3"></h2>
-                <p id="knowledgeContent" class="text-slate-600 leading-relaxed text-sm text-justify"></p>
-            </div>
-
-            <!-- 3. Features Grid -->
-            <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <span class="w-1 h-6 bg-teal-400 rounded-full"></span>
-                    CORE FEATURES
-                </h3>
-                <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Features injected here -->
-                </div>
-            </div>
-
-            <!-- 4. Audience / Scenarios -->
-            <div>
-                <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    <span class="w-1 h-6 bg-purple-400 rounded-full"></span>
-                    DESIGNED FOR
-                </h3>
-                <div id="audienceContainer" class="flex flex-wrap gap-2">
-                    <!-- Tags injected here -->
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Right Column: Visual (Sticky Phone) -->
-        <div class="lg:col-span-5 relative">
-            <div class="sticky top-24">
-                <div class="phone-mock-static">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] h-[20px] bg-black rounded-b-lg z-20"></div>
-                    <div class="phone-screen">
-                        <img id="detailScreenshot" class="w-full h-full object-cover" src="" alt="Screenshot">
-                    </div>
-                </div>
-                <!-- Decorative Elements -->
-                <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[600px] border border-dashed border-slate-300 rounded-[50px]"></div>
-                <div class="text-center mt-6">
-                    <p class="text-[10px] font-mono text-slate-400">INTERFACE RENDER // v1.0</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-  </main>
-
-  <footer class="border-t border-slate-200 mt-20 bg-white/50 backdrop-blur-sm">
-    <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
-      <a href="index.html" class="hover:text-blue-500 transition-colors">HOME</a> // © 2025 WEI AI
-    </div>
-  </footer>
-
   <script>
-    // 1. Environment & Params
+    // 1. 初始化转场状态 (Initialize Transition State)
+    const transitionType = sessionStorage.getItem('page-transition');
+    const wrapper = document.getElementById('page-wrapper');
+    
+    // 在页面内容加载前，先设定好 wrapper 的初始位置，避免闪烁
+    if (transitionType === 'forward') {
+        // 如果是从首页进来的：先移到右边屏幕外 (50% width)
+        gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
+    } else {
+        // 如果是刷新或直接打开：淡入
+        gsap.set(wrapper, { opacity: 0, y: 20 });
+    }
+
+    // 2. 逻辑变量
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get('id');
     
@@ -274,13 +284,14 @@
     };
     const currentOS = detectOS();
 
-    let appleIconFilename = ""; 
     let appleIconIOS = "";
     let appleIconMac = "";
 
+    // 3. 初始化数据
     async function initDetail() {
         if (!appId) {
-            window.location.href = 'index.html'; // Redirect if no ID
+            // 如果没有 ID，退回首页
+            goBack();
             return;
         }
 
@@ -289,9 +300,7 @@
             if (!response.ok) throw new Error("Network error");
             const data = await response.json();
             
-            // Load Configs
             if (data.ui) {
-                appleIconFilename = data.ui.appleIcon; // Fallback
                 if(data.ui.appleIconIOS) appleIconIOS = data.ui.appleIconIOS;
                 if(data.ui.appleIconMac) appleIconMac = data.ui.appleIconMac;
             }
@@ -301,28 +310,28 @@
 
             if (!app) {
                 alert("App not found");
-                window.location.href = 'index.html';
+                goBack();
                 return;
             }
 
+            // 渲染页面内容
             renderApp(app);
 
         } catch (e) {
             console.error(e);
-            document.getElementById('loader').innerHTML = `<div class="text-red-500">Error loading data</div>`;
+            document.getElementById('loader').innerHTML = `<div class="text-red-500 font-mono">ERROR: ${e.message}</div>`;
         }
     }
 
     function renderApp(app) {
         const safeName = encodeURIComponent(app.name);
         
-        // --- 1. Header Info ---
         document.title = `${app.name} - Detail`;
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;
         document.getElementById('detailPromo').textContent = app.promotional || "FEATURED";
 
-        // --- 2. Icon ---
+        // Icon
         const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
@@ -331,14 +340,14 @@
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-300">${app.name.substring(0,2)}</div>`;
         }
 
-        // --- 3. Store Link & Badge ---
+        // Store Link
         const linkEl = document.getElementById('detailLink');
         const badgeEl = document.getElementById('appleBadgeIcon');
         const labelEl = document.getElementById('storeLabel');
         
         let targetLink = `https://apps.apple.com/us/app/id${app.id}`;
         let targetLabel = "App Store";
-        let targetIcon = appleIconIOS || appleIconFilename;
+        let targetIcon = appleIconIOS;
 
         if (app.links) {
             if (currentOS === 'mac' && app.links.macos) {
@@ -347,7 +356,6 @@
                 if(appleIconMac) targetIcon = appleIconMac;
             } else if (currentOS === 'ios' && app.links.ios) {
                 targetLink = app.links.ios;
-                // iOS uses default icon
             } else {
                 targetLink = app.links.ios || app.links.macos;
             }
@@ -361,16 +369,15 @@
             badgeEl.style.display = 'none';
         }
 
-        // --- 4. Screenshot ---
+        // Screenshot
         const screenImg = document.getElementById('detailScreenshot');
         if (app.screenshots && app.screenshots.length > 0) {
-            // Pick the first screenshot for the static phone
             screenImg.src = `assets/${safeName}/${app.screenshots[0]}`;
         } else {
             screenImg.parentElement.innerHTML = `<div class="flex items-center justify-center h-full text-slate-500 text-xs font-mono">NO PREVIEW</div>`;
         }
 
-        // --- 5. Features (New Field) ---
+        // Features
         const featureGrid = document.getElementById('featureGrid');
         if (app.features && app.features.length > 0) {
             app.features.forEach(feat => {
@@ -388,16 +395,16 @@
             featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
         }
 
-        // --- 6. Knowledge (New Field) ---
+        // Knowledge
         const kSection = document.getElementById('knowledgeSection');
         if (app.knowledge && app.knowledge.title) {
             document.getElementById('knowledgeTitle').textContent = app.knowledge.title;
             document.getElementById('knowledgeContent').textContent = app.knowledge.content;
         } else {
-            kSection.style.display = 'none'; // Hide if no data
+            kSection.style.display = 'none';
         }
 
-        // --- 7. Audience (New Field) ---
+        // Audience
         const audContainer = document.getElementById('audienceContainer');
         if (app.audience && app.audience.length > 0) {
             app.audience.forEach(tag => {
@@ -410,13 +417,57 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        // Show Content
+        // --- 页面显示逻辑 ---
+        // 1. 隐藏 loader
         document.getElementById('loader').style.display = 'none';
+        
+        // 2. 显示主内容 (移除 hidden 类)
         const main = document.getElementById('mainContent');
         main.classList.remove('hidden');
-        // Simple fade in
-        setTimeout(() => main.style.opacity = '1', 50);
+        
+        // 3. 执行滑入动画 (Entrance Animation)
+        // 此时 main 已经可见，wrapper 做动画带入 main
+        if (transitionType === 'forward') {
+            gsap.to(wrapper, { 
+                x: 0, 
+                opacity: 1, 
+                duration: 0.5, 
+                ease: "power2.out", 
+                clearProps: "transform" 
+            });
+        } else {
+            gsap.to(wrapper, { 
+                y: 0, 
+                opacity: 1, 
+                duration: 0.6, 
+                ease: "power2.out", 
+                clearProps: "all" 
+            });
+        }
+        // 清除状态
+        sessionStorage.removeItem('page-transition');
     }
+
+    // 4. 返回按钮逻辑 (Back Transition)
+    function goBack(e) {
+        if(e) e.preventDefault();
+        sessionStorage.setItem('page-transition', 'back');
+        
+        // 离场动画：向右滑出
+        gsap.to('#page-wrapper', {
+            x: window.innerWidth * 0.5,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: () => {
+                window.location.href = 'index.html';
+            }
+        });
+    }
+
+    // Bind Events
+    document.getElementById('backBtn').addEventListener('click', goBack);
+    document.getElementById('footerHomeLink').addEventListener('click', goBack);
 
     initDetail();
   </script>
