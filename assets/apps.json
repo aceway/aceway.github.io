@@ -25,6 +25,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
         "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
+      },
+	  "features": [
+        "Auto-detect sensitive Exif metadata",
+        "One-tap removal of GPS & device info",
+        "Batch processing with lossless quality",
+        "100% Offline, no data leaves device"
+      ],
+      "audience": [
+        "Photographers", "Privacy Advocates", "Social Media Users", "Journalists"
+      ],
+      "knowledge": {
+        "title": "The Digital Fingerprint",
+        "content": "Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone."
       }
     },
     {
@@ -41,6 +54,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
         "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
+      },
+	  "features": [
+        "Instant Raster to Vector conversion",
+        "Optimized for logos and icons",
+        "Adjustable color threshold",
+        "Export to SVG / PDF"
+      ],
+      "audience": [
+        "Graphic Designers", "Web Developers", "Illustrators"
+      ],
+      "knowledge": {
+        "title": "Why Vector?",
+        "content": "Raster images are made of pixels and lose quality when scaled. Vectors are made of mathematical paths and remain sharp at any size. P2V uses computer vision algorithms to trace contrast edges in your images, converting static pixels into scalable geometry instantly."
       }
     },
     {
@@ -56,6 +82,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
         "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
+      },
+      "features": [
+        "Magic Eraser for unwanted objects",
+        "AI Super Resolution (Upscaling)",
+        "Low-light enhancement",
+        "Powered by Neural Engine"
+      ],
+      "audience": [
+        "Content Creators", "Real Estate Agents", "Casual Photographers"
+      ],
+      "knowledge": {
+        "title": "On-Device Intelligence",
+        "content": "Most AI tools require uploading photos to a cloud server. pcAI runs entirely on your device's Neural Engine using CoreML. This means zero latency, zero privacy risk, and full functionality even when you are offline in the middle of nowhere."
       }
     },
     {
@@ -72,7 +111,20 @@
 	  ],
       "links": {
         "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
-        "macos": "macappstore://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+      },
+      "features": [
+        "Support for OBJ, STL, USDZ",
+        "AR Preview mode",
+        "Wireframe inspection",
+        "File format conversion"
+      ],
+      "audience": [
+        "3D Artists", "Game Developers", "3D Printing Hobbyists"
+      ],
+      "knowledge": {
+        "title": "The Language of Geometry",
+        "content": "3D files are essentially lists of vertices and faces. This app utilizes Apple's SceneKit and Metal APIs to render these complex geometries efficiently on mobile devices, bridging the gap between desktop modeling software and mobile visualization."
       }
     },
     {
@@ -91,6 +143,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
         "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800"
+      },
+      "features": [
+        "Instant background removal",
+        "Hair-level precision",
+        "Transparent PNG export",
+        "Batch mode available"
+      ],
+      "audience": [
+        "E-commerce Sellers", "Sticker Makers", "Marketing Teams"
+      ],
+      "knowledge": {
+        "title": "Semantic Segmentation",
+        "content": "How does the app know what is a person and what is background? It uses a technique called Semantic Segmentation. The CoreML model analyzes the image pixel by pixel, classifying them into different categories, allowing for precise separation of the subject from its surroundings."
       }
     },
     {
@@ -108,6 +173,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
         "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
+      },
+      "features": [
+        "Open large DXF files quickly",
+        "Layer management",
+        "Measurement tools",
+        "Export to PDF"
+      ],
+      "audience": [
+        "Civil Engineers", "Architects", "CNC Operators"
+      ],
+      "knowledge": {
+        "title": "Vector Precision",
+        "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability without quality loss."
       }
     },
     {
@@ -128,6 +206,19 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
         "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
+      },
+      "features": [
+        "High-speed document scanning",
+        "Auto-edge detection",
+        "Perspective correction",
+        "Organize into PDF binders"
+      ],
+      "audience": [
+        "Students", "Accountants", "Archivists"
+      ],
+      "knowledge": {
+        "title": "Computer Vision",
+        "content": "Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned."
       }
     }
   ]
