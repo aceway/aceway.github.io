@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Wei Ai · iOS Developer Portfolio | Privacy-First & Local AI Apps</title>
   <meta name="description" content="Discover a collection of privacy-first, offline AI utility apps built with SwiftUI & CoreML. Featuring ShareGuard, P2V Converter, and more tools for creative professionals.">
-  <meta name="keywords" content="iOS Developer, SwiftUI, CoreML, Privacy, Local AI, Indie Developer, Wei Ai, ShareGuard, App Showcase">
+  <meta name="keywords" content="iOS Developer, SwiftUI, CoreML, Privacy, Local AI, Indie Developer, Wei Ai, DXF Assistant, 3D Model Viewer & Converter, ShareGuard and more, App Showcase">
   <meta name="author" content="Wei Ai">
   <link rel="canonical" href="https://apps.h53d.xyz/">
   <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
   <meta property="og:image" content="assets/social-preview.jpg">
   <meta property="og:site_name" content="Wei Ai Portfolio">
 
-  <!-- 3. Twitter Card -->
+  <!-- 3. X/Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@aceway2024">
   <meta name="twitter:title" content="Wei Ai · Future Interface">
@@ -45,10 +45,10 @@
       "name": "Wei Ai",
       "jobTitle": "iOS Developer",
       "description": "Independent developer focused on local AI and privacy-first applications.",
-      "url": "https://your-domain.com",
+      "url": "https://apps.h53d.xyz",
       "sameAs": [
-        "https://twitter.com/YourHandle",
-        "https://github.com/YourHandle"
+        "https://twitter.com/aceway2024",
+        "https://github.com/aceway"
       ]
     }
   }
@@ -96,26 +96,19 @@
 	</script>
 
 	<style>
-    /* 1. 滚动条锁定 */
     html { overflow-y: scroll; }
 
     body { 
       background-color: #f8fafc; 
       color: #1e293b; 
-      /* 使用 clip 而不是 hidden，防止破坏 sticky 定位上下文 */
       overflow-x: clip; 
     }
 
-    /* --- 核心修复 --- */
     #page-wrapper {
-        /* 移除 will-change: transform，否则 sticky 会失效！ */
-        /* will-change: transform, opacity;  <-- DELETE THIS */
-        
         transform-style: preserve-3d;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        /* 初始状态由 JS 控制，这里不需要写 opacity */
     }
 
     /* Backgrounds */
@@ -206,7 +199,7 @@
 
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
-  </style>
+    </style>
 
 </head>
 <body class="antialiased font-sans selection:bg-neonBlue selection:text-white">

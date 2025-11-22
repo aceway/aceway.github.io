@@ -9,11 +9,9 @@
   <meta property="og:title" content="App Details · Wei Ai">
   <meta property="og:description" content="Discover the technology and design behind this iOS application.">
   <meta property="og:image" content="assets/social-preview.jpg">
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="App Details · Wei Ai">
   <meta name="twitter:image" content="assets/social-preview.jpg">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,17 +53,15 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-  	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PZRNMBSR8K"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-PZRNMBSR8K');
-	</script>
-<style>
-    /* 1. 滚动条锁定 */
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PZRNMBSR8K"></script>
+  <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-PZRNMBSR8K');
+  </script>
+  <style>
     html { overflow-y: scroll; }
 
     body { 
@@ -74,12 +70,10 @@
       overflow-x: hidden; 
     }
     
-    /* 核心修复：移除所有隐藏和动画属性，回归普通文档流 */
     #page-wrapper {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        /* opacity: 0;  <-- 删除了这行 */
     }
 
     /* Backgrounds */
@@ -202,9 +196,8 @@
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
                         
                         <div class="mt-6 flex items-center gap-4">
-                            <!-- 核心修改：原生显示 Apple 图标，无文字，无背景 -->
                             <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
-                                <!-- h-10 约等于 40px，适合详情页尺寸 -->
+                                <!-- h-10 about 40px，detail page size -->
                                 <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
                         </div>
@@ -277,49 +270,38 @@
   </div>
 
 <script>
-    // --- 全局变量 ---
     const wrapper = document.getElementById('page-wrapper');
     const loader = document.getElementById('loader');
     const main = document.getElementById('mainContent');
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get('id');
 
-    // --- 核心修复：判断是否为刷新操作 ---
     const navEntry = performance.getEntriesByType("navigation")[0];
     const isReload = navEntry && navEntry.type === 'reload';
 
-    // 获取转场状态
     let transitionType = sessionStorage.getItem('page-transition');
-
-    // 如果是刷新，强制清除转场状态，确保原地淡入
     if (isReload) {
         transitionType = null;
         sessionStorage.removeItem('page-transition');
     }
 
-    // --- 设置初始状态 (立即执行) ---
     if (transitionType === 'forward') {
-        // 真实的跳转：设置到右侧
         gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
     } else {
-        // 刷新或直连：设置在原地，但在数据加载前保持透明
         gsap.set(wrapper, { x: 0, opacity: 0 });
     }
 
-    // 立即清除状态，防止后续逻辑干扰
     sessionStorage.removeItem('page-transition');
 
-    // --- 兜底：处理 BF Cache (后退按钮) ---
+    // --- BF Cache (for back button) ---
     window.addEventListener('pageshow', (event) => {
         if (event.persisted) {
-            // 强行复位
             gsap.set(wrapper, { x: 0, opacity: 1, clearProps: "all" });
             loader.style.display = 'none';
             main.classList.remove('hidden');
         }
     });
 
-    // --- 逻辑变量 ---
     const detectOS = () => {
         const ua = navigator.userAgent.toLowerCase();
         if (ua.includes('mac')) return 'mac';
@@ -341,7 +323,7 @@
     let currentIndex = 0;
     let isAnimating = false;
 
-    // --- 初始化 ---
+    // --- init ---
     async function initDetail() {
         if (!appId) { goBack(); return; }
 
@@ -367,7 +349,6 @@
             loader.style.display = 'none';
             main.classList.remove('hidden');
             main.innerHTML = `<div class="text-center py-20 text-red-500 font-mono">ERROR: ${e.message}</div>`;
-            // 出错也显示页面
             gsap.to(wrapper, { opacity: 1 });
         }
     }
@@ -375,7 +356,47 @@
     function renderApp(app) {
         const safeName = encodeURIComponent(app.name);
         
-        document.title = `${app.name} - Detail`;
+        // --- 1. update page title dynamic
+        document.title = `${app.name} | Wei Ai Portfolio`;
+
+        // --- 2. Meta Description ---
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute("content", `${app.name}: ${app.desc}. Built with local AI technology.`);
+        }
+
+        // --- 3. (SoftwareApplication Schema) ---
+        const schemaId = 'dynamic-schema';
+        let script = document.getElementById(schemaId);
+        if (!script) {
+            script = document.createElement('script');
+            script.id = schemaId;
+            script.type = 'application/ld+json';
+            document.head.appendChild(script);
+        }
+        
+        const schemaData = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": app.name,
+            "operatingSystem": "iOS, iPadOS, macOS",
+            "applicationCategory": "UtilitiesApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": app.desc,
+            "author": {
+                "@type": "Person",
+                "name": "Wei Ai"
+            }
+        };
+        script.text = JSON.stringify(schemaData);
+
+        //const safeName = encodeURIComponent(app.name);
+        //document.title = `${app.name} - Detail`;
+
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;
         document.getElementById('detailPromo').textContent = app.promotional || "FEATURED";
@@ -464,21 +485,21 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        // --- 4. 执行入场动画 ---
+        // --- 4. animation ---
         document.getElementById('loader').style.display = 'none';
         main.classList.remove('hidden');
         
         if (transitionType === 'forward') {
-            // 滑入 (Slide In)
+            // Slide In
             gsap.to(wrapper, { 
                 x: 0, 
                 opacity: 1, 
                 duration: 0.5, 
                 ease: "back.out(0.8)", 
-                clearProps: "transform" // 动画结束后清理 transform，防止影响固定定位元素
+                clearProps: "transform"
             });
         } else {
-            // 原地淡入 (Fade In) - 针对刷新
+            // Fade In - for Refresh
             gsap.to(wrapper, { 
                 opacity: 1, 
                 duration: 0.6, 
