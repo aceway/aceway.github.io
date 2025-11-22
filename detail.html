@@ -4,6 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>App Details · Wei Ai</title>
+    <meta name="description" content="Wei Ai - iOS Developer Portfolio, SwiftUI, CoreML Apps">
+
+	<link rel="icon" type="image/png" href="assets/DXF Assistant/icon.png">
+	<meta name="description" content="Wei Ai - Independent iOS Developer Portfolio. Featuring DXF Assistant, 3D Model Viewer & Converter, P2V Converter, ShareGuard, and more.">
+	<meta name="keywords" content="iOS Developer, SwiftUI, CoreML, Indie Dev, Portfolio, Apps">
+	<meta name="author" content="Wei Ai">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +51,16 @@
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PZRNMBSR8K"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-PZRNMBSR8K');
+	</script>
   
   <style>
     html { overflow-y: scroll; }
@@ -101,7 +117,7 @@
             <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
           </a>
           <div class="hidden sm:block text-[10px] font-mono text-slate-400">
-            SECURE CONNECTION // <span class="text-blue-500">ONLINE</span>
+            <span class="text-blue-500">:)</span>
           </div>
         </div>
       </header>
@@ -183,7 +199,9 @@
                     </div>
                     <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
                     <div class="text-center mt-6">
-                        <p class="text-[10px] font-mono text-slate-400">INTERFACE RENDER // v1.0</p>
+						 <a id="appStoreLink" href="#" target="_blank" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+							Download on the App Store
+                         </a>
                     </div>
                 </div>
             </div>
@@ -193,7 +211,7 @@
 
       <footer class="border-t border-slate-200 mt-20 bg-white/50 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
-          <a href="#" id="footerHomeLink" class="hover:text-blue-500 transition-colors">HOME</a> // © 2025 WEI AI
+          <a href="#" id="footerHomeLink" class="hover:text-blue-500 transition-colors">HOME</a> © 2025 WEI AI
         </div>
       </footer>
 
@@ -297,6 +315,10 @@
         } else {
             badgeEl.style.display = 'none';
         }
+        const appStoreLink = document.getElementById('appStoreLink');
+		if (appStoreLink) {
+        	appStoreLink.href = targetLink;
+		}
 
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
