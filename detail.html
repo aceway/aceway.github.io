@@ -16,20 +16,9 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { 
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          colors: { 
-             sciDark: '#0f172a',
-             sciLight: '#f8fafc',
-             neonBlue: '#3b82f6',
-             neonPurple: '#a855f7',
-             neonTeal: '#14b8a6',
-          },
-          animation: {
-            'blob': 'blob 7s infinite',
-          },
+          fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+          colors: { sciDark: '#0f172a', sciLight: '#f8fafc', neonBlue: '#3b82f6', neonPurple: '#a855f7', neonTeal: '#14b8a6' },
+          animation: { 'blob': 'blob 7s infinite' },
           keyframes: {
             blob: {
               '0%': { transform: 'translate(0px, 0px) scale(1)' },
@@ -47,23 +36,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   
   <style>
+    /* --- 关键优化 1: 锁定滚动条 --- */
+    html { overflow-y: scroll; }
+
     body { 
       background-color: #f8fafc; 
       color: #1e293b; 
       overflow-x: hidden; 
     }
     
-    /* Wrapper for Transitions */
     #page-wrapper {
         will-change: transform, opacity;
         transform-style: preserve-3d;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        opacity: 0; /* 默认隐藏，由 JS 接管显示，防止闪烁 */
+        /* 内联 opacity: 0 已在 HTML 中添加 */
     }
 
-    /* Backgrounds */
     .bg-grid-pattern {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
@@ -77,7 +67,6 @@
     .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; }
     .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
 
-    /* Glass UI */
     .glass-nav {
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
@@ -91,13 +80,10 @@
         border-radius: 24px;
     }
 
-    /* Feature Cards */
     .feature-card {
         background: rgba(255, 255, 255, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 16px;
-        padding: 16px;
-        transition: all 0.3s ease;
+        border-radius: 16px; padding: 16px; transition: all 0.3s ease;
     }
     .feature-card:hover {
         background: rgba(255, 255, 255, 0.9);
@@ -106,30 +92,21 @@
         box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
     }
 
-    /* Knowledge Section */
     .knowledge-gradient {
         background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         border-left: 4px solid #3b82f6;
     }
 
-    /* App Icon */
     .app-icon-lg { 
-      width: 120px; height: 120px; 
-      border-radius: 28px; 
+      width: 120px; height: 120px; border-radius: 28px; 
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); 
-      overflow: hidden; background: #f1f5f9; 
-      position: relative; flex-shrink: 0;
+      overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0;
     }
 
-    /* Static Phone for Detail */
     .phone-mock-static { 
-      width: 280px; height: 580px; 
-      border-radius: 48px; 
-      background: #0f172a; 
-      box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
-      position: relative; padding: 12px; 
-      border: 4px solid #334155; 
-      margin: 0 auto;
+      width: 280px; height: 580px; border-radius: 48px; 
+      background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
+      position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto;
     }
     .phone-screen { width: 100%; height: 100%; background: #000; border-radius: 36px; overflow: hidden; position: relative; }
     
@@ -139,17 +116,15 @@
 </head>
 <body class="antialiased font-sans selection:bg-neonBlue selection:text-white">
 
-  <!-- Fixed BG -->
   <div class="bg-grid-pattern"></div>
   <div class="ambient-light">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
   </div>
 
-  <!-- Page Transition Wrapper -->
-  <div id="page-wrapper">
+  <!-- 关键优化 2: 内联样式 opacity:0，彻底防止闪烁 -->
+  <div id="page-wrapper" style="opacity: 0;">
 
-      <!-- Navigation -->
       <header class="sticky top-0 z-50 glass-nav">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="index.html" id="backBtn" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group">
@@ -162,7 +137,6 @@
         </div>
       </header>
 
-      <!-- Loading (放在 wrapper 里面或外面都可以，这里放在外面不参与滑入动画，保持静止体验更好) -->
       <div id="loader" class="fixed inset-0 flex items-center justify-center z-40 bg-slate-50/80 backdrop-blur">
           <div class="text-center">
               <div class="spinner mb-4"></div>
@@ -170,24 +144,16 @@
           </div>
       </div>
 
-      <!-- Main Content -->
-      <!-- 修复：移除了 opacity-0 类，默认 hidden -->
-      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow hidden">
-        
+      <!-- 内容区域 (默认不隐藏，由 wrapper 整体控制显隐) -->
+      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            <!-- Left Column: Info -->
             <div class="lg:col-span-7 space-y-10">
-                
-                <!-- Header -->
                 <div class="flex gap-6 items-start">
                     <div id="detailIcon" class="app-icon-lg"></div>
                     <div class="flex-1 pt-2">
                         <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
-                        
-                        <!-- Store Button -->
                         <div class="mt-6 flex items-center gap-4">
                             <a id="detailLink" href="#" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 bg-[#1d1d1f] text-white rounded-full hover:bg-black hover:scale-105 transition-all shadow-lg shadow-blue-500/20 group">
                                 <img id="appleBadgeIcon" src="" class="w-5 h-5 object-contain group-hover:scale-110 transition-transform" alt="Apple">
@@ -196,10 +162,7 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="h-px bg-slate-200 w-full"></div>
-
-                <!-- Knowledge -->
                 <div id="knowledgeSection" class="glass-panel p-8 knowledge-gradient relative overflow-hidden group">
                     <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-400 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
                     <h3 class="text-sm font-bold text-blue-600 font-mono mb-3 flex items-center gap-2">
@@ -209,8 +172,6 @@
                     <h2 id="knowledgeTitle" class="text-xl font-bold text-slate-800 mb-3"></h2>
                     <p id="knowledgeContent" class="text-slate-600 leading-relaxed text-sm text-justify"></p>
                 </div>
-
-                <!-- Features -->
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <span class="w-1 h-6 bg-teal-400 rounded-full"></span>
@@ -218,8 +179,6 @@
                     </h3>
                     <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                 </div>
-
-                <!-- Audience -->
                 <div>
                     <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <span class="w-1 h-6 bg-purple-400 rounded-full"></span>
@@ -227,10 +186,7 @@
                     </h3>
                     <div id="audienceContainer" class="flex flex-wrap gap-2"></div>
                 </div>
-
             </div>
-
-            <!-- Right Column: Visual -->
             <div class="lg:col-span-5 relative">
                 <div class="sticky top-24">
                     <div class="phone-mock-static">
@@ -239,14 +195,12 @@
                             <img id="detailScreenshot" class="w-full h-full object-cover" src="" alt="Screenshot">
                         </div>
                     </div>
-                    <!-- Decoration -->
                     <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
                     <div class="text-center mt-6">
                         <p class="text-[10px] font-mono text-slate-400">INTERFACE RENDER // v1.0</p>
                     </div>
                 </div>
             </div>
-
         </div>
       </main>
 
@@ -259,20 +213,19 @@
   </div>
 
   <script>
-    // 1. 初始化转场状态 (Initialize Transition State)
+    // 1. 初始化转场逻辑 (立即执行)
     const transitionType = sessionStorage.getItem('page-transition');
     const wrapper = document.getElementById('page-wrapper');
     
-    // 在页面内容加载前，先设定好 wrapper 的初始位置，避免闪烁
+    // 设置初始状态 (在第一帧渲染前完成)
     if (transitionType === 'forward') {
-        // 如果是从首页进来的：先移到右边屏幕外 (50% width)
+        // 从 Index 进来的：放在右边屏幕外 (50%)
         gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
     } else {
-        // 如果是刷新或直接打开：淡入
-        gsap.set(wrapper, { opacity: 0, y: 20 });
+        // 刷新或直接打开：原地淡入
+        gsap.set(wrapper, { x: 0, opacity: 0, y: 20 });
     }
 
-    // 2. 逻辑变量
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get('id');
     
@@ -287,10 +240,8 @@
     let appleIconIOS = "";
     let appleIconMac = "";
 
-    // 3. 初始化数据
     async function initDetail() {
         if (!appId) {
-            // 如果没有 ID，退回首页
             goBack();
             return;
         }
@@ -314,7 +265,6 @@
                 return;
             }
 
-            // 渲染页面内容
             renderApp(app);
 
         } catch (e) {
@@ -331,7 +281,6 @@
         document.getElementById('detailDesc').textContent = app.desc;
         document.getElementById('detailPromo').textContent = app.promotional || "FEATURED";
 
-        // Icon
         const iconPath = app.icon ? `assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
@@ -340,7 +289,6 @@
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-300">${app.name.substring(0,2)}</div>`;
         }
 
-        // Store Link
         const linkEl = document.getElementById('detailLink');
         const badgeEl = document.getElementById('appleBadgeIcon');
         const labelEl = document.getElementById('storeLabel');
@@ -369,7 +317,6 @@
             badgeEl.style.display = 'none';
         }
 
-        // Screenshot
         const screenImg = document.getElementById('detailScreenshot');
         if (app.screenshots && app.screenshots.length > 0) {
             screenImg.src = `assets/${safeName}/${app.screenshots[0]}`;
@@ -377,7 +324,6 @@
             screenImg.parentElement.innerHTML = `<div class="flex items-center justify-center h-full text-slate-500 text-xs font-mono">NO PREVIEW</div>`;
         }
 
-        // Features
         const featureGrid = document.getElementById('featureGrid');
         if (app.features && app.features.length > 0) {
             app.features.forEach(feat => {
@@ -395,7 +341,6 @@
             featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
         }
 
-        // Knowledge
         const kSection = document.getElementById('knowledgeSection');
         if (app.knowledge && app.knowledge.title) {
             document.getElementById('knowledgeTitle').textContent = app.knowledge.title;
@@ -404,7 +349,6 @@
             kSection.style.display = 'none';
         }
 
-        // Audience
         const audContainer = document.getElementById('audienceContainer');
         if (app.audience && app.audience.length > 0) {
             app.audience.forEach(tag => {
@@ -417,25 +361,23 @@
             audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
         }
 
-        // --- 页面显示逻辑 ---
-        // 1. 隐藏 loader
+        // --- 显示逻辑 ---
+        // 1. 隐藏 Loader
         document.getElementById('loader').style.display = 'none';
-        
-        // 2. 显示主内容 (移除 hidden 类)
-        const main = document.getElementById('mainContent');
-        main.classList.remove('hidden');
-        
-        // 3. 执行滑入动画 (Entrance Animation)
-        // 此时 main 已经可见，wrapper 做动画带入 main
+        // (无需显式移除 hidden，因为本来就不 hidden，只是 opacity:0)
+
+        // 2. 执行入场动画
         if (transitionType === 'forward') {
+            // 从右侧滑入
             gsap.to(wrapper, { 
                 x: 0, 
                 opacity: 1, 
                 duration: 0.5, 
-                ease: "power2.out", 
+                ease: "back.out(0.8)", // 加一点回弹，更有动感
                 clearProps: "transform" 
             });
         } else {
+            // 淡入
             gsap.to(wrapper, { 
                 y: 0, 
                 opacity: 1, 
@@ -444,20 +386,18 @@
                 clearProps: "all" 
             });
         }
-        // 清除状态
         sessionStorage.removeItem('page-transition');
     }
 
-    // 4. 返回按钮逻辑 (Back Transition)
     function goBack(e) {
         if(e) e.preventDefault();
         sessionStorage.setItem('page-transition', 'back');
         
-        // 离场动画：向右滑出
+        // 离场：向右滑出 (0.3s 快速响应)
         gsap.to('#page-wrapper', {
             x: window.innerWidth * 0.5,
             opacity: 0,
-            duration: 0.4,
+            duration: 0.3, 
             ease: "power2.in",
             onComplete: () => {
                 window.location.href = 'index.html';
@@ -465,7 +405,6 @@
         });
     }
 
-    // Bind Events
     document.getElementById('backBtn').addEventListener('click', goBack);
     document.getElementById('footerHomeLink').addEventListener('click', goBack);
 
