@@ -103,7 +103,7 @@
     {
       "id": "6748610196",
       "name": "3D Model Viewer",
-      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
+      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
       "promotional": "Free to view, Easy to convert.",
       "icon": "icon.jpg",
       "screenshots": [
@@ -129,7 +129,7 @@
       ],
       "knowledge": {
         "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
-        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization."
+        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
       }
     },
     {
