@@ -10,6 +10,37 @@
   },
   "apps": [
     {
+      "id": "6755721056",
+      "name": "STEP File Viewer",
+      "desc": "STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. It’s built to work offline, ensuring your models stay accessible—no network needed.",
+      "promotional": "A lightweight, ad-free STEP viewer built for productivity.",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg",
+		"screen3.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/step-file-viewer/id6755721056",
+        "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056"
+      },
+	  "features": [
+		"View STEP models in 3D with rotate, pan, and zoom controls using perspective projection.",
+		"Display 3D models in solid, shaded, or wireframe modes.",
+		"Export: Save 3D models in STL, OBJ, glTF, GLB, or USDZ formats.",
+		"Export projected views of the model—including top, front, and right views—in SVG format.",
+		"Capture and save screenshots of the viewport for easy sharing."
+      ],
+      "audience": [
+        "Engineers", "Designers", "Machinists & CNC Operators", "Students & Educators"
+      ],
+      "knowledge": {
+        "title": "The STEP format (ISO 10303)",
+        "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
+      }
+    },
+    {
       "id": "6752704315",
       "name": "ShareGuard",
       "desc": "ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing. It lets you mask, or apply mosaic to sensitive areas precisely, so you can share images easily and confidently.",
