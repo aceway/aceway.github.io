@@ -391,7 +391,8 @@
             buildGrid(appsList);
 
             if (isMac && appsList.length > 0) {
-                const randomIndex = Math.floor(Math.random() * appsList.length);
+                // const randomIndex = Math.floor(Math.random() * appsList.length);
+                const randomIndex = 0;
                 setTimeout(() => triggerPreview(appsList[randomIndex]), 100);
             }
 
