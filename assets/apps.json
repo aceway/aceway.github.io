@@ -11,7 +11,7 @@
   "apps": [
     {
       "id": "6748610196",
-      "name": "3D Model Viewer & Converter",
+      "name": "3D Model Viewer",
       "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
       "promotional": "Free to view, Easy to convert.",
       "icon": "icon.jpg",
@@ -73,6 +73,36 @@
       "knowledge": {
         "title": "Viewing and exploring DXF",
         "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
+      }
+    },
+	{
+      "id": "6752116587",
+      "name": "P2V Converter",
+      "desc": "Convert your images into vector graphics effortlessly, easily transform pixel art into scalable vector graphics in just moments.",
+      "promotional": "Vector Magic",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
+        "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
+      },
+	  "features": [
+		"Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
+		"Simple, Balanced, or Detailed with colors — select the style that matches your project.",
+        "Export to SVG / PDF",
+		"All processing is done locally on your device — nothing is uploaded or stored externally",
+		"No ads, no tracking, no data collection — just a focused, efficient tool"
+      ],
+      "audience": [
+        "Graphic Designers", "Web Developers", "Illustrators"
+      ],
+      "knowledge": {
+        "title": "Create SVGs from your images anytime, anywhere.",
+        "content": "Raster images are made of pixels and lose quality when scaled. Vectors are made of mathematical paths and remain sharp at any size. P2V uses computer vision algorithms to trace contrast edges in your images, converting static pixels into scalable geometry instantly. Works fully offline to keep your pictures private."
       }
     },
     {
@@ -147,36 +177,6 @@
       "knowledge": {
         "title": "The STEP format (ISO 10303)",
         "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
-      }
-    },
-    {
-      "id": "6752116587",
-      "name": "P2V Converter",
-      "desc": "Convert your images into vector graphics effortlessly, easily transform pixel art into scalable vector graphics in just moments.",
-      "promotional": "Vector Magic",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
-        "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
-      },
-	  "features": [
-		"Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
-		"Simple, Balanced, or Detailed with colors — select the style that matches your project.",
-        "Export to SVG / PDF",
-		"All processing is done locally on your device — nothing is uploaded or stored externally",
-		"No ads, no tracking, no data collection — just a focused, efficient tool"
-      ],
-      "audience": [
-        "Graphic Designers", "Web Developers", "Illustrators"
-      ],
-      "knowledge": {
-        "title": "Create SVGs from your images anytime, anywhere.",
-        "content": "Raster images are made of pixels and lose quality when scaled. Vectors are made of mathematical paths and remain sharp at any size. P2V uses computer vision algorithms to trace contrast edges in your images, converting static pixels into scalable geometry instantly. Works fully offline to keep your pictures private."
       }
     },
     {
