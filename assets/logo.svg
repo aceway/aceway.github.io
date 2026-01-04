@@ -5,7 +5,8 @@
   <polyline points="13 9 5 17 17 17 25 9" fill="#F00"/>
   <polyline points="5 18 5 30 17 30 17 18" fill="#0F0"/>
   <polyline points="18 18 18 30 25 23 25 10.8" fill="#FF0"/>
-  <text x="15" y="15.5" text-anchor="middle" font-size="10" fill="#000">x</text>
-  <text x="11.0" y="26" text-anchor="middle" font-size="10" fill="#000">y</text>
-  <text x="21.5" y="23" text-anchor="middle" font-size="10" fill="#000">z</text>
+  <text x="15" y="15.5" text-anchor="middle" font-size="10">x</text>
+  <text x="11" y="26" text-anchor="middle" font-size="10">y</text>
+  <text x="21.5" y="23" text-anchor="middle" font-size="10">z</text>
 </svg>
+
