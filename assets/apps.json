@@ -10,6 +10,111 @@
   },
   "apps": [
     {
+      "id": "6748610196",
+      "name": "3D Model Viewer & Converter",
+      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
+      "promotional": "Free to view, Easy to convert.",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg",
+		"screen3.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
+        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+      },
+      "features": [
+        "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
+        "Export to STL, OBJ, GLB, USDZ, and GLTF",
+        "Basic editing tools: move, rotate, scale, delete, and undo changes to model objects",
+        "Batch Export Support: Selecting multiple files — even in different model formats — and converting them all to a single target format in one go",
+		"Export the model’s projected views — including top, front, and right views — in SVG format",
+		"No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
+      ],
+      "audience": [
+        "3D Printing Hobbyists", "Engineers", "CNC/3D makers", "3D Artists", "Game Developers", "Maker machinists", "Hybrid makers", "Fabrication hobbyists"
+      ],
+      "knowledge": {
+        "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
+        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
+      }
+    },
+    {
+      "id": "6742348600",
+      "name": "DXF Assistant",
+      "desc": "DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.",
+      "promotional": "View DXF. Convert to PDF, SVG, PNG.",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg",
+		"screen3.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
+        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
+      },
+      "features": [
+        "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
+        "Merge and arrange multiple DXF files in one session; open multiple files simultaneously without losing context.",
+        "Edit drawings directly: copy, delete, move, rotate, scale, undo, redo — all supported.",
+        "Export your drawings as PDF, SVG, PNG, or JPG files with ease.",
+		"Export a combined view of multiple DXF files into a single file.",
+		"Supports table entities, allowing export of table content as CSV files.",
+		"Scan DXF file for issues before laser cutting or CNC engraving, and get a shareable PDF report.",
+		"No ads. No data collection. No tracking. Just a fast, focused productivity tool."
+      ],
+      "audience": [
+        "Civil Engineers", "Architects", "CNC Operators", "Laser Operators"
+      ],
+      "knowledge": {
+        "title": "Viewing and exploring DXF",
+        "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
+      }
+    },
+    {
+      "id": "6733222153",
+      "name": "SheetCollector",
+      "desc": "Easily import tables from various files and images. Keep everything organized and export anytime. Generate polished PDF or JPEG documents with your own style.",
+      "promotional": "Organize, edit, export spreadsheet.",
+      "icon": "icon.jpg",
+      "screenshots": [
+				"screen.jpg",
+				"screen1.jpg",
+				"screen2.jpg",
+				"screen3.jpg",
+				"screen4.jpg",
+				"screen5.jpg",
+				"screen6.jpg"
+			],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
+        "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
+      },
+      "features": [
+        "Import spreadsheet data from CSV, XLSX, ODS, TSV, and UTF-8 encoded JSON files.",
+        "Import table data from MySQL, MariaDB, PostgreSQL, and SQLite3 databases. ",
+        "Import table data from PNG, HEIC, JPG, BMP, TIFF, and WebP images. ",
+        "Use your device’s camera to scan and import spreadsheet data. ",
+		"Add, modify, or clear data by row or column.",
+		"Swap any two rows or columns instantly.",
+		"Export filtered data as CSV, PDF, or JPEG by row or column.",
+		"Customize PDF/JPEG exports with A0-A5 sizes, portrait/landscape modes, and long-page JPEG formats.",
+		"Add logos and private statements for professional documents.",
+		"Set tiered protection for the exported PDF file, separately setting a read password and an edit password."
+      ],
+      "audience": [
+        "Students", "Accountants", "Archivists"
+      ],
+      "knowledge": {
+        "title": "SheetCollector:xlsx ods...pdf",
+        "content": "Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned."
+      }
+    },
+    {
       "id": "6755721056",
       "name": "STEP File Viewer",
       "desc": "STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. Visualize STEP models from every angle with projected, section, and exploded views—even on your iPhone.",
@@ -42,39 +147,6 @@
       "knowledge": {
         "title": "The STEP format (ISO 10303)",
         "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
-      }
-    },
-    {
-      "id": "6752704315",
-      "name": "ShareGuard",
-      "desc": "ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing. It lets you mask, or apply mosaic to sensitive areas precisely, so you can share images easily and confidently.",
-      "promotional": "Secure sharing made easy",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg",
-		"screen4.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
-        "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
-      },
-	  "features": [
-        "Auto-detect and clear sensitive Exif metadata",
-        "Protect text, and faces in image before sharing",
-		"Auto mosaic with facial and text recognition AI",
-        "Batch processing with lossless quality",
-		"Local processing — nothing leaves your device",
-        "100% Offline, no data leaves device"
-      ],
-      "audience": [
-        "Photographers", "Privacy Advocates", "Social Media Users", "Journalists"
-      ],
-      "knowledge": {
-        "title": "Clear Metadata & Auto Mosaic",
-        "content": "Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone. Whether you’re preparing screenshots, photos, or documents, ShareGuard provides flexible masking options and detailed export controls. Choose from color masks, mosaic-style masks, or smart detection modes that automatically recognize sensitive content."
       }
     },
     {
@@ -136,38 +208,6 @@
       }
     },
     {
-      "id": "6748610196",
-      "name": "3D Model Viewer",
-      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
-      "promotional": "Free to view, Easy to convert.",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
-        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
-      },
-      "features": [
-        "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
-        "Export to STL, OBJ, GLB, USDZ, and GLTF",
-        " Basic editing tools: move, rotate, scale, delete, and undo changes to model objects",
-        "Batch Export Support: Selecting multiple files — even in different model formats — and converting them all to a single target format in one go",
-		"Export the model’s projected views — including top, front, and right views — in SVG format",
-		"No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
-      ],
-      "audience": [
-        "3D Artists", "Game Developers", "3D Printing Hobbyists", "CNC/3D makers", "Maker machinists", "Hybrid makers", "Fabrication hobbyists"
-      ],
-      "knowledge": {
-        "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
-        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
-      }
-    },
-    {
       "id": "6745748800",
       "name": "CutoutCraft",
       "desc": "AI CutoutCraft is a smart image editing tool powered entirely by on-device AI. No registration, no uploads. A few taps — remove backgrounds, restyle images, create layouts, and export instantly.",
@@ -204,76 +244,36 @@
       }
     },
     {
-      "id": "6742348600",
-      "name": "DXF Assistant",
-      "desc": "DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.",
-      "promotional": "View DXF. Convert to PDF, SVG, PNG.",
+      "id": "6752704315",
+      "name": "ShareGuard",
+      "desc": "ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing. It lets you mask, or apply mosaic to sensitive areas precisely, so you can share images easily and confidently.",
+      "promotional": "Secure sharing made easy",
       "icon": "icon.jpg",
       "screenshots": [
 		"screen.jpg",
 		"screen1.jpg",
 		"screen2.jpg",
-		"screen3.jpg"
+		"screen3.jpg",
+		"screen4.jpg"
 	  ],
       "links": {
-        "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
-        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
+        "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
+        "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
       },
-      "features": [
-        "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
-        "Merge and arrange multiple DXF files in one session; open multiple files simultaneously without losing context.",
-        "Edit drawings directly: copy, delete, move, rotate, scale, undo, redo — all supported.",
-        "Export your drawings as PDF, SVG, PNG, or JPG files with ease.",
-		"Export a combined view of multiple DXF files into a single file.",
-		"Supports table entities, allowing export of table content as CSV files.",
-		"Scan DXF file for issues before laser cutting or CNC engraving, and get a shareable PDF report.",
-		" No ads. No data collection. No tracking. Just a fast, focused productivity tool."
+	  "features": [
+        "Auto-detect and clear sensitive Exif metadata",
+        "Protect text, and faces in image before sharing",
+		"Auto mosaic with facial and text recognition AI",
+        "Batch processing with lossless quality",
+		"Local processing — nothing leaves your device",
+        "100% Offline, no data leaves device"
       ],
       "audience": [
-        "Civil Engineers", "Architects", "CNC Operators", "Laser Operators"
+        "Photographers", "Privacy Advocates", "Social Media Users", "Journalists"
       ],
       "knowledge": {
-        "title": "Viewing and exploring DXF",
-        "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
-      }
-    },
-    {
-      "id": "6733222153",
-      "name": "SheetCollector",
-      "desc": "Easily import tables from various files and images. Keep everything organized and export anytime. Generate polished PDF or JPEG documents with your own style.",
-      "promotional": "Organize, edit, export spreadsheet.",
-      "icon": "icon.jpg",
-      "screenshots": [
-				"screen.jpg",
-				"screen1.jpg",
-				"screen2.jpg",
-				"screen3.jpg",
-				"screen4.jpg",
-				"screen5.jpg",
-				"screen6.jpg"
-			],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
-        "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
-      },
-      "features": [
-        "Import spreadsheet data from CSV, XLSX, ODS, TSV, and UTF-8 encoded JSON files.",
-        "Import table data from MySQL, MariaDB, PostgreSQL, and SQLite3 databases. ",
-        "Import table data from PNG, HEIC, JPG, BMP, TIFF, and WebP images. ",
-        "Use your device’s camera to scan and import spreadsheet data. ",
-		"Add, modify, or clear data by row or column.",
-		"Swap any two rows or columns instantly.",
-		"Export filtered data as CSV, PDF, or JPEG by row or column.",
-		"Customize PDF/JPEG exports with A0-A5 sizes, portrait/landscape modes, and long-page JPEG formats.",
-		"Add logos and private statements for professional documents.",
-		"Set tiered protection for the exported PDF file, separately setting a read password and an edit password."
-      ],
-      "audience": [
-        "Students", "Accountants", "Archivists"
-      ],
-      "knowledge": {
-        "title": "SheetCollector:xlsx ods...pdf",
-        "content": "Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned."
+        "title": "Clear Metadata & Auto Mosaic",
+        "content": "Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone. Whether you’re preparing screenshots, photos, or documents, ShareGuard provides flexible masking options and detailed export controls. Choose from color masks, mosaic-style masks, or smart detection modes that automatically recognize sensitive content."
       }
     }
   ]
