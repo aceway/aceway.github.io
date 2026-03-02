@@ -9,6 +9,39 @@
 	"appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
   },
   "apps": [
+	{
+      "id": "6757391542",
+      "name": "Shine3D",
+      "desc": "More than a 3D viewer. Show your models beautifully. Your models don't just exist—they shine.",
+      "promotional": "Free to view, Easy to share.",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg",
+		"screen3.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542",
+        "macos": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?platform=mac"
+      },
+      "features": [
+        "Broad Format Support: Seamlessly load and display a wide range of 3D formats, including STL, OBJ, GLB, 3MF, USDZ, 3DS, 3DM, PLY, XYZ, AMF, VOX, VTK, VTP, and FBX.",
+        "Dynamic Environments & Toon Shading: Freely choose from multiple preset scenarios or stylized shaders to make your models and anime figures truly \"pop\" with character-accurate lighting.",
+        "Custom Branding & Logos: Personalize your presentation by uploading your own logo image to be used as the floor of the display stand.",
+        "High-Res Image Capture: Generate crisp, high-resolution PNG screenshots for quick and lightweight sharing.",
+		"Universal GIF Recording: Generate lightweight animations for convenient sharing across any social platform, browser, or messaging app.",
+		"Local, Light, & Lightning Fast: Optimized for performance, Shine3D runs locally on your device for an instant, lag-free experience.",
+		"No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
+      ],
+      "audience": [
+        "3D Printing Hobbyists", "Anime & Collectible Figure Enthusiasts", "3D Artists", "Designers & Studios"
+      ],
+      "knowledge": {
+        "title": "Why Shine3D?",
+        "content": "Shine3D is not just a viewer — it's a tool for expression. Whether you’re preparing client pitches, reviewing technical models, or sharing artwork with the world, this app puts professional 3D visualization in your hands."
+      }
+    },
     {
       "id": "6748610196",
       "name": "3D Model Viewer",
