@@ -9,6 +9,44 @@
 	"appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
   },
   "apps": [
+    {
+      "id": "6760733349",
+      "name": "NumisGallery",
+      "desc": "NumisGallery is a museum-style banknote viewer for people who enjoy currency design, visual culture, and history.",
+      "promotional": "The beauty of banknotes, beyond money.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg",
+        "screen5.jpg",
+        "screen6.jpg",
+        "screen7.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/id6760733349"
+      },
+      "features": [
+        "Browse by country and denomination with directional gestures in a portrait-first gallery flow.",
+        "Single tap opens detailed note study, double tap flips between obverse and reverse, and long press reveals motif highlights.",
+        "Study banknotes as visual artifacts through museum-style transition choreography, subtle motion response, and calibrated audio-haptic cues.",
+        "View structured metadata, contextual notes, and source attribution for each banknote.",
+        "Compliance-first experience with startup guidance, one-side-at-a-time presentation, and no export, share, or print workflows.",
+        "No ads and no third-party analytics SDKs."
+      ],
+      "audience": [
+        "Numismatic Learners",
+        "Collectors",
+        "Designers Interested in Currency Aesthetics",
+        "History & Culture Enthusiasts"
+      ],
+      "knowledge": {
+        "title": "Banknotes as Visual Artifacts",
+        "content": "NumisGallery treats banknotes as objects of visual culture rather than transactional media. The app focuses on engraving detail, symbolism, portraiture, motif composition, and historical context through a gesture-first viewing flow designed for close study on iPhone."
+      }
+    },
 	{
       "id": "6757391542",
       "name": "Shine3D",
