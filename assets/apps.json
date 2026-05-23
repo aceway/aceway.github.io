@@ -9,6 +9,35 @@
 	"appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
   },
   "apps": [
+	 {
+      "id": "6769270457",
+      "name": "STL to STEP Assistant",
+      "desc": "STL to STEP Assistant is a focused local 3D model tool for converting mesh-based models into STEP files for CAD workflows.",
+      "promotional": "Convert STL, GLB, and OBJ models to STEP offline and privately.",
+      "icon": "icon.jpg",
+      "screenshots": [
+		"screen.jpg",
+		"screen1.jpg",
+		"screen2.jpg",
+		"screen3.jpg"
+	  ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457",
+        "macos": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?platform=mac"
+      },
+      "features": [
+        "Convert STL to STEP",
+        "Preview 3D models before export",
+        "Support STLB (binary STL), OBJ, GLB, GLTF, 3MF, 3DM (Rhino), FBX, DAE, PLY, USDZ, 3DS, AMF (additive manufacturing), DRC (Draco), KMZ (zipped 3D scene), MPD (multi-part LDraw), and WRL (VRML) model formats",
+        "Process files on device, so model data stays on your device"
+      ],
+      "audience": [
+        "3D Printing Hobbyists", "Engineers", "3D makers", "Designers", "CAD Users"],
+      "knowledge": {
+        "title": "Choose export quality as needed",
+        "content": "Small: fast, lightweight STEP export for everyday use; Balanced: balance detail and file size; Check triangle reduction by quality mode; Get a simple export risk hint; See the final STEP file size after conversion."
+      }
+    },
     {
       "id": "6760733349",
       "name": "NumisGallery",
