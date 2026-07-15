@@ -4,23 +4,179 @@
     "subtitle": "A collection of utility tools built with SwiftUI & CoreML."
   },
   "ui": {
-	"appleIcon": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
-	"appleIconIOS": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
-	"appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+    "appleIcon": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+    "appleIconIOS": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+    "appleIconMac": "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
   },
   "apps": [
-	 {
+    {
+      "id": "6786113990",
+      "name": "JT File Viewer",
+      "desc": "JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.",
+      "promotional": "Open JT files offline on Apple devices.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990",
+        "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac"
+      },
+      "features": [
+        "Open JT files locally on macOS, iPhone, iPad, and Apple Vision Pro.",
+        "View tessellated engineering models in a native 3D viewport.",
+        "Browse product structure and select parts.",
+        "Switch between solid, transparent, and wireframe display modes.",
+        "Use Exploded View to separate assembly components.",
+        "Use Cross Section View with Flip Kept Side to inspect internal model areas.",
+        "Export tessellated models as binary STL, binary glTF GLB, and USDZ, USDC, or USDA.",
+        "Capture screenshots with pre-save annotations, editing, and watermarks.",
+        "Record 3D viewport review videos with optional synced microphone narration and watermarks.",
+        "No ads, tracking, or data collection — files stay on device."
+      ],
+      "audience": [
+        "Engineers",
+        "Manufacturing & Quality Teams",
+        "Suppliers",
+        "Sales & Procurement",
+        "Apple Platform Teams"
+      ],
+      "knowledge": {
+        "title": "The JT format (ISO 14306)",
+        "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
+      }
+    },
+    {
+      "id": "6755721056",
+      "name": "STEP File Viewer",
+      "desc": "STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. Visualize STEP models from every angle with projected, section, and exploded views—even on your iPhone.",
+      "promotional": "A lightweight, ad-free STEP viewer built for productivity.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/step-file-viewer/id6755721056",
+        "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056"
+      },
+      "features": [
+        "View STEP models in 3D with rotate, pan, and zoom controls using perspective projection.",
+        "Display 3D models in solid, shaded, or wireframe modes.",
+        "Load STEP/STP and IGES/IGS models.",
+        "Parse and load STEP models as assemblies (requires the model to include assembly data).",
+        "Apply axis-aligned section planes (XY, XZ, YZ) to reveal the model’s internal geometry.",
+        "Explode model components to inspect each part clearly in expanded space.",
+        "Export: Save 3D models in STL, OBJ, glTF, GLB, or USDZ formats.",
+        "Export projected views of the model—including top, front, and right views—in SVG format.",
+        "Capture and save screenshots of the viewport for easy sharing."
+      ],
+      "audience": [
+        "3D Printer",
+        "Engineers",
+        "Designers",
+        "Machinists & CNC Operators",
+        "Students & Educators"
+      ],
+      "knowledge": {
+        "title": "The STEP format (ISO 10303)",
+        "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
+      }
+    },
+    {
+      "id": "6748610196",
+      "name": "3D Model Viewer",
+      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
+      "promotional": "Free to view, Easy to convert.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
+        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+      },
+      "features": [
+        "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
+        "Export to STL, OBJ, GLB, USDZ, and GLTF",
+        "Basic editing tools: move, rotate, scale, delete, and undo changes to model objects",
+        "Batch Export Support: Selecting multiple files — even in different model formats — and converting them all to a single target format in one go",
+        "Export the model’s projected views — including top, front, and right views — in SVG format",
+        "No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
+      ],
+      "audience": [
+        "3D Printing Hobbyists",
+        "Engineers",
+        "CNC/3D makers",
+        "3D Artists",
+        "Game Developers",
+        "Maker machinists",
+        "Hybrid makers",
+        "Fabrication hobbyists"
+      ],
+      "knowledge": {
+        "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
+        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
+      }
+    },
+    {
+      "id": "6742348600",
+      "name": "DXF Assistant",
+      "desc": "DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.",
+      "promotional": "View DXF. Convert to PDF, SVG, PNG.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
+        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
+      },
+      "features": [
+        "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
+        "Merge and arrange multiple DXF files in one session; open multiple files simultaneously without losing context.",
+        "Edit drawings directly: copy, delete, move, rotate, scale, undo, redo — all supported.",
+        "Export your drawings as PDF, SVG, PNG, or JPG files with ease.",
+        "Export a combined view of multiple DXF files into a single file.",
+        "Supports table entities, allowing export of table content as CSV files.",
+        "Scan DXF file for issues before laser cutting or CNC engraving, and get a shareable PDF report.",
+        "No ads. No data collection. No tracking. Just a fast, focused productivity tool."
+      ],
+      "audience": [
+        "Civil Engineers",
+        "Architects",
+        "CNC Operators",
+        "Laser Operators"
+      ],
+      "knowledge": {
+        "title": "Viewing and exploring DXF",
+        "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
+      }
+    },
+    {
       "id": "6769270457",
       "name": "STL to STEP Assistant",
       "desc": "STL to STEP Assistant is a focused local 3D model tool for converting mesh-based models into STEP files for CAD workflows.",
       "promotional": "Convert STL, GLB, and OBJ models to STEP offline and privately.",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457",
         "macos": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?platform=mac"
@@ -32,7 +188,12 @@
         "Process files on device, so model data stays on your device"
       ],
       "audience": [
-        "3D Printing Hobbyists", "Engineers", "3D makers", "Designers", "CAD Users"],
+        "3D Printing Hobbyists",
+        "Engineers",
+        "3D makers",
+        "Designers",
+        "CAD Users"
+      ],
       "knowledge": {
         "title": "Choose export quality as needed",
         "content": "Small: fast, lightweight STEP export for everyday use; Balanced: balance detail and file size; Check triangle reduction by quality mode; Get a simple export risk hint; See the final STEP file size after conversion."
@@ -76,18 +237,18 @@
         "content": "NumisGallery treats banknotes as objects of visual culture rather than transactional media. The app focuses on engraving detail, symbolism, portraiture, motif composition, and historical context through a gesture-first viewing flow designed for close study on iPhone."
       }
     },
-	{
+    {
       "id": "6757391542",
       "name": "Shine3D",
       "desc": "More than a 3D viewer. Show your models beautifully. Your models don't just exist—they shine.",
       "promotional": "Free to view, Easy to share.",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542",
         "macos": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?platform=mac"
@@ -97,12 +258,15 @@
         "Dynamic Environments & Toon Shading: Freely choose from multiple preset scenarios or stylized shaders to make your models and anime figures truly \"pop\" with character-accurate lighting.",
         "Custom Branding & Logos: Personalize your presentation by uploading your own logo image to be used as the floor of the display stand.",
         "High-Res Image Capture: Generate crisp, high-resolution PNG screenshots for quick and lightweight sharing.",
-		"Universal GIF Recording: Generate lightweight animations for convenient sharing across any social platform, browser, or messaging app.",
-		"Local, Light, & Lightning Fast: Optimized for performance, Shine3D runs locally on your device for an instant, lag-free experience.",
-		"No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
+        "Universal GIF Recording: Generate lightweight animations for convenient sharing across any social platform, browser, or messaging app.",
+        "Local, Light, & Lightning Fast: Optimized for performance, Shine3D runs locally on your device for an instant, lag-free experience.",
+        "No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
       ],
       "audience": [
-        "3D Printing Hobbyists", "Anime & Collectible Figure Enthusiasts", "3D Artists", "Designers & Studios"
+        "3D Printing Hobbyists",
+        "Anime & Collectible Figure Enthusiasts",
+        "3D Artists",
+        "Designers & Studios"
       ],
       "knowledge": {
         "title": "Why Shine3D?",
@@ -110,95 +274,31 @@
       }
     },
     {
-      "id": "6748610196",
-      "name": "3D Model Viewer",
-      "desc": "3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.",
-      "promotional": "Free to view, Easy to convert.",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
-        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
-      },
-      "features": [
-        "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
-        "Export to STL, OBJ, GLB, USDZ, and GLTF",
-        "Basic editing tools: move, rotate, scale, delete, and undo changes to model objects",
-        "Batch Export Support: Selecting multiple files — even in different model formats — and converting them all to a single target format in one go",
-		"Export the model’s projected views — including top, front, and right views — in SVG format",
-		"No ads. No tracking. No data collection. Just a clean, efficient tool built for professionals."
-      ],
-      "audience": [
-        "3D Printing Hobbyists", "Engineers", "CNC/3D makers", "3D Artists", "Game Developers", "Maker machinists", "Hybrid makers", "Fabrication hobbyists"
-      ],
-      "knowledge": {
-        "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
-        "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
-      }
-    },
-    {
-      "id": "6742348600",
-      "name": "DXF Assistant",
-      "desc": "DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.",
-      "promotional": "View DXF. Convert to PDF, SVG, PNG.",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
-        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
-      },
-      "features": [
-        "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
-        "Merge and arrange multiple DXF files in one session; open multiple files simultaneously without losing context.",
-        "Edit drawings directly: copy, delete, move, rotate, scale, undo, redo — all supported.",
-        "Export your drawings as PDF, SVG, PNG, or JPG files with ease.",
-		"Export a combined view of multiple DXF files into a single file.",
-		"Supports table entities, allowing export of table content as CSV files.",
-		"Scan DXF file for issues before laser cutting or CNC engraving, and get a shareable PDF report.",
-		"No ads. No data collection. No tracking. Just a fast, focused productivity tool."
-      ],
-      "audience": [
-        "Civil Engineers", "Architects", "CNC Operators", "Laser Operators"
-      ],
-      "knowledge": {
-        "title": "Viewing and exploring DXF",
-        "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
-      }
-    },
-	{
       "id": "6752116587",
       "name": "P2V Converter",
       "desc": "Convert your images into vector graphics effortlessly, easily transform pixel art into scalable vector graphics in just moments.",
       "promotional": "Vector Magic",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
         "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
       },
-	  "features": [
-		"Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
-		"Simple, Balanced, or Detailed with colors — select the style that matches your project.",
+      "features": [
+        "Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
+        "Simple, Balanced, or Detailed with colors — select the style that matches your project.",
         "Export to SVG / PDF",
-		"All processing is done locally on your device — nothing is uploaded or stored externally",
-		"No ads, no tracking, no data collection — just a focused, efficient tool"
+        "All processing is done locally on your device — nothing is uploaded or stored externally",
+        "No ads, no tracking, no data collection — just a focused, efficient tool"
       ],
       "audience": [
-        "Graphic Designers", "Web Developers", "Illustrators"
+        "Graphic Designers",
+        "Web Developers",
+        "Illustrators"
       ],
       "knowledge": {
         "title": "Create SVGs from your images anytime, anywhere.",
@@ -212,14 +312,14 @@
       "promotional": "Organize, edit, export spreadsheet.",
       "icon": "icon.jpg",
       "screenshots": [
-				"screen.jpg",
-				"screen1.jpg",
-				"screen2.jpg",
-				"screen3.jpg",
-				"screen4.jpg",
-				"screen5.jpg",
-				"screen6.jpg"
-			],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg",
+        "screen5.jpg",
+        "screen6.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
         "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
@@ -229,91 +329,21 @@
         "Import table data from MySQL, MariaDB, PostgreSQL, and SQLite3 databases. ",
         "Import table data from PNG, HEIC, JPG, BMP, TIFF, and WebP images. ",
         "Use your device’s camera to scan and import spreadsheet data. ",
-		"Add, modify, or clear data by row or column.",
-		"Swap any two rows or columns instantly.",
-		"Export filtered data as CSV, PDF, or JPEG by row or column.",
-		"Customize PDF/JPEG exports with A0-A5 sizes, portrait/landscape modes, and long-page JPEG formats.",
-		"Add logos and private statements for professional documents.",
-		"Set tiered protection for the exported PDF file, separately setting a read password and an edit password."
+        "Add, modify, or clear data by row or column.",
+        "Swap any two rows or columns instantly.",
+        "Export filtered data as CSV, PDF, or JPEG by row or column.",
+        "Customize PDF/JPEG exports with A0-A5 sizes, portrait/landscape modes, and long-page JPEG formats.",
+        "Add logos and private statements for professional documents.",
+        "Set tiered protection for the exported PDF file, separately setting a read password and an edit password."
       ],
       "audience": [
-        "Students", "Accountants", "Archivists"
+        "Students",
+        "Accountants",
+        "Archivists"
       ],
       "knowledge": {
         "title": "SheetCollector:xlsx ods...pdf",
         "content": "Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned."
-      }
-    },
-    {
-      "id": "6786113990",
-      "name": "JT File Viewer",
-      "desc": "JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.",
-      "promotional": "Open JT files offline on Apple devices.",
-      "icon": "icon.jpg",
-      "screenshots": [
-        "screen.jpg",
-        "screen1.jpg",
-        "screen2.jpg",
-        "screen3.jpg",
-        "screen4.jpg"
-      ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990",
-        "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac"
-      },
-      "features": [
-        "Open JT files locally on macOS, iPhone, iPad, and Apple Vision Pro.",
-        "View tessellated engineering models in a native 3D viewport.",
-        "Browse product structure and select parts.",
-        "Switch between solid, transparent, and wireframe display modes.",
-        "Use Exploded View to separate assembly components.",
-        "Use Cross Section View with Flip Kept Side to inspect internal model areas.",
-        "Export tessellated models as binary STL, binary glTF GLB, and USDZ, USDC, or USDA.",
-        "Capture screenshots with pre-save annotations, editing, and watermarks.",
-        "Record 3D viewport review videos with optional synced microphone narration and watermarks.",
-        "No ads, tracking, or data collection — files stay on device."
-      ],
-      "audience": [
-        "Engineers", "Manufacturing & Quality Teams", "Suppliers", "Sales & Procurement", "Apple Platform Teams"
-      ],
-      "knowledge": {
-        "title": "The JT format (ISO 14306)",
-        "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
-      }
-    },
-    {
-      "id": "6755721056",
-      "name": "STEP File Viewer",
-      "desc": "STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. Visualize STEP models from every angle with projected, section, and exploded views—even on your iPhone.",
-      "promotional": "A lightweight, ad-free STEP viewer built for productivity.",
-      "icon": "icon.jpg",
-      "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg"
-	  ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/step-file-viewer/id6755721056",
-        "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056"
-      },
-	  "features": [
-		"View STEP models in 3D with rotate, pan, and zoom controls using perspective projection.",
-		"Display 3D models in solid, shaded, or wireframe modes.",
-		"Load STEP/STP and IGES/IGS models.",
-		"Parse and load STEP models as assemblies (requires the model to include assembly data).",
-		"Apply axis-aligned section planes (XY, XZ, YZ) to reveal the model’s internal geometry.",
-		"Explode model components to inspect each part clearly in expanded space.",
-		"Export: Save 3D models in STL, OBJ, glTF, GLB, or USDZ formats.",
-		"Export projected views of the model—including top, front, and right views—in SVG format.",
-		"Capture and save screenshots of the viewport for easy sharing."
-      ],
-      "audience": [
-        "3D Printer", "Engineers", "Designers", "Machinists & CNC Operators", "Students & Educators"
-      ],
-      "knowledge": {
-        "title": "The STEP format (ISO 10303)",
-        "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
       }
     },
     {
@@ -323,21 +353,23 @@
       "promotional": "Old photos clear, Styles appear.",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
         "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
       },
       "features": [
-		"Your photos never leave your device. No cloud AI, no hidden uploads.",
-		"No Ads. No Tracking. No Cloud.",
-		"Works without internet. On a plane, in a tunnel, anywhere. Always available.",
-		"No account, no login, no complicated settings. Just tap a button and see results immediately."
+        "Your photos never leave your device. No cloud AI, no hidden uploads.",
+        "No Ads. No Tracking. No Cloud.",
+        "Works without internet. On a plane, in a tunnel, anywhere. Always available.",
+        "No account, no login, no complicated settings. Just tap a button and see results immediately."
       ],
       "audience": [
-        "Content Creators", "Real Estate Agents", "Casual Photographers"
+        "Content Creators",
+        "Real Estate Agents",
+        "Casual Photographers"
       ],
       "knowledge": {
         "title": "All on your device, Offline and private.",
@@ -351,12 +383,12 @@
       "promotional": "Tap. Cut. Style. Export.",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg",
-		"screen4.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
         "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800"
@@ -366,14 +398,16 @@
         "Supports multiple object images cut out from one original image.",
         "Multi-Image Composition: Freely arrange multiple cutouts on the same canvas. Move, scale, and rotate them however you want to create your ideal composition.",
         " Restyle Image: Choose from over 10 styles to transform your image. Apply styles to individual cutouts or the final composite.",
-		"Background Replacement: Use a transparent background, a solid color, or any image from your device — your choice.",
-		"Cutout SVG Export: Convert your image cutouts into vector SVGs.",
-		"Privacy by Design: Everything is processed locally — your images never leave your device unless you choose to share them. ",
-		"No high-end hardware is required, ordinary Mac, iPhone, iPad can also run it and enjoy the convenience of AI.",
-		"No Ads. No Tracking. No Cloud: A clean, focused tool — no interruptions, no surveillance."
+        "Background Replacement: Use a transparent background, a solid color, or any image from your device — your choice.",
+        "Cutout SVG Export: Convert your image cutouts into vector SVGs.",
+        "Privacy by Design: Everything is processed locally — your images never leave your device unless you choose to share them. ",
+        "No high-end hardware is required, ordinary Mac, iPhone, iPad can also run it and enjoy the convenience of AI.",
+        "No Ads. No Tracking. No Cloud: A clean, focused tool — no interruptions, no surveillance."
       ],
       "audience": [
-        "E-commerce Sellers", "Sticker Makers", "Marketing Teams"
+        "E-commerce Sellers",
+        "Sticker Makers",
+        "Marketing Teams"
       ],
       "knowledge": {
         "title": "Semantic Segmentation",
@@ -387,26 +421,29 @@
       "promotional": "Secure sharing made easy",
       "icon": "icon.jpg",
       "screenshots": [
-		"screen.jpg",
-		"screen1.jpg",
-		"screen2.jpg",
-		"screen3.jpg",
-		"screen4.jpg"
-	  ],
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
         "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
       },
-	  "features": [
+      "features": [
         "Auto-detect and clear sensitive Exif metadata",
         "Protect text, and faces in image before sharing",
-		"Auto mosaic with facial and text recognition AI",
+        "Auto mosaic with facial and text recognition AI",
         "Batch processing with lossless quality",
-		"Local processing — nothing leaves your device",
+        "Local processing — nothing leaves your device",
         "100% Offline, no data leaves device"
       ],
       "audience": [
-        "Photographers", "Privacy Advocates", "Social Media Users", "Journalists"
+        "Photographers",
+        "Privacy Advocates",
+        "Social Media Users",
+        "Journalists"
       ],
       "knowledge": {
         "title": "Clear Metadata & Auto Mosaic",
