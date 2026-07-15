@@ -245,6 +245,43 @@
       }
     },
     {
+      "id": "6786113990",
+      "name": "JT File Viewer",
+      "desc": "JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.",
+      "promotional": "Open JT files offline on Apple devices.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990",
+        "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac"
+      },
+      "features": [
+        "Open JT files locally on macOS, iPhone, iPad, and Apple Vision Pro.",
+        "View tessellated engineering models in a native 3D viewport.",
+        "Browse product structure and select parts.",
+        "Switch between solid, transparent, and wireframe display modes.",
+        "Use Exploded View to separate assembly components.",
+        "Use Cross Section View with Flip Kept Side to inspect internal model areas.",
+        "Export tessellated models as binary STL, binary glTF GLB, and USDZ, USDC, or USDA.",
+        "Capture screenshots with pre-save annotations, editing, and watermarks.",
+        "Record 3D viewport review videos with optional synced microphone narration and watermarks.",
+        "No ads, tracking, or data collection — files stay on device."
+      ],
+      "audience": [
+        "Engineers", "Manufacturing & Quality Teams", "Suppliers", "Sales & Procurement", "Apple Platform Teams"
+      ],
+      "knowledge": {
+        "title": "The JT format (ISO 14306)",
+        "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
+      }
+    },
+    {
       "id": "6755721056",
       "name": "STEP File Viewer",
       "desc": "STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. Visualize STEP models from every angle with projected, section, and exploded views—even on your iPhone.",
