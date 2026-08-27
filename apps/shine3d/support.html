@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" href="/assets/Shine3D/icon.jpg">
+	<link rel="shortcut icon" href="/assets/Shine3D/icon.jpg" media="(prefers-color-scheme: light)" />
+	<link rel="shortcut icon" href="/assets/Shine3D/icon.jpg" media="(prefers-color-scheme: dark)"/>
+	<img src="/assets/Shine3D/icon.jpg" alt="Shine3D Logo" class="logo-img">
+	<link rel="icon" type="image/png" href="/assets/Shine3D/icon.jpg">
+    <title>Support - Shine3D</title>
+    <style>
+        :root {
+            --primary-color: #007aff;
+            --bg-color: #ffffff;
+            --secondary-bg: #f5f5f7;
+            --text-color: #1d1d1f;
+            --secondary-text: #86868b;
+            --border-color: #d2d2d7;
+        }
+		.logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-top: 2px;
+            margin-bottom: 1px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 自动适配暗黑模式 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #0a84ff;
+                --bg-color: #000000;
+                --secondary-bg: #1c1c1e;
+                --text-color: #f5f5f7;
+                --secondary-text: #a1a1a6;
+                --border-color: #38383a;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 0px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-top: 2px;
+            margin-bottom: 0px;
+        }
+
+        .tagline {
+            font-size: 21px;
+            color: var(--secondary-text);
+            font-weight: 400;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .purpose-card {
+            background-color: var(--secondary-bg);
+            padding: 24px;
+            border-radius: 16px;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            margin-bottom: 20px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 17px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .tech-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .contact-section {
+            background-color: var(--secondary-bg);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .social-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 13px;
+            color: var(--secondary-text);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 32px; }
+            .tagline { font-size: 18px; }
+        }
+    </style>
+    <style>:root { --app-icon: url("/assets/Shine3D/icon.jpg"); }</style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 style="margin:2px;">
+			<a href="https://apps.apple.com/app/id6757391542">
+				Shine3D
+			</a>
+		</h1>
+        <p class="tagline" style="margin:0">
+			Local 3D Model Show
+		</p>
+    </header>
+
+    <div class="purpose-card">
+        <strong>Purpose:</strong><br>
+        <a href="https://apps.apple.com/app/id6757391542">Shine3D</a> is a lightweight 3D visualization tool: no registration, no uploads, and no internet required. Everything works offline, locally, and privately.
+    </div>
+
+    <div class="section">
+        <h2>Key Features</h2>
+        
+        <div class="feature-item">
+            <strong>Broad Format Support</strong>
+            <p>Seamlessly load and display STL, OBJ, GLB, 3MF, USDZ, 3DS, 3DM, PLY, XYZ, AMF, VOX, VTK, VTP, and FBX.</p>
+        </div>
+
+        <div class="feature-item">
+            <strong>Dynamic Environments & Toon Shading</strong>
+            <p>Choose from preset scenarios or stylized shaders to make your models "pop" with character-accurate lighting.</p>
+        </div>
+
+        <div class="feature-item">
+            <strong>Custom Branding & Logos</strong>
+            <p>Personalize your presentation by using your own logo as the floor of the display stand.</p>
+        </div>
+
+        <div class="feature-item">
+            <strong>High-Res Image, MP4 & GIF</strong>
+            <p>Generate crisp PNG screenshots, cinematic MP4 videos, and universal GIFs for quick and lightweight sharing.</p>
+        </div>
+
+        <div class="feature-item">
+            <strong>Local & Lightning Fast</strong>
+            <p>Optimized for an instant, lag-free experience running locally on your device.</p>
+        </div>
+
+        <div class="feature-item">
+            <strong>Professional Integrity</strong>
+            <p>No ads. No tracking. No data collection. Built for professionals.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Specifications</h2>
+        <ul class="tech-list">
+            <li>Requires iOS 16, macOS 12 or later.</li>
+            <li>Optimized for high performance and resource efficiency.</li>
+            <li>100% Offline: No network access required, ensuring complete data privacy.</li>
+        </ul>
+    </div>
+
+    <div class="contact-section">
+        <h2>Contact & Support</h2>
+        <p>Have questions or need support? We are here to help!</p>
+        <div class="contact-links">
+            <div>
+                <a href="mailto:danjian42@gmail.com" class="btn">Email: danjian42@gmail.com</a>
+            </div>
+            <div>
+                Follow or DM on X: <a href="https://x.com/aceway2024" class="social-link">@aceway2024</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Shine3D. Built with privacy in mind.
+    </footer>
+</div>
+
+</body>
+</html>

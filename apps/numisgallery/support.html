@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="/assets/NumisGallery/icon.jpg">
+    <link rel="shortcut icon" href="/assets/NumisGallery/icon.jpg" media="(prefers-color-scheme: light)" />
+    <link rel="shortcut icon" href="/assets/NumisGallery/icon.jpg" media="(prefers-color-scheme: dark)"/>
+    <link rel="icon" type="image/jpg" href="/assets/NumisGallery/icon.jpg">
+    <title>Support - NumisGallery</title>
+    <style>
+        :root {
+            --bg: #07090d;
+            --card: #121722;
+            --text: #edf1f8;
+            --muted: #a5b2c9;
+            --accent: #1f8a7a;
+            --gold: #cdb378;
+            --line: rgba(237, 241, 248, 0.12);
+            --radius: 14px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f5f7fb;
+                --card: #ffffff;
+                --text: #111827;
+                --muted: #5f6e86;
+                --accent: #0f766a;
+                --gold: #8c6a2f;
+                --line: rgba(17, 24, 39, 0.12);
+            }
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            background: radial-gradient(circle at 80% 0%, rgba(205,179,120,0.10), transparent 45%), var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .app-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 12px;
+            border-radius: 18px;
+            background: url('/assets/NumisGallery/icon.jpg') center/cover no-repeat;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .purpose {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        section {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 14px;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li { margin-bottom: 8px; }
+
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--gold);
+            border: 1px solid rgba(205, 179, 120, 0.45);
+            background: rgba(205, 179, 120, 0.08);
+            border-radius: 999px;
+            padding: 4px 10px;
+            margin-bottom: 10px;
+        }
+
+        .spec {
+            color: var(--muted);
+            margin: 4px 0;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+            margin: 24px 0 10px;
+        }
+    </style>
+    <style>:root { --app-icon: url("/assets/NumisGallery/icon.jpg"); }</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="app-icon"></div>
+        <h1>NumisGallery Support</h1>
+        <p class="purpose">A museum-style banknote viewing experience focused on visual appreciation, context, and historical memory.</p>
+    </header>
+
+    <section>
+        <div class="badge">Core Features</div>
+        <h2>What You Can Do</h2>
+        <ul>
+            <li>Browse countries and denominations in a portrait-first gallery flow.</li>
+            <li>Use natural gestures: left/right to switch country, up/down to switch denomination.</li>
+            <li>Double-tap to explore obverse/reverse transitions.</li>
+            <li>Long-touch for motif information and tap to enter detailed note view.</li>
+            <li>Shake your iPhone to cycle through available gallery themes.</li>
+            <li>View structured metadata, source attribution, and contextual notes per banknote.</li>
+            <li>Use My Collection to add your own banknote images as a paid, local-only collection feature.</li>
+            <li>Review and edit collection details with local OCR assistance, text-based reference lookup, rotation, image swapping, and high-confidence auto-crop support.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="badge">Technology & Craft</div>
+        <h2>Experience Design</h2>
+        <ul>
+            <li>Built with SwiftUI and SwiftData for responsive, native interaction.</li>
+            <li>Motion behavior is tuned to feel natural, with subtle drift and touch-responsive micro movement during viewing.</li>
+            <li>Currency switching uses staged transition timing, so flips, slides, and settle moments read clearly.</li>
+            <li>Visual direction emphasizes artistic presentation of engraving detail, motifs, and historical aesthetics.</li>
+            <li>Audio and tactile cues are calibrated to support a calm, exhibit-style browsing rhythm.</li>
+            <li>My Collection reuses the same gallery and detail presentation language while keeping user-owned images separate from the curated release dataset.</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="badge">Privacy & Collection Data</div>
+        <h2>My Collection Notes</h2>
+        <ul>
+            <li>User-imported banknote images and collection notes are stored locally in app-managed storage.</li>
+            <li>The current version does not provide account-based collection sync across devices.</li>
+            <li>Reference lookup uses text queries only; imported banknote images are not uploaded for remote image analysis.</li>
+            <li>NumisGallery does not provide built-in export, share, or print workflows for banknote imagery.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>System Requirements</h2>
+        <p class="spec">- iOS 18.0 or later</p>
+        <p class="spec">- iPhone portrait workflow optimized for immersive study presentation</p>
+    </section>
+
+    <section>
+        <h2>Need Help?</h2>
+        <p style="margin: 0;">
+            For support requests, content questions, or feedback, contact:<br>
+            Email: <a href="mailto:danjian42@gmail.com">danjian42@gmail.com</a>
+        </p>
+    </section>
+
+    <footer>
+        © 2026 NumisGallery.
+    </footer>
+</div>
+</body>
+</html>

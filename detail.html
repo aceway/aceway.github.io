@@ -196,11 +196,15 @@
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
                         
-                        <div class="mt-6 flex items-center gap-4">
+                        <div class="mt-6 flex items-center gap-4 flex-wrap">
                             <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
                                 <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
+                            <div id="legalLinks" class="hidden flex gap-2">
+                                <a id="policyLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
+                                <a id="supportLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">SUPPORT</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -439,6 +443,27 @@
 		if (appStoreLink) {
         	appStoreLink.href = targetLink;
 		}
+
+        const legalLinks = document.getElementById('legalLinks');
+        const policyLink = document.getElementById('policyLink');
+        const supportLink = document.getElementById('supportLink');
+        if (legalLinks && (app.links?.policy || app.links?.support)) {
+            legalLinks.classList.remove('hidden');
+            if (app.links.policy) {
+                policyLink.href = app.links.policy;
+                policyLink.classList.remove('hidden');
+            } else {
+                policyLink.classList.add('hidden');
+            }
+            if (app.links.support) {
+                supportLink.href = app.links.support;
+                supportLink.classList.remove('hidden');
+            } else {
+                supportLink.classList.add('hidden');
+            }
+        } else if (legalLinks) {
+            legalLinks.classList.add('hidden');
+        }
 
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);

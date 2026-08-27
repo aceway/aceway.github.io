@@ -24,7 +24,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990",
-        "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac"
+        "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac",
+        "policy": "/apps/jt-file-viewer/policy.html",
+        "support": "/apps/jt-file-viewer/support.html"
       },
       "features": [
         "Open JT files locally on macOS, iPhone, iPad, and Apple Vision Pro.",
@@ -48,7 +50,8 @@
       "knowledge": {
         "title": "The JT format (ISO 14306)",
         "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
-      }
+      },
+      "slug": "jt-file-viewer"
     },
     {
       "id": "6755721056",
@@ -64,7 +67,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/step-file-viewer/id6755721056",
-        "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056"
+        "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056",
+        "policy": "/apps/step-file-viewer/policy.html",
+        "support": "/apps/step-file-viewer/support.html"
       },
       "features": [
         "View STEP models in 3D with rotate, pan, and zoom controls using perspective projection.",
@@ -87,7 +92,8 @@
       "knowledge": {
         "title": "The STEP format (ISO 10303)",
         "content": "STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting."
-      }
+      },
+      "slug": "step-file-viewer"
     },
     {
       "id": "6748610196",
@@ -103,7 +109,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
-        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196"
+        "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
+        "policy": "/apps/3d-model-viewer/policy.html",
+        "support": "/apps/3d-model-viewer/support.html"
       },
       "features": [
         "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
@@ -126,7 +134,8 @@
       "knowledge": {
         "title": "STL,DXF,3MF,OBJ,GLB,USDZ ...",
         "content": "3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format."
-      }
+      },
+      "slug": "3d-model-viewer"
     },
     {
       "id": "6742348600",
@@ -142,7 +151,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
-        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600"
+        "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600",
+        "policy": "/apps/dxf-assistant/policy.html",
+        "support": "/apps/dxf-assistant/support.html"
       },
       "features": [
         "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
@@ -163,7 +174,8 @@
       "knowledge": {
         "title": "Viewing and exploring DXF",
         "content": "DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability."
-      }
+      },
+      "slug": "dxf-assistant"
     },
     {
       "id": "6769270457",
@@ -179,7 +191,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457",
-        "macos": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?platform=mac"
+        "macos": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?platform=mac",
+        "policy": "/apps/stl-to-step-assistant/policy.html",
+        "support": "/apps/stl-to-step-assistant/support.html"
       },
       "features": [
         "Convert STL to STEP",
@@ -197,7 +211,8 @@
       "knowledge": {
         "title": "Choose export quality as needed",
         "content": "Small: fast, lightweight STEP export for everyday use; Balanced: balance detail and file size; Check triangle reduction by quality mode; Get a simple export risk hint; See the final STEP file size after conversion."
-      }
+      },
+      "slug": "stl-to-step-assistant"
     },
     {
       "id": "6760733349",
@@ -216,7 +231,9 @@
         "screen7.jpg"
       ],
       "links": {
-        "ios": "https://apps.apple.com/us/app/id6760733349"
+        "ios": "https://apps.apple.com/us/app/id6760733349",
+        "policy": "/apps/numisgallery/policy.html",
+        "support": "/apps/numisgallery/support.html"
       },
       "features": [
         "Browse by country and denomination with directional gestures in a portrait-first gallery flow.",
@@ -235,7 +252,8 @@
       "knowledge": {
         "title": "Banknotes as Visual Artifacts",
         "content": "NumisGallery treats banknotes as objects of visual culture rather than transactional media. The app focuses on engraving detail, symbolism, portraiture, motif composition, and historical context through a gesture-first viewing flow designed for close study on iPhone."
-      }
+      },
+      "slug": "numisgallery"
     },
     {
       "id": "6757391542",
@@ -251,7 +269,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542",
-        "macos": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?platform=mac"
+        "macos": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?platform=mac",
+        "policy": "/apps/shine3d/policy.html",
+        "support": "/apps/shine3d/support.html"
       },
       "features": [
         "Broad Format Support: Seamlessly load and display a wide range of 3D formats, including STL, OBJ, GLB, 3MF, USDZ, 3DS, 3DM, PLY, XYZ, AMF, VOX, VTK, VTP, and FBX.",
@@ -271,7 +291,8 @@
       "knowledge": {
         "title": "Why Shine3D?",
         "content": "Shine3D is not just a viewer — it's a tool for expression. Whether you’re preparing client pitches, reviewing technical models, or sharing artwork with the world, this app puts professional 3D visualization in your hands."
-      }
+      },
+      "slug": "shine3d"
     },
     {
       "id": "6752116587",
@@ -286,7 +307,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
-        "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587"
+        "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587",
+        "policy": "/apps/p2v-converter/policy.html",
+        "support": "/apps/p2v-converter/support.html"
       },
       "features": [
         "Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
@@ -303,7 +326,8 @@
       "knowledge": {
         "title": "Create SVGs from your images anytime, anywhere.",
         "content": "Raster images are made of pixels and lose quality when scaled. Vectors are made of mathematical paths and remain sharp at any size. P2V uses computer vision algorithms to trace contrast edges in your images, converting static pixels into scalable geometry instantly. Works fully offline to keep your pictures private."
-      }
+      },
+      "slug": "p2v-converter"
     },
     {
       "id": "6733222153",
@@ -322,7 +346,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
-        "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153"
+        "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153",
+        "policy": "/apps/sheetcollector/policy.html",
+        "support": "/apps/sheetcollector/support.html"
       },
       "features": [
         "Import spreadsheet data from CSV, XLSX, ODS, TSV, and UTF-8 encoded JSON files.",
@@ -344,7 +370,8 @@
       "knowledge": {
         "title": "SheetCollector:xlsx ods...pdf",
         "content": "Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned."
-      }
+      },
+      "slug": "sheetcollector"
     },
     {
       "id": "6751140211",
@@ -358,7 +385,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
-        "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211"
+        "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
+        "policy": "/apps/pcai-photo-retouch/policy.html",
+        "support": "/apps/pcai-photo-retouch/support.html"
       },
       "features": [
         "Your photos never leave your device. No cloud AI, no hidden uploads.",
@@ -374,7 +403,8 @@
       "knowledge": {
         "title": "All on your device, Offline and private.",
         "content": "Most AI tools require uploading photos to a cloud server. pcAI runs entirely on your device's Neural Engine using CoreML. This means zero latency, zero privacy risk, and full functionality even when you are offline in the middle of nowhere."
-      }
+      },
+      "slug": "pcai-photo-retouch"
     },
     {
       "id": "6745748800",
@@ -391,7 +421,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
-        "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800"
+        "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800",
+        "policy": "/apps/cutoutcraft/policy.html",
+        "support": "/apps/cutoutcraft/support.html"
       },
       "features": [
         "One-Tap AI Cutout: Remove backgrounds instantly using local CoreML models. Automatically detects the subject in any image — fast, accurate, and fully offline.",
@@ -412,7 +444,8 @@
       "knowledge": {
         "title": "Semantic Segmentation",
         "content": "How does the app know what is a person and what is background? It uses a technique called Semantic Segmentation. The CoreML model analyzes the image pixel by pixel, classifying them into different categories, allowing for precise separation of the subject from its surroundings."
-      }
+      },
+      "slug": "cutoutcraft"
     },
     {
       "id": "6752704315",
@@ -429,7 +462,9 @@
       ],
       "links": {
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
-        "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315"
+        "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315",
+        "policy": "/apps/shareguard/policy.html",
+        "support": "/apps/shareguard/support.html"
       },
       "features": [
         "Auto-detect and clear sensitive Exif metadata",
@@ -448,7 +483,8 @@
       "knowledge": {
         "title": "Clear Metadata & Auto Mosaic",
         "content": "Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone. Whether you’re preparing screenshots, photos, or documents, ShareGuard provides flexible masking options and detailed export controls. Choose from color masks, mosaic-style masks, or smart detection modes that automatically recognize sensitive content."
-      }
+      },
+      "slug": "shareguard"
     }
   ]
 }

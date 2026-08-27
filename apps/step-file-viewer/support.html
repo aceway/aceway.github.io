@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" href="/assets/STEP%20File%20Viewer/icon.jpg">
+	<link rel="shortcut icon" href="/assets/STEP%20File%20Viewer/icon.jpg" media="(prefers-color-scheme: light)" />
+	<link rel="shortcut icon" href="/assets/STEP%20File%20Viewer/icon.jpg" media="(prefers-color-scheme: dark)"/>
+	<link rel="icon" type="image/png" href="/assets/STEP%20File%20Viewer/icon.jpg">
+    <title>Support - STEP File Viewer</title>
+    <style>
+        :root {
+            --accent-color: #007AFF; /* 蓝色，代表专业与技术 */
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --border-radius: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --card-bg: #1c1c1e;
+                --text-primary: #f5f5f7;
+                --text-secondary: #86868b;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            /* 确保在 macOS Sheet 中内容能撑开 */
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background-image: url('/assets/STEP%20File%20Viewer/icon.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .purpose-tag {
+            display: inline-block;
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 8px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .tech-specs {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .tech-specs div {
+            margin-bottom: 6px;
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            padding-bottom: 30px;
+        }
+    </style>
+    <style>:root { --app-icon: url("/assets/STEP%20File%20Viewer/icon.jpg"); }</style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="https://apps.apple.com/us/app/id6755721056"><div class="app-icon"></div></a>
+        <h1><a href="https://apps.apple.com/us/app/id6755721056">STEP File Viewer</a></h1>
+        <div class="purpose-tag">Local • Private • Professional</div>
+    </header>
+
+    <section>
+        <h2>Purpose</h2>
+        <p><a href="https://apps.apple.com/us/app/id6755721056">STEP File Viewer</a> is a lightweight 3D model tool, no registration, no uploads, no internet required. Everything works <strong>offline, locally, and privately</strong> on your device.</p>
+    </section>
+
+    <section>
+        <h2>Key Features</h2>
+        <ul class="feature-list">
+            <li><strong>Import:</strong> STL, OBJ, 3MF, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and FBX</li>
+            <li><strong>Export:</strong> STL, OBJ, GLB, USDZ, and GLTF</li>
+            <li><strong>Capture:</strong> Model screenshots for easy export or sharing</li>
+            <li><strong>Edit:</strong> Move, rotate, scale, delete, and undo tools for model objects</li>
+            <li><strong>Pure:</strong> No ads. No tracking. No data collection.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Technical Specifications</h2>
+        <div class="tech-specs">
+            <div>• Requires iOS 16, macOS 12 or later.</div>
+            <div>• Optimized for high performance and resource efficiency.</div>
+            <div>• Complete data privacy with zero network requirements.</div>
+        </div>
+    </section>
+
+    <section class="contact-box">
+        <h2>Support & Contact</h2>
+        <p>Have questions or need support?</p>
+        <p>
+            <a href="mailto:danjian42@gmail.com" class="contact-link">danjian42@gmail.com</a><br>
+            <a href="https://x.com/aceway2024" class="contact-link">X.com: @aceway2024</a>
+        </p>
+    </section>
+
+    <footer>
+        &copy; 2025-2026. Built for the 3D Community.
+    </footer>
+</div>
+
+</body>
+</html>

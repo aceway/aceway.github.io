@@ -1,0 +1,135 @@
+{
+  "domain": "https://apps.h53d.xyz",
+  "apps": [
+    {
+      "slug": "jt-file-viewer",
+      "name": "JT File Viewer",
+      "id": "6786113990",
+      "source": "JTFileViewerPolicySupport",
+      "assetDir": "JT File Viewer",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/l3d"
+    },
+    {
+      "slug": "step-file-viewer",
+      "name": "STEP File Viewer",
+      "id": "6755721056",
+      "source": "STEPFileViewerPolicySupport",
+      "assetDir": "STEP File Viewer",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/step"
+    },
+    {
+      "slug": "3d-model-viewer",
+      "name": "3D Model Viewer",
+      "id": "6748610196",
+      "source": "3DModelViewerPolicySupport",
+      "assetDir": "3D Model Viewer",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/3dc"
+    },
+    {
+      "slug": "dxf-assistant",
+      "name": "DXF Assistant",
+      "id": "6742348600",
+      "source": "DXFAssistantPolicySupport",
+      "assetDir": "DXF Assistant",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/dxf"
+    },
+    {
+      "slug": "stl-to-step-assistant",
+      "name": "STL to STEP Assistant",
+      "id": "6769270457",
+      "source": "STL2STEPAssistantPolicySupport",
+      "assetDir": "STL to STEP Assistant",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/s2s"
+    },
+    {
+      "slug": "numisgallery",
+      "name": "NumisGallery",
+      "id": "6760733349",
+      "source": "NumisGalleryPolicySupport",
+      "assetDir": "NumisGallery",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/ng"
+    },
+    {
+      "slug": "shine3d",
+      "name": "Shine3D",
+      "id": "6757391542",
+      "source": "Shine3DPolicySupport",
+      "assetDir": "Shine3D",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/s3d"
+    },
+    {
+      "slug": "p2v-converter",
+      "name": "P2V Converter",
+      "id": "6752116587",
+      "source": "P2VConverterPolicySupport",
+      "assetDir": "P2V Converter",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/p2v"
+    },
+    {
+      "slug": "sheetcollector",
+      "name": "SheetCollector",
+      "id": "6733222153",
+      "source": "sheetCollectorPolicySupport",
+      "assetDir": "SheetCollector",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/eTable"
+    },
+    {
+      "slug": "pcai-photo-retouch",
+      "name": "pcAI Photo Retouch",
+      "id": "6751140211",
+      "source": "pcAIPhoneRetouchPolicySupport",
+      "assetDir": "pcAI Photo Retouch",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/pcAI-Res"
+    },
+    {
+      "slug": "cutoutcraft",
+      "name": "CutoutCraft",
+      "id": "6745748800",
+      "source": "CutoutCraftPolicySupport",
+      "assetDir": "CutoutCraft",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/aiimg"
+    },
+    {
+      "slug": "shareguard",
+      "name": "ShareGuard",
+      "id": "6752704315",
+      "source": "ShareGuardPolicySupport",
+      "assetDir": "ShareGuard",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/sg"
+    },
+    {
+      "slug": "step-reviewer",
+      "name": "STEP Reviewer",
+      "id": "6791591460",
+      "source": "STEPReviewerPolicySupport",
+      "assetDir": "STEP Reviewer",
+      "icon": "icon.jpg",
+      "listed": false,
+      "legacyBase": "https://h53d.github.io/sr"
+    }
+  ]
+}
