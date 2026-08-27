@@ -1,0 +1,122 @@
+# Wei Ai · H53D — Privacy-First Apple Apps
+
+> A collection of utility tools built with SwiftUI & CoreML. All apps process data on device — no ads, no tracking, no uploads.
+
+Site: https://apps.h53d.xyz/
+
+## Apps
+
+### ForgeShape
+- Detail: https://apps.h53d.xyz/apps/forgeshape/detail.html
+- App Store: https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/forgeshape/policy.html
+- Support: https://apps.h53d.xyz/apps/forgeshape/support.html
+- ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.
+- Background: A slicer needs a closed, consistently oriented triangle mesh. Open edges, inverted normals, thin walls, and overhangs are why a model looks fine on screen and still fails to print. STEP and IGES carry exact CAD surfaces; STL, OBJ, GLB, and 3MF are already tessellated. ForgeShape checks that evidence on device, repairs what this build can repair, and exports STL or 3MF for the slicer — or converts formats, including optional Reverse to CAD. It is not a slicer and does not generate G-code.
+
+### STEP Reviewer
+- Detail: https://apps.h53d.xyz/apps/step-reviewer/detail.html
+- App Store: https://apps.apple.com/us/app/id6791591460?pt=129278145&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/step-reviewer/policy.html
+- Support: https://apps.h53d.xyz/apps/step-reviewer/support.html
+- Built for CAD review: STEP files in the hundreds of MB and faceted models above 1 million triangles, plus measurement, cross sections, PMI, and mesh export. Opens STEP and IGES on Mac, iPhone, iPad, and Apple Vision — on device, with no uploads.
+- Background: Engineering STEP files are often hundreds of megabytes, with tessellations that exceed a million triangles. STEP Reviewer is built for that class of review: OCCT import on device, assembly structure, measurement and PMI on iOS and macOS, sections, capture, and tessellated export. It is not a lightweight STEP previewer and not a CAD editor — source files stay local.
+
+### JT File Viewer
+- Detail: https://apps.h53d.xyz/apps/jt-file-viewer/detail.html
+- App Store: https://apps.apple.com/us/app/jt-file-viewer/id6786113990?pt=129278145&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/jt-file-viewer/policy.html
+- Support: https://apps.h53d.xyz/apps/jt-file-viewer/support.html
+- JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.
+- Background: JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens.
+
+### STEP File Viewer
+- Detail: https://apps.h53d.xyz/apps/step-file-viewer/detail.html
+- App Store: https://apps.apple.com/us/app/step-file-viewer/id6755721056?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/step-file-viewer/policy.html
+- Support: https://apps.h53d.xyz/apps/step-file-viewer/support.html
+- STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone. Visualize STEP models from every angle with projected, section, and exploded views—even on your iPhone.
+- Background: STEP is a promise of precision wrapped in a plain text shell.  A neutral CAD format born to keep geometry honest across software borders. It carries solids, surfaces, assemblies—clean, structured, and painfully strict. No flair, no shortcuts, just geometry described the way engineers wish the world behaved.  It isn’t perfect. Files get heavy, exporters cut corners, and interpretations drift.  But when you need 3D data that survives the jump from one system to another, STEP is still the steady, quietly reliable workhorse everyone ends up trusting.
+
+### 3D Model Viewer
+- Detail: https://apps.h53d.xyz/apps/3d-model-viewer/detail.html
+- App Store: https://apps.apple.com/us/app/3d-model-viewer/id6748610196?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/3d-model-viewer/policy.html
+- Support: https://apps.h53d.xyz/apps/3d-model-viewer/support.html
+- 3D Model Viewer & Converter is a lightweight, user-friendly tool for managing 3D models. Helps you convert models obtained from SAM 3D. It lets you open, view, and convert a wide range of 3D formats—anytime, anywhere, without needing an internet connection.
+- Background: 3D files are essentially lists of vertices and faces. This app efficiently renders complex 3D geometries across many formats on mobile devices, bridging the gap between desktop modeling software and mobile visualization. Currently, AI (such as the SAM 3D large model) can easily generate 3D models of objects from images, but the output format may not be what you expect. This app helps you easily convert them to your desired format.
+
+### DXF Assistant
+- Detail: https://apps.h53d.xyz/apps/dxf-assistant/detail.html
+- App Store: https://apps.apple.com/us/app/dxf-assistant/id6742348600?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/dxf-assistant/policy.html
+- Support: https://apps.h53d.xyz/apps/dxf-assistant/support.html
+- DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.
+- Background: DXF (Drawing Exchange Format) is the industry standard for CAD data. Unlike raster images, DXF files contain precise mathematical vector data. This app parses these raw vectors and renders them using a custom 2D graphics engine for infinite zoom capability.
+
+### STL to STEP Assistant
+- Detail: https://apps.h53d.xyz/apps/stl-to-step-assistant/detail.html
+- App Store: https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/stl-to-step-assistant/policy.html
+- Support: https://apps.h53d.xyz/apps/stl-to-step-assistant/support.html
+- STL to STEP Assistant is a focused local 3D model tool for converting mesh-based models into STEP files for CAD workflows.
+- Background: Small: fast, lightweight STEP export for everyday use; Balanced: balance detail and file size; Check triangle reduction by quality mode; Get a simple export risk hint; See the final STEP file size after conversion.
+
+### NumisGallery
+- Detail: https://apps.h53d.xyz/apps/numisgallery/detail.html
+- App Store: https://apps.apple.com/us/app/id6760733349?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/numisgallery/policy.html
+- Support: https://apps.h53d.xyz/apps/numisgallery/support.html
+- NumisGallery is a museum-style banknote viewer for people who enjoy currency design, visual culture, and history.
+- Background: NumisGallery treats banknotes as objects of visual culture rather than transactional media. The app focuses on engraving detail, symbolism, portraiture, motif composition, and historical context through a gesture-first viewing flow designed for close study on iPhone.
+
+### Shine3D
+- Detail: https://apps.h53d.xyz/apps/shine3d/detail.html
+- App Store: https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/shine3d/policy.html
+- Support: https://apps.h53d.xyz/apps/shine3d/support.html
+- More than a 3D viewer. Show your models beautifully. Your models don't just exist—they shine.
+- Background: Shine3D is not just a viewer — it's a tool for expression. Whether you’re preparing client pitches, reviewing technical models, or sharing artwork with the world, this app puts professional 3D visualization in your hands.
+
+### P2V Converter
+- Detail: https://apps.h53d.xyz/apps/p2v-converter/detail.html
+- App Store: https://apps.apple.com/us/app/p2v-converter/id6752116587?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/p2v-converter/policy.html
+- Support: https://apps.h53d.xyz/apps/p2v-converter/support.html
+- Convert your images into vector graphics effortlessly, easily transform pixel art into scalable vector graphics in just moments.
+- Background: Raster images are made of pixels and lose quality when scaled. Vectors are made of mathematical paths and remain sharp at any size. P2V uses computer vision algorithms to trace contrast edges in your images, converting static pixels into scalable geometry instantly. Works fully offline to keep your pictures private.
+
+### SheetCollector
+- Detail: https://apps.h53d.xyz/apps/sheetcollector/detail.html
+- App Store: https://apps.apple.com/us/app/sheetcollector/id6733222153?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/sheetcollector/policy.html
+- Support: https://apps.h53d.xyz/apps/sheetcollector/support.html
+- Easily import tables from various files and images. Keep everything organized and export anytime. Generate polished PDF or JPEG documents with your own style.
+- Background: Transforming a physical paper into a flat digital image requires complex mathematics. The app uses the Vision framework to detect the four corners of a document in real-time, then applies a homographic transformation to rectify the perspective, making the scan look like it was flatbed-scanned.
+
+### pcAI Photo Retouch
+- Detail: https://apps.h53d.xyz/apps/pcai-photo-retouch/detail.html
+- App Store: https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/pcai-photo-retouch/policy.html
+- Support: https://apps.h53d.xyz/apps/pcai-photo-retouch/support.html
+- Want to make your old photos clear again?  Want to turn photos into sketches, oil paintings, or even Van Gogh’s Starry Night style?  AI can do it... But you don’t want to upload your photos to some unknown cloud!  pcAI lets you process images directly on your own device — with local AI, not the cloud.
+- Background: Most AI tools require uploading photos to a cloud server. pcAI runs entirely on your device's Neural Engine using CoreML. This means zero latency, zero privacy risk, and full functionality even when you are offline in the middle of nowhere.
+
+### CutoutCraft
+- Detail: https://apps.h53d.xyz/apps/cutoutcraft/detail.html
+- App Store: https://apps.apple.com/us/app/cutoutcraft/id6745748800?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/cutoutcraft/policy.html
+- Support: https://apps.h53d.xyz/apps/cutoutcraft/support.html
+- AI CutoutCraft is a smart image editing tool powered entirely by on-device AI. No registration, no uploads. A few taps — remove backgrounds, restyle images, create layouts, and export instantly.
+- Background: How does the app know what is a person and what is background? It uses a technique called Semantic Segmentation. The CoreML model analyzes the image pixel by pixel, classifying them into different categories, allowing for precise separation of the subject from its surroundings.
+
+### ShareGuard
+- Detail: https://apps.h53d.xyz/apps/shareguard/detail.html
+- App Store: https://apps.apple.com/us/app/shareguard/id6752704315?pt=127352688&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/shareguard/policy.html
+- Support: https://apps.h53d.xyz/apps/shareguard/support.html
+- ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing. It lets you mask, or apply mosaic to sensitive areas precisely, so you can share images easily and confidently.
+- Background: Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone. Whether you’re preparing screenshots, photos, or documents, ShareGuard provides flexible masking options and detailed export controls. Choose from color masks, mosaic-style masks, or smart detection modes that automatically recognize sensitive content.
+
+## Other pages
+- Sitemap: https://apps.h53d.xyz/sitemap.xml

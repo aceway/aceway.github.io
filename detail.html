@@ -19,7 +19,6 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
   <script>
     tailwind.config = {
       theme: {
@@ -153,6 +152,13 @@
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
+  <noscript>
+    <style>
+      #page-wrapper { opacity: 1 !important; }
+      #mainContent { display: block !important; }
+      #loader { display: none !important; }
+    </style>
+  </noscript>
 </head>
 <body class="antialiased font-sans selection:bg-neonBlue selection:text-white">
 
@@ -381,8 +387,8 @@
     function renderApp(app) {
         const safeName = encodeURIComponent(app.name);
         
-        // --- 1. update page title dynamic
-        document.title = `${app.name} | Wei Ai Portfolio`;
+        // --- 1. update page title dynamic (keep in sync with the prerendered <title> from scripts/build-legal.js)
+        document.title = app.promotional ? `${app.name} — ${app.promotional} | Wei Ai` : `${app.name} | Wei Ai Portfolio`;
 
         const canonicalHref = `https://apps.h53d.xyz/apps/${app.slug}/detail.html`;
         let canonical = document.querySelector('link[rel="canonical"]');
@@ -506,6 +512,7 @@
         loadFirstSlide();
 
         const featureGrid = document.getElementById('featureGrid');
+        featureGrid.innerHTML = '';
         if (app.features && app.features.length > 0) {
             app.features.forEach(feat => {
                 const div = document.createElement('div');
@@ -532,6 +539,7 @@
         }
 
         const audContainer = document.getElementById('audienceContainer');
+        audContainer.innerHTML = '';
         if (app.audience && app.audience.length > 0) {
             app.audience.forEach(tag => {
                 const span = document.createElement('span');

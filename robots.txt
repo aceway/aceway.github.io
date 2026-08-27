@@ -1,10 +1,7 @@
 User-agent: *
 Allow: /
 
-Allow: /assets/
-
-# Disallow: /admin/
 Disallow: /admin/
-Disallow: .gitignore
+Disallow: /.gitignore
 
 Sitemap: https://apps.h53d.xyz/sitemap.xml
