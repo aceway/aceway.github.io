@@ -128,7 +128,7 @@
       "source": "STEPReviewerPolicySupport",
       "assetDir": "STEP Reviewer",
       "icon": "icon.jpg",
-      "listed": false,
+      "listed": true,
       "legacyBase": "https://h53d.github.io/sr"
     }
   ]

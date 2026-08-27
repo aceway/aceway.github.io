@@ -10,5 +10,6 @@ window.SLUG_BY_ID = {
   "6733222153": "sheetcollector",
   "6751140211": "pcai-photo-retouch",
   "6745748800": "cutoutcraft",
-  "6752704315": "shareguard"
+  "6752704315": "shareguard",
+  "6791591460": "step-reviewer"
 };

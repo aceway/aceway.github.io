@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>App Details · Wei Ai Portfolio</title>
+  <meta name="description" content="View detailed features, technical insights, and design philosophy of this application. Built by Wei Ai using SwiftUI & CoreML.">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="App Details · Wei Ai">
+  <meta property="og:description" content="Discover the technology and design behind this iOS application.">
+  <meta property="og:image" content="/assets/social-preview.jpg">
+  <meta name="twitter:title" content="App Details · Wei Ai">
+  <meta name="twitter:image" content="/assets/social-preview.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: { 
+             sciDark: '#0f172a',
+             sciLight: '#f8fafc',
+             neonBlue: '#3b82f6',
+             neonPurple: '#a855f7',
+             neonTeal: '#14b8a6',
+          },
+          animation: {
+            'blob': 'blob 7s infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-18BJ8L26CB"></script>
+  <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-18BJ8L26CB');
+  </script>
+  <style>
+    html { overflow-y: scroll; }
+
+    body { 
+      background-color: #f8fafc; 
+      color: #1e293b; 
+      overflow-x: hidden; 
+    }
+    
+    #page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Backgrounds */
+    .bg-grid-pattern {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 40px 40px; opacity: 0.4; z-index: -2; pointer-events: none;
+    }
+    .ambient-light {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        overflow: hidden; z-index: -1; pointer-events: none;
+    }
+    .blob { position: absolute; filter: blur(80px); opacity: 0.6; animation: blob 10s infinite ease-in-out; }
+    .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #a855f7; }
+    .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #3b82f6; animation-delay: 2s; }
+
+    /* Glass UI */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        border-radius: 24px;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 16px; padding: 16px; transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: #3b82f6;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.15);
+    }
+
+    .knowledge-gradient {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        border-left: 4px solid #3b82f6;
+    }
+
+    .app-icon-lg { 
+      width: 120px; height: 120px; border-radius: 28px; 
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15); 
+      overflow: hidden; background: #f1f5f9; position: relative; flex-shrink: 0;
+    }
+
+    .phone-mock-static { 
+      width: 280px; height: 580px; border-radius: 48px; 
+      background: #0f172a; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.3); 
+      position: relative; padding: 12px; border: 4px solid #334155; margin: 0 auto;
+    }
+    .phone-screen { width: 100%; height: 100%; background: #000; border-radius: 36px; overflow: hidden; position: relative; }
+    
+    .slider-btn {
+        position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px;
+        background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s;
+        z-index: 30; opacity: 0; pointer-events: none;
+    }
+    .phone-mock-static:hover .slider-btn.active { opacity: 1; pointer-events: auto; }
+    .slider-btn:hover { background: rgba(59, 130, 246, 0.8); border-color: transparent; scale: 1.1; }
+    .slider-btn.left { left: 10px; }
+    .slider-btn.right { right: 10px; }
+    .slider-dots { position: absolute; bottom: 20px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 30; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+    .dot:hover { transform: scale(1.2); background: rgba(255,255,255,0.6); }
+    .dot.active { background: #3b82f6; width: 20px; border-radius: 100px; }
+
+    .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="antialiased font-sans selection:bg-neonBlue selection:text-white">
+
+  <div class="bg-grid-pattern"></div>
+  <div class="ambient-light">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+  </div>
+
+  <div id="page-wrapper" style="opacity: 0;">
+
+      <header class="sticky top-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="/index.html" id="backBtn" class="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group">
+            <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
+          </a>
+          <div class="hidden sm:block text-[10px] font-mono text-slate-400">
+            <span class="text-blue-500">:)</span>
+          </div>
+        </div>
+      </header>
+
+      <div id="loader" class="fixed inset-0 flex items-center justify-center z-40 bg-slate-50/80 backdrop-blur">
+          <div class="text-center">
+              <div class="spinner mb-4"></div>
+              <div class="font-mono text-xs text-slate-500">INITIALIZING DATA...</div>
+          </div>
+      </div>
+
+      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow hidden">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Column -->
+            <div class="lg:col-span-7 space-y-10">
+                <div class="flex gap-6 items-start">
+                    <div id="detailIcon" class="app-icon-lg"></div>
+                    <div class="flex-1 pt-2">
+                        <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
+                        <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
+                        <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
+                        
+                        <div class="mt-6 flex items-center gap-4 flex-wrap">
+                            <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+                                <!-- h-10 about 40px，detail page size -->
+                                <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
+                            </a>
+                            <div id="legalLinks" class="hidden flex gap-2">
+                                <a id="policyLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
+                                <a id="supportLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">SUPPORT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-px bg-slate-200 w-full"></div>
+
+                <div id="knowledgeSection" class="glass-panel p-8 knowledge-gradient relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-400 rounded-full opacity-10 blur-2xl group-hover:opacity-20 transition-opacity"></div>
+                    <h3 class="text-sm font-bold text-blue-600 font-mono mb-3 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        DOMAIN INSIGHT
+                    </h3>
+                    <h2 id="knowledgeTitle" class="text-xl font-bold text-slate-800 mb-3"></h2>
+                    <p id="knowledgeContent" class="text-slate-600 leading-relaxed text-sm text-justify"></p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-teal-400 rounded-full"></span>
+                        CORE FEATURES
+                    </h3>
+                    <div id="featureGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-purple-400 rounded-full"></span>
+                        DESIGNED FOR
+                    </h3>
+                    <div id="audienceContainer" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="lg:col-span-5 relative">
+                <div class="sticky top-24">
+                    <div class="phone-mock-static">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                        <div class="phone-screen relative bg-black overflow-hidden">
+                            <div id="sliderContainer" class="absolute inset-0 w-full h-full"></div>
+                            <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                            <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                            <div id="dotsContainer" class="slider-dots z-20"></div>
+                            <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
+                                <span class="text-4xl mb-2">📱</span>
+                                <span class="text-sm font-mono">NO PREVIEW</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
+                </div>
+                <div class="text-center mt-6">
+					<a id="appStoreLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+						Download on the App Store
+                    </a>
+                </div>
+            </div>
+
+        </div>
+      </main>
+
+      <footer class="border-t border-slate-200 mt-20 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
+          <a href="#" id="footerHomeLink" class="hover:text-blue-500 transition-colors">HOME</a> © 2025-2026 WEI AI
+        </div>
+      </footer>
+
+  </div>
+
+<script src="/legal/slugs.js"></script>
+<script>
+    const SLUG_BY_ID = window.SLUG_BY_ID || {};
+    const wrapper = document.getElementById('page-wrapper');
+    const loader = document.getElementById('loader');
+    const main = document.getElementById('mainContent');
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryId = urlParams.get('id');
+    const pathSlugMatch = window.location.pathname.match(/\/apps\/([^/]+)\/detail\.html$/);
+    const pathSlug = pathSlugMatch ? decodeURIComponent(pathSlugMatch[1]) : null;
+
+    const shouldRedirect = !pathSlug && queryId && SLUG_BY_ID[queryId];
+    if (shouldRedirect) {
+        const pending = sessionStorage.getItem('page-transition');
+        if (pending) sessionStorage.setItem('page-transition', pending);
+        window.location.replace(`/apps/${SLUG_BY_ID[queryId]}/detail.html`);
+    }
+
+    const navEntry = performance.getEntriesByType("navigation")[0];
+    const isReload = navEntry && navEntry.type === 'reload';
+
+    let transitionType = sessionStorage.getItem('page-transition');
+    if (isReload) {
+        transitionType = null;
+        sessionStorage.removeItem('page-transition');
+    }
+
+    if (!shouldRedirect) {
+        if (transitionType === 'forward') {
+            gsap.set(wrapper, { x: window.innerWidth * 0.5, opacity: 0 });
+        } else {
+            gsap.set(wrapper, { x: 0, opacity: 0 });
+        }
+    }
+
+    // --- BF Cache (for back button) ---
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            gsap.set(wrapper, { x: 0, opacity: 1, clearProps: "all" });
+            loader.style.display = 'none';
+            main.classList.remove('hidden');
+        }
+    });
+
+    const detectOS = () => {
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('mac')) return 'mac';
+        if (/iphone|ipad|ipod/.test(ua)) return 'ios';
+        return 'other';
+    };
+    const currentOS = detectOS();
+
+    let appleIconIOS = "";
+    let appleIconMac = "";
+
+    const sliderContainer = document.getElementById('sliderContainer');
+    const screenPlaceholder = document.getElementById('screenPlaceholder');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    let currentSlides = [];
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    // --- init ---
+    async function initDetail() {
+        if (shouldRedirect) return;
+        if (!pathSlug && !queryId) { goBack(); return; }
+        try {
+            const response = await fetch(`/assets/apps.json?t=${new Date().getTime()}`);
+            if (!response.ok) throw new Error("Network error");
+            const data = await response.json();
+            
+            if (data.ui) {
+                if(data.ui.appleIconIOS) appleIconIOS = data.ui.appleIconIOS;
+                if(data.ui.appleIconMac) appleIconMac = data.ui.appleIconMac;
+            }
+
+            const appsList = Array.isArray(data) ? data : (data.apps || []);
+            let app = pathSlug
+                ? appsList.find(a => a.slug === pathSlug)
+                : appsList.find(a => a.id === queryId);
+
+            if (!app) { goBack(); return; }
+
+            if (!pathSlug && app.slug) {
+                if (transitionType) sessionStorage.setItem('page-transition', transitionType);
+                window.location.replace(`/apps/${app.slug}/detail.html`);
+                return;
+            }
+
+            sessionStorage.removeItem('page-transition');
+            renderApp(app);
+
+        } catch (e) {
+            console.error(e);
+            loader.style.display = 'none';
+            main.classList.remove('hidden');
+            main.innerHTML = `<div class="text-center py-20 text-red-500 font-mono">ERROR: ${e.message}</div>`;
+            gsap.to(wrapper, { opacity: 1 });
+        }
+    }
+
+    function renderApp(app) {
+        const safeName = encodeURIComponent(app.name);
+        
+        // --- 1. update page title dynamic
+        document.title = `${app.name} | Wei Ai Portfolio`;
+
+        const canonicalHref = `https://apps.h53d.xyz/apps/${app.slug}/detail.html`;
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+            canonical = document.createElement('link');
+            canonical.rel = 'canonical';
+            document.head.appendChild(canonical);
+        }
+        canonical.href = canonicalHref;
+
+        // --- 2. Meta Description ---
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute("content", `${app.name}: ${app.desc}. Built with local AI technology.`);
+        }
+
+        // --- 3. (SoftwareApplication Schema) ---
+        const schemaId = 'dynamic-schema';
+        let script = document.getElementById(schemaId);
+        if (!script) {
+            script = document.createElement('script');
+            script.id = schemaId;
+            script.type = 'application/ld+json';
+            document.head.appendChild(script);
+        }
+        
+        const schemaData = {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": app.name,
+            "operatingSystem": "iOS, iPadOS, macOS",
+            "applicationCategory": "UtilitiesApplication",
+            "url": canonicalHref,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": app.desc,
+            "author": {
+                "@type": "Person",
+                "name": "Wei Ai"
+            }
+        };
+        if (app.links?.policy) schemaData.privacyPolicy = `https://apps.h53d.xyz${app.links.policy}`;
+        if (app.links?.support) schemaData.softwareHelp = `https://apps.h53d.xyz${app.links.support}`;
+        script.text = JSON.stringify(schemaData);
+
+        //const safeName = encodeURIComponent(app.name);
+        //document.title = `${app.name} - Detail`;
+
+        document.getElementById('detailTitle').textContent = app.name;
+        document.getElementById('detailDesc').textContent = app.desc;
+        document.getElementById('detailPromo').textContent = app.promotional || "FEATURED";
+
+        const iconPath = app.icon ? `/assets/${safeName}/${app.icon}` : null;
+        const iconDiv = document.getElementById('detailIcon');
+        if (iconPath) {
+            iconDiv.innerHTML = `<img src="${iconPath}" class="w-full h-full object-cover" alt="${app.name}">`;
+        } else {
+            iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-300">${app.name.substring(0,2)}</div>`;
+        }
+
+        const linkEl = document.getElementById('detailLink');
+        const badgeEl = document.getElementById('appleBadgeIcon');
+        
+        let targetLink = `https://apps.apple.com/us/app/id${app.id}`;
+        let targetIcon = appleIconIOS;
+
+        if (app.links) {
+            if (currentOS === 'mac' && app.links.macos) {
+                targetLink = app.links.macos;
+                if(appleIconMac) targetIcon = appleIconMac;
+            } else if (currentOS === 'ios' && app.links.ios) {
+                targetLink = app.links.ios;
+            } else {
+                targetLink = app.links.ios || app.links.macos;
+            }
+        }
+        
+        linkEl.href = targetLink;
+        if (targetIcon) {
+            badgeEl.src = `/assets/${targetIcon}`;
+            badgeEl.style.display = 'block';
+        } else {
+            badgeEl.style.display = 'none';
+        }
+
+        const appStoreLink = document.getElementById('appStoreLink');
+		if (appStoreLink) {
+        	appStoreLink.href = targetLink;
+		}
+
+        const legalLinks = document.getElementById('legalLinks');
+        const policyLink = document.getElementById('policyLink');
+        const supportLink = document.getElementById('supportLink');
+        if (legalLinks && (app.links?.policy || app.links?.support)) {
+            legalLinks.classList.remove('hidden');
+            if (app.links.policy) {
+                policyLink.href = app.links.policy;
+                policyLink.classList.remove('hidden');
+            } else {
+                policyLink.classList.add('hidden');
+            }
+            if (app.links.support) {
+                supportLink.href = app.links.support;
+                supportLink.classList.remove('hidden');
+            } else {
+                supportLink.classList.add('hidden');
+            }
+        } else if (legalLinks) {
+            legalLinks.classList.add('hidden');
+        }
+
+        if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
+            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`);
+        } else {
+            currentSlides = [];
+        }
+        currentIndex = 0;
+        loadFirstSlide();
+
+        const featureGrid = document.getElementById('featureGrid');
+        if (app.features && app.features.length > 0) {
+            app.features.forEach(feat => {
+                const div = document.createElement('div');
+                div.className = 'feature-card flex gap-3 items-start';
+                div.innerHTML = `
+                    <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <span class="text-sm text-slate-700 leading-relaxed">${feat}</span>
+                `;
+                featureGrid.appendChild(div);
+            });
+        } else {
+            featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
+        }
+
+        const kSection = document.getElementById('knowledgeSection');
+        if (app.knowledge && app.knowledge.title) {
+            document.getElementById('knowledgeTitle').textContent = app.knowledge.title;
+            document.getElementById('knowledgeContent').textContent = app.knowledge.content;
+            kSection.style.display = 'block';
+        } else {
+            kSection.style.display = 'none';
+        }
+
+        const audContainer = document.getElementById('audienceContainer');
+        if (app.audience && app.audience.length > 0) {
+            app.audience.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium';
+                span.textContent = tag;
+                audContainer.appendChild(span);
+            });
+        } else {
+            audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
+        }
+
+        // --- 4. animation ---
+        document.getElementById('loader').style.display = 'none';
+        main.classList.remove('hidden');
+        
+        if (transitionType === 'forward') {
+            // Slide In
+            gsap.to(wrapper, { 
+                x: 0, 
+                opacity: 1, 
+                duration: 0.5, 
+                ease: "back.out(0.8)", 
+                clearProps: "transform"
+            });
+        } else {
+            // Fade In - for Refresh
+            gsap.to(wrapper, { 
+                opacity: 1, 
+                duration: 0.6, 
+                ease: "power2.out", 
+                clearProps: "all" 
+            });
+        }
+    }
+
+    // --- Slider Logic ---
+    function loadFirstSlide() {
+        sliderContainer.innerHTML = '';
+        if (currentSlides.length === 0) {
+            screenPlaceholder.style.display = 'flex';
+            updateControls();
+            return;
+        }
+        screenPlaceholder.style.display = 'none';
+        const img = document.createElement('img');
+        img.src = currentSlides[currentIndex];
+        img.className = "absolute top-0 left-0 w-full h-full object-cover";
+        sliderContainer.appendChild(img);
+        updateControls();
+    }
+
+    function transitionSlide(direction) {
+        if (isAnimating || currentSlides.length <= 1) return;
+        isAnimating = true;
+        const nextIndex = direction === 'next' ? (currentIndex + 1) % currentSlides.length : (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[nextIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        sliderContainer.appendChild(nextImg);
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
+        gsap.to(nextImg, { x: '0%', duration: 0.4, ease: "power2.inOut", onComplete: () => { if(currentImg) currentImg.remove(); currentIndex = nextIndex; isAnimating = false; updateControls(); } });
+    }
+
+    function jumpToSlide(targetIndex) {
+        if (isAnimating || targetIndex === currentIndex) return;
+        const direction = targetIndex > currentIndex ? 'next' : 'prev';
+        isAnimating = true;
+        const currentImg = sliderContainer.querySelector('img');
+        const nextImg = document.createElement('img');
+        nextImg.src = currentSlides[targetIndex];
+        nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
+        const startX = direction === 'next' ? '100%' : '-100%';
+        gsap.set(nextImg, { x: startX });
+        sliderContainer.appendChild(nextImg);
+        gsap.to(currentImg, { x: direction === 'next' ? '-100%' : '100%', duration: 0.4, ease: "power2.inOut" });
+        gsap.to(nextImg, { x: '0%', duration: 0.4, ease: "power2.inOut", onComplete: () => { if(currentImg) currentImg.remove(); currentIndex = targetIndex; isAnimating = false; updateControls(); } });
+    }
+
+    function updateControls() {
+        dotsContainer.innerHTML = '';
+        if (currentSlides.length <= 1) {
+            prevBtn.classList.remove('active');
+            nextBtn.classList.remove('active');
+        } else {
+            prevBtn.classList.add('active');
+            nextBtn.classList.add('active');
+            currentSlides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
+                dot.addEventListener('click', (e) => { e.stopPropagation(); jumpToSlide(i); });
+                dotsContainer.appendChild(dot);
+            });
+        }
+    }
+
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('next'); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); transitionSlide('prev'); });
+    
+    function goBack(e) {
+        if(e) e.preventDefault();
+        sessionStorage.setItem('page-transition', 'back');
+        gsap.to('#page-wrapper', {
+            x: window.innerWidth * 0.5,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => { window.location.href = '/index.html'; }
+        });
+    }
+
+    document.getElementById('backBtn').addEventListener('click', goBack);
+    document.getElementById('footerHomeLink').addEventListener('click', goBack);
+
+    initDetail();
+</script>
+
+</body>
+</html>

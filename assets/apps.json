@@ -10,6 +10,52 @@
   },
   "apps": [
     {
+      "id": "6791591460",
+      "name": "STEP Reviewer",
+      "desc": "STEP Reviewer is a native Apple app for opening and reviewing STEP and IGES CAD files on macOS, iPhone, iPad, and Apple Vision. Inspect assemblies, measure geometry, create sections, capture reviews, and export tessellated meshes without uploading files.",
+      "promotional": "On-device STEP and IGES CAD review.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/id6791591460",
+        "macos": "https://apps.apple.com/us/app/id6791591460?platform=mac",
+        "policy": "/apps/step-reviewer/policy.html",
+        "support": "/apps/step-reviewer/support.html",
+        "detail": "/apps/step-reviewer/detail.html"
+      },
+      "features": [
+        "Open STEP (.step, .stp) and IGES (.iges, .igs) files locally on macOS, iPhone, iPad, and Apple Vision.",
+        "Browse assembly structure, focus components, and show or hide nodes.",
+        "Rotate, pan, zoom, reset, and match source orientation (X-Up, Y-Up, or Z-Up).",
+        "Inspect names, colors, materials, and supported PMI/GD&T.",
+        "Measure points, edges, faces, distances, angles, radii, and diameters on iOS and macOS.",
+        "Create XY, XZ, or YZ cross sections and reverse the retained half.",
+        "Use Exploded View to separate assembly components.",
+        "Capture annotated screenshots and record review videos with optional narration.",
+        "Export tessellated geometry as binary STL, GLB, USDA, USDC, or USDZ.",
+        "Review models in an immersive spatial scene on visionOS.",
+        "No ads, tracking, or model uploads — files stay on device."
+      ],
+      "audience": [
+        "Engineers",
+        "Manufacturing & Quality Teams",
+        "Suppliers",
+        "Buyers & Customers",
+        "Apple Platform Teams"
+      ],
+      "knowledge": {
+        "title": "The STEP format (ISO 10303)",
+        "content": "STEP is the ISO 10303 family of standards for exchanging product-model data between CAD systems. It can carry solids, surfaces, assemblies, colors, and PMI, so teams can review a model without the original authoring file. IGES is an earlier neutral format still used for curves, surfaces, and solids. Completeness depends on the exporter: hierarchy, materials, and annotations may be partial. STEP Reviewer imports these files on device with Open CASCADE Technology (OCCT) for assembly inspection, measurement, sections, capture, and tessellated export — it is a reviewer, not a CAD editor."
+      },
+      "slug": "step-reviewer"
+    },
+    {
       "id": "6786113990",
       "name": "JT File Viewer",
       "desc": "JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.",
