@@ -1,5 +1,6 @@
 .history/
 .build/
+.cursor/
 .tmp/
 .DS_Store
 *~
@@ -11,3 +12,4 @@
 *.bak
 update_sitemap.js
 *PolicySupport
+*MetaData

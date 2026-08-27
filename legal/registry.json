@@ -2,6 +2,16 @@
   "domain": "https://apps.h53d.xyz",
   "apps": [
     {
+      "slug": "forgeshape",
+      "name": "ForgeShape",
+      "id": "6801400880",
+      "source": "ForgeShaperPolicySupport",
+      "assetDir": "ForgeShape",
+      "icon": "icon.jpg",
+      "listed": true,
+      "legacyBase": "https://h53d.github.io/fs"
+    },
+    {
       "slug": "jt-file-viewer",
       "name": "JT File Viewer",
       "id": "6786113990",

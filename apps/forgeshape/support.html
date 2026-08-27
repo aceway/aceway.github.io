@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForgeShape Support - 3D Print Check, Repair, and Convert</title>
+    <meta name="description" content="Support for ForgeShape on Mac, iPhone, iPad, and Apple Vision Pro: supported formats, print checking, mesh and CAD repair, conversion, Reverse to CAD, and troubleshooting.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://apps.h53d.xyz/apps/forgeshape/support.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ForgeShape Support">
+    <meta property="og:description" content="Help for on-device 3D-print checking, repair, format conversion, and optional Reverse to CAD.">
+    <meta property="og:url" content="https://apps.h53d.xyz/apps/forgeshape/support.html">
+    <meta property="og:image" content="https://apps.h53d.xyz/assets/ForgeShape/icon.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ForgeShape Support">
+    <meta name="twitter:description" content="Formats, session lines, repairs, conversion, limitations, and troubleshooting for ForgeShape.">
+    <link rel="apple-touch-icon" href="/assets/ForgeShape/icon.jpg">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/ForgeShape/icon.jpg">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/ForgeShape/icon.jpg">
+    <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/legal/docs.css">
+    <style>:root { --app-icon: url("/assets/ForgeShape/icon.jpg"); }</style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/support.html#webpage",
+                "url": "https://apps.h53d.xyz/apps/forgeshape/support.html",
+                "name": "ForgeShape Support",
+                "description": "Support page for ForgeShape with formats, print-prep and conversion workflows, limitations, and troubleshooting.",
+                "inLanguage": "en",
+                "datePublished": "2026-08-24",
+                "dateModified": "2026-08-24",
+                "isPartOf": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#website" },
+                "about": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#software" },
+                "breadcrumb": { "@id": "https://apps.h53d.xyz/apps/forgeshape/support.html#breadcrumb" },
+                "author": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#author" },
+                "publisher": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#organization" }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/#website",
+                "url": "https://apps.h53d.xyz/apps/forgeshape/",
+                "name": "ForgeShape",
+                "publisher": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#organization" }
+            },
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/#software",
+                "name": "ForgeShape",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "macOS, iOS, iPadOS, visionOS",
+                "description": "On-device 3D-print model checking, repair, and format conversion. Not a slicer or full CAD suite.",
+                "downloadUrl": "https://apps.apple.com/us/app/id6801400880",
+                "softwareHelp": "https://apps.h53d.xyz/apps/forgeshape/support.html",
+                "privacyPolicy": "https://apps.h53d.xyz/apps/forgeshape/policy.html",
+                "author": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#author" },
+                "publisher": { "@id": "https://apps.h53d.xyz/apps/forgeshape/#organization" }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/#organization",
+                "name": "Iu Way",
+                "url": "https://apps.h53d.xyz/apps/forgeshape/",
+                "logo": "https://apps.h53d.xyz/assets/ForgeShape/icon.jpg",
+                "email": "iuway@foowei.com",
+                "sameAs": [
+                    "https://x.com/aceway2024",
+                    "https://apps.apple.com/us/app/id6801400880"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/#author",
+                "name": "Iu Way",
+                "email": "iuway@foowei.com",
+                "url": "https://x.com/aceway2024",
+                "sameAs": ["https://x.com/aceway2024"]
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/support.html#breadcrumb",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "ForgeShape", "item": "https://apps.h53d.xyz/apps/forgeshape/" },
+                    { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://apps.h53d.xyz/apps/forgeshape/support.html" }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://apps.h53d.xyz/apps/forgeshape/support.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Is ForgeShape a slicer?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "No. ForgeShape is the step before slicing: it checks and repairs a model and exports STL or 3MF. It does not generate G-code or set print parameters." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which files can ForgeShape open?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "ForgeShape imports STEP (.step/.stp), IGES (.iges/.igs), STL/.STLB, OBJ, binary GLB, and 3MF. JSON glTF is not supported." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can ForgeShape repair every broken model?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "No. Supported repairs include welding and stitching, orientation, duplicate-face removal, small-hole fill, degenerate-triangle removal, combined repair, optional deep repair, and CAD open-edge sewing on STEP. Non-manifold topology, large openings, and seams between separate meshes are not automatically repairable." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Reverse to CAD recover the original design?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "No. Reverse writes recognized planar and cylindrical faces as analytic geometry. Unrecognized regions stay faceted. The result may be a sewn solid or a faceted diagnostic shell. It has no feature history and is not CNC toolpath generation." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I contact ForgeShape support?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Email iuway@foowei.com. Include platform, OS version, file format, and the exact message shown in the app. Do not send confidential models unless you are authorized to share them." }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <main class="page-shell" id="content">
+        <div class="top-bar">
+            <a class="top-bar-brand" href="https://apps.h53d.xyz/apps/forgeshape/support.html">
+                <span class="top-bar-icon" aria-hidden="true"></span>
+                <span class="top-bar-title">ForgeShape</span>
+            </a>
+            <a class="app-store-badge-link" href="https://apps.apple.com/us/app/id6801400880" aria-label="Download ForgeShape on the App Store">
+                <img class="app-store-badge" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" width="96" height="32">
+            </a>
+        </div>
+
+        <header class="hero">
+            <div class="hero-icon" aria-hidden="true"></div>
+            <h1 class="page-title">ForgeShape Support</h1>
+            <p class="page-subtitle">Check, repair, and convert 3D-print models on your Apple device — without a full CAD suite.</p>
+            <p class="meta-line">Last updated August 24, 2026</p>
+        </header>
+
+        <section class="quick-answer" aria-labelledby="quick-answer-label">
+            <span class="quick-answer-label" id="quick-answer-label">Quick answer</span>
+            <p>ForgeShape is a 3D-print model preparation app for Mac, iPhone, iPad, and Apple Vision Pro. After a model is on screen you choose one job: detect and repair for printing (STL/3MF only), or convert formats for sharing. Work runs on the device. It is not a slicer, not CNC CAM, and not a general CAD editor.</p>
+        </section>
+
+        <div class="section-group">
+            <div class="section-group-title">Overview</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="what-is-forgeshape">
+                    <h2 class="section-heading" id="what-is-forgeshape">What is ForgeShape?</h2>
+                    <p><strong>ForgeShape</strong> shortens the path from “this model is hard to print or hand off” to “I understand the issues, I repaired what this build can repair, and I exported a file.” It is aimed at 3D-printing beginners who need a clear next step, and at experienced users who do not want to repeat routine checks by hand.</p>
+                    <p>The app imports models locally, shows a Metal preview, runs automatic detection for the job you chose, offers supported repairs with a before/after preview, and exports a qualified file. STEP and IGES use an on-device <a href="https://dev.opencascade.org/doc/overview/html/index.html" target="_blank" rel="noopener noreferrer">Open CASCADE Technology (OCCT)</a> kernel. Mesh formats are parsed in the app. The original source file is preserved; repairs do not overwrite it.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Session jobs</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="session-lines">
+                    <h2 class="section-heading" id="session-lines">Why do I have to choose 3D printing or convert?</h2>
+                    <p>After the preview is ready, a required dialog asks what this session is for. Detection does not start until you choose. One session does one job so print prep and format conversion are not mixed on the same panel.</p>
+                    <ul class="feature-list">
+                        <li><strong>3D printing:</strong> detect print-blocking topology and print risks, repair where supported, optionally fit to a size profile, export <strong>STL or 3MF only</strong>.</li>
+                        <li><strong>Convert format:</strong> see which formats the current evidence can write, export OBJ, GLB, STL, 3MF, or STEP, and optionally run Reverse to CAD. Print profile, overhang, wall thickness, and fit-to-size stay on the print job.</li>
+                    </ul>
+                    <p>After a line is chosen, the toolbar can switch jobs without re-importing. If a comparison is still held, the app asks which model to carry. Reverse does not silently replace the session model; only choosing reversed CAD during a job switch installs that STEP as session authority.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Formats</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="import-formats">
+                    <h2 class="section-heading" id="import-formats">Which models can ForgeShape open?</h2>
+                    <ul class="feature-list">
+                        <li><strong>STEP:</strong> <code>.step</code>, <code>.stp</code></li>
+                        <li><strong>IGES:</strong> <code>.iges</code>, <code>.igs</code></li>
+                        <li><strong>STL:</strong> <code>.stl</code>, <code>.stlb</code></li>
+                        <li><strong>OBJ:</strong> <code>.obj</code> (companion MTL colors are limited to diffuse <code>Kd</code>)</li>
+                        <li><strong>GLB:</strong> binary glTF only; JSON <code>.gltf</code>, Draco, and meshopt compression are not supported</li>
+                        <li><strong>3MF:</strong> triangle meshes, simple components, and baked display colors; encrypted packages and non-triangle features are not supported</li>
+                    </ul>
+                </section>
+
+                <section class="group-item" aria-labelledby="export-formats">
+                    <h2 class="section-heading" id="export-formats">Which formats can ForgeShape export?</h2>
+                    <p>The print job ends at <strong>3MF</strong> (recommended) and binary <strong>STL</strong>. The conversion job can also write <strong>OBJ</strong>, <strong>GLB</strong>, and <strong>STEP</strong>. Suggested filenames use the original stem, without an app-name prefix.</p>
+                    <ul class="bullet-list">
+                        <li>3MF declares millimeter model units. Known source units are converted; unresolved units (typical for STL, OBJ, GLB) are written unchanged and described as such.</li>
+                        <li>STL has no units. The receiving tool assumes them.</li>
+                        <li>OBJ writes positions, normals, and groups, without materials or colors.</li>
+                        <li>GLB writes a glTF 2.0 binary with per-mesh base colors. Coordinates are not converted to meters/Y-up.</li>
+                        <li>STEP from conversion is a sewn CAD solid when the mesh is closed and manifold, otherwise a faceted diagnostic B-Rep. After a Mesh-lane switch, remaining STEP export is labeled faceted diagnostic.</li>
+                    </ul>
+                    <p>On macOS, export uses the system save panel. On iOS, iPadOS, and visionOS, files are written to <code>Documents/exported</code> and the completion prompt can open Files.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Checking and repair</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="print-checks">
+                    <h2 class="section-heading" id="print-checks">What does print checking report?</h2>
+                    <p>Status is evidence-qualified: <strong>Checks passed · Mesh evidence</strong>, <strong>Needs review</strong>, or <strong>Blocked</strong>. A passed check is not a slicer guarantee and is not a B-Rep watertightness claim. Enclosed volume is reported for closed, manifold components as a <strong>solid candidate</strong>; open surfaces are labeled as a shell.</p>
+                    <p>Automatic detection can include open edges, non-manifold edges, duplicate faces, zero-thickness sheets, winding and inverted normals, degenerate triangles, bounded self-intersection (up to 500,000 triangles), overhang, wall thickness, units, and size versus the selected print profile. Self-intersection above that triangle budget is listed as unresolved rather than silently skipped.</p>
+                    <p>Findings can be located on the model. Locate frames the affected mesh; Show on model marks edges and faces without moving the camera.</p>
+                </section>
+
+                <section class="group-item" aria-labelledby="repairs">
+                    <h2 class="section-heading" id="repairs">How does repair work?</h2>
+                    <p>The print panel shows <strong>one primary action</strong> at a time. Named repair rows are evidence (found / none found / needs Mesh lane), not a second set of buttons. The primary button runs the supported Mesh-lane sequence as one pass, or CAD open-edge sewing on a STEP source still on the CAD lane.</p>
+                    <ul class="feature-list">
+                        <li><strong>CAD lane (STEP):</strong> OCCT sewing of nearby open edges. Each attempt re-imports the preserved source. IGES has no CAD-lane repair; switch to Mesh repair to weld and stitch the tessellation.</li>
+                        <li><strong>Mesh lane:</strong> weld and stitch, fix orientation, remove duplicate faces, fill small holes, remove degenerate triangles, or run all of these together. STL, OBJ, GLB, and 3MF start here. STEP/IGES can switch once per import after a skippable confirmation.</li>
+                        <li><strong>Deep repair:</strong> offered only after the safe sequence leaves the model unclosed. It may change shape, reports how far vertices moved, and still does not claim print readiness.</li>
+                    </ul>
+                    <p>Every repair computes a candidate first. Apply commits it; Cancel keeps the current model. A candidate that would close a shell inside-out, or newly introduce mixed or non-orientable winding, is rejected. If a rejected candidate still changed geometry, the 3D View can compare it as a display-only <strong>Rejected Repair Candidate</strong> — it cannot be exported as the session result.</p>
+                    <p>When no supported repair can act, the primary button becomes <strong>Export 3MF anyway</strong> with the limitation named beside it. That is a handoff, not a passed check.</p>
+                </section>
+
+                <section class="group-item" aria-labelledby="unsupported-repairs">
+                    <h2 class="section-heading" id="unsupported-repairs">What cannot be repaired automatically?</h2>
+                    <ul class="bullet-list">
+                        <li>Genuine non-manifold edges (unless they are explained entirely by duplicate faces)</li>
+                        <li>Large or complex holes</li>
+                        <li>Seams shared between separate meshes (reported as unsupported; meshes are not silently merged)</li>
+                        <li>Zero-thickness surfaces (two coincident faces wound against each other)</li>
+                        <li>Surfaces that cannot be consistently oriented</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Conversion and Reverse to CAD</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="reverse">
+                    <h2 class="section-heading" id="reverse">What does Reverse to CAD do?</h2>
+                    <p>Reverse is an optional conversion-line action. It is not required to export a format, and it is not a stage of the print job. It runs supported mesh cleanup on a working copy, then attempts a representation ladder: a CAD solid with analytic planar and cylindrical faces where those surfaces were recognized, otherwise a faceted CAD solid, otherwise a faceted diagnostic B-Rep. The app names the tier that actually landed and why higher tiers did not.</p>
+                    <p>Unrecognized remainder stays faceted. Cones and spheres are not written as analytic faces. Interior holes in planar faces are kept when their loops can be used. Reverse does not silently replace the imported model. Save reversed CAD writes the file that was already produced; it does not run reverse again.</p>
+                    <p>The result is not a full reconstruction of the original CAD design, carries no feature history, and is not CNC toolpath generation.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Workspace</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="workspace">
+                    <h2 class="section-heading" id="workspace">How do preview, measurement, and comparison work?</h2>
+                    <ul class="feature-list">
+                        <li><strong>Display only:</strong> shaded, wireframe, shaded + wireframe, Z-up / Y-up, and Reset view change presentation, not exported geometry.</li>
+                        <li><strong>Detail:</strong> STEP/IGES start in preview tessellation. Load detailed model from the lower panel if you need finer evidence and export. Mesh sources keep their source triangles.</li>
+                        <li><strong>Measurement:</strong> tap a face for planar extents, area, and optional radius in source units. Display up-axis does not change measured values.</li>
+                        <li><strong>Comparison:</strong> an applied repair or a reverse result can show original and changed geometry under one camera. Compact layouts switch rather than split. A model too large to hold twice stays on a single view and says why.</li>
+                    </ul>
+                    <p>This release uses Guided copy only. Expert mode exists in the app but the switch is hidden.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">System</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="system-requirements">
+                    <h2 class="section-heading" id="system-requirements">What are the system requirements?</h2>
+                    <div class="spec-list">
+                        <div class="spec-item">Requires macOS 26, iOS 26, or visionOS 26 or later.</div>
+                        <div class="spec-item">Runs natively with SwiftUI and Metal. STEP/IGES import uses on-device OCCT.</div>
+                        <div class="spec-item">Checking, repair, conversion, and export work without a ForgeShape account or developer server.</div>
+                        <div class="spec-item">Large models need more memory and time. Print self-intersection screening is bounded at 500,000 triangles.</div>
+                        <div class="spec-item">macOS is the primary authoring environment. iPad is suited to inspection and light repair. visionOS is suited to spatial inspection and presentation, not full CAD authoring.</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Troubleshooting</div>
+            <div class="group-card">
+                <section class="group-item faq-item" aria-labelledby="trouble-open">
+                    <h3 id="trouble-open">A file will not open</h3>
+                    <p>Confirm the extension is supported and the file finished downloading from iCloud or another provider. JSON glTF, Draco GLB, encrypted 3MF, and folders are not valid inputs. Try a smaller known-good model to separate file content from device limits. When reporting a failure, include format, platform, OS version, and the exact error text.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-blocked">
+                    <h3 id="trouble-blocked">Printability stays blocked after Repair</h3>
+                    <p>Read the named limitation next to the button. Non-manifold topology, cross-mesh seams, large holes, and non-orientable surfaces are labeled rather than given a repair that cannot succeed. <strong>Export 3MF anyway</strong> is a handoff; the status card will still say the check did not pass.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-iges">
+                    <h3 id="trouble-iges">An IGES model has no CAD repair</h3>
+                    <p>CAD-lane sewing is STEP/STP only. On the Mesh-lane group heading, use <strong>Switch to Mesh repair</strong> (skippable confirmation). That session then welds and stitches the tessellated mesh. Later STEP export is faceted diagnostic.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-units">
+                    <h3 id="trouble-units">Size or wall thickness looks wrong</h3>
+                    <p>STEP and IGES coordinates are normalized to millimeters on import. STL, OBJ, and GLB have no unit; they are treated as unresolved model units. Fit to size is unavailable until a unit is known. Wall screening on unit-unresolved sources states that it reads coordinates as millimeters.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-preview">
+                    <h3 id="trouble-preview">The check and the export look coarser than the CAD file</h3>
+                    <p>STEP/IGES start in preview tessellation, which is also the mesh behind checks and export. Use <strong>Load detailed model</strong> in the Model group before you rely on wall, overhang, or export fidelity.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-export-ios">
+                    <h3 id="trouble-export-ios">I cannot find the exported file on iPhone or iPad</h3>
+                    <p>Open the Files app → On My iPhone/iPad → ForgeShape → <code>exported</code>. macOS uses a save panel instead.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="trouble-reverse">
+                    <h3 id="trouble-reverse">Reverse to CAD did not produce a solid</h3>
+                    <p>Read the tier and the remaining limitation on the Reverse group. An open or non-manifold mesh cannot become a sewn solid. Format export remains available without reverse. A sewing failure is reported as a reverse limitation, not as a missing temporary file.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">FAQ</div>
+            <div class="group-card" id="faq">
+                <section class="group-item faq-item" aria-labelledby="faq-slicer">
+                    <h3 id="faq-slicer">Is ForgeShape a slicer or a printer app?</h3>
+                    <p>No. It does not generate G-code, manage materials, infill, supports, or talk to a printer. Take the exported STL or 3MF to your slicer.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-cnc">
+                    <h3 id="faq-cnc">Does this version include CNC?</h3>
+                    <p>No. CNC preparation is a later product direction. Reverse to CAD is an optional format-conversion aid, not machining, stock, fixtures, or toolpaths.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-offline">
+                    <h3 id="faq-offline">Does ForgeShape work offline?</h3>
+                    <p>Yes for import, checking, repair, conversion, measurement, and export of local files. A cloud file provider may still need a network connection to download the file you picked. Installing or updating the app uses the App Store.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-occt">
+                    <h3 id="faq-occt">What is Open CASCADE Technology?</h3>
+                    <p><a href="https://dev.opencascade.org/doc/overview/html/index.html" target="_blank" rel="noopener noreferrer">Open CASCADE Technology (OCCT)</a> is an open-source CAD kernel. ForgeShape uses it on the device for STEP/IGES import, tessellation, and CAD-lane open-edge sewing, under the GNU LGPL 2.1 with the Open CASCADE exception; the <a href="https://dev.opencascade.org/resources/licensing" target="_blank" rel="noopener noreferrer">Open CASCADE licensing terms</a> are published by Open CASCADE.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="section-group">
+            <div class="section-group-title">Support</div>
+            <div class="group-card">
+                <section class="group-item contact-panel" aria-labelledby="contact-support">
+                    <h2 class="section-heading" id="contact-support">How do I get help?</h2>
+                    <p>For a bug report, include the platform, OS version, device model, file format, approximate size or triangle count, exact on-screen message, and reproducible steps. Do not send confidential models unless you are authorized to share them.</p>
+                    <p>
+                        <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>
+                    </p>
+                </section>
+
+                <section class="group-item" aria-labelledby="related-links">
+                    <h2 class="section-heading" id="related-links">Related links</h2>
+                    <div class="related-links">
+                        <a class="related-text-link" href="https://apps.h53d.xyz/apps/forgeshape/policy.html">
+                            <img class="related-link-icon" src="/assets/ForgeShape/icon.jpg" alt="" width="22" height="22" aria-hidden="true">
+                            <span>Privacy Policy</span>
+                        </a>
+                        <a class="app-store-badge-link" href="https://apps.apple.com/us/app/id6801400880" aria-label="Download ForgeShape on the App Store">
+                            <img class="app-store-badge" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" width="120" height="40">
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 foowei.com. ForgeShape is built for 3D-print model preparation on Apple platforms.</p>
+            <p class="page-footer-legal">ForgeShape is an independent product. STEP, IGES, STL, 3MF, OBJ, glTF/GLB, and ISO 10303 names are used descriptively. Open CASCADE Technology is used on device under the GNU LGPL 2.1 with the Open CASCADE exception; see the <a href="https://dev.opencascade.org/resources/licensing" target="_blank" rel="noopener noreferrer">Open CASCADE licensing terms</a>.</p>
+        </footer>
+    </main>
+</body>
+</html>

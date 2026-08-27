@@ -485,3 +485,23 @@ code {
         border-radius: 18px;
     }
 }
+
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -48px;
+    z-index: 10;
+    padding: 10px 16px;
+    border-radius: var(--radius-capsule);
+    background: var(--bg-elevated);
+    color: var(--tint);
+    font-family: var(--font-text);
+    font-size: 15px;
+    text-decoration: none;
+    box-shadow: var(--shadow-elevated);
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 8px;
+}

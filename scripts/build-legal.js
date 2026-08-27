@@ -19,7 +19,9 @@ function rewrite(html, app) {
   const iconStyle = `<style>:root { --app-icon: url("${icon}"); }</style>`;
 
   html = html.split('./lite3d.css').join('/legal/docs.css');
+  html = html.split('./fs.css').join('/legal/docs.css');
   html = html.split('./macOS512.png').join(icon);
+  html = html.split('./icon64.png').join(icon);
   html = html.split('./logo512.jpg').join(icon);
   html = html.split('./h53d.jpg').join('/assets/icon.jpg');
   html = html.split('./Download_on_the_App_Store_Badge.svg').join(BADGE_IOS);
