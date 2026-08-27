@@ -57,8 +57,8 @@
     {
       "id": "6791591460",
       "name": "STEP Reviewer",
-      "desc": "STEP Reviewer is a native Apple app for opening and reviewing STEP and IGES CAD files on macOS, iPhone, iPad, and Apple Vision. Inspect assemblies, measure geometry, create sections, capture reviews, and export tessellated meshes without uploading files.",
-      "promotional": "On-device STEP and IGES CAD review.",
+      "desc": "Built for CAD review: STEP files in the hundreds of MB and faceted models above 1 million triangles, plus measurement, cross sections, PMI, and mesh export. Opens STEP and IGES on Mac, iPhone, iPad, and Apple Vision — on device, with no uploads.",
+      "promotional": "100MB+ STEP · 1M+ Facets",
       "icon": "icon.jpg",
       "screenshots": [
         "screen.jpg",
@@ -95,8 +95,8 @@
         "Apple Platform Teams"
       ],
       "knowledge": {
-        "title": "The STEP format (ISO 10303)",
-        "content": "STEP is the ISO 10303 family of standards for exchanging product-model data between CAD systems. It can carry solids, surfaces, assemblies, colors, and PMI, so teams can review a model without the original authoring file. IGES is an earlier neutral format still used for curves, surfaces, and solids. Completeness depends on the exporter: hierarchy, materials, and annotations may be partial. STEP Reviewer imports these files on device with Open CASCADE Technology (OCCT) for assembly inspection, measurement, sections, capture, and tessellated export — it is a reviewer, not a CAD editor."
+        "title": "Large STEP assemblies on device",
+        "content": "Engineering STEP files are often hundreds of megabytes, with tessellations that exceed a million triangles. STEP Reviewer is built for that class of review: OCCT import on device, assembly structure, measurement and PMI on iOS and macOS, sections, capture, and tessellated export. It is not a lightweight STEP previewer and not a CAD editor — source files stay local."
       },
       "slug": "step-reviewer"
     },
