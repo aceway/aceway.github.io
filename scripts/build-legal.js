@@ -63,6 +63,26 @@ function writePage(app, filename) {
   return true;
 }
 
+function writeSlugMap() {
+  const map = {};
+  for (const app of registry.apps) {
+    if (app.id && app.slug && app.listed !== false) map[app.id] = app.slug;
+  }
+  const body = `window.SLUG_BY_ID = ${JSON.stringify(map, null, 2)};\n`;
+  fs.writeFileSync(path.join(ROOT, 'legal', 'slugs.js'), body);
+}
+
+function writeDetailPages() {
+  const src = path.join(ROOT, 'detail.html');
+  const html = fs.readFileSync(src, 'utf8');
+  for (const app of registry.apps) {
+    if (!app.listed) continue;
+    const outDir = path.join(ROOT, 'apps', app.slug);
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'detail.html'), html);
+  }
+}
+
 function copyExtras(app) {
   const qrSrc = path.join(ROOT, app.source, 'images', 'eTableCollectorQR.jpeg');
   if (fs.existsSync(qrSrc)) {
@@ -85,6 +105,7 @@ function patchPortfolio() {
     app.links = app.links || {};
     app.links.policy = `/apps/${legalApp.slug}/policy.html`;
     app.links.support = `/apps/${legalApp.slug}/support.html`;
+    app.links.detail = `/apps/${legalApp.slug}/detail.html`;
   }
   fs.writeFileSync(appsPath, `${JSON.stringify(data, null, 2)}\n`);
 }
@@ -100,4 +121,6 @@ for (const app of registry.apps) {
   }
 }
 patchPortfolio();
+writeSlugMap();
+writeDetailPages();
 console.log(`done: ${written}/${registry.apps.length} apps`);

@@ -26,7 +26,8 @@
         "ios": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990",
         "macos": "https://apps.apple.com/us/app/jt-file-viewer/id6786113990?platform=mac",
         "policy": "/apps/jt-file-viewer/policy.html",
-        "support": "/apps/jt-file-viewer/support.html"
+        "support": "/apps/jt-file-viewer/support.html",
+        "detail": "/apps/jt-file-viewer/detail.html"
       },
       "features": [
         "Open JT files locally on macOS, iPhone, iPad, and Apple Vision Pro.",
@@ -69,7 +70,8 @@
         "ios": "https://apps.apple.com/us/app/step-file-viewer/id6755721056",
         "macos": "macappstore://apps.apple.com/us/app/step-file-viewer/id6755721056",
         "policy": "/apps/step-file-viewer/policy.html",
-        "support": "/apps/step-file-viewer/support.html"
+        "support": "/apps/step-file-viewer/support.html",
+        "detail": "/apps/step-file-viewer/detail.html"
       },
       "features": [
         "View STEP models in 3D with rotate, pan, and zoom controls using perspective projection.",
@@ -111,7 +113,8 @@
         "ios": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
         "macos": "https://apps.apple.com/us/app/3d-model-viewer/id6748610196",
         "policy": "/apps/3d-model-viewer/policy.html",
-        "support": "/apps/3d-model-viewer/support.html"
+        "support": "/apps/3d-model-viewer/support.html",
+        "detail": "/apps/3d-model-viewer/detail.html"
       },
       "features": [
         "Import popular 3D formats: 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF",
@@ -153,7 +156,8 @@
         "ios": "https://apps.apple.com/us/app/dxf-assistant/id6742348600",
         "macos": "macappstore://apps.apple.com/us/app/dxf-assistant/id6742348600",
         "policy": "/apps/dxf-assistant/policy.html",
-        "support": "/apps/dxf-assistant/support.html"
+        "support": "/apps/dxf-assistant/support.html",
+        "detail": "/apps/dxf-assistant/detail.html"
       },
       "features": [
         "Open and view 2D and 3D DXF files, with support for switching between standard views: top, bottom, left, right, front, back.",
@@ -193,7 +197,8 @@
         "ios": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457",
         "macos": "https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?platform=mac",
         "policy": "/apps/stl-to-step-assistant/policy.html",
-        "support": "/apps/stl-to-step-assistant/support.html"
+        "support": "/apps/stl-to-step-assistant/support.html",
+        "detail": "/apps/stl-to-step-assistant/detail.html"
       },
       "features": [
         "Convert STL to STEP",
@@ -233,7 +238,8 @@
       "links": {
         "ios": "https://apps.apple.com/us/app/id6760733349",
         "policy": "/apps/numisgallery/policy.html",
-        "support": "/apps/numisgallery/support.html"
+        "support": "/apps/numisgallery/support.html",
+        "detail": "/apps/numisgallery/detail.html"
       },
       "features": [
         "Browse by country and denomination with directional gestures in a portrait-first gallery flow.",
@@ -271,7 +277,8 @@
         "ios": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542",
         "macos": "https://apps.apple.com/us/app/shine3d-pro-3d-viewer/id6757391542?platform=mac",
         "policy": "/apps/shine3d/policy.html",
-        "support": "/apps/shine3d/support.html"
+        "support": "/apps/shine3d/support.html",
+        "detail": "/apps/shine3d/detail.html"
       },
       "features": [
         "Broad Format Support: Seamlessly load and display a wide range of 3D formats, including STL, OBJ, GLB, 3MF, USDZ, 3DS, 3DM, PLY, XYZ, AMF, VOX, VTK, VTP, and FBX.",
@@ -309,7 +316,8 @@
         "ios": "https://apps.apple.com/us/app/p2v-converter/id6752116587",
         "macos": "macappstore://apps.apple.com/us/app/p2v-converter/id6752116587",
         "policy": "/apps/p2v-converter/policy.html",
-        "support": "/apps/p2v-converter/support.html"
+        "support": "/apps/p2v-converter/support.html",
+        "detail": "/apps/p2v-converter/detail.html"
       },
       "features": [
         "Easily convert images (PNG, JPG, HEIC, and more) to vector graphics in just a few clicks",
@@ -348,7 +356,8 @@
         "ios": "https://apps.apple.com/us/app/sheetcollector/id6733222153",
         "macos": "macappstore://apps.apple.com/us/app/sheetcollector/id6733222153",
         "policy": "/apps/sheetcollector/policy.html",
-        "support": "/apps/sheetcollector/support.html"
+        "support": "/apps/sheetcollector/support.html",
+        "detail": "/apps/sheetcollector/detail.html"
       },
       "features": [
         "Import spreadsheet data from CSV, XLSX, ODS, TSV, and UTF-8 encoded JSON files.",
@@ -387,7 +396,8 @@
         "ios": "https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
         "macos": "macappstore://apps.apple.com/us/app/pcai-photo-retouch/id6751140211",
         "policy": "/apps/pcai-photo-retouch/policy.html",
-        "support": "/apps/pcai-photo-retouch/support.html"
+        "support": "/apps/pcai-photo-retouch/support.html",
+        "detail": "/apps/pcai-photo-retouch/detail.html"
       },
       "features": [
         "Your photos never leave your device. No cloud AI, no hidden uploads.",
@@ -423,7 +433,8 @@
         "ios": "https://apps.apple.com/us/app/cutoutcraft/id6745748800",
         "macos": "macappstore://apps.apple.com/us/app/cutoutcraft/id6745748800",
         "policy": "/apps/cutoutcraft/policy.html",
-        "support": "/apps/cutoutcraft/support.html"
+        "support": "/apps/cutoutcraft/support.html",
+        "detail": "/apps/cutoutcraft/detail.html"
       },
       "features": [
         "One-Tap AI Cutout: Remove backgrounds instantly using local CoreML models. Automatically detects the subject in any image — fast, accurate, and fully offline.",
@@ -464,7 +475,8 @@
         "ios": "https://apps.apple.com/us/app/shareguard/id6752704315",
         "macos": "macappstore://apps.apple.com/us/app/shareguard/id6752704315",
         "policy": "/apps/shareguard/policy.html",
-        "support": "/apps/shareguard/support.html"
+        "support": "/apps/shareguard/support.html",
+        "detail": "/apps/shareguard/detail.html"
       },
       "features": [
         "Auto-detect and clear sensitive Exif metadata",
