@@ -36,6 +36,9 @@ function rewrite(html, app) {
     html = html.split(`${legacy}"`).join(`${pageBase}"`);
   }
 
+  // Campaign attribution: mirrored copies belong to this domain, not the legacy site
+  html = html.split('ct=h53d.github.io').join('ct=apps.h53d.xyz');
+
   html = html.split('./policy.html').join(`${pageBase}/policy.html`);
   html = html.split('./support.html').join(`${pageBase}/support.html`);
   html = html.split(`${pageBase}/macOS512.png`).join(`${DOMAIN}${icon}`);
