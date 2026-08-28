@@ -188,6 +188,7 @@
     <meta property="og:image" content="https://apps.h53d.xyz/assets/Shine3D/icon.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Support - Shine3D","url":"https://apps.h53d.xyz/apps/shine3d/support.html","description":"Support, FAQ, and product information for Shine3D. Free to view, Easy to share.","about":{"@type":"SoftwareApplication","name":"Shine3D","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication"}}</script>
     <style>:root { --app-icon: url("/assets/Shine3D/icon.jpg"); }</style>
+    <link rel="stylesheet" href="/assets/yt-embed.css">
 </head>
 <body>
 
@@ -264,7 +265,13 @@
         </div>
     </div>
 
-    <footer>
+    <div class="yt-support-simple" id="video">
+        <h2 class="yt-heading">Watch demos</h2>
+        <div id="ytSupport"></div>
+        </div>
+        <script src="/assets/yt-embed.js"></script>
+        <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), "shine3d");</script>
+        <footer>
         &copy; 2026 Shine3D. Built with privacy in mind.
     </footer>
 </div>

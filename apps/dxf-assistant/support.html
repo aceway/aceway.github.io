@@ -126,6 +126,7 @@
     <meta property="og:image" content="https://apps.h53d.xyz/assets/DXF%20Assistant/icon.jpg">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Support - DXF Assistant","url":"https://apps.h53d.xyz/apps/dxf-assistant/support.html","description":"Support, FAQ, and product information for DXF Assistant. View DXF. Convert to PDF, SVG, PNG.","about":{"@type":"SoftwareApplication","name":"DXF Assistant","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication"}}</script>
     <style>:root { --app-icon: url("/assets/DXF%20Assistant/icon.jpg"); }</style>
+    <link rel="stylesheet" href="/assets/yt-embed.css">
 </head>
 <body>
 
@@ -164,7 +165,13 @@
     </div>
 </div>
 
-<footer>
+<div class="yt-support-simple" id="video">
+        <h2 class="yt-heading">Watch demos</h2>
+        <div id="ytSupport"></div>
+        </div>
+        <script src="/assets/yt-embed.js"></script>
+        <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), "dxf-assistant");</script>
+        <footer>
     &copy; 2025-2026 DXF Assistant
 </footer>
 

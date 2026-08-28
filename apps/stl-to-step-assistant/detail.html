@@ -17,6 +17,7 @@
   <link rel="icon" type="image/jpeg" href="/assets/STL%20to%20STEP%20Assistant/icon.jpg">
   <link rel="apple-touch-icon" href="/assets/STL%20to%20STEP%20Assistant/icon.jpg">
   <script id="dynamic-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"STL to STEP Assistant","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication","url":"https://apps.h53d.xyz/apps/stl-to-step-assistant/detail.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"STL to STEP Assistant is a focused local 3D model tool for converting mesh-based models into STEP files for CAD workflows.","author":{"@type":"Person","name":"Wei Ai"},"privacyPolicy":"https://apps.h53d.xyz/apps/stl-to-step-assistant/policy.html","softwareHelp":"https://apps.h53d.xyz/apps/stl-to-step-assistant/support.html"}</script>
+  <link rel="stylesheet" href="/assets/yt-embed.css">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -277,20 +278,24 @@
             <!-- Right Column -->
             <div class="lg:col-span-5 relative">
                 <div class="sticky top-24">
-                    <div class="phone-mock-static">
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
-                        <div class="phone-screen relative bg-black overflow-hidden">
-                            <div id="sliderContainer" class="absolute inset-0 w-full h-full"><img src="/assets/STL%20to%20STEP%20Assistant/screen.jpg" alt="STL to STEP Assistant screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></div>
-                            <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
-                            <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
-                            <div id="dotsContainer" class="slider-dots z-20"></div>
-                            <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
-                                <span class="text-4xl mb-2">📱</span>
-                                <span class="text-sm font-mono">NO PREVIEW</span>
+                    <div class="preview-pair" id="previewPair">
+                        <div class="phone-mock-static">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                            <div class="phone-screen relative bg-black overflow-hidden">
+                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><img src="/assets/STL%20to%20STEP%20Assistant/screen.jpg" alt="STL to STEP Assistant screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></div>
+                                <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                                <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                                <div id="dotsContainer" class="slider-dots z-20"></div>
+                                <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
+                                    <span class="text-4xl mb-2">📱</span>
+                                    <span class="text-sm font-mono">NO PREVIEW</span>
+                                </div>
                             </div>
                         </div>
+                        <div id="ytShortSlot" class="yt-slot yt-slot-short" hidden></div>
                     </div>
-                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px]"></div>
+                    <div id="ytWideSlot" class="yt-slot yt-slot-wide preview-column-yt" hidden></div>
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px] preview-dash"></div>
                 </div>
                 <div class="text-center mt-6">
 					<a id="appStoreLink" href="https://apps.apple.com/us/app/stl-to-step-assistant/id6769270457?pt=127352688&ct=apps.h53d.xyz&mt=8" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
@@ -311,6 +316,7 @@
   </div>
 
 <script src="/legal/slugs.js"></script>
+<script src="/assets/yt-embed.js"></script>
 <script>
     const SLUG_BY_ID = window.SLUG_BY_ID || {};
     const wrapper = document.getElementById('page-wrapper');
@@ -540,6 +546,9 @@
         }
         currentIndex = 0;
         loadFirstSlide();
+        if (window.H53D_YT) {
+            H53D_YT.mountPreview(document.getElementById('ytShortSlot'), document.getElementById('ytWideSlot'), app.slug);
+        }
 
         const featureGrid = document.getElementById('featureGrid');
         featureGrid.innerHTML = '';

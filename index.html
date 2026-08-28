@@ -27,6 +27,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon.jpg">
   <link rel="icon" type="image/jpeg" href="assets/favicon.jpg">
+  <link rel="stylesheet" href="assets/yt-embed.css">
 
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -467,33 +468,36 @@
         <!-- top-28 (约112px) 刚好避开 Header -->
         <div class="sticky top-28 space-y-6">
           <div class="flex flex-col items-center">
-            <div class="phone-wrapper">
-              <!-- 虚线装饰 -->
-              <div class="dashed-border"></div>
-              
-              <!-- 手机模型 -->
-              <div class="phone-mock" id="phoneMock">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+            <div class="preview-pair" id="previewPair">
+              <div class="phone-wrapper">
+                <!-- 虚线装饰 -->
+                <div class="dashed-border"></div>
                 
-                <div class="phone-screen relative bg-black overflow-hidden">
-                  <!-- Slider 容器 -->
-                  <div id="sliderContainer" class="absolute inset-0 w-full h-full"></div>
+                <!-- 手机模型 -->
+                <div class="phone-mock" id="phoneMock">
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                  
+                  <div class="phone-screen relative bg-black overflow-hidden">
+                    <!-- Slider 容器 -->
+                    <div id="sliderContainer" class="absolute inset-0 w-full h-full"></div>
 
-                  <!-- 控件 -->
-                  <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
-                  <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
-                  <div id="dotsContainer" class="slider-dots z-20"></div>
+                    <!-- 控件 -->
+                    <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+                    <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+                    <div id="dotsContainer" class="slider-dots z-20"></div>
 
-                  <!-- 占位符 -->
-                  <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
-                    <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
-                        <span class="text-2xl">⚡️</span>
+                    <!-- 占位符 -->
+                    <div id="screenPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-500 p-6 text-center pointer-events-none z-10">
+                      <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-4 shadow-lg shadow-blue-500/20">
+                          <span class="text-2xl">⚡️</span>
+                      </div>
+                      <span class="text-sm font-mono uppercase tracking-widest text-slate-400">System Ready</span>
+                      <span class="text-xs text-slate-600 mt-2">Select App to Initialize</span>
                     </div>
-                    <span class="text-sm font-mono uppercase tracking-widest text-slate-400">System Ready</span>
-                    <span class="text-xs text-slate-600 mt-2">Select App to Initialize</span>
                   </div>
                 </div>
               </div>
+              <div id="ytShortSlot" class="yt-slot yt-slot-short" hidden></div>
             </div>
             
             <!-- 标题区 -->
@@ -505,6 +509,7 @@
                   <div class="w-1 h-1 rounded-full bg-teal-400"></div>
               </div>
             </div>
+            <div id="ytWideSlot" class="yt-slot yt-slot-wide preview-column-yt" hidden></div>
           </div>
         </div>
       </aside>
@@ -518,6 +523,7 @@
         </div>
       </footer>
   </div>
+<script src="assets/yt-embed.js" data-yt-json="assets/youtube-channel.json"></script>
 <script>
     const appsSection = document.getElementById('apps');
     const demoSection = document.getElementById('demo-section');
@@ -555,9 +561,6 @@
         osHint.innerHTML = 'DETECTED: <span class="text-blue-600">macOS</span>';
     } else {
         osHint.innerHTML = `DETECTED: <span class="text-gray-600">${currentOS.toUpperCase()}</span>`;
-        if(demoSection) demoSection.style.display = 'none'; 
-        appsSection.classList.remove('lg:col-span-7');
-        appsSection.classList.add('lg:col-span-12');
     }
 
     // ... (BF Cache Logic ) ...
@@ -595,7 +598,7 @@
             grid.querySelectorAll('.holo-card').forEach((el) => el.remove());
             buildGrid(appsList);
 
-            if (isMac && appsList.length > 0) {
+            if (appsList.length > 0) {
                 // const randomIndex = Math.floor(Math.random() * appsList.length);
                 const randomIndex = 0;
                 setTimeout(() => triggerPreview(appsList[randomIndex]), 100);
@@ -611,7 +614,6 @@
     }
 
     function triggerPreview(app) {
-        if (!isMac) return;
         const safeName = encodeURIComponent(app.name);
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
             currentSlides = app.screenshots.map(s => `assets/${safeName}/${s}`);
@@ -621,6 +623,9 @@
         currentIndex = 0;
         demoTitle.textContent = app.name;
         loadFirstSlide();
+        if (window.H53D_YT) {
+            H53D_YT.mountPreview(document.getElementById('ytShortSlot'), document.getElementById('ytWideSlot'), app.slug);
+        }
         if(window.gsap) gsap.fromTo('#phoneMock', {scale: 0.98}, {scale: 1, duration: 0.3, ease: "back.out(1.7)"});
     }
 
@@ -725,10 +730,7 @@
                 ? `<img src="assets/${currentBadgeFile}" class="h-8 w-auto object-contain select-none" alt="${storeLabel}">`
                 : `<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>`;
 
-            let previewBtnHTML = '';
-            if (isMac) {
-                previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
-            }
+            let previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
 
             const card = document.createElement('div');
             card.className = 'holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group';
@@ -749,11 +751,9 @@
               </div>
             `;
 
-            if (isMac) {
-                card.addEventListener('click', () => triggerPreview(app));
-                const pBtn = card.querySelector('.demo-trigger');
-                if(pBtn) pBtn.addEventListener('click', (e) => { e.stopPropagation(); triggerPreview(app); });
-            }
+            card.addEventListener('click', () => triggerPreview(app));
+            const pBtn = card.querySelector('.demo-trigger');
+            if(pBtn) pBtn.addEventListener('click', (e) => { e.stopPropagation(); triggerPreview(app); });
 
             const detailBtn = card.querySelector('a.detail-link');
             if (detailBtn) {

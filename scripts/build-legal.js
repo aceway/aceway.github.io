@@ -13,7 +13,7 @@ function iconUrl(app) {
   return `/assets/${encodeURIComponent(app.assetDir)}/${app.icon}`;
 }
 
-function rewrite(html, app) {
+function rewrite(html, app, filename) {
   const icon = iconUrl(app);
   const pageBase = `${DOMAIN}/apps/${app.slug}`;
   const iconStyle = `<style>:root { --app-icon: url("${icon}"); }</style>`;
@@ -53,6 +53,41 @@ function rewrite(html, app) {
     html = html.replace('</head>', `    ${iconStyle}\n</head>`);
   }
 
+  if (filename === 'support.html') {
+    if (!html.includes('yt-embed.css')) {
+      html = html.replace('</head>', '    <link rel="stylesheet" href="/assets/yt-embed.css">\n</head>');
+    }
+    const slugJson = JSON.stringify(app.slug);
+    const legalVideo = `<div class="section-group yt-support" id="video">
+            <div class="section-group-title">Demos</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="yt-demos-heading">
+                    <h2 class="section-heading" id="yt-demos-heading">Watch demos</h2>
+                    <div id="ytSupport"></div>
+                </section>
+            </div>
+        </div>
+        <script src="/assets/yt-embed.js"></script>
+        <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), ${slugJson});</script>
+        `;
+    const simpleVideo = `<div class="yt-support-simple" id="video">
+        <h2 class="yt-heading">Watch demos</h2>
+        <div id="ytSupport"></div>
+        </div>
+        <script src="/assets/yt-embed.js"></script>
+        <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), ${slugJson});</script>
+        `;
+    if (!html.includes('yt-embed.js')) {
+      const videoMarkup = html.includes('class="page-footer"') ? legalVideo : simpleVideo;
+      const footerAt = html.lastIndexOf('<footer');
+      if (footerAt !== -1) {
+        html = html.slice(0, footerAt) + videoMarkup + html.slice(footerAt);
+      } else {
+        html = html.replace('</body>', videoMarkup + '</body>');
+      }
+    }
+  }
+
   return html;
 }
 
@@ -64,7 +99,7 @@ function writePage(app, filename) {
   }
   const outDir = path.join(ROOT, 'apps', app.slug);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = rewrite(fs.readFileSync(src, 'utf8'), app);
+  const html = rewrite(fs.readFileSync(src, 'utf8'), app, filename);
   fs.writeFileSync(path.join(outDir, filename), html);
   return true;
 }

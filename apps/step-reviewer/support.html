@@ -128,6 +128,7 @@
         ]
     }
     </script>
+    <link rel="stylesheet" href="/assets/yt-embed.css">
 </head>
 <body>
     <main class="page-shell" id="content">
@@ -323,6 +324,17 @@
             </div>
         </div>
 
+        <div class="section-group yt-support" id="video">
+            <div class="section-group-title">Demos</div>
+            <div class="group-card">
+                <section class="group-item" aria-labelledby="yt-demos-heading">
+                    <h2 class="section-heading" id="yt-demos-heading">Watch demos</h2>
+                    <div id="ytSupport"></div>
+                </section>
+            </div>
+        </div>
+        <script src="/assets/yt-embed.js"></script>
+        <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), "step-reviewer");</script>
         <footer class="page-footer">
             <p>&copy; 2026 foowei.com. STEP Reviewer is built for CAD review on Apple platforms.</p>
             <p class="page-footer-legal">STEP Reviewer is an independent product. STEP and ISO 10303 names are used descriptively.</p>
