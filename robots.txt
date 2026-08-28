@@ -1,3 +1,6 @@
+User-agent: Googlebot
+Allow: /
+
 User-agent: *
 Allow: /
 
@@ -5,3 +8,4 @@ Disallow: /admin/
 Disallow: /.gitignore
 
 Sitemap: https://apps.h53d.xyz/sitemap.xml
+Sitemap: https://apps.h53d.xyz/sitemap.txt
