@@ -10,51 +10,6 @@
   },
   "apps": [
     {
-      "id": "6801400880",
-      "name": "ForgeShape",
-      "desc": "ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.",
-      "promotional": "STL, STEP check and convert on device.",
-      "icon": "icon.jpg",
-      "screenshots": [
-        "screen.jpg",
-        "screen1.jpg",
-        "screen2.jpg",
-        "screen3.jpg",
-        "screen4.jpg"
-      ],
-      "links": {
-        "ios": "https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8",
-        "macos": "https://apps.apple.com/us/app/id6801400880?platform=mac&pt=129278145&ct=apps.h53d.xyz&mt=8",
-        "policy": "/apps/forgeshape/policy.html",
-        "support": "/apps/forgeshape/support.html",
-        "detail": "/apps/forgeshape/detail.html"
-      },
-      "features": [
-        "Import STEP, IGES, STL, OBJ, binary GLB, and 3MF models, all parsed on device.",
-        "Detect open edges, non-manifold edges, self-intersection, inverted normals, thin walls, overhangs, units, and size.",
-        "Classify each body as a solid candidate or an open shell, with measured volume when closed.",
-        "Guided repairs: weld and stitch, fix orientation, remove duplicates, fill small holes, or run them in sequence.",
-        "Preview every repair before/after and apply only when you confirm.",
-        "Locate findings on the model, or let the camera frame the far-side issue.",
-        "Measure planar width, height, and area, or cylinder radius, in source units.",
-        "Fit the model to a print-size profile, then recheck automatically.",
-        "Export STL or 3MF for printing, or OBJ, GLB, STL, 3MF, or STEP for conversion.",
-        "Optional Reverse to CAD: recognized planar and cylindrical faces become analytic geometry in STEP.",
-        "No ads, accounts, or model uploads — work stays on the device."
-      ],
-      "audience": [
-        "3D Printing Hobbyists",
-        "Engineers",
-        "Makers",
-        "CAD / Mesh Conversion Teams"
-      ],
-      "knowledge": {
-        "title": "Print-ready mesh vs CAD solids",
-        "content": "A slicer needs a closed, consistently oriented triangle mesh. Open edges, inverted normals, thin walls, and overhangs are why a model looks fine on screen and still fails to print. STEP and IGES carry exact CAD surfaces; STL, OBJ, GLB, and 3MF are already tessellated. ForgeShape checks that evidence on device, repairs what this build can repair, and exports STL or 3MF for the slicer — or converts formats, including optional Reverse to CAD. It is not a slicer and does not generate G-code."
-      },
-      "slug": "forgeshape"
-    },
-    {
       "id": "6791591460",
       "name": "STEP Reviewer",
       "desc": "Built for CAD review: STEP files in the hundreds of MB and faceted models above 1 million triangles, plus measurement, cross sections, PMI, and mesh export. Opens STEP and IGES on Mac, iPhone, iPad, and Apple Vision — on device, with no uploads.",
@@ -144,6 +99,51 @@
         "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
       },
       "slug": "jt-file-viewer"
+    },
+    {
+      "id": "6801400880",
+      "name": "ForgeShape",
+      "desc": "ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.",
+      "promotional": "STL, STEP check and convert on device.",
+      "icon": "icon.jpg",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
+      "links": {
+        "ios": "https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8",
+        "macos": "https://apps.apple.com/us/app/id6801400880?platform=mac&pt=129278145&ct=apps.h53d.xyz&mt=8",
+        "policy": "/apps/forgeshape/policy.html",
+        "support": "/apps/forgeshape/support.html",
+        "detail": "/apps/forgeshape/detail.html"
+      },
+      "features": [
+        "Import STEP, IGES, STL, OBJ, binary GLB, and 3MF models, all parsed on device.",
+        "Detect open edges, non-manifold edges, self-intersection, inverted normals, thin walls, overhangs, units, and size.",
+        "Classify each body as a solid candidate or an open shell, with measured volume when closed.",
+        "Guided repairs: weld and stitch, fix orientation, remove duplicates, fill small holes, or run them in sequence.",
+        "Preview every repair before/after and apply only when you confirm.",
+        "Locate findings on the model, or let the camera frame the far-side issue.",
+        "Measure planar width, height, and area, or cylinder radius, in source units.",
+        "Fit the model to a print-size profile, then recheck automatically.",
+        "Export STL or 3MF for printing, or OBJ, GLB, STL, 3MF, or STEP for conversion.",
+        "Optional Reverse to CAD: recognized planar and cylindrical faces become analytic geometry in STEP.",
+        "No ads, accounts, or model uploads — work stays on the device."
+      ],
+      "audience": [
+        "3D Printing Hobbyists",
+        "Engineers",
+        "Makers",
+        "CAD / Mesh Conversion Teams"
+      ],
+      "knowledge": {
+        "title": "Print-ready mesh vs CAD solids",
+        "content": "A slicer needs a closed, consistently oriented triangle mesh. Open edges, inverted normals, thin walls, and overhangs are why a model looks fine on screen and still fails to print. STEP and IGES carry exact CAD surfaces; STL, OBJ, GLB, and 3MF are already tessellated. ForgeShape checks that evidence on device, repairs what this build can repair, and exports STL or 3MF for the slicer — or converts formats, including optional Reverse to CAD. It is not a slicer and does not generate G-code."
+      },
+      "slug": "forgeshape"
     },
     {
       "id": "6755721056",

@@ -6,14 +6,6 @@ Site: https://apps.h53d.xyz/
 
 ## Apps
 
-### ForgeShape
-- Detail: https://apps.h53d.xyz/apps/forgeshape/detail.html
-- App Store: https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8
-- Privacy policy: https://apps.h53d.xyz/apps/forgeshape/policy.html
-- Support: https://apps.h53d.xyz/apps/forgeshape/support.html
-- ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.
-- Background: A slicer needs a closed, consistently oriented triangle mesh. Open edges, inverted normals, thin walls, and overhangs are why a model looks fine on screen and still fails to print. STEP and IGES carry exact CAD surfaces; STL, OBJ, GLB, and 3MF are already tessellated. ForgeShape checks that evidence on device, repairs what this build can repair, and exports STL or 3MF for the slicer — or converts formats, including optional Reverse to CAD. It is not a slicer and does not generate G-code.
-
 ### STEP Reviewer
 - Detail: https://apps.h53d.xyz/apps/step-reviewer/detail.html
 - App Store: https://apps.apple.com/us/app/id6791591460?pt=129278145&ct=apps.h53d.xyz&mt=8
@@ -29,6 +21,14 @@ Site: https://apps.h53d.xyz/
 - Support: https://apps.h53d.xyz/apps/jt-file-viewer/support.html
 - JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro. Inspect tessellated assemblies, browse product structure, and use focused review tools without uploading files.
 - Background: JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens.
+
+### ForgeShape
+- Detail: https://apps.h53d.xyz/apps/forgeshape/detail.html
+- App Store: https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8
+- Privacy policy: https://apps.h53d.xyz/apps/forgeshape/policy.html
+- Support: https://apps.h53d.xyz/apps/forgeshape/support.html
+- ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.
+- Background: A slicer needs a closed, consistently oriented triangle mesh. Open edges, inverted normals, thin walls, and overhangs are why a model looks fine on screen and still fails to print. STEP and IGES carry exact CAD surfaces; STL, OBJ, GLB, and 3MF are already tessellated. ForgeShape checks that evidence on device, repairs what this build can repair, and exports STL or 3MF for the slicer — or converts formats, including optional Reverse to CAD. It is not a slicer and does not generate G-code.
 
 ### STEP File Viewer
 - Detail: https://apps.h53d.xyz/apps/step-file-viewer/detail.html
