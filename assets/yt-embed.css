@@ -13,7 +13,7 @@
 }
 .yt-slot[hidden] { display: none !important; }
 .yt-slot-short {
-  width: 148px;
+  width: auto;
   flex-shrink: 0;
 }
 .yt-slot-wide {
@@ -119,20 +119,65 @@
 .yt-caption-solo {
   margin-top: 0.4rem;
 }
+#demo-section,
+#demo-section .sticky,
+.preview-pair {
+  min-width: 0;
+  max-width: 100%;
+}
 .preview-pair {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
   gap: 0.7rem;
   width: 100%;
+  box-sizing: border-box;
 }
-.preview-pair .phone-mock-static {
-  margin: 0;
+.preview-pair.has-short {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, min(280px, calc((100% - 0.7rem) / 2))));
+  justify-content: center;
+  justify-items: stretch;
+  align-items: start;
+  gap: 0.7rem;
 }
+.preview-pair.has-short > * {
+  min-width: 0;
+  width: 100%;
+  max-width: 280px;
+}
+.preview-pair.has-short .phone-wrapper {
+  padding: 0;
+  position: relative;
+}
+.preview-pair.has-short .dashed-border,
 .preview-pair.has-short ~ .preview-dash,
-.sticky:has(.preview-pair.has-short) .preview-dash {
+.sticky:has(.preview-pair.has-short) .preview-dash,
+.sticky:has(.preview-pair.has-short) .dashed-border {
   display: none;
+}
+.preview-pair.has-short .phone-mock,
+.preview-pair.has-short .phone-mock-static {
+  margin: 0;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 280 / 580;
+  box-sizing: border-box;
+}
+.preview-pair.has-short .yt-slot-short {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding-top: 0;
+}
+.preview-pair.has-short .yt-slot-short .yt-frame-short {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
 }
 .preview-column-yt {
   width: 100%;
@@ -143,10 +188,4 @@
 }
 .yt-support-block .yt-slot-wide {
   margin-top: 0;
-}
-
-@media (max-width: 1100px) {
-  .preview-pair.has-short {
-    flex-wrap: wrap;
-  }
 }

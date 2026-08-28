@@ -33,6 +33,22 @@
     };
   }
 
+  function channelLink() {
+    var a = document.createElement('a');
+    a.href = CHANNEL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'yt-channel-link';
+    a.textContent = 'More on YouTube';
+    return a;
+  }
+
+  function landscapeList(data) {
+    if (!data || !data.videos) return [];
+    var list = data.videos.filter(function (v) { return !v.short; });
+    return list.length ? list : data.videos.slice();
+  }
+
   function iframeFor(video) {
     var iframe = document.createElement('iframe');
     iframe.src = NOCOOKIE + encodeURIComponent(video.id) + '?autoplay=1&rel=0';
@@ -159,41 +175,39 @@
       mountPlayer(shortSlot, groups.shorts, 'short');
       mountPlayer(wideSlot, groups.landscape, 'wide');
 
-      var a = document.createElement('a');
-      a.href = CHANNEL;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'yt-channel-link';
-      a.textContent = 'More on YouTube';
-      root.appendChild(a);
+      root.appendChild(channelLink());
     });
   }
 
   function mountTeaser(root, heading) {
     if (!root || !videoAllowed()) return;
     loadData(function (data) {
-      if (!data || !data.videos || !data.videos.length) return;
-      mountPlayer(root, [data.videos[0]], 'wide');
+      var videos = landscapeList(data).slice(0, 1);
+      if (!videos.length) return;
+      mountPlayer(root, videos, 'wide');
       if (heading) {
         var h = document.createElement('h2');
         h.className = 'yt-heading';
         h.textContent = heading;
         root.insertBefore(h, root.firstChild);
       }
+      root.appendChild(channelLink());
     });
   }
 
   function mountCarousel(root, heading) {
     if (!root || !videoAllowed()) return;
     loadData(function (data) {
-      if (!data || !data.videos || !data.videos.length) return;
-      mountPlayer(root, data.videos, 'wide');
+      var videos = landscapeList(data);
+      if (!videos.length) return;
+      mountPlayer(root, videos, 'wide');
       if (heading) {
         var h = document.createElement('h2');
         h.className = 'yt-heading';
         h.textContent = heading;
         root.insertBefore(h, root.firstChild);
       }
+      root.appendChild(channelLink());
     });
   }
 

@@ -13,6 +13,15 @@ function iconUrl(app) {
   return `/assets/${encodeURIComponent(app.assetDir)}/${app.icon}`;
 }
 
+function slugHasYoutubeVideos(slug) {
+  try {
+    const yt = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'youtube-channel.json'), 'utf8'));
+    return (yt.videos || []).some((v) => v.slug === slug);
+  } catch {
+    return false;
+  }
+}
+
 function rewrite(html, app, filename) {
   const icon = iconUrl(app);
   const pageBase = `${DOMAIN}/apps/${app.slug}`;
@@ -44,6 +53,17 @@ function rewrite(html, app, filename) {
   html = html.split('./support.html').join(`${pageBase}/support.html`);
   html = html.split(`${pageBase}/macOS512.png`).join(`${DOMAIN}${icon}`);
 
+  if (html.includes('class="related-links"') && !html.includes('Visit More Apps')) {
+    const h53dLink = `                        <a class="related-text-link" href="${DOMAIN}/" target="_blank" rel="noopener noreferrer">
+                            <img class="related-link-icon" src="/assets/icon.jpg" alt="" width="22" height="22" aria-hidden="true">
+                            <span>Visit More Apps</span>
+                        </a>\n`;
+    html = html.replace(
+      /(<div class="related-links">[\s\S]*?)(\n\s*<\/div>)/,
+      `$1${h53dLink}$2`
+    );
+  }
+
   if (html.includes('<link rel="stylesheet" href="/legal/docs.css">')) {
     html = html.replace(
       '<link rel="stylesheet" href="/legal/docs.css">',
@@ -53,16 +73,19 @@ function rewrite(html, app, filename) {
     html = html.replace('</head>', `    ${iconStyle}\n</head>`);
   }
 
-  if (filename === 'support.html') {
-    if (!html.includes('yt-embed.css')) {
-      html = html.replace('</head>', '    <link rel="stylesheet" href="/assets/yt-embed.css">\n</head>');
-    }
-    const slugJson = JSON.stringify(app.slug);
-    const legalVideo = `<div class="section-group yt-support" id="video">
-            <div class="section-group-title">Demos</div>
+  if (filename === 'support.html' && !/http-equiv=["']refresh["']/i.test(html)) {
+    html = html.replace(/\s*<div class="section-group yt-support"[\s\S]*?H53D_YT\.mountSupport[\s\S]*?<\/script>/gi, '\n');
+    html = html.replace(/\s*<div class="yt-support-simple"[\s\S]*?H53D_YT\.mountSupport[\s\S]*?<\/script>/gi, '\n');
+    if (!slugHasYoutubeVideos(app.slug)) {
+      html = html.replace(/\s*<link rel="stylesheet" href="\/assets\/yt-embed\.css">\s*/gi, '\n');
+    } else {
+      if (!html.includes('yt-embed.css')) {
+        html = html.replace('</head>', '    <link rel="stylesheet" href="/assets/yt-embed.css">\n</head>');
+      }
+      const slugJson = JSON.stringify(app.slug);
+      const legalVideo = `<div class="section-group yt-support" id="video">
             <div class="group-card">
-                <section class="group-item" aria-labelledby="yt-demos-heading">
-                    <h2 class="section-heading" id="yt-demos-heading">Watch demos</h2>
+                <section class="group-item">
                     <div id="ytSupport"></div>
                 </section>
             </div>
@@ -70,14 +93,12 @@ function rewrite(html, app, filename) {
         <script src="/assets/yt-embed.js"></script>
         <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), ${slugJson});</script>
         `;
-    const simpleVideo = `<div class="yt-support-simple" id="video">
-        <h2 class="yt-heading">Watch demos</h2>
+      const simpleVideo = `<div class="yt-support-simple" id="video">
         <div id="ytSupport"></div>
         </div>
         <script src="/assets/yt-embed.js"></script>
         <script>if (window.H53D_YT) H53D_YT.mountSupport(document.getElementById('ytSupport'), ${slugJson});</script>
         `;
-    if (!html.includes('yt-embed.js')) {
       const videoMarkup = html.includes('class="page-footer"') ? legalVideo : simpleVideo;
       const footerAt = html.lastIndexOf('<footer');
       if (footerAt !== -1) {
@@ -91,16 +112,33 @@ function rewrite(html, app, filename) {
   return html;
 }
 
+function isRedirectStub(html) {
+  return /http-equiv=["']refresh["']/i.test(html)
+    && html.includes('apps.h53d.xyz/apps/')
+    && html.length < 5000;
+}
+
+function resolveSourceDir(app) {
+  const vendored = path.join(ROOT, 'legal', 'sources', app.slug);
+  if (fs.existsSync(path.join(vendored, 'policy.html'))) return vendored;
+  return path.join(ROOT, app.source);
+}
+
 function writePage(app, filename) {
-  const src = path.join(ROOT, app.source, filename);
+  const srcDir = resolveSourceDir(app);
+  const src = path.join(srcDir, filename);
   if (!fs.existsSync(src)) {
-    console.warn(`skip missing ${app.source}/${filename}`);
+    console.warn(`skip missing ${path.relative(ROOT, src)}`);
+    return false;
+  }
+  const raw = fs.readFileSync(src, 'utf8');
+  if (isRedirectStub(raw)) {
+    console.warn(`skip redirect stub ${app.source}/${filename}`);
     return false;
   }
   const outDir = path.join(ROOT, 'apps', app.slug);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = rewrite(fs.readFileSync(src, 'utf8'), app, filename);
-  fs.writeFileSync(path.join(outDir, filename), html);
+  fs.writeFileSync(path.join(outDir, filename), rewrite(raw, app, filename));
   return true;
 }
 
@@ -384,8 +422,13 @@ function patchPortfolio() {
   fs.writeFileSync(appsPath, `${JSON.stringify(data, null, 2)}\n`);
 }
 
+const only = process.env.LEGAL_ONLY
+  ? new Set(process.env.LEGAL_ONLY.split(',').map((s) => s.trim()).filter(Boolean))
+  : null;
+
 let written = 0;
 for (const app of registry.apps) {
+  if (only && !only.has(app.slug)) continue;
   const policy = writePage(app, 'policy.html');
   const support = writePage(app, 'support.html');
   copyExtras(app);
@@ -394,9 +437,11 @@ for (const app of registry.apps) {
     console.log(`built ${app.slug}`);
   }
 }
-patchPortfolio();
-writeSlugMap();
-writeDetailPages();
-prerenderIndex();
-writeLlmsTxt();
-console.log(`done: ${written}/${registry.apps.length} apps`);
+if (!only) {
+  patchPortfolio();
+  writeSlugMap();
+  writeDetailPages();
+  prerenderIndex();
+  writeLlmsTxt();
+}
+console.log(`done: ${written}/${only ? only.size : registry.apps.length} apps`);

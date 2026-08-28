@@ -143,12 +143,14 @@
     
     .slider-btn {
         position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px;
-        background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s;
+        background: #1e293b; backdrop-filter: blur(8px);
+        border: 2px solid #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; cursor: pointer; transition: all 0.3s;
         z-index: 30; opacity: 0; pointer-events: none;
     }
-    .phone-mock-static:hover .slider-btn.active { opacity: 1; pointer-events: auto; }
-    .slider-btn:hover { background: rgba(59, 130, 246, 0.8); border-color: transparent; scale: 1.1; }
+    .phone-mock-static .slider-btn.active { opacity: 1; pointer-events: auto; }
+    .slider-btn:hover { background: rgba(37, 99, 235, 0.92); border-color: #fff; scale: 1.1; }
     .slider-btn.left { left: 10px; }
     .slider-btn.right { right: 10px; }
     .slider-dots { position: absolute; bottom: 20px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px; z-index: 30; }
