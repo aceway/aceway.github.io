@@ -13,5 +13,8 @@
 update_sitemap.js
 *PolicySupport
 *MetaData
+*Metadata
 office-web
 ln.sh
+ln-AppStoreMetadata.sh
+ln-PolicySupport.sh
