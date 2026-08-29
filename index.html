@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://i.ytimg.com">
+  <!-- PRERENDER:LCP-PRELOAD --><link rel="preload" as="image" href="https://i.ytimg.com/vi/LfqtPHB8yEg/hqdefault.jpg" fetchpriority="high" media="(min-width: 1024px)"><!-- /PRERENDER:LCP-PRELOAD -->
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="assets/tailwind.css">
   <script src="assets/gsap.min.js"></script>
@@ -698,7 +699,7 @@
             if (appsList.length > 0) {
                 // const randomIndex = Math.floor(Math.random() * appsList.length);
                 const randomIndex = 0;
-                setTimeout(() => triggerPreview(appsList[randomIndex]), 100);
+                triggerPreview(appsList[randomIndex]);
             }
 
         } catch (error) {

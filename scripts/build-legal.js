@@ -523,6 +523,20 @@ function prerenderIndex() {
     `$1${cards}\n                $2`
   );
 
+  // The homepage previews the first app on load, and its short thumbnail is
+  // the LCP element on desktop. Preloading it removes the discovery chain
+  // (apps.json -> build cards -> youtube json -> mount -> request).
+  const firstApp = portfolio.apps[0];
+  const firstVideos = firstApp ? videosOf(firstApp.slug) : [];
+  const lcpVideo = firstVideos.find((v) => v.short) || firstVideos[0];
+  const preload = lcpVideo
+    ? `<link rel="preload" as="image" href="${lcpVideo.thumb}" fetchpriority="high" media="(min-width: 1024px)">`
+    : '';
+  html = html.replace(
+    /<!-- PRERENDER:LCP-PRELOAD -->[\s\S]*?<!-- \/PRERENDER:LCP-PRELOAD -->/,
+    `<!-- PRERENDER:LCP-PRELOAD -->${preload}<!-- /PRERENDER:LCP-PRELOAD -->`
+  );
+
   const itemList = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
