@@ -783,6 +783,42 @@
         });
     }
 
+    // On phones the preview column stacks below everything, which buries the
+    // videos. Move the video slots above the knowledge panel there, and put
+    // them back when the two-column desktop layout returns.
+    (function () {
+        const mq = window.matchMedia('(max-width: 1023px)');
+        const slots = ['ytShortSlot', 'ytWideSlot']
+            .map((id) => document.getElementById(id))
+            .filter(Boolean);
+        const knowledge = document.getElementById('knowledgeSection');
+        if (!slots.length || !knowledge) return;
+
+        const home = slots.map((el) => ({ el, parent: el.parentNode, next: el.nextSibling }));
+        let host = null;
+
+        function apply() {
+            if (mq.matches) {
+                if (!host) {
+                    host = document.createElement('div');
+                    host.id = 'mobileVideos';
+                    host.className = 'space-y-4';
+                    knowledge.parentNode.insertBefore(host, knowledge);
+                }
+                slots.forEach((el) => host.appendChild(el));
+            } else if (host) {
+                home.forEach(({ el, parent, next }) => parent.insertBefore(el, next));
+                host.remove();
+                host = null;
+            }
+        }
+
+        apply();
+        mq.addEventListener('change', apply);
+        // yt-embed fills the slots asynchronously; re-run once it has mounted
+        window.addEventListener('load', apply);
+    })();
+
     // Hand scrolling over to the page once a panel hits its edge. Browsers
     // latch a trackpad gesture to the panel, so native chaining never fires
     // within the same gesture; forwarding the wheel delta fixes that.

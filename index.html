@@ -838,7 +838,7 @@
                 ? `<a href="${storeLink}" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${app.name}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${app.name}"><img src="assets/qr/${app.slug}.svg" alt="QR code to install ${app.name} from the App Store" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>`
                 : '';
 
-            let previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
+            let previewBtnHTML = `<button class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition hidden lg:flex items-center gap-1.5 demo-trigger bg-white"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> PREVIEW</button>`;
 
             const card = document.createElement('div');
             card.className = 'holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group';
