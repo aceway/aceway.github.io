@@ -19,12 +19,14 @@
   <script id="dynamic-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ForgeShape","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication","url":"https://apps.h53d.xyz/apps/forgeshape/detail.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer. It also converts between CAD and mesh formats. Nothing is ever uploaded.","author":{"@type":"Person","name":"Wei Ai"},"privacyPolicy":"https://apps.h53d.xyz/apps/forgeshape/policy.html","softwareHelp":"https://apps.h53d.xyz/apps/forgeshape/support.html"}</script>
   <script id="faq-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which 3D file formats does ForgeShape open?","acceptedAnswer":{"@type":"Answer","text":"ForgeShape imports STEP, IGES, STL, OBJ, binary GLB, and 3MF models, and parses all of them on device."}},{"@type":"Question","name":"What problems can ForgeShape find and repair before 3D printing?","acceptedAnswer":{"@type":"Answer","text":"It detects open edges, non-manifold edges, self-intersection, inverted normals, thin walls, overhangs, units, and size, then offers guided repairs: weld and stitch, fix orientation, remove duplicates, and fill small holes. Every repair can be previewed before and after, and is applied only when you confirm."}},{"@type":"Question","name":"Can ForgeShape convert a mesh back into CAD geometry?","acceptedAnswer":{"@type":"Answer","text":"Yes. Optional Reverse to CAD turns recognized planar and cylindrical faces into analytic geometry in a STEP export. ForgeShape can also export STL or 3MF for a slicer, or OBJ, GLB, STL, 3MF, and STEP for conversion."}},{"@type":"Question","name":"Are my models uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. There are no ads, accounts, or model uploads — the work stays on your device. ForgeShape is not a slicer and does not generate G-code."}}]}</script>
   <script id="breadcrumb-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Apps by Wei Ai","item":"https://apps.h53d.xyz/"},{"@type":"ListItem","position":2,"name":"ForgeShape","item":"https://apps.h53d.xyz/apps/forgeshape/detail.html"}]}</script>
-  <link rel="stylesheet" href="/assets/yt-embed.css">
+  <link rel="stylesheet" href="/assets/yt-embed.css" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link rel="stylesheet" href="/assets/yt-embed.css"></noscript>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -256,7 +258,7 @@
             <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
                 <div class="flex gap-6 items-start">
-                    <div id="detailIcon" class="app-icon-lg"><img src="/assets/ForgeShape/icon.jpg" class="w-full h-full object-cover" alt="ForgeShape"></div>
+                    <div id="detailIcon" class="app-icon-lg"><picture><source srcset="/assets/ForgeShape/icon.webp" type="image/webp"><img src="/assets/ForgeShape/icon.jpg" class="w-full h-full object-cover" width="120" height="120" alt="ForgeShape"></picture></div>
                     <div class="flex-1 pt-2">
                         <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase">STL, STEP check and convert on device.</div>
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3">ForgeShape</h1>
@@ -265,7 +267,7 @@
                         <div class="mt-6 flex items-center gap-4 flex-wrap">
                             <a id="detailLink" href="https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
-                                <img id="appleBadgeIcon" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
+                                <img id="appleBadgeIcon" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="120" height="40" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
                             <div id="legalLinks" class="flex gap-2">
                                 <a id="policyLink" href="/apps/forgeshape/policy.html" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
@@ -409,7 +411,7 @@
                         <div class="phone-mock-static">
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
                             <div class="phone-screen relative bg-black overflow-hidden">
-                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><img src="/assets/ForgeShape/screen.jpg" alt="ForgeShape screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></div>
+                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><picture><source srcset="/assets/ForgeShape/screen.webp" type="image/webp"><img src="/assets/ForgeShape/screen.jpg" alt="ForgeShape screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture></div>
                                 <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
                                 <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
                                 <div id="dotsContainer" class="slider-dots z-20"></div>
@@ -631,7 +633,7 @@
         const iconPath = app.icon ? `/assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
-            iconDiv.innerHTML = `<img src="${iconPath}" class="w-full h-full object-cover" alt="${app.name}">`;
+            iconDiv.innerHTML = `<img src="${iconPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')}" class="w-full h-full object-cover" alt="${app.name}" onerror="this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg')">`;
         } else {
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">${app.name.substring(0,2)}</div>`;
         }
@@ -688,7 +690,7 @@
         }
 
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
-            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`);
+            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
         } else {
             currentSlides = [];
         }
@@ -774,6 +776,7 @@
         const img = document.createElement('img');
         img.src = currentSlides[currentIndex];
         img.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        img.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         img.className = "absolute top-0 left-0 w-full h-full object-cover";
         sliderContainer.appendChild(img);
         updateControls();
@@ -787,6 +790,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[nextIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
@@ -803,6 +807,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[targetIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });

@@ -20,12 +20,14 @@
   <script id="faq-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can DXF Assistant edit drawings, or only view them?","acceptedAnswer":{"@type":"Answer","text":"It edits drawings directly: copy, delete, move, rotate, scale, undo, and redo are all supported, in both 2D and 3D DXF files."}},{"@type":"Question","name":"Which export formats are available?","acceptedAnswer":{"@type":"Answer","text":"Drawings can be exported as PDF, SVG, PNG, or JPG, several DXF files can be exported into a single combined file, and table entities can be exported as CSV."}},{"@type":"Question","name":"Can it check a drawing before laser cutting or CNC work?","acceptedAnswer":{"@type":"Answer","text":"Yes. It scans a DXF file for issues before laser cutting or CNC engraving and produces a shareable PDF report."}},{"@type":"Question","name":"Can I work with multiple DXF files at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can merge and arrange multiple DXF files in one session and open several files simultaneously without losing context."}}]}</script>
   <script id="breadcrumb-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Apps by Wei Ai","item":"https://apps.h53d.xyz/"},{"@type":"ListItem","position":2,"name":"DXF Assistant","item":"https://apps.h53d.xyz/apps/dxf-assistant/detail.html"}]}</script>
   <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow","description":"DXF file viewer mobile","thumbnailUrl":"https://i.ytimg.com/vi/Dgkhg60PJdE/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Dgkhg60PJdE","embedUrl":"https://www.youtube-nocookie.com/embed/Dgkhg60PJdE","uploadDate":"2025-11-23T22:04:45-08:00"},{"@context":"https://schema.org","@type":"VideoObject","name":"Open DXF Files viewer in One Session","description":"Open DXF files viewer","thumbnailUrl":"https://i.ytimg.com/vi/Kv9Oc3u_GUc/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Kv9Oc3u_GUc","embedUrl":"https://www.youtube-nocookie.com/embed/Kv9Oc3u_GUc","uploadDate":"2025-07-09T04:33:10-07:00"},{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow - Portrait","description":"DXF viewer mobile iPhone","thumbnailUrl":"https://i.ytimg.com/vi/6NQHnSfYeq0/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=6NQHnSfYeq0","embedUrl":"https://www.youtube-nocookie.com/embed/6NQHnSfYeq0","uploadDate":"2025-11-23T22:47:27-08:00"}]</script>
-  <link rel="stylesheet" href="/assets/yt-embed.css">
+  <link rel="stylesheet" href="/assets/yt-embed.css" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link rel="stylesheet" href="/assets/yt-embed.css"></noscript>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -257,7 +259,7 @@
             <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
                 <div class="flex gap-6 items-start">
-                    <div id="detailIcon" class="app-icon-lg"><img src="/assets/DXF%20Assistant/icon.jpg" class="w-full h-full object-cover" alt="DXF Assistant"></div>
+                    <div id="detailIcon" class="app-icon-lg"><picture><source srcset="/assets/DXF%20Assistant/icon.webp" type="image/webp"><img src="/assets/DXF%20Assistant/icon.jpg" class="w-full h-full object-cover" width="120" height="120" alt="DXF Assistant"></picture></div>
                     <div class="flex-1 pt-2">
                         <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase">View DXF. Convert to PDF, SVG, PNG.</div>
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3">DXF Assistant</h1>
@@ -266,7 +268,7 @@
                         <div class="mt-6 flex items-center gap-4 flex-wrap">
                             <a id="detailLink" href="https://apps.apple.com/us/app/dxf-assistant/id6742348600?pt=127352688&ct=apps.h53d.xyz&mt=8" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
-                                <img id="appleBadgeIcon" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
+                                <img id="appleBadgeIcon" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="120" height="40" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
                             <div id="legalLinks" class="flex gap-2">
                                 <a id="policyLink" href="/apps/dxf-assistant/policy.html" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
@@ -392,7 +394,7 @@
                         <div class="phone-mock-static">
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
                             <div class="phone-screen relative bg-black overflow-hidden">
-                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><img src="/assets/DXF%20Assistant/screen.jpg" alt="DXF Assistant screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></div>
+                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><picture><source srcset="/assets/DXF%20Assistant/screen.webp" type="image/webp"><img src="/assets/DXF%20Assistant/screen.jpg" alt="DXF Assistant screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture></div>
                                 <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
                                 <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
                                 <div id="dotsContainer" class="slider-dots z-20"></div>
@@ -614,7 +616,7 @@
         const iconPath = app.icon ? `/assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
-            iconDiv.innerHTML = `<img src="${iconPath}" class="w-full h-full object-cover" alt="${app.name}">`;
+            iconDiv.innerHTML = `<img src="${iconPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')}" class="w-full h-full object-cover" alt="${app.name}" onerror="this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg')">`;
         } else {
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">${app.name.substring(0,2)}</div>`;
         }
@@ -671,7 +673,7 @@
         }
 
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
-            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`);
+            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
         } else {
             currentSlides = [];
         }
@@ -757,6 +759,7 @@
         const img = document.createElement('img');
         img.src = currentSlides[currentIndex];
         img.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        img.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         img.className = "absolute top-0 left-0 w-full h-full object-cover";
         sliderContainer.appendChild(img);
         updateControls();
@@ -770,6 +773,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[nextIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
@@ -786,6 +790,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[targetIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });

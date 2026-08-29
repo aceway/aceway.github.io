@@ -167,6 +167,10 @@ function writeSlugMap() {
   fs.writeFileSync(path.join(ROOT, 'legal', 'slugs.js'), body);
 }
 
+function webpOf(p) {
+  return String(p).replace(/\.(jpg|jpeg|png)$/i, '.webp');
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -308,7 +312,7 @@ function prerenderDetail(template, app, ui, allApps) {
   html = fillById(
     html,
     /<div id="detailIcon"[^>]*>/,
-    `<img src="${assetBase}/${app.icon}" class="w-full h-full object-cover" alt="${escapeHtml(name)}">`
+    `<picture><source srcset="${webpOf(assetBase + '/' + app.icon)}" type="image/webp"><img src="${assetBase}/${app.icon}" class="w-full h-full object-cover" width="120" height="120" alt="${escapeHtml(name)}"></picture>`
   );
 
   html = html.split('id="detailLink" href="#"').join(`id="detailLink" href="${storeLink}"`);
@@ -383,7 +387,7 @@ function prerenderDetail(template, app, ui, allApps) {
     html = fillById(
       html,
       /<div id="sliderContainer"[^>]*>/,
-      `<img src="${assetBase}/${app.screenshots[0]}" alt="${escapeHtml(name)} screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;">`
+      `<picture><source srcset="${webpOf(assetBase + '/' + app.screenshots[0])}" type="image/webp"><img src="${assetBase}/${app.screenshots[0]}" alt="${escapeHtml(name)} screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture>`
     );
   }
 
@@ -426,10 +430,10 @@ function prerenderIndex() {
     const iconPath = app.icon ? `assets/${encodeURIComponent(app.name)}/${app.icon}` : null;
     const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
     let iconLayer = `<div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-500 font-mono font-bold text-2xl select-none">${escapeHtml(fallbackText)}</span></div>`;
-    if (iconPath) iconLayer += `<img src="${iconPath}" alt="${escapeHtml(app.name)}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
-    const promoBadge = app.promotional ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${escapeHtml(app.promotional)}</span>` : '';
+    if (iconPath) iconLayer += `<picture><source srcset="${webpOf(iconPath)}" type="image/webp"><img src="${iconPath}" alt="${escapeHtml(app.name)}" width="80" height="80" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110"></picture>`;
+    const promoBadge = app.promotional ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-700 border border-blue-200">${escapeHtml(app.promotional)}</span>` : '';
     const appleImg = ui.appleIconIOS
-      ? `<img src="assets/${ui.appleIconIOS}" class="h-8 w-auto object-contain select-none" alt="App Store">`
+      ? `<img src="assets/${ui.appleIconIOS}" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store">`
       : '<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>';
     return `
                 <div class="holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group">

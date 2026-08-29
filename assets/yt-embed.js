@@ -59,6 +59,8 @@
     return iframe;
   }
 
+  var facadeCount = 0;
+
   function facade(video) {
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -67,7 +69,14 @@
     var img = document.createElement('img');
     img.src = video.thumb;
     img.alt = '';
-    img.loading = 'lazy';
+    // The first facade is often the LCP element: eager-load it, lazy-load the rest
+    if (facadeCount === 0) {
+      img.loading = 'eager';
+      img.setAttribute('fetchpriority', 'high');
+    } else {
+      img.loading = 'lazy';
+    }
+    facadeCount++;
     var play = document.createElement('span');
     play.className = 'yt-play';
     play.setAttribute('aria-hidden', 'true');

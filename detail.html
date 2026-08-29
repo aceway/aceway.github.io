@@ -11,12 +11,14 @@
   <meta property="og:image" content="/assets/social-preview.jpg">
   <meta name="twitter:title" content="App Details · Wei Ai">
   <meta name="twitter:image" content="/assets/social-preview.jpg">
-  <link rel="stylesheet" href="/assets/yt-embed.css">
+  <link rel="stylesheet" href="/assets/yt-embed.css" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link rel="stylesheet" href="/assets/yt-embed.css"></noscript>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media=&quot;all&quot;">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -257,7 +259,7 @@
                         <div class="mt-6 flex items-center gap-4 flex-wrap">
                             <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
-                                <img id="appleBadgeIcon" src="" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
+                                <img id="appleBadgeIcon" src="" width="120" height="40" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
                             <div id="legalLinks" class="hidden flex gap-2">
                                 <a id="policyLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
@@ -541,7 +543,7 @@
         const iconPath = app.icon ? `/assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
-            iconDiv.innerHTML = `<img src="${iconPath}" class="w-full h-full object-cover" alt="${app.name}">`;
+            iconDiv.innerHTML = `<img src="${iconPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')}" class="w-full h-full object-cover" alt="${app.name}" onerror="this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg')">`;
         } else {
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">${app.name.substring(0,2)}</div>`;
         }
@@ -598,7 +600,7 @@
         }
 
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
-            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`);
+            currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
         } else {
             currentSlides = [];
         }
@@ -684,6 +686,7 @@
         const img = document.createElement('img');
         img.src = currentSlides[currentIndex];
         img.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        img.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         img.className = "absolute top-0 left-0 w-full h-full object-cover";
         sliderContainer.appendChild(img);
         updateControls();
@@ -697,6 +700,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[nextIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
@@ -713,6 +717,7 @@
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[targetIndex];
         nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
+        nextImg.onerror = function () { this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg'); };
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
