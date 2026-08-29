@@ -61,6 +61,17 @@
 
   var facadeCount = 0;
 
+  // An eager image downloads even inside a hidden container, so only the
+  // first facade that is actually on screen gets the LCP treatment.
+  function promoteIfVisible(btn) {
+    if (facadeCount > 1) return;
+    if (!btn.offsetParent && btn.getClientRects().length === 0) return;
+    var img = btn.querySelector('img');
+    if (!img) return;
+    img.loading = 'eager';
+    img.setAttribute('fetchpriority', 'high');
+  }
+
   function facade(video) {
     var btn = document.createElement('button');
     btn.type = 'button';
@@ -69,13 +80,7 @@
     var img = document.createElement('img');
     img.src = video.thumb;
     img.alt = '';
-    // The first facade is often the LCP element: eager-load it, lazy-load the rest
-    if (facadeCount === 0) {
-      img.loading = 'eager';
-      img.setAttribute('fetchpriority', 'high');
-    } else {
-      img.loading = 'lazy';
-    }
+    img.loading = 'lazy';
     facadeCount++;
     var play = document.createElement('span');
     play.className = 'yt-play';
@@ -90,7 +95,10 @@
 
   function fillFrame(frame, video) {
     frame.innerHTML = '';
-    if (video) frame.appendChild(facade(video));
+    if (!video) return;
+    var btn = facade(video);
+    frame.appendChild(btn);
+    promoteIfVisible(btn);
   }
 
   function mountPlayer(root, videos, shape) {
@@ -109,6 +117,9 @@
     frame.className = shape === 'short' ? 'yt-frame yt-frame-short' : 'yt-frame yt-frame-wide';
     fillFrame(frame, videos[0]);
     root.appendChild(frame);
+    // now that the frame is in the document, visibility can be measured
+    var firstBtn = frame.querySelector('.yt-facade');
+    if (firstBtn) promoteIfVisible(firstBtn);
 
     if (videos.length > 1) {
       var nav = document.createElement('div');
