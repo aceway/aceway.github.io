@@ -608,6 +608,10 @@
         if (event.persisted || getComputedStyle(wrapper).opacity == '0') {
             gsap.set(wrapper, { x: 0, y: 0, opacity: 1, clearProps: "transform" });
         }
+        // the browser restores scroll itself for a bfcache hit
+        if (event.persisted) {
+            try { sessionStorage.removeItem(SCROLL_KEY); } catch (e) {}
+        }
     });
 
     // ... (Fetch Logic ) ...
@@ -637,6 +641,7 @@
             // Drop the prerendered static cards before the interactive rebuild
             grid.querySelectorAll('.holo-card').forEach((el) => el.remove());
             buildGrid(appsList);
+            restoreScrollPos();
 
             if (appsList.length > 0) {
                 // const randomIndex = Math.floor(Math.random() * appsList.length);
@@ -807,6 +812,7 @@
                     e.preventDefault(); e.stopPropagation();
                     const targetUrl = detailBtn.getAttribute('href');
                     sessionStorage.setItem('page-transition', 'forward');
+                    saveScrollPos();
                     gsap.to('#page-wrapper', {
                         x: -window.innerWidth * 0.5, opacity: 0, duration: 0.3, ease: "power2.in",
                         onComplete: () => { window.location.href = targetUrl; }
@@ -834,6 +840,36 @@
             }
         }, { passive: false });
     });
+
+
+    // Leaving for a detail page is a full navigation, so the browser starts the
+    // next visit at the top. Remember where the reader was — both the window
+    // scroll and the card panel's own scroll — and put them back on return.
+    const SCROLL_KEY = 'index-scroll';
+
+    function saveScrollPos() {
+        try {
+            sessionStorage.setItem(SCROLL_KEY, JSON.stringify({
+                y: window.scrollY || 0,
+                gy: grid ? grid.scrollTop : 0
+            }));
+        } catch (e) {}
+    }
+
+    function restoreScrollPos() {
+        let saved = null;
+        try {
+            const raw = sessionStorage.getItem(SCROLL_KEY);
+            sessionStorage.removeItem(SCROLL_KEY);
+            if (raw) saved = JSON.parse(raw);
+        } catch (e) {}
+        if (!saved) return;
+        // wait for layout so the document is tall enough to scroll to
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            if (saved.gy && grid) grid.scrollTop = saved.gy;
+            if (saved.y) window.scrollTo(0, saved.y);
+        }));
+    }
 
 	window.addEventListener('DOMContentLoaded', () => {
         const transitionType = sessionStorage.getItem('page-transition');
