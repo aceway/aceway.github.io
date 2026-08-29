@@ -189,6 +189,35 @@ function appSchema(app, canonicalHref) {
   return schema;
 }
 
+let ytData = null;
+function videosOf(slug) {
+  if (ytData === null) {
+    try {
+      ytData = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'youtube-channel.json'), 'utf8'));
+    } catch (e) {
+      ytData = {};
+    }
+  }
+  return (ytData.videos || []).filter((v) => v.slug === slug);
+}
+
+// VideoObject entries for the app's matched YouTube videos (landscape first,
+// capped so video-heavy apps don't bloat the page head).
+function videoSchema(slug) {
+  const vids = videosOf(slug);
+  if (vids.length === 0) return null;
+  const picked = [...vids.filter((v) => !v.short), ...vids.filter((v) => v.short)].slice(0, 8);
+  return picked.map((v) => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: v.title,
+    description: v.description || v.title,
+    thumbnailUrl: v.thumb,
+    contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`
+  }));
+}
+
 // Bake each app's metadata and visible content into its detail page so
 // crawlers that do not execute JavaScript (most AI/LLM crawlers) can read it.
 // The runtime JS re-renders the same data from apps.json, so behavior is unchanged.
@@ -225,8 +254,12 @@ function prerenderDetail(template, app, ui) {
     `<link rel="icon" type="image/jpeg" href="${assetBase}/${app.icon}">`,
     `<link rel="apple-touch-icon" href="${assetBase}/${app.icon}">`,
     `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`
-  ].join('\n  ');
-  html = html.replace(/(<meta name="twitter:image"[^>]*>)/, `$1\n  ${headExtras}`);
+  ];
+  const videos = videoSchema(app.slug);
+  if (videos) {
+    headExtras.push(`<script id="video-schema" type="application/ld+json">${JSON.stringify(videos)}</script>`);
+  }
+  html = html.replace(/(<meta name="twitter:image"[^>]*>)/, `$1\n  ${headExtras.join('\n  ')}`);
 
   // --- visible content (runtime JS overwrites these nodes with the same data) ---
   html = fillById(html, /<h1 id="detailTitle"[^>]*>/, escapeHtml(name));
