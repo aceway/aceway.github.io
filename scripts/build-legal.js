@@ -206,7 +206,7 @@ function qrTargetOf(app) {
 }
 
 // Compact SVG: one path, horizontal runs merged, ~5 KB instead of ~18 KB.
-function qrSvg(text, margin = 4) {
+function qrSvg(text, label = 'QR code', margin = 4) {
   const qr = qrcode(0, 'M');
   qr.addData(text);
   qr.make();
@@ -223,7 +223,7 @@ function qrSvg(text, margin = 4) {
       d += `M${start + margin} ${r + margin}h${w}v1h-${w}z`;
     }
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="120" height="120" shape-rendering="crispEdges" role="img"><title>QR code</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="120" height="120" shape-rendering="crispEdges" role="img"><title>${escapeHtml(label)}</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
 }
 
 // Standalone QR files for the homepage cards: referenced by <img>, so the
@@ -235,7 +235,7 @@ function writeQrFiles() {
   let n = 0;
   for (const app of portfolio.apps) {
     if (!app.links || !app.links.ios) continue;
-    const svg = qrSvg(qrTargetOf(app)).replace(' width="120" height="120"', '');
+    const svg = qrSvg(qrTargetOf(app), `QR code to install ${app.name} from the App Store`).replace(' width="120" height="120"', '');
     fs.writeFileSync(path.join(dir, `${app.slug}.svg`), svg);
     n += 1;
   }
@@ -405,7 +405,7 @@ function prerenderDetail(template, app, ui, allApps) {
   if (app.links && app.links.ios) {
     const qrTarget = qrTargetOf(app);
     html = html.replace('id="qrLink" href="#"', `id="qrLink" href="${qrTarget}" aria-label="${escapeHtml(name)} on the App Store"`);
-    html = fillById(html, /<span id="qrCode"[^>]*>/, qrSvg(qrTarget));
+    html = fillById(html, /<span id="qrCode"[^>]*>/, qrSvg(qrTarget, `QR code to install ${name} from the App Store`));
   } else {
     html = html.replace('id="qrLink" href="#" class="hidden lg:block', 'id="qrLink" href="#" class="hidden');
     html = html.replace('id="qrHint" class="hidden lg:block', 'id="qrHint" class="hidden');
@@ -496,7 +496,7 @@ function prerenderIndex() {
       ? `<img src="assets/${ui.appleIconIOS}" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store">`
       : '<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>';
     const qrTrigger = app.slug
-      ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>`
+      ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="QR code to install ${escapeHtml(app.name)} from the App Store" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>`
       : '';
     return `
                 <div class="holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group">
