@@ -223,7 +223,7 @@ function qrSvg(text, margin = 4) {
       d += `M${start + margin} ${r + margin}h${w}v1h-${w}z`;
     }
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="132" height="132" shape-rendering="crispEdges" role="img"><title>QR code</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="120" height="120" shape-rendering="crispEdges" role="img"><title>QR code</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
 }
 
 function appSchema(app, canonicalHref) {
@@ -391,7 +391,8 @@ function prerenderDetail(template, app, ui, allApps) {
     html = html.replace('id="qrLink" href="#"', `id="qrLink" href="${qrTarget}" aria-label="${escapeHtml(name)} on the App Store"`);
     html = fillById(html, /<span id="qrCode"[^>]*>/, qrSvg(qrTarget));
   } else {
-    html = html.replace('id="qrBlock" class="hidden lg:flex', 'id="qrBlock" class="hidden');
+    html = html.replace('id="qrLink" href="#" class="hidden lg:block', 'id="qrLink" href="#" class="hidden');
+    html = html.replace('id="qrHint" class="hidden lg:block', 'id="qrHint" class="hidden');
   }
 
   // Visible FAQ (required for FAQPage markup) plus the matching schema

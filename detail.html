@@ -222,13 +222,18 @@
             <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
                 <div class="flex gap-6 items-start">
-                    <div id="detailIcon" class="app-icon-lg"></div>
+                    <div class="flex flex-col items-center gap-4 shrink-0">
+                        <div id="detailIcon" class="app-icon-lg"></div>
+                        <a id="qrLink" href="#" class="hidden lg:block p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
+                            <span id="qrCode" class="block w-[120px] h-[120px]"></span>
+                        </a>
+                    </div>
                     <div class="flex-1 pt-2">
                         <div id="detailPromo" class="inline-block px-3 py-1 mb-2 rounded-full border border-purple-200 bg-purple-50 text-purple-600 text-[10px] font-mono tracking-widest uppercase"></div>
                         <h1 id="detailTitle" class="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-3"></h1>
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light"></p>
                         
-                        <div class="mt-6 flex items-center gap-4 flex-wrap">
+                        <div class="mt-6 flex items-center gap-3 flex-wrap">
                             <a id="detailLink" href="#" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
                                 <img id="appleBadgeIcon" src="" width="120" height="40" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
@@ -237,17 +242,11 @@
                                 <a id="policyLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">PRIVACY</a>
                                 <a id="supportLink" href="#" class="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-[10px] font-bold font-mono hover:bg-slate-100 hover:text-blue-600 transition bg-white/50">SUPPORT</a>
                             </div>
+                            <div id="qrHint" class="hidden lg:block text-[11px] text-slate-500 leading-snug max-w-[140px]">
+                                <span class="block font-mono font-bold text-slate-600 tracking-wide">SCAN TO INSTALL</span>
+                                Use your iPhone camera on the code.
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div id="qrBlock" class="hidden lg:flex items-center gap-4">
-                    <a id="qrLink" href="#" class="block p-2 bg-white rounded-xl border border-slate-200 shadow-sm shrink-0">
-                        <span id="qrCode" class="block w-[132px] h-[132px]"></span>
-                    </a>
-                    <div class="text-xs text-slate-500 leading-relaxed max-w-[190px]">
-                        <span class="block font-mono font-bold text-slate-600 mb-1 tracking-wide">SCAN TO INSTALL</span>
-                        Point your iPhone camera at the code to open this app in the App Store.
                     </div>
                 </div>
 
