@@ -609,6 +609,53 @@ ${links}
   fs.writeFileSync(path.join(ROOT, '404.html'), html);
 }
 
+// README: the repo page is crawled far more often than a new domain, so it
+// doubles as a discoverable index of the site's pages.
+function writeReadme() {
+  const portfolio = loadPortfolio();
+  const hero = portfolio.hero || {};
+  const summary = (hero.subtitle || 'Utility apps built with SwiftUI and CoreML.').replace(/<[^>]+>/g, ' ');
+
+  const lines = [
+    '# Wei Ai · H53D — Apple apps, built privacy-first',
+    '',
+    `**[apps.h53d.xyz](${DOMAIN}/)** — ${summary} Every app runs on device: no ads, no tracking, no file uploads.`,
+    '',
+    'This repository is the source of that site: a static portfolio with a detail, privacy policy, and support page for each app.',
+    '',
+    '## Apps',
+    '',
+    '| App | What it does | Pages |',
+    '| --- | --- | --- |'
+  ];
+
+  for (const app of portfolio.apps) {
+    const what = (app.promotional || String(app.desc || '').split(/(?<=\.)\s/)[0] || '').replace(/\|/g, '/').trim();
+    const links = [
+      `[Details](${DOMAIN}/apps/${app.slug}/detail.html)`,
+      app.links && app.links.policy ? `[Privacy](${DOMAIN}${app.links.policy})` : null,
+      app.links && app.links.support ? `[Support](${DOMAIN}${app.links.support})` : null,
+      `[App Store](${storeLinkOf(app)})`
+    ].filter(Boolean).join(' · ');
+    lines.push(`| **${app.name}** | ${what} | ${links} |`);
+  }
+
+  lines.push('');
+  lines.push('## Build');
+  lines.push('');
+  lines.push('```bash');
+  lines.push('node scripts/build-legal.js   # legal pages, detail pages, QR codes, sitemap inputs, llms.txt, 404');
+  lines.push('bash scripts/build-css.sh     # compile assets/tailwind.css (needed after adding Tailwind classes)');
+  lines.push('node scripts/optimize-images.js  # regenerate WebP variants');
+  lines.push('node update_sitemap.js        # refresh sitemap.xml');
+  lines.push('```');
+  lines.push('');
+  lines.push(`Developed by Wei Ai · [Foowei](https://foowei.com/) · [YouTube](https://www.youtube.com/@aceway-AI) · [X](https://x.com/aceway2024)`);
+  lines.push('');
+
+  fs.writeFileSync(path.join(ROOT, 'README.md'), lines.join('\n'));
+}
+
 // llms.txt following the llmstxt.org structure: H1, blockquote summary,
 // optional notes, then H2 sections holding markdown link lists only.
 // Content is derived 1:1 from apps.json — nothing new is authored here.
@@ -712,6 +759,7 @@ if (!only) {
   writeQrFiles();
   prerenderIndex();
   writeNotFound();
+  writeReadme();
   writeLlmsTxt();
 }
 console.log(`done: ${written}/${only ? only.size : registry.apps.length} apps`);
