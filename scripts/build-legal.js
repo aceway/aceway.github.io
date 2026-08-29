@@ -226,6 +226,22 @@ function qrSvg(text, margin = 4) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="120" height="120" shape-rendering="crispEdges" role="img"><title>QR code</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
 }
 
+// Standalone QR files for the homepage cards: referenced by <img>, so the
+// index page stays small and the modal can scale the same file up.
+function writeQrFiles() {
+  const portfolio = loadPortfolio();
+  const dir = path.join(ROOT, 'assets', 'qr');
+  fs.mkdirSync(dir, { recursive: true });
+  let n = 0;
+  for (const app of portfolio.apps) {
+    if (!app.links || !app.links.ios) continue;
+    const svg = qrSvg(qrTargetOf(app)).replace(' width="120" height="120"', '');
+    fs.writeFileSync(path.join(dir, `${app.slug}.svg`), svg);
+    n += 1;
+  }
+  console.log(`qr: ${n} codes written to assets/qr`);
+}
+
 function appSchema(app, canonicalHref) {
   const schema = {
     '@context': 'https://schema.org',
@@ -479,9 +495,15 @@ function prerenderIndex() {
     const appleImg = ui.appleIconIOS
       ? `<img src="assets/${ui.appleIconIOS}" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store">`
       : '<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>';
+    const qrTrigger = app.slug
+      ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="" width="72" height="72" loading="lazy" class="block w-[72px] h-[72px]"></a>`
+      : '';
     return `
                 <div class="holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group">
-                  <div class="app-icon group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-shadow duration-300">${iconLayer}</div>
+                  <div class="flex flex-col items-center gap-2 shrink-0">
+                    <div class="app-icon group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-shadow duration-300">${iconLayer}</div>
+                    ${qrTrigger}
+                  </div>
                   <div class="flex-1 min-w-0">
                     ${promoBadge}
                     <div class="flex justify-between items-start">
@@ -671,6 +693,7 @@ if (!only) {
   patchPortfolio();
   writeSlugMap();
   writeDetailPages();
+  writeQrFiles();
   prerenderIndex();
   writeNotFound();
   writeLlmsTxt();
