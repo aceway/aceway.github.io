@@ -233,10 +233,10 @@
             <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
           </a>
-          <nav aria-label="Breadcrumb" class="hidden sm:block text-[11px] font-mono text-slate-400">
+          <nav aria-label="Breadcrumb" class="hidden sm:block text-[11px] font-mono text-slate-500">
             <ol class="flex items-center gap-1.5">
               <li><a href="/index.html" class="hover:text-blue-600 transition-colors">Apps by Wei Ai</a></li>
-              <li aria-hidden="true" class="text-slate-300">/</li>
+              <li aria-hidden="true" class="text-slate-500">/</li>
               <li id="crumbName" class="text-slate-600 font-semibold" aria-current="page">STEP Reviewer</li>
             </ol>
           </nav>
@@ -436,7 +436,7 @@
       </main>
 
       <footer class="border-t border-slate-200 mt-3 bg-white/50 backdrop-blur-sm">
-        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-400">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-xs font-mono text-slate-500">
           <a href="#" id="footerHomeLink" class="hover:text-blue-500 transition-colors">HOME</a> © 2025-2026 WEI AI
         </div>
       </footer>
@@ -506,6 +506,7 @@
     const dotsContainer = document.getElementById('dotsContainer');
     
     let allApps = [];
+    let currentAppName = '';
     let currentSlides = [];
     let currentIndex = 0;
     let isAnimating = false;
@@ -623,6 +624,7 @@
                 });
         }
 
+        currentAppName = app.name || '';
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;
         document.getElementById('detailPromo').textContent = app.promotional || "FEATURED";
@@ -632,7 +634,7 @@
         if (iconPath) {
             iconDiv.innerHTML = `<img src="${iconPath}" class="w-full h-full object-cover" alt="${app.name}">`;
         } else {
-            iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-300">${app.name.substring(0,2)}</div>`;
+            iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">${app.name.substring(0,2)}</div>`;
         }
 
         const linkEl = document.getElementById('detailLink');
@@ -712,7 +714,7 @@
                 featureGrid.appendChild(div);
             });
         } else {
-            featureGrid.innerHTML = '<div class="text-sm text-slate-400 italic">Features listing coming soon.</div>';
+            featureGrid.innerHTML = '<div class="text-sm text-slate-500 italic">Features listing coming soon.</div>';
         }
 
         const kSection = document.getElementById('knowledgeSection');
@@ -734,7 +736,7 @@
                 audContainer.appendChild(span);
             });
         } else {
-            audContainer.innerHTML = '<span class="text-xs text-slate-400">General Audience</span>';
+            audContainer.innerHTML = '<span class="text-xs text-slate-500">General Audience</span>';
         }
 
         // --- 4. animation ---
@@ -772,6 +774,7 @@
         screenPlaceholder.style.display = 'none';
         const img = document.createElement('img');
         img.src = currentSlides[currentIndex];
+        img.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
         img.className = "absolute top-0 left-0 w-full h-full object-cover";
         sliderContainer.appendChild(img);
         updateControls();
@@ -784,6 +787,7 @@
         const currentImg = sliderContainer.querySelector('img');
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[nextIndex];
+        nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });
@@ -799,6 +803,7 @@
         const currentImg = sliderContainer.querySelector('img');
         const nextImg = document.createElement('img');
         nextImg.src = currentSlides[targetIndex];
+        nextImg.alt = currentAppName ? currentAppName + ' app screenshot' : 'App screenshot';
         nextImg.className = "absolute top-0 left-0 w-full h-full object-cover";
         const startX = direction === 'next' ? '100%' : '-100%';
         gsap.set(nextImg, { x: startX });

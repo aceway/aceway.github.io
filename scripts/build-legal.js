@@ -425,7 +425,7 @@ function prerenderIndex() {
   const cards = portfolio.apps.map((app) => {
     const iconPath = app.icon ? `assets/${encodeURIComponent(app.name)}/${app.icon}` : null;
     const fallbackText = app.name ? app.name.substring(0, 2).toUpperCase() : 'AP';
-    let iconLayer = `<div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-300 font-mono font-bold text-2xl select-none">${escapeHtml(fallbackText)}</span></div>`;
+    let iconLayer = `<div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-500 font-mono font-bold text-2xl select-none">${escapeHtml(fallbackText)}</span></div>`;
     if (iconPath) iconLayer += `<img src="${iconPath}" alt="${escapeHtml(app.name)}" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110" onerror="this.style.display='none'">`;
     const promoBadge = app.promotional ? `<span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-600 border border-blue-200">${escapeHtml(app.promotional)}</span>` : '';
     const appleImg = ui.appleIconIOS
@@ -523,33 +523,56 @@ ${links}
   fs.writeFileSync(path.join(ROOT, '404.html'), html);
 }
 
-// llms.txt: a plain-markdown site summary for generative engines (GEO).
+// llms.txt following the llmstxt.org structure: H1, blockquote summary,
+// optional notes, then H2 sections holding markdown link lists only.
 // Content is derived 1:1 from apps.json — nothing new is authored here.
 function writeLlmsTxt() {
   const portfolio = loadPortfolio();
   const hero = portfolio.hero || {};
+  const summary = `${(hero.subtitle || 'A collection of utility tools built with SwiftUI & CoreML.').replace(/<[^>]+>/g, ' ')} Every app runs on device: no ads, no tracking, no file uploads.`;
+  const oneLine = (app) => {
+    const promo = app.promotional ? `${app.promotional.replace(/[\s.·]+$/, '')} — ` : '';
+    const first = String(app.desc || '').split(/(?<=\.)\s/)[0];
+    return `${promo}${first}`.replace(/\s+/g, ' ').trim();
+  };
+
   const lines = [
-    '# Wei Ai · H53D — Privacy-First Apple Apps',
+    '# Wei Ai · H53D',
     '',
-    `> ${(hero.subtitle || 'A collection of utility tools built with SwiftUI & CoreML.').replace(/<[^>]+>/g, ' ')} All apps process data on device — no ads, no tracking, no uploads.`,
+    `> ${summary}`,
     '',
-    `Site: ${DOMAIN}/`,
+    'Notes:',
     '',
-    '## Apps'
+    '- The apps cover two areas: CAD and 3D (STEP, IGES, JT, DXF, STL and other mesh formats) and on-device AI tools for images and spreadsheets.',
+    '- Every app has a detail page, a privacy policy, and a support page on this site; the App Store links below are the official listings.',
+    '- These pages replace the older per-app sites on h53d.github.io, which now redirect here.',
+    '',
+    '## Apps',
+    ''
   ];
   for (const app of portfolio.apps) {
-    lines.push('');
-    lines.push(`### ${app.name}`);
-    lines.push(`- Detail: ${DOMAIN}/apps/${app.slug}/detail.html`);
-    lines.push(`- App Store: ${storeLinkOf(app)}`);
-    if (app.links && app.links.policy) lines.push(`- Privacy policy: ${DOMAIN}${app.links.policy}`);
-    if (app.links && app.links.support) lines.push(`- Support: ${DOMAIN}${app.links.support}`);
-    lines.push(`- ${app.desc}`);
-    if (app.knowledge && app.knowledge.content) lines.push(`- Background: ${app.knowledge.content}`);
+    lines.push(`- [${app.name}](${DOMAIN}/apps/${app.slug}/detail.html): ${oneLine(app)}`);
   }
+
   lines.push('');
-  lines.push('## Other pages');
-  lines.push(`- Sitemap: ${DOMAIN}/sitemap.xml`);
+  lines.push('## App Store listings');
+  lines.push('');
+  for (const app of portfolio.apps) {
+    lines.push(`- [${app.name} on the App Store](${storeLinkOf(app)}): Official listing for iPhone, iPad, and Mac where available.`);
+  }
+
+  lines.push('');
+  lines.push('## Optional');
+  lines.push('');
+  for (const app of portfolio.apps) {
+    if (app.links && app.links.policy) {
+      lines.push(`- [${app.name} privacy policy](${DOMAIN}${app.links.policy}): How ${app.name} handles files and data on device.`);
+    }
+    if (app.links && app.links.support) {
+      lines.push(`- [${app.name} support](${DOMAIN}${app.links.support}): Supported formats, usage notes, and troubleshooting.`);
+    }
+  }
+  lines.push(`- [Sitemap](${DOMAIN}/sitemap.xml): Every indexable page on this site.`);
   lines.push('');
   fs.writeFileSync(path.join(ROOT, 'llms.txt'), lines.join('\n'));
 }
