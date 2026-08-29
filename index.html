@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://i.ytimg.com">
-  <!-- PRERENDER:LCP-PRELOAD --><link rel="preload" as="image" href="https://i.ytimg.com/vi/LfqtPHB8yEg/hqdefault.jpg" fetchpriority="high" media="(min-width: 1024px)"><!-- /PRERENDER:LCP-PRELOAD -->
+  <!-- PRERENDER:LCP-PRELOAD --><script>window.H53D_LCP_THUMB="https://i.ytimg.com/vi/LfqtPHB8yEg/hqdefault.jpg";</script><!-- /PRERENDER:LCP-PRELOAD -->
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link rel="stylesheet" href="assets/tailwind.css">
   <script src="assets/gsap.min.js"></script>
@@ -652,8 +652,23 @@
     if (isMac) {
         osHint.innerHTML = 'DETECTED: <span class="text-blue-600">macOS</span>';
         document.body.classList.add('with-preview');
+        // Only Macs render the preview column, so only they benefit from
+        // fetching its first video thumbnail (the LCP element) early.
+        if (window.H53D_LCP_THUMB && window.matchMedia('(min-width: 1024px)').matches) {
+            const hint = document.createElement('link');
+            hint.rel = 'preload';
+            hint.as = 'image';
+            hint.href = window.H53D_LCP_THUMB;
+            hint.setAttribute('fetchpriority', 'high');
+            document.head.appendChild(hint);
+        }
     } else {
         osHint.innerHTML = `DETECTED: <span class="text-gray-600">${currentOS.toUpperCase()}</span>`;
+        // The preview column is a macOS-only affordance; elsewhere it would
+        // just download video thumbnails nobody sees.
+        if (demoSection) demoSection.style.display = 'none';
+        appsSection.classList.remove('lg:col-span-7');
+        appsSection.classList.add('lg:col-span-12');
     }
 
     // ... (BF Cache Logic ) ...
@@ -696,7 +711,7 @@
             buildGrid(appsList);
             restoreScrollPos();
 
-            if (appsList.length > 0) {
+            if (isMac && appsList.length > 0) {
                 // const randomIndex = Math.floor(Math.random() * appsList.length);
                 const randomIndex = 0;
                 triggerPreview(appsList[randomIndex]);

@@ -529,8 +529,10 @@ function prerenderIndex() {
   const firstApp = portfolio.apps[0];
   const firstVideos = firstApp ? videosOf(firstApp.slug) : [];
   const lcpVideo = firstVideos.find((v) => v.short) || firstVideos[0];
+  // Exposed as a constant rather than a static <link>: only macOS renders
+  // the preview column, and that is decided at runtime.
   const preload = lcpVideo
-    ? `<link rel="preload" as="image" href="${lcpVideo.thumb}" fetchpriority="high" media="(min-width: 1024px)">`
+    ? `<script>window.H53D_LCP_THUMB=${JSON.stringify(lcpVideo.thumb)};</script>`
     : '';
   html = html.replace(
     /<!-- PRERENDER:LCP-PRELOAD -->[\s\S]*?<!-- \/PRERENDER:LCP-PRELOAD -->/,
