@@ -17,7 +17,9 @@
   <link rel="icon" type="image/jpeg" href="/assets/ShareGuard/icon.jpg">
   <link rel="apple-touch-icon" href="/assets/ShareGuard/icon.jpg">
   <script id="dynamic-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ShareGuard","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication","url":"https://apps.h53d.xyz/apps/shareguard/detail.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing. It lets you mask, or apply mosaic to sensitive areas precisely, so you can share images easily and confidently.","author":{"@type":"Person","name":"Wei Ai"},"privacyPolicy":"https://apps.h53d.xyz/apps/shareguard/policy.html","softwareHelp":"https://apps.h53d.xyz/apps/shareguard/support.html"}</script>
-  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"ShareGuard: Batch Mosaic Tool for Faces & Text.","description":"ShareGuard batch mosaic faces text","thumbnailUrl":"https://i.ytimg.com/vi/8XeP2-2EF8A/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=8XeP2-2EF8A","embedUrl":"https://www.youtube-nocookie.com/embed/8XeP2-2EF8A"},{"@context":"https://schema.org","@type":"VideoObject","name":"ShareGuard - keeping your photos private while sharing safely","description":"ShareGuard private photos sharing","thumbnailUrl":"https://i.ytimg.com/vi/FR4phaG3S_E/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=FR4phaG3S_E","embedUrl":"https://www.youtube-nocookie.com/embed/FR4phaG3S_E"}]</script>
+  <script id="faq-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What sensitive data can ShareGuard remove from an image?","acceptedAnswer":{"@type":"Answer","text":"It auto-detects and clears sensitive Exif metadata — which often includes precise GPS coordinates — and can mask or mosaic visible faces and text before you share."}},{"@type":"Question","name":"Does stripping metadata degrade the image?","acceptedAnswer":{"@type":"Answer","text":"No. ShareGuard uses the low-level ImageIO framework to remove the invisible data without re-encoding pixels, and batch processing keeps quality lossless."}},{"@type":"Question","name":"Which masking options are available?","acceptedAnswer":{"@type":"Answer","text":"You can choose color masks, mosaic-style masks, or smart detection modes that automatically recognize faces and text, then apply them precisely to the areas you select."}},{"@type":"Question","name":"Is anything sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Processing is local and the app is fully offline — no data leaves your device."}}]}</script>
+  <script id="breadcrumb-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Apps by Wei Ai","item":"https://apps.h53d.xyz/"},{"@type":"ListItem","position":2,"name":"ShareGuard","item":"https://apps.h53d.xyz/apps/shareguard/detail.html"}]}</script>
+  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"ShareGuard: Batch Mosaic Tool for Faces & Text.","description":"ShareGuard batch mosaic faces text","thumbnailUrl":"https://i.ytimg.com/vi/8XeP2-2EF8A/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=8XeP2-2EF8A","embedUrl":"https://www.youtube-nocookie.com/embed/8XeP2-2EF8A","uploadDate":"2025-11-04T05:52:38-08:00"},{"@context":"https://schema.org","@type":"VideoObject","name":"ShareGuard - keeping your photos private while sharing safely","description":"ShareGuard private photos sharing","thumbnailUrl":"https://i.ytimg.com/vi/FR4phaG3S_E/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=FR4phaG3S_E","embedUrl":"https://www.youtube-nocookie.com/embed/FR4phaG3S_E","uploadDate":"2025-10-29T22:02:02-07:00"}]</script>
   <link rel="stylesheet" href="/assets/yt-embed.css">
 
   <!-- Fonts -->
@@ -231,9 +233,13 @@
             <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
           </a>
-          <div class="hidden sm:block text-[10px] font-mono text-slate-400">
-            <span class="text-blue-500">:)</span>
-          </div>
+          <nav aria-label="Breadcrumb" class="hidden sm:block text-[11px] font-mono text-slate-400">
+            <ol class="flex items-center gap-1.5">
+              <li><a href="/index.html" class="hover:text-blue-600 transition-colors">Apps by Wei Ai</a></li>
+              <li aria-hidden="true" class="text-slate-300">/</li>
+              <li id="crumbName" class="text-slate-600 font-semibold" aria-current="page">ShareGuard</li>
+            </ol>
+          </nav>
         </div>
       </header>
 
@@ -332,6 +338,38 @@
                         DESIGNED FOR
                     </h3>
                     <div id="audienceContainer" class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Photographers</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Privacy Advocates</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Social Media Users</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Journalists</span></div>
+                </div>
+
+                <div id="faqSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-amber-400 rounded-full"></span>
+                        QUESTIONS
+                    </h3>
+                    <div id="faqList" class="space-y-3">
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">What sensitive data can ShareGuard remove from an image?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">It auto-detects and clears sensitive Exif metadata — which often includes precise GPS coordinates — and can mask or mosaic visible faces and text before you share.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Does stripping metadata degrade the image?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">No. ShareGuard uses the low-level ImageIO framework to remove the invisible data without re-encoding pixels, and batch processing keeps quality lossless.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Which masking options are available?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">You can choose color masks, mosaic-style masks, or smart detection modes that automatically recognize faces and text, then apply them precisely to the areas you select.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Is anything sent to a server?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">No. Processing is local and the app is fully offline — no data leaves your device.</p>
+                        </details></div>
+                </div>
+
+                <div id="relatedSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-blue-400 rounded-full"></span>
+                        MORE APPS
+                    </h3>
+                    <div id="relatedApps" class="flex flex-wrap gap-2"><a href="/apps/step-reviewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP Reviewer</a><a href="/apps/jt-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">JT File Viewer</a><a href="/apps/forgeshape/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ForgeShape</a><a href="/apps/step-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP File Viewer</a><a href="/apps/3d-model-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">3D Model Viewer</a><a href="/apps/dxf-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">DXF Assistant</a><a href="/apps/stl-to-step-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STL to STEP Assistant</a><a href="/apps/numisgallery/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">NumisGallery</a><a href="/apps/shine3d/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Shine3D</a><a href="/apps/p2v-converter/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">P2V Converter</a><a href="/apps/sheetcollector/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">SheetCollector</a><a href="/apps/pcai-photo-retouch/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">pcAI Photo Retouch</a><a href="/apps/cutoutcraft/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">CutoutCraft</a></div>
                 </div>
             </div>
 
@@ -437,6 +475,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
     
+    let allApps = [];
     let currentSlides = [];
     let currentIndex = 0;
     let isAnimating = false;
@@ -456,6 +495,7 @@
             }
 
             const appsList = Array.isArray(data) ? data : (data.apps || []);
+            allApps = appsList;
             let app = pathSlug
                 ? appsList.find(a => a.slug === pathSlug)
                 : appsList.find(a => a.id === queryId);
@@ -535,6 +575,23 @@
 
         //const safeName = encodeURIComponent(app.name);
         //document.title = `${app.name} - Detail`;
+
+        const crumb = document.getElementById('crumbName');
+        if (crumb) crumb.textContent = app.name;
+
+        // Related apps: prerendered by the build; fill in when opened via ?id=
+        const related = document.getElementById('relatedApps');
+        if (related && !related.children.length) {
+            allApps
+                .filter((other) => other.slug && other.slug !== app.slug)
+                .forEach((other) => {
+                    const link = document.createElement('a');
+                    link.href = `/apps/${other.slug}/detail.html`;
+                    link.className = 'px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition';
+                    link.textContent = other.name;
+                    related.appendChild(link);
+                });
+        }
 
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;

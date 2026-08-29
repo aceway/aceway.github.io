@@ -17,7 +17,9 @@
   <link rel="icon" type="image/jpeg" href="/assets/DXF%20Assistant/icon.jpg">
   <link rel="apple-touch-icon" href="/assets/DXF%20Assistant/icon.jpg">
   <script id="dynamic-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DXF Assistant","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication","url":"https://apps.h53d.xyz/apps/dxf-assistant/detail.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"DXF Assistant is a lightweight tool for viewing and editing DXF drawings and models, designed for macOS, iPad, and iPhone devices. It offers smooth 2D and 3D navigation, enabling easy access to your DXF files anytime, anywhere.","author":{"@type":"Person","name":"Wei Ai"},"privacyPolicy":"https://apps.h53d.xyz/apps/dxf-assistant/policy.html","softwareHelp":"https://apps.h53d.xyz/apps/dxf-assistant/support.html"}</script>
-  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow","description":"DXF file viewer mobile","thumbnailUrl":"https://i.ytimg.com/vi/Dgkhg60PJdE/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Dgkhg60PJdE","embedUrl":"https://www.youtube-nocookie.com/embed/Dgkhg60PJdE"},{"@context":"https://schema.org","@type":"VideoObject","name":"Open DXF Files viewer in One Session","description":"Open DXF files viewer","thumbnailUrl":"https://i.ytimg.com/vi/Kv9Oc3u_GUc/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Kv9Oc3u_GUc","embedUrl":"https://www.youtube-nocookie.com/embed/Kv9Oc3u_GUc"},{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow - Portrait","description":"DXF viewer mobile iPhone","thumbnailUrl":"https://i.ytimg.com/vi/6NQHnSfYeq0/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=6NQHnSfYeq0","embedUrl":"https://www.youtube-nocookie.com/embed/6NQHnSfYeq0"}]</script>
+  <script id="faq-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can DXF Assistant edit drawings, or only view them?","acceptedAnswer":{"@type":"Answer","text":"It edits drawings directly: copy, delete, move, rotate, scale, undo, and redo are all supported, in both 2D and 3D DXF files."}},{"@type":"Question","name":"Which export formats are available?","acceptedAnswer":{"@type":"Answer","text":"Drawings can be exported as PDF, SVG, PNG, or JPG, several DXF files can be exported into a single combined file, and table entities can be exported as CSV."}},{"@type":"Question","name":"Can it check a drawing before laser cutting or CNC work?","acceptedAnswer":{"@type":"Answer","text":"Yes. It scans a DXF file for issues before laser cutting or CNC engraving and produces a shareable PDF report."}},{"@type":"Question","name":"Can I work with multiple DXF files at once?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can merge and arrange multiple DXF files in one session and open several files simultaneously without losing context."}}]}</script>
+  <script id="breadcrumb-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Apps by Wei Ai","item":"https://apps.h53d.xyz/"},{"@type":"ListItem","position":2,"name":"DXF Assistant","item":"https://apps.h53d.xyz/apps/dxf-assistant/detail.html"}]}</script>
+  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow","description":"DXF file viewer mobile","thumbnailUrl":"https://i.ytimg.com/vi/Dgkhg60PJdE/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Dgkhg60PJdE","embedUrl":"https://www.youtube-nocookie.com/embed/Dgkhg60PJdE","uploadDate":"2025-11-23T22:04:45-08:00"},{"@context":"https://schema.org","@type":"VideoObject","name":"Open DXF Files viewer in One Session","description":"Open DXF files viewer","thumbnailUrl":"https://i.ytimg.com/vi/Kv9Oc3u_GUc/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=Kv9Oc3u_GUc","embedUrl":"https://www.youtube-nocookie.com/embed/Kv9Oc3u_GUc","uploadDate":"2025-07-09T04:33:10-07:00"},{"@context":"https://schema.org","@type":"VideoObject","name":"DXF file viewer on mobile - Unified Drawings, Animated Flow - Portrait","description":"DXF viewer mobile iPhone","thumbnailUrl":"https://i.ytimg.com/vi/6NQHnSfYeq0/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=6NQHnSfYeq0","embedUrl":"https://www.youtube-nocookie.com/embed/6NQHnSfYeq0","uploadDate":"2025-11-23T22:47:27-08:00"}]</script>
   <link rel="stylesheet" href="/assets/yt-embed.css">
 
   <!-- Fonts -->
@@ -231,9 +233,13 @@
             <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
           </a>
-          <div class="hidden sm:block text-[10px] font-mono text-slate-400">
-            <span class="text-blue-500">:)</span>
-          </div>
+          <nav aria-label="Breadcrumb" class="hidden sm:block text-[11px] font-mono text-slate-400">
+            <ol class="flex items-center gap-1.5">
+              <li><a href="/index.html" class="hover:text-blue-600 transition-colors">Apps by Wei Ai</a></li>
+              <li aria-hidden="true" class="text-slate-300">/</li>
+              <li id="crumbName" class="text-slate-600 font-semibold" aria-current="page">DXF Assistant</li>
+            </ol>
+          </nav>
         </div>
       </header>
 
@@ -345,6 +351,38 @@
                     </h3>
                     <div id="audienceContainer" class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Civil Engineers</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Architects</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">CNC Operators</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Laser Operators</span></div>
                 </div>
+
+                <div id="faqSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-amber-400 rounded-full"></span>
+                        QUESTIONS
+                    </h3>
+                    <div id="faqList" class="space-y-3">
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Can DXF Assistant edit drawings, or only view them?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">It edits drawings directly: copy, delete, move, rotate, scale, undo, and redo are all supported, in both 2D and 3D DXF files.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Which export formats are available?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">Drawings can be exported as PDF, SVG, PNG, or JPG, several DXF files can be exported into a single combined file, and table entities can be exported as CSV.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Can it check a drawing before laser cutting or CNC work?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">Yes. It scans a DXF file for issues before laser cutting or CNC engraving and produces a shareable PDF report.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Can I work with multiple DXF files at once?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">Yes. You can merge and arrange multiple DXF files in one session and open several files simultaneously without losing context.</p>
+                        </details></div>
+                </div>
+
+                <div id="relatedSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-blue-400 rounded-full"></span>
+                        MORE APPS
+                    </h3>
+                    <div id="relatedApps" class="flex flex-wrap gap-2"><a href="/apps/step-reviewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP Reviewer</a><a href="/apps/jt-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">JT File Viewer</a><a href="/apps/forgeshape/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ForgeShape</a><a href="/apps/step-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP File Viewer</a><a href="/apps/3d-model-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">3D Model Viewer</a><a href="/apps/stl-to-step-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STL to STEP Assistant</a><a href="/apps/numisgallery/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">NumisGallery</a><a href="/apps/shine3d/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Shine3D</a><a href="/apps/p2v-converter/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">P2V Converter</a><a href="/apps/sheetcollector/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">SheetCollector</a><a href="/apps/pcai-photo-retouch/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">pcAI Photo Retouch</a><a href="/apps/cutoutcraft/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">CutoutCraft</a><a href="/apps/shareguard/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ShareGuard</a></div>
+                </div>
             </div>
 
             <!-- Right Column -->
@@ -449,6 +487,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
     
+    let allApps = [];
     let currentSlides = [];
     let currentIndex = 0;
     let isAnimating = false;
@@ -468,6 +507,7 @@
             }
 
             const appsList = Array.isArray(data) ? data : (data.apps || []);
+            allApps = appsList;
             let app = pathSlug
                 ? appsList.find(a => a.slug === pathSlug)
                 : appsList.find(a => a.id === queryId);
@@ -547,6 +587,23 @@
 
         //const safeName = encodeURIComponent(app.name);
         //document.title = `${app.name} - Detail`;
+
+        const crumb = document.getElementById('crumbName');
+        if (crumb) crumb.textContent = app.name;
+
+        // Related apps: prerendered by the build; fill in when opened via ?id=
+        const related = document.getElementById('relatedApps');
+        if (related && !related.children.length) {
+            allApps
+                .filter((other) => other.slug && other.slug !== app.slug)
+                .forEach((other) => {
+                    const link = document.createElement('a');
+                    link.href = `/apps/${other.slug}/detail.html`;
+                    link.className = 'px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition';
+                    link.textContent = other.name;
+                    related.appendChild(link);
+                });
+        }
 
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;

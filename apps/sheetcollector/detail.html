@@ -17,7 +17,9 @@
   <link rel="icon" type="image/jpeg" href="/assets/SheetCollector/icon.jpg">
   <link rel="apple-touch-icon" href="/assets/SheetCollector/icon.jpg">
   <script id="dynamic-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SheetCollector","operatingSystem":"iOS, iPadOS, macOS","applicationCategory":"UtilitiesApplication","url":"https://apps.h53d.xyz/apps/sheetcollector/detail.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Easily import tables from various files and images. Keep everything organized and export anytime. Generate polished PDF or JPEG documents with your own style.","author":{"@type":"Person","name":"Wei Ai"},"privacyPolicy":"https://apps.h53d.xyz/apps/sheetcollector/policy.html","softwareHelp":"https://apps.h53d.xyz/apps/sheetcollector/support.html"}</script>
-  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"SheetCollector - Simple spreadsheet collection tool","description":"SheetCollector spreadsheet collection","thumbnailUrl":"https://i.ytimg.com/vi/AjaCa2Xm8xk/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=AjaCa2Xm8xk","embedUrl":"https://www.youtube-nocookie.com/embed/AjaCa2Xm8xk"}]</script>
+  <script id="faq-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can SheetCollector import tables from?","acceptedAnswer":{"@type":"Answer","text":"From CSV, XLSX, ODS, TSV, and UTF-8 JSON files; from MySQL, MariaDB, PostgreSQL, and SQLite3 databases; from PNG, HEIC, JPG, BMP, TIFF, and WebP images; and from your device camera."}},{"@type":"Question","name":"How does scanning a printed table work?","acceptedAnswer":{"@type":"Answer","text":"The app uses the Vision framework to detect the four corners of a document in real time, then applies a homographic transformation to correct the perspective so the scan looks flatbed-scanned."}},{"@type":"Question","name":"What export formats and options are supported?","acceptedAnswer":{"@type":"Answer","text":"Filtered data can be exported by row or column as CSV, PDF, or JPEG, with A0–A5 sizes, portrait or landscape, and long-page JPEG output. Exports can carry your logo and a private statement."}},{"@type":"Question","name":"Can I protect an exported PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Exported PDFs support tiered protection, with a read password and an edit password set separately."}}]}</script>
+  <script id="breadcrumb-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Apps by Wei Ai","item":"https://apps.h53d.xyz/"},{"@type":"ListItem","position":2,"name":"SheetCollector","item":"https://apps.h53d.xyz/apps/sheetcollector/detail.html"}]}</script>
+  <script id="video-schema" type="application/ld+json">[{"@context":"https://schema.org","@type":"VideoObject","name":"SheetCollector - Simple spreadsheet collection tool","description":"SheetCollector spreadsheet collection","thumbnailUrl":"https://i.ytimg.com/vi/AjaCa2Xm8xk/hqdefault.jpg","contentUrl":"https://www.youtube.com/watch?v=AjaCa2Xm8xk","embedUrl":"https://www.youtube-nocookie.com/embed/AjaCa2Xm8xk","uploadDate":"2025-07-13T01:36:16-07:00"}]</script>
   <link rel="stylesheet" href="/assets/yt-embed.css">
 
   <!-- Fonts -->
@@ -231,9 +233,13 @@
             <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             <span class="font-mono text-sm font-bold tracking-wide">BACK</span>
           </a>
-          <div class="hidden sm:block text-[10px] font-mono text-slate-400">
-            <span class="text-blue-500">:)</span>
-          </div>
+          <nav aria-label="Breadcrumb" class="hidden sm:block text-[11px] font-mono text-slate-400">
+            <ol class="flex items-center gap-1.5">
+              <li><a href="/index.html" class="hover:text-blue-600 transition-colors">Apps by Wei Ai</a></li>
+              <li aria-hidden="true" class="text-slate-300">/</li>
+              <li id="crumbName" class="text-slate-600 font-semibold" aria-current="page">SheetCollector</li>
+            </ol>
+          </nav>
         </div>
       </header>
 
@@ -357,6 +363,38 @@
                     </h3>
                     <div id="audienceContainer" class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Students</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Accountants</span><span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs text-slate-600 font-medium">Archivists</span></div>
                 </div>
+
+                <div id="faqSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-amber-400 rounded-full"></span>
+                        QUESTIONS
+                    </h3>
+                    <div id="faqList" class="space-y-3">
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Where can SheetCollector import tables from?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">From CSV, XLSX, ODS, TSV, and UTF-8 JSON files; from MySQL, MariaDB, PostgreSQL, and SQLite3 databases; from PNG, HEIC, JPG, BMP, TIFF, and WebP images; and from your device camera.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">How does scanning a printed table work?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">The app uses the Vision framework to detect the four corners of a document in real time, then applies a homographic transformation to correct the perspective so the scan looks flatbed-scanned.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">What export formats and options are supported?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">Filtered data can be exported by row or column as CSV, PDF, or JPEG, with A0–A5 sizes, portrait or landscape, and long-page JPEG output. Exports can carry your logo and a private statement.</p>
+                        </details>
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">Can I protect an exported PDF?</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">Yes. Exported PDFs support tiered protection, with a read password and an edit password set separately.</p>
+                        </details></div>
+                </div>
+
+                <div id="relatedSection">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-blue-400 rounded-full"></span>
+                        MORE APPS
+                    </h3>
+                    <div id="relatedApps" class="flex flex-wrap gap-2"><a href="/apps/step-reviewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP Reviewer</a><a href="/apps/jt-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">JT File Viewer</a><a href="/apps/forgeshape/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ForgeShape</a><a href="/apps/step-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP File Viewer</a><a href="/apps/3d-model-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">3D Model Viewer</a><a href="/apps/dxf-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">DXF Assistant</a><a href="/apps/stl-to-step-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STL to STEP Assistant</a><a href="/apps/numisgallery/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">NumisGallery</a><a href="/apps/shine3d/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Shine3D</a><a href="/apps/p2v-converter/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">P2V Converter</a><a href="/apps/pcai-photo-retouch/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">pcAI Photo Retouch</a><a href="/apps/cutoutcraft/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">CutoutCraft</a><a href="/apps/shareguard/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ShareGuard</a></div>
+                </div>
             </div>
 
             <!-- Right Column -->
@@ -461,6 +499,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('dotsContainer');
     
+    let allApps = [];
     let currentSlides = [];
     let currentIndex = 0;
     let isAnimating = false;
@@ -480,6 +519,7 @@
             }
 
             const appsList = Array.isArray(data) ? data : (data.apps || []);
+            allApps = appsList;
             let app = pathSlug
                 ? appsList.find(a => a.slug === pathSlug)
                 : appsList.find(a => a.id === queryId);
@@ -559,6 +599,23 @@
 
         //const safeName = encodeURIComponent(app.name);
         //document.title = `${app.name} - Detail`;
+
+        const crumb = document.getElementById('crumbName');
+        if (crumb) crumb.textContent = app.name;
+
+        // Related apps: prerendered by the build; fill in when opened via ?id=
+        const related = document.getElementById('relatedApps');
+        if (related && !related.children.length) {
+            allApps
+                .filter((other) => other.slug && other.slug !== app.slug)
+                .forEach((other) => {
+                    const link = document.createElement('a');
+                    link.href = `/apps/${other.slug}/detail.html`;
+                    link.className = 'px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition';
+                    link.textContent = other.name;
+                    related.appendChild(link);
+                });
+        }
 
         document.getElementById('detailTitle').textContent = app.name;
         document.getElementById('detailDesc').textContent = app.desc;

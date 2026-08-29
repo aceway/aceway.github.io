@@ -109,6 +109,22 @@ function rewrite(html, app, filename) {
     }
   }
 
+  // Link legal pages back into the site so they are not near-orphans
+  if (!html.includes('id="appBacklink"')) {
+    const backlink = `<p id="appBacklink" style="max-width:820px;margin:1.5rem auto 2rem;padding:0 1.25rem;text-align:center;font-size:0.9rem;">
+      <a href="${pageBase}/detail.html">${app.name} — features, screenshots, and download</a>
+      &nbsp;·&nbsp;
+      <a href="${DOMAIN}/">All apps by Wei Ai</a>
+    </p>
+    `;
+    const footerAt = html.lastIndexOf('<footer');
+    if (footerAt !== -1) {
+      html = html.slice(0, footerAt) + backlink + html.slice(footerAt);
+    } else {
+      html = html.replace('</body>', backlink + '</body>');
+    }
+  }
+
   return html;
 }
 
@@ -189,6 +205,18 @@ function appSchema(app, canonicalHref) {
   return schema;
 }
 
+let faqData = null;
+function faqsOf(slug) {
+  if (faqData === null) {
+    try {
+      faqData = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets', 'faqs.json'), 'utf8'));
+    } catch (e) {
+      faqData = {};
+    }
+  }
+  return Array.isArray(faqData[slug]) ? faqData[slug] : [];
+}
+
 let ytData = null;
 function videosOf(slug) {
   if (ytData === null) {
@@ -207,21 +235,25 @@ function videoSchema(slug) {
   const vids = videosOf(slug);
   if (vids.length === 0) return null;
   const picked = [...vids.filter((v) => !v.short), ...vids.filter((v) => v.short)].slice(0, 8);
-  return picked.map((v) => ({
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: v.title,
-    description: v.description || v.title,
-    thumbnailUrl: v.thumb,
-    contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
-    embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`
-  }));
+  return picked.map((v) => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: v.title,
+      description: v.description || v.title,
+      thumbnailUrl: v.thumb,
+      contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`
+    };
+    if (v.uploadDate) schema.uploadDate = v.uploadDate;
+    return schema;
+  });
 }
 
 // Bake each app's metadata and visible content into its detail page so
 // crawlers that do not execute JavaScript (most AI/LLM crawlers) can read it.
 // The runtime JS re-renders the same data from apps.json, so behavior is unchanged.
-function prerenderDetail(template, app, ui) {
+function prerenderDetail(template, app, ui, allApps) {
   const name = app.name;
   const assetBase = `/assets/${encodeURIComponent(name)}`;
   const canonicalHref = `${DOMAIN}/apps/${app.slug}/detail.html`;
@@ -253,7 +285,15 @@ function prerenderDetail(template, app, ui) {
     `<meta name="apple-itunes-app" content="app-id=${app.id}">`,
     `<link rel="icon" type="image/jpeg" href="${assetBase}/${app.icon}">`,
     `<link rel="apple-touch-icon" href="${assetBase}/${app.icon}">`,
-    `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`
+    `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`,
+    `<script id="breadcrumb-schema" type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Apps by Wei Ai', item: `${DOMAIN}/` },
+        { '@type': 'ListItem', position: 2, name, item: canonicalHref }
+      ]
+    })}</script>`
   ];
   const videos = videoSchema(app.slug);
   if (videos) {
@@ -305,6 +345,40 @@ function prerenderDetail(template, app, ui) {
     html = fillById(html, /<div id="audienceContainer"[^>]*>/, tags);
   }
 
+  html = fillById(html, /<li id="crumbName"[^>]*>/, escapeHtml(name));
+
+  // Visible FAQ (required for FAQPage markup) plus the matching schema
+  const faqs = faqsOf(app.slug);
+  if (faqs.length) {
+    const items = faqs.map((entry) => `
+                        <details class="feature-card" open>
+                            <summary class="text-sm font-bold text-slate-700 cursor-pointer">${escapeHtml(entry.q)}</summary>
+                            <p class="text-sm text-slate-600 leading-relaxed mt-2">${escapeHtml(entry.a)}</p>
+                        </details>`).join('');
+    html = fillById(html, /<div id="faqList"[^>]*>/, items);
+    html = html.replace('<div id="faqSection" hidden>', '<div id="faqSection">');
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((entry) => ({
+        '@type': 'Question',
+        name: entry.q,
+        acceptedAnswer: { '@type': 'Answer', text: entry.a }
+      }))
+    };
+    html = html.replace(
+      '<script id="breadcrumb-schema"',
+      `<script id="faq-schema" type="application/ld+json">${JSON.stringify(faqSchema)}</script>\n  <script id="breadcrumb-schema"`
+    );
+  }
+
+  // Cross-link sibling apps so every detail page is reachable from any other
+  const siblings = (allApps || [])
+    .filter((other) => other.slug && other.slug !== app.slug)
+    .map((other) => `<a href="/apps/${other.slug}/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">${escapeHtml(other.name)}</a>`)
+    .join('');
+  if (siblings) html = fillById(html, /<div id="relatedApps"[^>]*>/, siblings);
+
   if (app.screenshots && app.screenshots.length > 0) {
     html = fillById(
       html,
@@ -325,7 +399,7 @@ function writeDetailPages() {
     const data = portfolio.apps.find((item) => item.id === app.id);
     const outDir = path.join(ROOT, 'apps', app.slug);
     fs.mkdirSync(outDir, { recursive: true });
-    const html = data ? prerenderDetail(template, data, ui) : template;
+    const html = data ? prerenderDetail(template, data, ui, portfolio.apps) : template;
     if (!data) console.warn(`detail data miss ${app.name}`);
     fs.writeFileSync(path.join(outDir, 'detail.html'), html);
   }
@@ -363,7 +437,7 @@ function prerenderIndex() {
                   <div class="flex-1 min-w-0">
                     ${promoBadge}
                     <div class="flex justify-between items-start">
-                      <h4 class="text-xl font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors">${escapeHtml(app.name)}</h4>
+                      <h4 class="text-xl font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors"><a href="/apps/${app.slug}/detail.html" class="detail-link" title="${escapeHtml(app.name)} — features, screenshots, and download">${escapeHtml(app.name)}</a></h4>
                     </div>
                     <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">${escapeHtml(app.desc)}</p>
                     <div class="flex gap-3 items-center flex-wrap">
@@ -395,6 +469,58 @@ function prerenderIndex() {
   );
 
   fs.writeFileSync(indexPath, html);
+}
+
+// GitHub Pages serves /404.html for unknown paths. Keep it useful: the full
+// app list doubles as internal links back into the site.
+function writeNotFound() {
+  const portfolio = loadPortfolio();
+  const links = portfolio.apps
+    .map((app) => `      <li><a href="/apps/${app.slug}/detail.html">${escapeHtml(app.name)}</a><span> — ${escapeHtml(app.promotional || '')}</span></li>`)
+    .join('\n');
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Wei Ai · H53D</title>
+  <meta name="description" content="This page could not be found. Browse the privacy-first Apple apps by Wei Ai instead.">
+  <link rel="icon" type="image/jpeg" href="/assets/favicon.jpg">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Arial, sans-serif;
+      background: #f8fafc; color: #1e293b; line-height: 1.7;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.25rem;
+    }
+    main { max-width: 720px; width: 100%; }
+    .code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; letter-spacing: 0.2em; color: #3b82f6; }
+    h1 { font-size: 2rem; font-weight: 800; margin: 0.35rem 0 0.75rem; letter-spacing: -0.02em; }
+    p { color: #475569; }
+    .panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px -20px rgba(15, 23, 42, 0.4); }
+    ul { list-style: none; margin-top: 1.25rem; display: grid; gap: 0.4rem; }
+    li a { color: #2563eb; text-decoration: none; font-weight: 600; }
+    li a:hover { text-decoration: underline; }
+    li span { color: #94a3b8; font-size: 0.85rem; }
+    .home { display: inline-block; margin-top: 1.5rem; padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid #bfdbfe; color: #2563eb; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    .home:hover { background: #eff6ff; }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div class="code">ERROR 404</div>
+    <h1>This page could not be found</h1>
+    <p>The link may be outdated, or the page may have moved. Every app below is still here:</p>
+    <ul>
+${links}
+    </ul>
+    <a class="home" href="/">← Back to all apps</a>
+  </main>
+</body>
+</html>
+`;
+  fs.writeFileSync(path.join(ROOT, '404.html'), html);
 }
 
 // llms.txt: a plain-markdown site summary for generative engines (GEO).
@@ -475,6 +601,7 @@ if (!only) {
   writeSlugMap();
   writeDetailPages();
   prerenderIndex();
+  writeNotFound();
   writeLlmsTxt();
 }
 console.log(`done: ${written}/${only ? only.size : registry.apps.length} apps`);

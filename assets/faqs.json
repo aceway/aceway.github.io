@@ -1,0 +1,235 @@
+{
+  "_comment": "Per-app FAQ entries. Answers must stay grounded in assets/apps.json (desc, features, knowledge). Consumed by scripts/build-legal.js: rendered as a visible section plus FAQPage JSON-LD on each detail page.",
+  "forgeshape": [
+    {
+      "q": "Which 3D file formats does ForgeShape open?",
+      "a": "ForgeShape imports STEP, IGES, STL, OBJ, binary GLB, and 3MF models, and parses all of them on device."
+    },
+    {
+      "q": "What problems can ForgeShape find and repair before 3D printing?",
+      "a": "It detects open edges, non-manifold edges, self-intersection, inverted normals, thin walls, overhangs, units, and size, then offers guided repairs: weld and stitch, fix orientation, remove duplicates, and fill small holes. Every repair can be previewed before and after, and is applied only when you confirm."
+    },
+    {
+      "q": "Can ForgeShape convert a mesh back into CAD geometry?",
+      "a": "Yes. Optional Reverse to CAD turns recognized planar and cylindrical faces into analytic geometry in a STEP export. ForgeShape can also export STL or 3MF for a slicer, or OBJ, GLB, STL, 3MF, and STEP for conversion."
+    },
+    {
+      "q": "Are my models uploaded anywhere?",
+      "a": "No. There are no ads, accounts, or model uploads — the work stays on your device. ForgeShape is not a slicer and does not generate G-code."
+    }
+  ],
+  "step-reviewer": [
+    {
+      "q": "How large a STEP file can STEP Reviewer handle?",
+      "a": "It is built for engineering files in the hundreds of megabytes and faceted models above one million triangles, with OCCT import running on device."
+    },
+    {
+      "q": "Which devices and file types does STEP Reviewer support?",
+      "a": "It opens STEP (.step, .stp) and IGES (.iges, .igs) files locally on macOS, iPhone, iPad, and Apple Vision."
+    },
+    {
+      "q": "Can I measure parts and read PMI?",
+      "a": "Yes. You can measure points, edges, faces, distances, angles, radii, and diameters on iOS and macOS, and inspect names, colors, materials, and supported PMI/GD&T."
+    },
+    {
+      "q": "What can I export from STEP Reviewer?",
+      "a": "Tessellated geometry can be exported as binary STL, GLB, USDA, USDC, or USDZ. You can also capture annotated screenshots and record review videos with optional narration."
+    }
+  ],
+  "jt-file-viewer": [
+    {
+      "q": "What is the JT format, and which versions are supported?",
+      "a": "JT is the ISO 14306 standard for lightweight 3D visualization and product data exchange. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry and product structure."
+    },
+    {
+      "q": "Can I open JT files on iPhone or Apple Vision Pro?",
+      "a": "Yes. JT files open locally on macOS, iPhone, iPad, and Apple Vision Pro, with no uploads."
+    },
+    {
+      "q": "Which review tools are included?",
+      "a": "You can browse product structure and select parts, switch between solid, transparent, and wireframe modes, use Exploded View, and use Cross Section View with Flip Kept Side to inspect internal areas."
+    },
+    {
+      "q": "Is JT File Viewer affiliated with Siemens?",
+      "a": "No. It is an independent app and is not affiliated with Siemens. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions."
+    }
+  ],
+  "step-file-viewer": [
+    {
+      "q": "Can STEP File Viewer open STEP files on an iPhone?",
+      "a": "Yes. It is built for viewing .step and .stp files across macOS, iPad, and iPhone, including projected, section, and exploded views on iPhone."
+    },
+    {
+      "q": "Does it support assemblies?",
+      "a": "It parses and loads STEP models as assemblies, provided the model itself includes assembly data, and components can be exploded to inspect each part in expanded space."
+    },
+    {
+      "q": "What export options are available?",
+      "a": "Models can be saved as STL, OBJ, glTF, GLB, or USDZ, and projected views — top, front, and right — can be exported in SVG."
+    },
+    {
+      "q": "What is the STEP format?",
+      "a": "STEP is a neutral CAD exchange format defined by ISO 10303. It carries solids, surfaces, and assemblies in a plain-text structure so 3D data survives the jump between different CAD systems."
+    }
+  ],
+  "3d-model-viewer": [
+    {
+      "q": "Which formats can 3D Model Viewer import and export?",
+      "a": "It imports 3MF, STL, FBX, OBJ, GLB, USDZ, TDS, AMF, PLY, PDC, XYZ, VOX, VTK, VTP, and DXF, and exports to STL, OBJ, GLB, USDZ, and GLTF."
+    },
+    {
+      "q": "Can I convert several files at once?",
+      "a": "Yes. Batch export lets you select multiple files — even in different model formats — and convert them all to a single target format in one go."
+    },
+    {
+      "q": "Does it work without an internet connection?",
+      "a": "Yes. It opens, views, and converts models anytime, anywhere, without needing an internet connection, and collects no data."
+    },
+    {
+      "q": "Can it convert models generated by AI tools?",
+      "a": "Yes. It is designed to help convert models produced by AI systems such as SAM 3D into the format you actually need."
+    }
+  ],
+  "dxf-assistant": [
+    {
+      "q": "Can DXF Assistant edit drawings, or only view them?",
+      "a": "It edits drawings directly: copy, delete, move, rotate, scale, undo, and redo are all supported, in both 2D and 3D DXF files."
+    },
+    {
+      "q": "Which export formats are available?",
+      "a": "Drawings can be exported as PDF, SVG, PNG, or JPG, several DXF files can be exported into a single combined file, and table entities can be exported as CSV."
+    },
+    {
+      "q": "Can it check a drawing before laser cutting or CNC work?",
+      "a": "Yes. It scans a DXF file for issues before laser cutting or CNC engraving and produces a shareable PDF report."
+    },
+    {
+      "q": "Can I work with multiple DXF files at once?",
+      "a": "Yes. You can merge and arrange multiple DXF files in one session and open several files simultaneously without losing context."
+    }
+  ],
+  "stl-to-step-assistant": [
+    {
+      "q": "Which mesh formats can be converted to STEP?",
+      "a": "Besides STL and binary STL, it supports OBJ, GLB, GLTF, 3MF, 3DM (Rhino), FBX, DAE, PLY, USDZ, 3DS, AMF, DRC (Draco), KMZ, MPD, and WRL."
+    },
+    {
+      "q": "Are my models uploaded for conversion?",
+      "a": "No. Files are processed on device, so model data stays on your device."
+    },
+    {
+      "q": "How do the export quality modes differ?",
+      "a": "Small produces a fast, lightweight STEP export for everyday use, while Balanced trades file size against detail. You can check triangle reduction by quality mode, see an export risk hint, and view the final STEP file size after conversion."
+    }
+  ],
+  "numisgallery": [
+    {
+      "q": "What is NumisGallery for?",
+      "a": "It is a museum-style banknote viewer for people who enjoy currency design, visual culture, and history. It treats banknotes as visual artifacts rather than transactional media."
+    },
+    {
+      "q": "How do I navigate the collection?",
+      "a": "You browse by country and denomination with directional gestures. A single tap opens detailed note study, a double tap flips between obverse and reverse, and a long press reveals motif highlights."
+    },
+    {
+      "q": "Can I export or print the banknote images?",
+      "a": "No. The app is compliance-first: it presents one side at a time and includes no export, share, or print workflows. It also has no ads and no third-party analytics SDKs."
+    }
+  ],
+  "shine3d": [
+    {
+      "q": "Which 3D formats does Shine3D display?",
+      "a": "It loads STL, OBJ, GLB, 3MF, USDZ, 3DS, 3DM, PLY, XYZ, AMF, VOX, VTK, VTP, and FBX."
+    },
+    {
+      "q": "How can I share a model I have set up?",
+      "a": "You can generate high-resolution PNG screenshots, or record lightweight GIF animations that play on any social platform, browser, or messaging app."
+    },
+    {
+      "q": "Can I brand the presentation?",
+      "a": "Yes. You can upload your own logo image to be used as the floor of the display stand, and choose from multiple preset environments or stylized toon shaders."
+    }
+  ],
+  "p2v-converter": [
+    {
+      "q": "Which image formats can P2V Converter vectorize?",
+      "a": "It converts images such as PNG, JPG, and HEIC into vector graphics, and exports to SVG or PDF."
+    },
+    {
+      "q": "What is the difference between the conversion styles?",
+      "a": "Simple, Balanced, and Detailed with colors let you match the level of traced detail to your project."
+    },
+    {
+      "q": "Are my pictures uploaded to a server?",
+      "a": "No. All processing is done locally on your device — nothing is uploaded or stored externally, and the app works fully offline."
+    }
+  ],
+  "sheetcollector": [
+    {
+      "q": "Where can SheetCollector import tables from?",
+      "a": "From CSV, XLSX, ODS, TSV, and UTF-8 JSON files; from MySQL, MariaDB, PostgreSQL, and SQLite3 databases; from PNG, HEIC, JPG, BMP, TIFF, and WebP images; and from your device camera."
+    },
+    {
+      "q": "How does scanning a printed table work?",
+      "a": "The app uses the Vision framework to detect the four corners of a document in real time, then applies a homographic transformation to correct the perspective so the scan looks flatbed-scanned."
+    },
+    {
+      "q": "What export formats and options are supported?",
+      "a": "Filtered data can be exported by row or column as CSV, PDF, or JPEG, with A0–A5 sizes, portrait or landscape, and long-page JPEG output. Exports can carry your logo and a private statement."
+    },
+    {
+      "q": "Can I protect an exported PDF?",
+      "a": "Yes. Exported PDFs support tiered protection, with a read password and an edit password set separately."
+    }
+  ],
+  "pcai-photo-retouch": [
+    {
+      "q": "Does pcAI send my photos to a cloud service?",
+      "a": "No. Photos never leave your device: the app runs entirely on your device's Neural Engine using CoreML, with no cloud AI and no hidden uploads."
+    },
+    {
+      "q": "What can pcAI do to a photo?",
+      "a": "It can make old photos clear again and apply styles such as sketch, oil painting, or Van Gogh's Starry Night."
+    },
+    {
+      "q": "Does it work offline?",
+      "a": "Yes. It works without internet — on a plane, in a tunnel, anywhere — and needs no account, login, or complicated settings."
+    }
+  ],
+  "cutoutcraft": [
+    {
+      "q": "How does the background removal work?",
+      "a": "One-tap AI cutout removes backgrounds using local CoreML models that detect the subject in any image. The technique is semantic segmentation: the model classifies the image pixel by pixel to separate the subject from its surroundings."
+    },
+    {
+      "q": "Can I combine several cutouts in one image?",
+      "a": "Yes. Multi-image composition lets you arrange multiple cutouts on one canvas and move, scale, and rotate each of them, and several objects can be cut out from a single original image."
+    },
+    {
+      "q": "What can I export?",
+      "a": "You can export cutouts as vector SVGs, replace the background with transparency, a solid color, or any image from your device, and apply more than ten styles to individual cutouts or the final composite."
+    },
+    {
+      "q": "Do I need a powerful Mac to run it?",
+      "a": "No high-end hardware is required — an ordinary Mac, iPhone, or iPad can run it, and everything is processed locally with no ads, tracking, or cloud."
+    }
+  ],
+  "shareguard": [
+    {
+      "q": "What sensitive data can ShareGuard remove from an image?",
+      "a": "It auto-detects and clears sensitive Exif metadata — which often includes precise GPS coordinates — and can mask or mosaic visible faces and text before you share."
+    },
+    {
+      "q": "Does stripping metadata degrade the image?",
+      "a": "No. ShareGuard uses the low-level ImageIO framework to remove the invisible data without re-encoding pixels, and batch processing keeps quality lossless."
+    },
+    {
+      "q": "Which masking options are available?",
+      "a": "You can choose color masks, mosaic-style masks, or smart detection modes that automatically recognize faces and text, then apply them precisely to the areas you select."
+    },
+    {
+      "q": "Is anything sent to a server?",
+      "a": "No. Processing is local and the app is fully offline — no data leaves your device."
+    }
+  ]
+}
