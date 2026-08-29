@@ -161,6 +161,51 @@
 
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== Dual sticky panels (lg only) =====
+       Left: app info scrolls inside its own panel.
+       Right: the sticky preview column is height-capped and scrollable,
+       so the wide video below the phone stays reachable on short screens. */
+    @media (min-width: 1024px) {
+      #detailInfoCol {
+        position: sticky;
+        top: 5rem; /* matches the right column's top-20 */
+        max-height: calc(100vh - 6rem);
+        overflow-y: auto;
+        padding-right: 6px;
+      }
+      #detailPreviewSticky {
+        max-height: calc(100vh - 6rem);
+        overflow-y: auto;
+      }
+      /* Auto-hiding scrollbars: invisible until the panel is hovered */
+      #detailInfoCol::-webkit-scrollbar,
+      #detailPreviewSticky::-webkit-scrollbar { width: 8px; }
+      #detailInfoCol::-webkit-scrollbar-track,
+      #detailPreviewSticky::-webkit-scrollbar-track { background: transparent; }
+      #detailInfoCol::-webkit-scrollbar-thumb,
+      #detailPreviewSticky::-webkit-scrollbar-thumb {
+        background: transparent;
+        border-radius: 8px;
+      }
+      #detailInfoCol:hover::-webkit-scrollbar-thumb,
+      #detailPreviewSticky:hover::-webkit-scrollbar-thumb {
+        background: rgba(100, 116, 139, 0.35);
+      }
+      #detailInfoCol::-webkit-scrollbar-thumb:hover,
+      #detailPreviewSticky::-webkit-scrollbar-thumb:hover {
+        background: rgba(59, 130, 246, 0.5);
+      }
+      #detailInfoCol,
+      #detailPreviewSticky {
+        scrollbar-width: thin;               /* Firefox */
+        scrollbar-color: transparent transparent;
+      }
+      #detailInfoCol:hover,
+      #detailPreviewSticky:hover {
+        scrollbar-color: rgba(100, 116, 139, 0.35) transparent;
+      }
+    }
   </style>
   <noscript>
     <style>
@@ -199,12 +244,12 @@
           </div>
       </div>
 
-      <main id="mainContent" class="px-6 py-12 max-w-6xl mx-auto flex-grow hidden">
+      <main id="mainContent" class="px-6 pt-5 pb-12 max-w-6xl mx-auto flex-grow hidden">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             <!-- Left Column -->
-            <div class="lg:col-span-7 space-y-10">
+            <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
                 <div class="flex gap-6 items-start">
                     <div id="detailIcon" class="app-icon-lg"><img src="/assets/P2V%20Converter/icon.jpg" class="w-full h-full object-cover" alt="P2V Converter"></div>
                     <div class="flex-1 pt-2">
@@ -286,7 +331,7 @@
 
             <!-- Right Column -->
             <div class="lg:col-span-5 relative">
-                <div class="sticky top-24">
+                <div class="sticky top-20" id="detailPreviewSticky" tabindex="0">
                     <div class="preview-pair" id="previewPair">
                         <div class="phone-mock-static">
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
@@ -700,6 +745,24 @@
             onComplete: () => { window.location.href = '/index.html'; }
         });
     }
+
+    // Hand scrolling over to the page once a panel hits its edge. Browsers
+    // latch a trackpad gesture to the panel, so native chaining never fires
+    // within the same gesture; forwarding the wheel delta fixes that.
+    ['detailInfoCol', 'detailPreviewSticky'].forEach(function (id) {
+        var panel = document.getElementById(id);
+        if (!panel) return;
+        panel.addEventListener('wheel', function (e) {
+            if (panel.scrollHeight <= panel.clientHeight + 1) return; // panel not scrollable: default page scroll
+            var dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+            var atTop = panel.scrollTop <= 0 && dy < 0;
+            var atBottom = panel.scrollTop + panel.clientHeight >= panel.scrollHeight - 1 && dy > 0;
+            if (atTop || atBottom) {
+                e.preventDefault();
+                window.scrollBy(0, dy);
+            }
+        }, { passive: false });
+    });
 
     document.getElementById('backBtn').addEventListener('click', goBack);
     document.getElementById('footerHomeLink').addEventListener('click', goBack);
