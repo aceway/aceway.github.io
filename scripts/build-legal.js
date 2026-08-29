@@ -192,6 +192,40 @@ function storeLinkOf(app) {
   return `https://apps.apple.com/us/app/id${app.id}`;
 }
 
+const qrcode = require('./vendor/qrcode-generator.js');
+
+// Scanning happens on a phone, so the code always encodes the iOS listing.
+// A dedicated campaign token separates scan installs from click installs.
+function qrTargetOf(app) {
+  const base = `https://apps.apple.com/app/id${app.id}`;
+  const store = (app.links && app.links.ios) || '';
+  const pt = (store.match(/[?&]pt=(\d+)/) || [])[1];
+  const params = ['ct=apps.h53d.xyz-qr', 'mt=8'];
+  if (pt) params.unshift(`pt=${pt}`);
+  return `${base}?${params.join('&')}`;
+}
+
+// Compact SVG: one path, horizontal runs merged, ~5 KB instead of ~18 KB.
+function qrSvg(text, margin = 4) {
+  const qr = qrcode(0, 'M');
+  qr.addData(text);
+  qr.make();
+  const n = qr.getModuleCount();
+  const size = n + margin * 2;
+  let d = '';
+  for (let r = 0; r < n; r += 1) {
+    let c = 0;
+    while (c < n) {
+      if (!qr.isDark(r, c)) { c += 1; continue; }
+      const start = c;
+      while (c < n && qr.isDark(r, c)) c += 1;
+      const w = c - start;
+      d += `M${start + margin} ${r + margin}h${w}v1h-${w}z`;
+    }
+  }
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="132" height="132" shape-rendering="crispEdges" role="img"><title>QR code</title><path fill="#fff" d="M0 0h${size}v${size}H0z"/><path fill="#0f172a" d="${d}"/></svg>`;
+}
+
 function appSchema(app, canonicalHref) {
   const schema = {
     '@context': 'https://schema.org',
@@ -350,6 +384,15 @@ function prerenderDetail(template, app, ui, allApps) {
   }
 
   html = fillById(html, /<li id="crumbName"[^>]*>/, escapeHtml(name));
+
+  // Scan-to-install QR (desktop only via CSS; encoded at build time)
+  if (app.links && app.links.ios) {
+    const qrTarget = qrTargetOf(app);
+    html = html.replace('id="qrLink" href="#"', `id="qrLink" href="${qrTarget}" aria-label="${escapeHtml(name)} on the App Store"`);
+    html = fillById(html, /<span id="qrCode"[^>]*>/, qrSvg(qrTarget));
+  } else {
+    html = html.replace('id="qrBlock" class="hidden lg:flex', 'id="qrBlock" class="hidden');
+  }
 
   // Visible FAQ (required for FAQPage markup) plus the matching schema
   const faqs = faqsOf(app.slug);
