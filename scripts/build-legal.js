@@ -446,7 +446,7 @@ function prerenderIndex() {
                     <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">${escapeHtml(app.desc)}</p>
                     <div class="flex gap-3 items-center flex-wrap">
                       <a href="${storeLinkOf(app)}" title="Download on the App Store" class="hover:opacity-70 transition-opacity transform active:scale-95">${appleImg}</a>
-                      <a href="/apps/${app.slug}/detail.html" class="detail-link px-3 py-1.5 rounded-full border border-blue-100 text-blue-500 text-[10px] font-bold font-mono hover:bg-blue-50 transition flex items-center gap-1 group/btn bg-white/50">DETAILS <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                      <a href="/apps/${app.slug}/detail.html" class="detail-link px-3 py-1.5 rounded-full border border-blue-100 text-blue-700 text-[10px] font-bold font-mono hover:bg-blue-50 transition flex items-center gap-1 group/btn bg-white/50">DETAILS <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
                     </div>
                   </div>
                 </div>`;
