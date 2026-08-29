@@ -496,7 +496,7 @@ function prerenderIndex() {
       ? `<img src="assets/${ui.appleIconIOS}" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store">`
       : '<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>';
     const qrTrigger = app.slug
-      ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="" width="72" height="72" loading="lazy" class="block w-[72px] h-[72px]"></a>`
+      ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>`
       : '';
     return `
                 <div class="holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group">
