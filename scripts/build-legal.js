@@ -109,6 +109,14 @@ function rewrite(html, app, filename) {
     }
   }
 
+  // Structured data needs absolute, resolvable URLs. The vendored sources
+  // carry a relative "./" breadcrumb, and a directory URL that 404s because
+  // Pages serves no index.html inside an app folder — both point at the app
+  // overview, which lives at detail.html here.
+  html = html.replace(/"item"\s*:\s*"\.\/"/g, `"item": "${pageBase}/detail.html"`);
+  html = html.split(`"item": "${pageBase}/"`).join(`"item": "${pageBase}/detail.html"`);
+  html = html.split(`"url": "${pageBase}/"`).join(`"url": "${pageBase}/detail.html"`);
+
   // Link legal pages back into the site so they are not near-orphans
   if (!html.includes('id="appBacklink"')) {
     const backlink = `<p id="appBacklink" style="max-width:820px;margin:1.5rem auto 2rem;padding:0 1.25rem;text-align:center;font-size:0.9rem;">
