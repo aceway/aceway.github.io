@@ -113,9 +113,21 @@ function rewrite(html, app, filename) {
   // carry a relative "./" breadcrumb, and a directory URL that 404s because
   // Pages serves no index.html inside an app folder — both point at the app
   // overview, which lives at detail.html here.
-  html = html.replace(/"item"\s*:\s*"\.\/"/g, `"item": "${pageBase}/detail.html"`);
-  html = html.split(`"item": "${pageBase}/"`).join(`"item": "${pageBase}/detail.html"`);
-  html = html.split(`"url": "${pageBase}/"`).join(`"url": "${pageBase}/detail.html"`);
+  // Absolute inside JSON-LD only, so ordinary page links keep their relative
+  // form: "./" and "./#anchor" both meant the old per-app site root, which is
+  // the detail page here.
+  html = html.replace(
+    /(<script[^>]*type="application\/ld\+json"[^>]*>)([\s\S]*?)(<\/script>)/g,
+    (match, open, body, close) => {
+      const fixed = body
+        .replace(/"\.\/(#[^"]*)"/g, `"${pageBase}/detail.html$1"`)
+        .replace(/"\.\/"/g, `"${pageBase}/detail.html"`)
+        .split(`"${pageBase}/"`).join(`"${pageBase}/detail.html"`)
+        // root-relative asset paths need the origin too
+        .replace(/"\/assets\//g, `"${DOMAIN}/assets/`);
+      return open + fixed + close;
+    }
+  );
 
   // Link legal pages back into the site so they are not near-orphans
   if (!html.includes('id="appBacklink"')) {
