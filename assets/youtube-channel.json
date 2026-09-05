@@ -2,6 +2,9 @@
   "channel": "https://www.youtube.com/@aceway-AI",
   "channelId": "UCUrN27O02vVWSbe2cyRMGpQ",
   "videos": [
+    {"id": "wpQgoCm6A5E", "title": "ForgeShape for Mac — Check a 3D model before you slice it (open edges, overhangs, wall thickness)", "description": "ForgeShape Mac 3D print check open edges overhangs wall thickness STL 3MF STEP OBJ", "short": false, "slug": "forgeshape", "thumb": "https://i.ytimg.com/vi/wpQgoCm6A5E/hqdefault.jpg", "uploadDate": "2026-09-04T16:55:13-07:00"},
+    {"id": "1s625KjHe14", "title": "Print failed? ForgeShape checks #3DBenchy in seconds", "description": "ForgeShape 3DBenchy printability check open edges self-intersection repair preview", "short": true, "slug": "forgeshape", "thumb": "https://i.ytimg.com/vi/1s625KjHe14/hqdefault.jpg", "uploadDate": "2026-09-04T01:27:06-07:00"},
+
     {"id": "IcJ4Ox2ht2g", "title": "STEP Reviewer Pro: Designed for 100MB+ and 1M+ facet models on VisionOS", "description": "STEP Reviewer Pro VisionOS 100MB+ 1M+ facet models CAD ISO10303", "short": false, "slug": "step-reviewer", "thumb": "https://i.ytimg.com/vi/IcJ4Ox2ht2g/hqdefault.jpg", "uploadDate": "2026-07-21T22:52:42-07:00"},
     {"id": "LfqtPHB8yEg", "title": "View and inspect AP242 PMI directly on mobile", "description": "AP242 PMI on mobile", "short": true, "slug": "step-reviewer", "thumb": "https://i.ytimg.com/vi/LfqtPHB8yEg/hqdefault.jpg", "uploadDate": "2026-05-11T20:04:18-07:00"},
 
