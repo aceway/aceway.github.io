@@ -15,7 +15,7 @@
       "slug": "jt-file-viewer",
       "name": "JT File Viewer",
       "id": "6786113990",
-      "source": "JTFileViewerPolicySupport",
+      "source": "legal/sources/jt-file-viewer",
       "assetDir": "JT File Viewer",
       "icon": "icon.jpg",
       "listed": true,
