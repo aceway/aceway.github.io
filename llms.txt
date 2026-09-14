@@ -42,7 +42,7 @@ Notes:
 - [pcAI Photo Retouch on the App Store](https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [CutoutCraft on the App Store](https://apps.apple.com/us/app/cutoutcraft/id6745748800?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [ShareGuard on the App Store](https://apps.apple.com/us/app/shareguard/id6752704315?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
-- [BaudHub on the App Store](https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12): Official listing for iPhone, iPad, and Mac where available.
+- [BaudHub on the App Store](https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 
 ## Optional
 

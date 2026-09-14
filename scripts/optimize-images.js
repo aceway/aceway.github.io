@@ -8,6 +8,14 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
+function heightOf(file) {
+  try {
+    return parseInt(execFileSync('magick', ['identify', '-format', '%h', file]).toString(), 10);
+  } catch (e) {
+    return 0;
+  }
+}
+
 function widthOf(file) {
   try {
     return parseInt(execFileSync('magick', ['identify', '-format', '%w', file]).toString(), 10);
@@ -37,8 +45,13 @@ for (const dir of fs.readdirSync(ASSETS)) {
       skipped += 1;
       continue;
     }
+    // Landscape (Mac) screenshots show in a ~440px-wide frame, so they need
+    // more pixels than the 280px phone frame the default size is tuned for.
+    const srcWidth = widthOf(src);
+    const landscape = /^screen/i.test(file) && srcWidth > heightOf(src);
+    const wanted = landscape ? 960 : target.size;
     // never upscale: some icons ship at 128px
-    const width = Math.min(target.size, widthOf(src) || target.size);
+    const width = Math.min(wanted, srcWidth || wanted);
     execFileSync('cwebp', ['-quiet', '-q', String(target.quality), '-resize', String(width), '0', src, '-o', out]);
     savedBytes += fs.statSync(src).size - fs.statSync(out).size;
     made += 1;

@@ -8,9 +8,9 @@
   <meta property="og:type" content="product">
   <meta property="og:title" content="BaudHub">
   <meta property="og:description" content="BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA or master without hardware.">
-  <meta property="og:image" content="https://apps.h53d.xyz/assets/BaudHub/icon.png">
+  <meta property="og:image" content="https://apps.h53d.xyz/assets/BaudHub/screen.jpg">
   <meta name="twitter:title" content="BaudHub">
-  <meta name="twitter:image" content="https://apps.h53d.xyz/assets/BaudHub/icon.png">
+  <meta name="twitter:image" content="https://apps.h53d.xyz/assets/BaudHub/screen.jpg">
   <meta property="og:url" content="https://apps.h53d.xyz/apps/baudhub/detail.html">
   <link rel="canonical" href="https://apps.h53d.xyz/apps/baudhub/detail.html">
   <link rel="icon" type="image/jpeg" href="/assets/BaudHub/icon.png">
@@ -136,6 +136,34 @@
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+
+    /* ===== Mac previews (see applyPreviewShape) ===== */
+    [data-shape="mac"] .phone-mock-static, [data-shape="landscape"] .phone-mock-static {
+      width: min(440px, 100%); height: auto; aspect-ratio: 16 / 10;
+      margin: 0 auto; padding: 0;
+    }
+    [data-shape] .phone-mock-static .mock-notch { display: none; }
+    [data-shape] .preview-dash { display: none; }
+    [data-shape="landscape"] .phone-mock-static {
+      border: 0; border-radius: 14px; background: #0f172a;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.3);
+    }
+    [data-shape="landscape"] .phone-mock-static .phone-screen { border-radius: 14px; }
+    [data-shape="mac"] .phone-mock-static {
+      width: min(420px, 88%);
+      border: 10px solid #1f2937; border-bottom-width: 14px;
+      border-radius: 16px 16px 6px 6px; background: #1f2937;
+      box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.45);
+      margin-bottom: 34px;
+    }
+    [data-shape="mac"] .phone-mock-static .phone-screen { border-radius: 3px; }
+    [data-shape="mac"] .phone-mock-static::after {
+      content: ""; position: absolute; left: -7%; right: -7%; bottom: -30px; height: 16px;
+      background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 100%);
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.45);
+    }
+
     /* ===== Dual sticky panels (lg only) =====
        Left: app info scrolls inside its own panel.
        Right: the sticky preview column is height-capped and scrollable,
@@ -231,10 +259,10 @@
                 <div class="flex gap-6 items-start">
                     <div class="flex flex-col items-center gap-4 shrink-0">
                         <div id="detailIcon" class="app-icon-lg"><picture><source srcset="/assets/BaudHub/icon.webp" type="image/webp"><img src="/assets/BaudHub/icon.png" class="w-full h-full object-cover" width="120" height="120" alt="BaudHub"></picture></div>
-                        <a id="qrLink" href="#" class="hidden p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
-                            <span id="qrCode" class="block w-[120px] h-[120px]"></span>
+                        <a id="qrLink" href="https://apps.apple.com/app/id6809827203?pt=129278145&ct=apps.h53d.xyz-qr&mt=8" aria-label="BaudHub on the App Store" class="hidden lg:block p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
+                            <span id="qrCode" class="block w-[120px] h-[120px]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" width="120" height="120" shape-rendering="crispEdges" role="img"><title>QR code to install BaudHub from the App Store</title><path fill="#fff" d="M0 0h45v45H0z"/><path fill="#0f172a" d="M4 4h7v1h-7zM12 4h2v1h-2zM15 4h4v1h-4zM20 4h1v1h-1zM24 4h2v1h-2zM29 4h1v1h-1zM34 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h5v1h-5zM18 5h2v1h-2zM22 5h2v1h-2zM28 5h3v1h-3zM34 5h1v1h-1zM40 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h1v1h-1zM16 6h3v1h-3zM20 6h1v1h-1zM22 6h5v1h-5zM28 6h2v1h-2zM31 6h2v1h-2zM34 6h1v1h-1zM36 6h3v1h-3zM40 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM20 7h4v1h-4zM25 7h1v1h-1zM27 7h1v1h-1zM29 7h1v1h-1zM34 7h1v1h-1zM36 7h3v1h-3zM40 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h2v1h-2zM16 8h4v1h-4zM23 8h2v1h-2zM26 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM34 8h1v1h-1zM36 8h3v1h-3zM40 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM15 9h1v1h-1zM19 9h1v1h-1zM21 9h2v1h-2zM24 9h1v1h-1zM26 9h2v1h-2zM32 9h1v1h-1zM34 9h1v1h-1zM40 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM32 10h1v1h-1zM34 10h7v1h-7zM13 11h5v1h-5zM19 11h2v1h-2zM22 11h3v1h-3zM26 11h1v1h-1zM28 11h3v1h-3zM4 12h1v1h-1zM7 12h6v1h-6zM14 12h2v1h-2zM18 12h1v1h-1zM20 12h1v1h-1zM22 12h1v1h-1zM24 12h1v1h-1zM30 12h2v1h-2zM33 12h1v1h-1zM36 12h1v1h-1zM38 12h3v1h-3zM6 13h3v1h-3zM11 13h1v1h-1zM15 13h1v1h-1zM17 13h2v1h-2zM22 13h3v1h-3zM27 13h1v1h-1zM29 13h1v1h-1zM31 13h1v1h-1zM33 13h1v1h-1zM36 13h1v1h-1zM38 13h2v1h-2zM4 14h1v1h-1zM7 14h2v1h-2zM10 14h2v1h-2zM14 14h2v1h-2zM17 14h1v1h-1zM22 14h1v1h-1zM24 14h2v1h-2zM27 14h2v1h-2zM31 14h4v1h-4zM36 14h3v1h-3zM40 14h1v1h-1zM4 15h1v1h-1zM6 15h1v1h-1zM8 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM18 15h2v1h-2zM21 15h2v1h-2zM24 15h1v1h-1zM26 15h1v1h-1zM32 15h1v1h-1zM34 15h2v1h-2zM38 15h3v1h-3zM7 16h1v1h-1zM10 16h1v1h-1zM13 16h1v1h-1zM17 16h1v1h-1zM22 16h2v1h-2zM26 16h1v1h-1zM28 16h1v1h-1zM31 16h1v1h-1zM34 16h2v1h-2zM40 16h1v1h-1zM12 17h2v1h-2zM15 17h2v1h-2zM19 17h3v1h-3zM24 17h2v1h-2zM27 17h1v1h-1zM29 17h5v1h-5zM36 17h2v1h-2zM39 17h1v1h-1zM4 18h1v1h-1zM6 18h5v1h-5zM19 18h3v1h-3zM23 18h1v1h-1zM26 18h1v1h-1zM31 18h1v1h-1zM33 18h2v1h-2zM36 18h3v1h-3zM40 18h1v1h-1zM4 19h3v1h-3zM8 19h2v1h-2zM14 19h1v1h-1zM20 19h3v1h-3zM24 19h1v1h-1zM26 19h2v1h-2zM32 19h4v1h-4zM37 19h4v1h-4zM4 20h1v1h-1zM6 20h2v1h-2zM9 20h2v1h-2zM13 20h4v1h-4zM18 20h4v1h-4zM28 20h4v1h-4zM33 20h3v1h-3zM38 20h3v1h-3zM5 21h1v1h-1zM7 21h1v1h-1zM12 21h1v1h-1zM15 21h1v1h-1zM20 21h7v1h-7zM28 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM10 22h2v1h-2zM13 22h2v1h-2zM18 22h2v1h-2zM23 22h1v1h-1zM27 22h3v1h-3zM31 22h1v1h-1zM33 22h2v1h-2zM36 22h1v1h-1zM38 22h1v1h-1zM40 22h1v1h-1zM7 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM14 23h4v1h-4zM23 23h1v1h-1zM26 23h1v1h-1zM29 23h1v1h-1zM32 23h1v1h-1zM34 23h3v1h-3zM40 23h1v1h-1zM4 24h5v1h-5zM10 24h1v1h-1zM12 24h2v1h-2zM18 24h2v1h-2zM21 24h2v1h-2zM24 24h1v1h-1zM28 24h1v1h-1zM32 24h5v1h-5zM13 25h2v1h-2zM18 25h2v1h-2zM23 25h9v1h-9zM33 25h1v1h-1zM36 25h1v1h-1zM38 25h2v1h-2zM4 26h1v1h-1zM6 26h3v1h-3zM10 26h1v1h-1zM15 26h8v1h-8zM24 26h4v1h-4zM29 26h1v1h-1zM31 26h1v1h-1zM34 26h2v1h-2zM37 26h1v1h-1zM39 26h2v1h-2zM4 27h3v1h-3zM13 27h1v1h-1zM15 27h2v1h-2zM19 27h1v1h-1zM21 27h1v1h-1zM27 27h1v1h-1zM31 27h1v1h-1zM33 27h1v1h-1zM35 27h4v1h-4zM40 27h1v1h-1zM9 28h3v1h-3zM13 28h1v1h-1zM16 28h2v1h-2zM20 28h3v1h-3zM24 28h1v1h-1zM28 28h1v1h-1zM34 28h1v1h-1zM4 29h1v1h-1zM9 29h1v1h-1zM11 29h8v1h-8zM20 29h1v1h-1zM25 29h3v1h-3zM30 29h2v1h-2zM35 29h2v1h-2zM4 30h2v1h-2zM10 30h1v1h-1zM13 30h2v1h-2zM18 30h1v1h-1zM20 30h4v1h-4zM25 30h2v1h-2zM30 30h3v1h-3zM34 30h2v1h-2zM37 30h1v1h-1zM39 30h2v1h-2zM4 31h1v1h-1zM6 31h2v1h-2zM9 31h1v1h-1zM11 31h1v1h-1zM14 31h1v1h-1zM18 31h2v1h-2zM22 31h2v1h-2zM27 31h2v1h-2zM30 31h1v1h-1zM34 31h1v1h-1zM38 31h3v1h-3zM4 32h1v1h-1zM8 32h1v1h-1zM10 32h2v1h-2zM13 32h4v1h-4zM18 32h1v1h-1zM20 32h1v1h-1zM22 32h1v1h-1zM26 32h4v1h-4zM31 32h6v1h-6zM38 32h1v1h-1zM12 33h3v1h-3zM16 33h1v1h-1zM19 33h2v1h-2zM23 33h1v1h-1zM26 33h1v1h-1zM29 33h1v1h-1zM32 33h1v1h-1zM36 33h1v1h-1zM38 33h1v1h-1zM4 34h7v1h-7zM12 34h1v1h-1zM18 34h2v1h-2zM23 34h5v1h-5zM29 34h2v1h-2zM32 34h1v1h-1zM34 34h1v1h-1zM36 34h1v1h-1zM39 34h2v1h-2zM4 35h1v1h-1zM10 35h1v1h-1zM12 35h1v1h-1zM19 35h1v1h-1zM21 35h2v1h-2zM26 35h2v1h-2zM29 35h2v1h-2zM32 35h1v1h-1zM36 35h1v1h-1zM40 35h1v1h-1zM4 36h1v1h-1zM6 36h3v1h-3zM10 36h1v1h-1zM12 36h1v1h-1zM14 36h3v1h-3zM18 36h2v1h-2zM23 36h1v1h-1zM27 36h1v1h-1zM31 36h6v1h-6zM39 36h2v1h-2zM4 37h1v1h-1zM6 37h3v1h-3zM10 37h1v1h-1zM12 37h2v1h-2zM20 37h1v1h-1zM22 37h3v1h-3zM27 37h2v1h-2zM31 37h1v1h-1zM33 37h2v1h-2zM37 37h2v1h-2zM40 37h1v1h-1zM4 38h1v1h-1zM6 38h3v1h-3zM10 38h1v1h-1zM14 38h3v1h-3zM18 38h5v1h-5zM24 38h4v1h-4zM29 38h3v1h-3zM36 38h1v1h-1zM38 38h1v1h-1zM40 38h1v1h-1zM4 39h1v1h-1zM10 39h1v1h-1zM13 39h1v1h-1zM15 39h1v1h-1zM17 39h2v1h-2zM20 39h4v1h-4zM26 39h2v1h-2zM30 39h2v1h-2zM33 39h2v1h-2zM36 39h1v1h-1zM38 39h3v1h-3zM4 40h7v1h-7zM12 40h1v1h-1zM14 40h4v1h-4zM19 40h1v1h-1zM22 40h2v1h-2zM26 40h3v1h-3zM32 40h1v1h-1zM35 40h1v1h-1zM40 40h1v1h-1z"/></svg></span>
                         </a>
-                        <div id="qrHint" class="hidden w-[138px] -mt-2 text-center text-[10px] text-slate-500 leading-tight">
+                        <div id="qrHint" class="hidden lg:block w-[138px] -mt-2 text-center text-[10px] text-slate-500 leading-tight">
                             <span class="block font-mono font-bold text-slate-600 tracking-wide mb-0.5">SCAN TO INSTALL</span>
                             Point your iPhone camera at the code.
                         </div>
@@ -245,7 +273,7 @@
                         <p id="detailDesc" class="text-lg text-slate-600 leading-relaxed font-light">BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA or master without hardware.</p>
                         
                         <div class="mt-6 flex items-center gap-4 flex-wrap">
-                            <a id="detailLink" href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+                            <a id="detailLink" href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
                                 <!-- h-10 about 40px，detail page size -->
                                 <img id="appleBadgeIcon" src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="120" height="40" class="h-10 w-auto object-contain select-none" alt="Download on App Store">
                             </a>
@@ -408,12 +436,12 @@
 
             <!-- Right Column -->
             <div class="lg:col-span-5 relative">
-                <div class="sticky top-20" id="detailPreviewSticky" tabindex="0">
+                <div class="sticky top-20" id="detailPreviewSticky" data-shape="landscape" tabindex="0">
                     <div class="preview-pair" id="previewPair">
                         <div class="phone-mock-static">
-                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                            <div class="mock-notch absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
                             <div class="phone-screen relative bg-black overflow-hidden">
-                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"></div>
+                                <div id="sliderContainer" class="absolute inset-0 w-full h-full"><picture><source srcset="/assets/BaudHub/screen.webp" type="image/webp"><img src="/assets/BaudHub/screen.jpg" alt="BaudHub screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture></div>
                                 <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
                                 <div id="nextBtn" class="slider-btn right z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
                                 <div id="dotsContainer" class="slider-dots z-20"></div>
@@ -429,7 +457,7 @@
                     <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[620px] border border-dashed border-slate-300 rounded-[60px] preview-dash"></div>
                 </div>
                 <div class="text-center mt-6">
-					<a id="appStoreLink" href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
+					<a id="appStoreLink" href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8" class="hover:opacity-70 transition-opacity transform active:scale-95 origin-left">
 						Download on the App Store
                     </a>
                 </div>
@@ -609,6 +637,8 @@
 
         //const safeName = encodeURIComponent(app.name);
         //document.title = `${app.name} - Detail`;
+
+        applyPreviewShape(document.getElementById('detailPreviewSticky'), app.previewShape);
 
         const crumb = document.getElementById('crumbName');
         if (crumb) crumb.textContent = app.name;
@@ -885,6 +915,15 @@
         // yt-embed fills the slots asynchronously; re-run once it has mounted
         window.addEventListener('load', apply);
     })();
+
+    // Preview frames: phone by default; "mac" draws a MacBook bezel and base
+    // for plain Mac screenshots, "landscape" a bare 16:10 card for marketing
+    // images that already include their own device frame.
+    function applyPreviewShape(el, shape) {
+        if (!el) return;
+        if (shape === 'mac' || shape === 'landscape') el.setAttribute('data-shape', shape);
+        else el.removeAttribute('data-shape');
+    }
 
     // Hand scrolling over to the page once a panel hits its edge. Browsers
     // latch a trackpad gesture to the panel, so native chaining never fires

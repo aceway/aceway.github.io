@@ -178,6 +178,36 @@
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+
+    /* ===== Mac previews (see applyPreviewShape) ===== */
+    .phone-wrapper[data-shape="mac"] .phone-mock, .phone-wrapper[data-shape="landscape"] .phone-mock {
+      width: min(440px, 100%); height: auto; aspect-ratio: 16 / 10;
+      margin: 0 auto; padding: 0;
+    }
+    /* the wrapper sizes to its content, so give it a width the frame can use */
+    .phone-wrapper[data-shape] { width: 100%; }
+    .phone-wrapper[data-shape] .phone-mock .mock-notch { display: none; }
+    .phone-wrapper[data-shape] .dashed-border { display: none; }
+    .phone-wrapper[data-shape="landscape"] .phone-mock {
+      border: 0; border-radius: 14px; background: #0f172a;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.3);
+    }
+    .phone-wrapper[data-shape="landscape"] .phone-mock .phone-screen { border-radius: 14px; }
+    .phone-wrapper[data-shape="mac"] .phone-mock {
+      width: min(420px, 88%);
+      border: 10px solid #1f2937; border-bottom-width: 14px;
+      border-radius: 16px 16px 6px 6px; background: #1f2937;
+      box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.45);
+      margin-bottom: 34px;
+    }
+    .phone-wrapper[data-shape="mac"] .phone-mock .phone-screen { border-radius: 3px; }
+    .phone-wrapper[data-shape="mac"] .phone-mock::after {
+      content: ""; position: absolute; left: -7%; right: -7%; bottom: -30px; height: 16px;
+      background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 100%);
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.45);
+    }
+
     /* ===== Dual sticky panels (lg + preview column only) =====
        Left: app cards scroll inside their own panel.
        Right: the sticky preview column is height-capped and scrollable,
@@ -544,7 +574,7 @@
                 <div class="holo-card p-6 flex gap-6 items-start cursor-pointer mb-5 group">
                   <div class="flex flex-col items-center gap-2 shrink-0">
                     <div class="app-icon group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-shadow duration-300"><div class="absolute inset-0 flex items-center justify-center z-0"><span class="text-slate-500 font-mono font-bold text-2xl select-none">BA</span></div><picture><source srcset="assets/BaudHub/icon.webp" type="image/webp"><img src="assets/BaudHub/icon.png" alt="BaudHub" width="80" height="80" class="absolute inset-0 w-full h-full object-cover z-10 bg-white transition-transform duration-500 group-hover:scale-110"></picture></div>
-                    
+                    <a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="BaudHub" data-qr="assets/qr/baudhub.svg" title="Show a larger QR code to scan" aria-label="Show QR code for BaudHub"><img src="assets/qr/baudhub.svg" alt="QR code to install BaudHub from the App Store" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>
                   </div>
                   <div class="flex-1 min-w-0">
                     <span class="mb-2 inline-block px-2 py-0.5 rounded-md text-[10px] font-bold font-mono uppercase tracking-wider bg-blue-100 text-blue-700 border border-blue-200">Modbus RTU/TCP Serial Debugger</span>
@@ -553,7 +583,7 @@
                     </div>
                     <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA or master without hardware.</p>
                     <div class="flex gap-3 items-center flex-wrap">
-                      <a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12" title="Download on the App Store" class="hover:opacity-70 transition-opacity transform active:scale-95"><img src="assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store"></a>
+                      <a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8" title="Download on the App Store" class="hover:opacity-70 transition-opacity transform active:scale-95"><img src="assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store"></a>
                       <a href="/apps/baudhub/detail.html" class="detail-link px-3 py-1.5 rounded-full border border-blue-100 text-blue-700 text-[10px] font-bold font-mono hover:bg-blue-50 transition flex items-center gap-1 group/btn bg-white/50">DETAILS <svg class="w-3 h-3 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
                     </div>
                   </div>
@@ -573,7 +603,7 @@
                 
                 <!-- 手机模型 -->
                 <div class="phone-mock" id="phoneMock">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                  <div class="mock-notch absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
                   
                   <div class="phone-screen relative bg-black overflow-hidden">
                     <!-- Slider 容器 -->
@@ -743,6 +773,15 @@
         }
     }
 
+    // Preview frames: phone by default; "mac" draws a MacBook bezel and base
+    // for plain Mac screenshots, "landscape" a bare 16:10 card for marketing
+    // images that already include their own device frame.
+    function applyPreviewShape(el, shape) {
+        if (!el) return;
+        if (shape === 'mac' || shape === 'landscape') el.setAttribute('data-shape', shape);
+        else el.removeAttribute('data-shape');
+    }
+
     function triggerPreview(app) {
         const safeName = encodeURIComponent(app.name);
         if (app.screenshots && Array.isArray(app.screenshots) && app.screenshots.length > 0) {
@@ -752,6 +791,7 @@
         }
         currentIndex = 0;
         demoTitle.textContent = app.name;
+        applyPreviewShape(phoneMock.closest('.phone-wrapper'), app.previewShape);
         currentAppName = app.name || '';
         loadFirstSlide();
         if (window.H53D_YT) {

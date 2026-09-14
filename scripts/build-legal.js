@@ -387,7 +387,7 @@ function prerenderDetail(template, app, ui, allApps) {
     `<meta property="og:url" content="${canonicalHref}">`,
     `<link rel="canonical" href="${canonicalHref}">`,
     // Smart App Banners are an iOS feature; a Mac-only app has nothing to offer there
-    app.links && app.links.ios ? `<meta name="apple-itunes-app" content="app-id=${app.id}">` : '',
+    app.links && app.links.ios && app.operatingSystem !== 'macOS' ? `<meta name="apple-itunes-app" content="app-id=${app.id}">` : '',
     `<link rel="icon" type="image/jpeg" href="${assetBase}/${app.icon}">`,
     `<link rel="apple-touch-icon" href="${assetBase}/${app.icon}">`,
     `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`,
@@ -451,6 +451,12 @@ function prerenderDetail(template, app, ui, allApps) {
   }
 
   html = fillById(html, /<li id="crumbName"[^>]*>/, escapeHtml(name));
+
+  // Mac screenshots are landscape marketing images that already carry their
+  // own device frame; show them in a plain 16:10 card instead of the phone
+  if (app.previewShape === 'mac' || app.previewShape === 'landscape') {
+    html = html.replace('id="detailPreviewSticky"', `id="detailPreviewSticky" data-shape="${app.previewShape}"`);
+  }
 
   // Scan-to-install QR (desktop only via CSS; encoded at build time)
   if (app.links && app.links.ios) {

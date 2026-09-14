@@ -138,6 +138,34 @@
     .spinner { width: 40px; height: 40px; border: 3px solid #cbd5e1; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 50px auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+
+    /* ===== Mac previews (see applyPreviewShape) ===== */
+    [data-shape="mac"] .phone-mock-static, [data-shape="landscape"] .phone-mock-static {
+      width: min(440px, 100%); height: auto; aspect-ratio: 16 / 10;
+      margin: 0 auto; padding: 0;
+    }
+    [data-shape] .phone-mock-static .mock-notch { display: none; }
+    [data-shape] .preview-dash { display: none; }
+    [data-shape="landscape"] .phone-mock-static {
+      border: 0; border-radius: 14px; background: #0f172a;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.3);
+    }
+    [data-shape="landscape"] .phone-mock-static .phone-screen { border-radius: 14px; }
+    [data-shape="mac"] .phone-mock-static {
+      width: min(420px, 88%);
+      border: 10px solid #1f2937; border-bottom-width: 14px;
+      border-radius: 16px 16px 6px 6px; background: #1f2937;
+      box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.45);
+      margin-bottom: 34px;
+    }
+    [data-shape="mac"] .phone-mock-static .phone-screen { border-radius: 3px; }
+    [data-shape="mac"] .phone-mock-static::after {
+      content: ""; position: absolute; left: -7%; right: -7%; bottom: -30px; height: 16px;
+      background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 100%);
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.45);
+    }
+
     /* ===== Dual sticky panels (lg only) =====
        Left: app info scrolls inside its own panel.
        Right: the sticky preview column is height-capped and scrollable,
@@ -351,7 +379,7 @@
                 <div class="sticky top-20" id="detailPreviewSticky" tabindex="0">
                     <div class="preview-pair" id="previewPair">
                         <div class="phone-mock-static">
-                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
+                            <div class="mock-notch absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-b-xl z-20"></div>
                             <div class="phone-screen relative bg-black overflow-hidden">
                                 <div id="sliderContainer" class="absolute inset-0 w-full h-full"><picture><source srcset="/assets/P2V%20Converter/screen.webp" type="image/webp"><img src="/assets/P2V%20Converter/screen.jpg" alt="P2V Converter screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture></div>
                                 <div id="prevBtn" class="slider-btn left z-20"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
@@ -549,6 +577,8 @@
 
         //const safeName = encodeURIComponent(app.name);
         //document.title = `${app.name} - Detail`;
+
+        applyPreviewShape(document.getElementById('detailPreviewSticky'), app.previewShape);
 
         const crumb = document.getElementById('crumbName');
         if (crumb) crumb.textContent = app.name;
@@ -825,6 +855,15 @@
         // yt-embed fills the slots asynchronously; re-run once it has mounted
         window.addEventListener('load', apply);
     })();
+
+    // Preview frames: phone by default; "mac" draws a MacBook bezel and base
+    // for plain Mac screenshots, "landscape" a bare 16:10 card for marketing
+    // images that already include their own device frame.
+    function applyPreviewShape(el, shape) {
+        if (!el) return;
+        if (shape === 'mac' || shape === 'landscape') el.setAttribute('data-shape', shape);
+        else el.removeAttribute('data-shape');
+    }
 
     // Hand scrolling over to the page once a panel hits its edge. Browsers
     // latch a trackpad gesture to the panel, so native chaining never fires

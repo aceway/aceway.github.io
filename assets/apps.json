@@ -595,9 +595,16 @@
       "desc": "BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA or master without hardware.",
       "promotional": "Modbus RTU/TCP Serial Debugger",
       "icon": "icon.png",
-      "screenshots": [],
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg",
+        "screen4.jpg"
+      ],
       "links": {
-        "macos": "https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12",
+        "ios": "https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=8",
+        "macos": "https://apps.apple.com/us/app/id6809827203?platform=mac&pt=129278145&ct=apps.h53d.xyz&mt=8",
         "policy": "/apps/baudhub/policy.html",
         "support": "/apps/baudhub/support.html",
         "detail": "/apps/baudhub/detail.html"
@@ -631,7 +638,8 @@
         "title": "Modbus you can verify, frame by frame",
         "content": "Commissioning a Modbus device usually means guessing byte orders and hoping a write landed. BaudHub shows the raw request and reply behind every decoded value, explains exception codes and timeouts in plain language, and treats writes as a deliberate act: every connection starts read-only, a write must be unlocked, previewed, sent once and confirmed by reading the register back. A built-in slave simulator lets you rehearse the same session before touching real hardware."
       },
-      "slug": "baudhub"
+      "slug": "baudhub",
+      "previewShape": "landscape"
     }
   ]
 }
