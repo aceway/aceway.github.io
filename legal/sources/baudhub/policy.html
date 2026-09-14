@@ -165,7 +165,7 @@
     <meta property="og:description" content="BaudHub collects no data: no account, analytics, tracking or ads. It connects only to the Modbus devices and serial ports you choose.">
     <meta property="og:url" content="https://apps.h53d.xyz/apps/baudhub/policy.html">
     <meta property="og:image" content="https://apps.h53d.xyz/assets/BaudHub/icon.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Privacy Policy - BaudHub","url":"https://apps.h53d.xyz/apps/baudhub/policy.html","description":"Privacy policy for BaudHub, the Modbus RTU/TCP and serial debugger for Mac. No account, analytics, tracking or ads.","inLanguage":"en","datePublished":"2026-09-14","dateModified":"2026-09-14","about":{"@type":"SoftwareApplication","name":"BaudHub","operatingSystem":"macOS","applicationCategory":"DeveloperApplication","downloadUrl":"https://apps.apple.com/us/app/id6809827203","softwareHelp":"https://apps.h53d.xyz/apps/baudhub/support.html","privacyPolicy":"https://apps.h53d.xyz/apps/baudhub/policy.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does BaudHub collect personal data?","acceptedAnswer":{"@type":"Answer","text":"No. BaudHub has no account, analytics, crash-reporting or advertising SDK and does not send register values, frame logs or sessions to the developer."}},{"@type":"Question","name":"Which network connections does BaudHub make?","acceptedAnswer":{"@type":"Answer","text":"Only to the Modbus TCP devices you enter, to clients that connect to a TCP simulator you start, and to Apple for purchases and for iCloud key-value storage of a Site Pass expiry date."}},{"@type":"Question","name":"Is Modbus TCP traffic encrypted?","acceptedAnswer":{"@type":"Answer","text":"No. Modbus TCP has no encryption or authentication, so use it on networks you trust."}},{"@type":"Question","name":"Where does BaudHub store sessions?","acceptedAnswer":{"@type":"Answer","text":"On your Mac, inside the app's sandbox container. Exported sessions, frame logs and terminal recordings are saved where you choose."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Privacy Policy - BaudHub","url":"https://apps.h53d.xyz/apps/baudhub/policy.html","description":"Privacy policy for BaudHub, the Modbus RTU/TCP and serial debugger for Mac. No account, analytics, tracking or ads.","inLanguage":"en","datePublished":"2026-09-14","dateModified":"2026-09-14","about":{"@type":"SoftwareApplication","name":"BaudHub","operatingSystem":"macOS","applicationCategory":"DeveloperApplication","downloadUrl":"https://apps.apple.com/us/app/id6809827203","softwareHelp":"https://apps.h53d.xyz/apps/baudhub/support.html","privacyPolicy":"https://apps.h53d.xyz/apps/baudhub/policy.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does BaudHub upload my device data?","acceptedAnswer":{"@type":"Answer","text":"No. Readings, logs and sessions stay on your Mac unless you export and share them yourself."}},{"@type":"Question","name":"Can other computers connect to my simulator?","acceptedAnswer":{"@type":"Answer","text":"Only while a Modbus TCP simulator is running, and only computers on your network that can reach it. Stop the simulator to end this."}},{"@type":"Question","name":"Does BaudHub see my payment information?","acceptedAnswer":{"@type":"Answer","text":"No. Apple handles billing. BaudHub only learns which purchases are active."}},{"@type":"Question","name":"Does BaudHub work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Serial devices, devices on your local network and the simulator work without an internet connection. Purchases, restores and using a Site Pass on another Mac need Apple's services."}}]}]}</script>
 </head>
 <body>
 
@@ -183,73 +183,64 @@
 
     <section>
         <h2>1. No Data Collection</h2>
-        <p>BaudHub does not collect personal data and does not send anything you work with to the developer.</p>
+        <p>BaudHub does not collect personal data and does not send anything you work with to us.</p>
         <ul>
-            <li>No BaudHub account or sign-in</li>
-            <li>No analytics, crash-reporting or advertising SDKs</li>
-            <li>No tracking, fingerprinting or sale of data</li>
-            <li>No upload of register values, frame logs, write audit logs, sessions or templates</li>
+            <li>No account or sign-in</li>
+            <li>No analytics, advertising or tracking</li>
+            <li>Your device readings, logs, sessions and templates are never sent to us</li>
         </ul>
-        <p>Device addresses, register maps and readings leave your Mac only when you export or share a file yourself.</p>
+        <p>Information about your devices leaves your Mac only when you export or share a file yourself.</p>
     </section>
 
     <section>
         <h2>2. Network Connections</h2>
-        <p>BaudHub opens network connections only for the following:</p>
+        <p>BaudHub connects to the network only when you need it to:</p>
         <ul>
-            <li><strong>Modbus TCP devices:</strong> the host and port you enter for a connection, for example an inverter, charger, meter gateway or PLC.</li>
-            <li><strong>Slave simulator:</strong> when you start a Modbus TCP simulator, it listens on the port you choose. Your own Mac, and other computers on your network that can reach that port, can connect to it until you stop the simulator.</li>
-            <li><strong>Apple services:</strong> the App Store for purchases and restores, and iCloud key-value storage for the expiry date of a Site Pass (see section 5).</li>
-            <li><strong>Driver links:</strong> when an adapter needs a vendor driver, the vendor's download page opens in your browser only if you click the link.</li>
+            <li><strong>Modbus TCP devices:</strong> the address and port you enter, such as an inverter, charger, meter gateway or PLC.</li>
+            <li><strong>Simulator:</strong> while you run a Modbus TCP simulator, other computers on your network can connect to it. Stop the simulator to end this.</li>
+            <li><strong>Apple services:</strong> the App Store for purchases and restores, and your iCloud account so a Site Pass also works on your other Macs.</li>
+            <li><strong>Driver download pages:</strong> opened in your browser only if you click the link.</li>
         </ul>
-        <p>The Modbus TCP protocol has no encryption or authentication. Use it on networks you trust. macOS may ask whether BaudHub may find and connect to devices on your local network; you can change that answer in System Settings › Privacy &amp; Security › Local Network.</p>
+        <p>Modbus TCP does not encrypt data, so use it on networks you trust. If macOS asks whether BaudHub may connect to devices on your local network, you can change your answer later in System Settings › Privacy &amp; Security › Local Network.</p>
     </section>
 
     <section>
-        <h2>3. Serial Ports and USB Adapters</h2>
-        <p>BaudHub lists the serial ports on your Mac and opens only the port you select, with exclusive access while it is connected. To name adapter chips and suggest drivers, it reads the USB vendor and product identifiers of attached adapters. This information stays on your Mac.</p>
+        <h2>3. USB Adapters</h2>
+        <p>To recognize your USB adapter and tell you when it needs a driver, BaudHub reads basic information about the adapters you connect. This information stays on your Mac.</p>
     </section>
 
     <section>
-        <h2>4. Local Storage Only</h2>
-        <p>BaudHub saves your workspace so it can restore it on the next launch. It is written periodically and when you quit, inside the app's sandbox container:</p>
-        <p><code>~/Library/Containers/com.foowei.BaudHub/Data/Library/Application Support/BaudHub/</code></p>
-        <ul>
-            <li>Connections (serial port and line settings, TCP hosts and ports), devices and register definitions</li>
-            <li>Last values, value history, frame logs and the write audit log</li>
-            <li>Simulators, imported templates and app preferences</li>
-            <li>Cached purchase and Site Pass status</li>
-        </ul>
-        <p>Extra app instances keep their own copy, which BaudHub deletes at a later launch once that instance has been unused for a day. Session packages, frame log CSV files, terminal recordings and exported templates are saved only where you choose. <em>Copy Diagnostic</em> places text on the clipboard only when you use it.</p>
+        <h2>4. Data Stored on Your Mac</h2>
+        <p>BaudHub keeps your connections, devices, readings, logs and settings on your Mac, so your work is still there the next time you open the app. Files you export, such as sessions, logs and recordings, are saved only where you choose.</p>
     </section>
 
     <section>
         <h2>5. Purchases and Site Passes</h2>
-        <p>BaudHub Pro and the 7-Day and 30-Day Site Passes are sold through the App Store. Apple processes payment; BaudHub uses StoreKit to learn which features are unlocked and never receives your payment details, billing address or Apple Account credentials.</p>
-        <p>So that a Site Pass bought on one Mac also works on your other Macs, BaudHub stores the pass product and its expiry date in iCloud key-value storage under your Apple Account. Nothing else is stored in iCloud. Purchases are subject to Apple's privacy policy and terms.</p>
+        <p>BaudHub Pro and the 7-Day and 30-Day Site Passes are sold through the App Store. Apple handles payment, and BaudHub never receives your payment details or Apple Account password.</p>
+        <p>So that a Site Pass works on all your Macs, BaudHub saves which pass you bought and when it ends in your iCloud account. Nothing else is saved there. Purchases are subject to Apple's privacy policy and terms.</p>
     </section>
 
     <section>
-        <h2>6. No Third-Party SDKs</h2>
-        <p>BaudHub is built only with Apple frameworks. It contains no advertising, analytics or crash-reporting SDKs, and it does not request access to your camera, microphone, location, contacts or photos. Files are opened and saved through the standard macOS open and save panels.</p>
-        <p>If you have chosen to share analytics with app developers in System Settings › Privacy &amp; Security › Analytics &amp; Improvements, Apple may provide anonymized crash reports to the developer. You control that setting.</p>
+        <h2>6. No Advertising or Analytics Services</h2>
+        <p>BaudHub contains no advertising, analytics or crash-reporting services from other companies, and it does not ask for access to your camera, microphone, location, contacts or photos.</p>
+        <p>If you share analytics with app developers in System Settings › Privacy &amp; Security › Analytics &amp; Improvements, Apple may send us anonymized crash reports. You control that setting.</p>
     </section>
 
     <section>
-        <h2>7. Your Rights and Data Removal</h2>
-        <p>Because we don't collect data, there is no server-side profile to request, correct or delete. To remove local data, delete connections, devices and simulators in the app, delete exported files you no longer need, or delete BaudHub together with its container folder <code>~/Library/Containers/com.foowei.BaudHub</code>.</p>
+        <h2>7. Deleting Your Data</h2>
+        <p>We don't collect data, so there is nothing stored on our side to request or delete. On your Mac, you can delete connections, devices and simulators in BaudHub and delete any files you exported. To remove everything BaudHub saved, delete the app, then delete the folder <code>~/Library/Containers/com.foowei.BaudHub</code> (in Finder, choose Go › Go to Folder).</p>
     </section>
 
     <section>
         <h2>8. Frequently Asked Questions</h2>
-        <h3>Does BaudHub upload my register values or frame logs?</h3>
-        <p>No. Readings, frames and audit entries stay on your Mac unless you export and share them yourself.</p>
-        <h3>Can other computers see my simulator?</h3>
-        <p>Only while a Modbus TCP simulator is running, and only if they can reach the port it listens on. The simulator shows its listen addresses. A serial (RTU) simulator is reachable only through the port you select.</p>
+        <h3>Does BaudHub upload my device data?</h3>
+        <p>No. Readings, logs and sessions stay on your Mac unless you export and share them yourself.</p>
+        <h3>Can other computers connect to my simulator?</h3>
+        <p>Only while a Modbus TCP simulator is running, and only computers on your network that can reach it. Stop the simulator to end this.</p>
         <h3>Does BaudHub see my payment information?</h3>
-        <p>No. Apple handles billing. BaudHub only receives which products are active.</p>
+        <p>No. Apple handles billing. BaudHub only learns which purchases are active.</p>
         <h3>Does BaudHub work offline?</h3>
-        <p>Yes. Serial connections, local network devices and the simulator need no internet connection. Purchases, restores and Site Pass sync between Macs use Apple's services.</p>
+        <p>Yes. Serial devices, devices on your local network and the simulator work without an internet connection. Purchases, restores and using a Site Pass on another Mac need Apple's services.</p>
     </section>
 
     <section>

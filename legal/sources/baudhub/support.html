@@ -190,7 +190,7 @@
     <meta property="og:description" content="Help for BaudHub on Mac: USB-RS485 and RS232 adapters, Modbus TCP, the slave simulator, safe writes, troubleshooting and purchases.">
     <meta property="og:url" content="https://apps.h53d.xyz/apps/baudhub/support.html">
     <meta property="og:image" content="https://apps.h53d.xyz/assets/BaudHub/icon.png">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Support - BaudHub","url":"https://apps.h53d.xyz/apps/baudhub/support.html","description":"Support and FAQ for BaudHub, the native Modbus RTU and Modbus TCP debugger, slave simulator and serial terminal for Mac.","inLanguage":"en","datePublished":"2026-09-14","dateModified":"2026-09-14","about":{"@type":"SoftwareApplication","name":"BaudHub","alternateName":"BaudHub Modbus RTU/TCP Serial Debugger","description":"Native Modbus RTU and Modbus TCP debugger and serial terminal for Mac with frame explanations, safe writes with read-back and a built-in Modbus slave simulator.","operatingSystem":"macOS 26 or later","applicationCategory":"DeveloperApplication","inLanguage":["en","de","zh-Hans"],"downloadUrl":"https://apps.apple.com/us/app/id6809827203","softwareHelp":"https://apps.h53d.xyz/apps/baudhub/support.html","privacyPolicy":"https://apps.h53d.xyz/apps/baudhub/policy.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Wei Ai","url":"https://x.com/aceway2024"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which USB-RS485 and RS232 adapters work with BaudHub?","acceptedAnswer":{"@type":"Answer","text":"Adapters that appear as a serial port on macOS, including FTDI, CP210x, PL2303 and CH340/CH341 chips. CH343, CH9102 and some newer PL2303 models need a vendor driver; BaudHub recognizes the chip and links to the driver."}},{"@type":"Question","name":"Does BaudHub support Modbus RTU and Modbus TCP?","acceptedAnswer":{"@type":"Answer","text":"Yes. BaudHub is a Modbus master over a serial port (RTU) and over Ethernet or Wi-Fi (TCP). This version does not open Modbus RTU over TCP connections."}},{"@type":"Question","name":"Can I test a Modbus master without hardware on a Mac?","acceptedAnswer":{"@type":"Answer","text":"Yes. Start the built-in Modbus TCP or RTU slave simulator and connect to it from BaudHub or from your own master, PLC or SCADA system."}},{"@type":"Question","name":"Is writing registers safe?","acceptedAnswer":{"@type":"Answer","text":"Every connection starts read-only. Writes need an explicit unlock, show the exact request first, are sent once without automatic resend, are read back to confirm and are kept in an audit log."}},{"@type":"Question","name":"Is there a Modbus Poll alternative for Mac?","acceptedAnswer":{"@type":"Answer","text":"BaudHub is a native macOS Modbus master, slave simulator and serial terminal, so Mac users can read, write and scan Modbus devices without a Windows virtual machine."}},{"@type":"Question","name":"How do I restore BaudHub Pro on another Mac?","acceptedAnswer":{"@type":"Answer","text":"Sign in with the same Apple Account, then choose Restore Purchases in BaudHub Settings or on the plan sheet. No BaudHub account is needed."}}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Support - BaudHub","url":"https://apps.h53d.xyz/apps/baudhub/support.html","description":"Support and FAQ for BaudHub, the native Modbus RTU and Modbus TCP debugger, slave simulator and serial terminal for Mac.","inLanguage":"en","datePublished":"2026-09-14","dateModified":"2026-09-14","about":{"@type":"SoftwareApplication","name":"BaudHub","alternateName":"BaudHub Modbus RTU/TCP Serial Debugger","description":"Native Modbus RTU and Modbus TCP debugger and serial terminal for Mac with frame explanations, safe writes with read-back and a built-in Modbus slave simulator.","operatingSystem":"macOS 26 or later","applicationCategory":"DeveloperApplication","inLanguage":["en","de","zh-Hans"],"downloadUrl":"https://apps.apple.com/us/app/id6809827203","softwareHelp":"https://apps.h53d.xyz/apps/baudhub/support.html","privacyPolicy":"https://apps.h53d.xyz/apps/baudhub/policy.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Wei Ai","url":"https://x.com/aceway2024"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between Modbus RTU and Modbus TCP?","acceptedAnswer":{"@type":"Answer","text":"Modbus RTU runs over a serial line such as RS485 or RS232. Modbus TCP carries the same requests over Ethernet or Wi-Fi. BaudHub supports both; this version does not open Modbus RTU over TCP connections."}},{"@type":"Question","name":"Is there a Modbus Poll alternative for Mac?","acceptedAnswer":{"@type":"Answer","text":"BaudHub is a native Mac app for reading, writing and scanning Modbus devices, with a slave simulator and a serial terminal, so you don't need to run Windows tools in a virtual machine."}},{"@type":"Question","name":"Can I test without a device?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose New Simulator… in the Simulator workspace and start it. Then connect to it from BaudHub, or from your own master, PLC or SCADA system, using the address the simulator shows."}},{"@type":"Question","name":"Can I run two jobs at the same time?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose File › New BaudHub Instance to open another BaudHub with its own workspace, for example one for a serial bus and one for a TCP gateway."}},{"@type":"Question","name":"Are the device templates verified?","acceptedAnswer":{"@type":"Answer","text":"Each template names the vendor document it was built from and shows its verification status. Check critical registers against your device's documentation before writing. Vendor names identify register maps only; BaudHub is not affiliated with these companies."}},{"@type":"Question","name":"What does a session export contain?","acceptedAnswer":{"@type":"Answer","text":"Export Session… saves your connections, devices, register settings, readings and logs as a single file you can share. Imported sessions open read-only."}}]}]}</script>
 </head>
 <body>
 
@@ -214,20 +214,20 @@
             <li><strong>Modbus master:</strong> RTU over serial and Modbus TCP; coils, discrete inputs, holding and input registers; single and multiple writes</li>
             <li><strong>Adapters:</strong> FTDI, CP210x, PL2303 and CH34x USB adapters, with driver guidance when a chip needs one</li>
             <li><strong>Decoding:</strong> 28 display formats (16-, 32- and 64-bit integers, float, BCD, hex, binary, ASCII), all 32-bit byte orders, 0- or 1-based addresses, scaling and units</li>
-            <li><strong>Evidence:</strong> side-by-side decodes, raw HEX and a link from every value to its source frame</li>
+            <li><strong>Raw data:</strong> each value in several formats side by side, with the raw HEX and the frame it came from</li>
             <li><strong>Frame log:</strong> requests, replies, exception codes and timeouts explained in plain language, with filters, search and CSV export</li>
             <li><strong>Bus scan:</strong> unit IDs, baud rates and parity, plus a guided unit address change</li>
             <li><strong>Safe writes:</strong> read-only by default; preview, confirm, send once, read back and audit log</li>
             <li><strong>Charts:</strong> live series with time windows, thresholds and a link from any sample to its frame</li>
             <li><strong>Slave simulator:</strong> Modbus RTU and TCP slave with several unit IDs and changing values</li>
-            <li><strong>Serial terminal:</strong> ASCII and HEX, timestamps, send history, macros, NMEA decoding and recording</li>
+            <li><strong>Serial terminal:</strong> ASCII and HEX, timestamps, send history and recording</li>
             <li><strong>Templates:</strong> SunSpec, SMA, Fronius, SolarEdge, KOSTAL, KEBA, go-e, Chint DDSU666/DTSU666, Schneider PM5xxx and Eastron SDM630, each with its source and verification status</li>
             <li><strong>Field-ready:</strong> stale values are marked, connections return after a replug or wake, sessions export as one package, and extra app instances run parallel jobs</li>
         </ul>
     </section>
 
     <section>
-        <h2>Technical Specifications</h2>
+        <h2>Requirements</h2>
         <div class="tech-specs">
             <div>• Requires macOS 26 or later; runs natively on Apple silicon and Intel Macs.</div>
             <div>• English, German and Simplified Chinese, following your macOS language.</div>
@@ -243,7 +243,7 @@
             <li>Plug in your adapter, or make sure your Mac can reach the device's IP address.</li>
             <li>Choose <em>New Connection…</em> (⌘N). For serial, pick the port and enter the device's baud rate, data bits, parity and stop bits (often 9600 8N1). For TCP, enter the host and port.</li>
             <li>In <em>Add Device</em>, enter the unit ID and choose a template, or add a register block with the function, start address, count and format from the vendor's register map.</li>
-            <li>The first valid reply turns the guide green and shows the value with its frame number. Select a row to see decodes and evidence in the inspector.</li>
+            <li>When the device answers, its value appears in the list. Select a row to see the value in other formats and the raw data it came from.</li>
         </ol>
         <p>Don't know the unit ID or line settings? Use <em>Scan Bus…</em> on the connection.</p>
     </section>
@@ -268,14 +268,14 @@
         <p>Open the Frame Log tab and look at the colors:</p>
         <ul class="plain-list">
             <li><strong>Yellow (timeout):</strong> the device did not answer. Check the unit ID (or scan), swap A and B, and confirm the device has power.</li>
-            <li><strong>Red (CRC or mismatch):</strong> baud rate or parity usually differ from the device. Compare with its nameplate.</li>
+            <li><strong>Red (garbled reply):</strong> the baud rate or parity usually differs from the device. Compare with its nameplate.</li>
             <li><strong>Orange (exception):</strong> the device is online but refused the request, usually an address out of range or the wrong function (input vs holding registers).</li>
             <li><strong>Grey:</strong> data arrived without a request; another master may be active on the bus.</li>
         </ul>
         <h3>A Modbus TCP connection is refused or reset</h3>
         <p>Many inverters and gateways accept only one Modbus client. Disconnect evcc, Home Assistant or another computer first. Check that Modbus TCP is enabled on the device (KEBA and go-e ship with it off), that the port is right, and that your Mac and the device are on the same subnet. If macOS asked about local network access, allow BaudHub in System Settings › Privacy &amp; Security › Local Network.</p>
         <h3>Values look wrong</h3>
-        <p>Absurd numbers usually mean the wrong format or byte order: compare the side-by-side decodes in the inspector. Values off by 10× or 100× need a scale factor. Values that belong to the neighboring register point to a 0- vs 1-based address mix-up.</p>
+        <p>Absurd numbers usually mean the wrong format or byte order: select the row and compare the same value shown in other formats. Values off by 10× or 100× need a scale factor. Values that belong to the neighboring register point to a 0- vs 1-based address mix-up.</p>
         <h3>Write is unavailable</h3>
         <p>Unlock writes with the lock in the toolbar (⌘L). Writes also stay unavailable while disconnected, on registers marked read-only, in imported sessions, and on the Free plan. The lock closes again after every reconnect.</p>
         <h3>Everything turned grey</h3>
@@ -287,17 +287,17 @@
     <section>
         <h2>Frequently Asked Questions</h2>
         <h3>What is the difference between Modbus RTU and Modbus TCP?</h3>
-        <p>Modbus RTU sends binary frames with a CRC over a serial line such as RS485 or RS232. Modbus TCP carries the same requests over Ethernet or Wi-Fi with an MBAP header instead of a CRC. BaudHub supports both; this version does not open Modbus RTU over TCP connections.</p>
+        <p>Modbus RTU runs over a serial line such as RS485 or RS232. Modbus TCP carries the same requests over Ethernet or Wi-Fi. BaudHub supports both; this version does not open Modbus RTU over TCP connections.</p>
         <h3>Is there a Modbus Poll alternative for Mac?</h3>
-        <p>BaudHub is a native macOS Modbus master, slave simulator and serial terminal, so you can read, write and scan Modbus devices on a Mac without running Windows tools in a virtual machine.</p>
+        <p>BaudHub is a native Mac app for reading, writing and scanning Modbus devices, with a slave simulator and a serial terminal, so you don't need to run Windows tools in a virtual machine.</p>
         <h3>Can I test without a device?</h3>
-        <p>Yes. Choose <em>New Simulator…</em> in the Simulator workspace, start it, and connect to <code>127.0.0.1</code> on its port from BaudHub, or from your own master, PLC or SCADA system.</p>
+        <p>Yes. Choose <em>New Simulator…</em> in the Simulator workspace and start it. Then connect to it from BaudHub, or from your own master, PLC or SCADA system, using the address the simulator shows.</p>
         <h3>Can I run two jobs at the same time?</h3>
-        <p>Yes. Choose <em>File › New BaudHub Instance</em> to open a separate app process with its own workspace, for example one for a serial bus and one for a TCP gateway.</p>
+        <p>Yes. Choose <em>File › New BaudHub Instance</em> to open another BaudHub with its own workspace, for example one for a serial bus and one for a TCP gateway.</p>
         <h3>Are the device templates verified?</h3>
         <p>Each template names the vendor document it was built from and shows its verification status. Check critical registers against your device's documentation before writing. Vendor names identify register maps only; BaudHub is not affiliated with these companies.</p>
         <h3>What does a session export contain?</h3>
-        <p><em>Export Session…</em> saves connections, devices and register definitions, last values, frame log, value history and the write audit log as one <code>.baudhubsession</code> package. Imported sessions open read-only.</p>
+        <p><em>Export Session…</em> saves your connections, devices, register settings, readings and logs as a single file you can share. Imported sessions open read-only.</p>
     </section>
 
     <section class="contact-box">
