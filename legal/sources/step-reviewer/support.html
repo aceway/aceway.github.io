@@ -21,111 +21,165 @@
     <link rel="icon" type="image/png" href="./macOS512.png">
     <link rel="stylesheet" href="./lite3d.css">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": "./support.html#webpage",
-                "url": "./support.html",
-                "name": "STEP Reviewer Support",
-                "description": "Support page for STEP Reviewer with formats, features, platform availability, purchase guidance, and troubleshooting.",
-                "inLanguage": "en",
-                "datePublished": "2026-07-20",
-                "dateModified": "2026-07-20",
-                "isPartOf": { "@id": "./#website" },
-                "about": { "@id": "./#software" },
-                "breadcrumb": { "@id": "./support.html#breadcrumb" },
-                "author": { "@id": "./#author" },
-                "publisher": { "@id": "./#organization" }
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "./support.html#webpage",
+            "url": "./support.html",
+            "name": "STEP Reviewer Support",
+            "description": "Support page for STEP Reviewer with formats, features, platform availability, purchase guidance, and troubleshooting.",
+            "inLanguage": "en",
+            "datePublished": "2026-07-20",
+            "dateModified": "2026-07-20",
+            "isPartOf": {
+                "@id": "./#website"
             },
-            {
-                "@type": "WebSite",
-                "@id": "./#website",
-                "url": "./",
-                "name": "STEP Reviewer",
-                "publisher": { "@id": "./#organization" }
+            "about": {
+                "@id": "./#software"
             },
-            {
-                "@type": "SoftwareApplication",
-                "@id": "./#software",
-                "name": "STEP Reviewer",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "macOS, iOS, visionOS",
-                "description": "Apple-native STEP and IGES viewer for assembly inspection, model interaction, measurement, cross sections, capture, spatial review, and tessellated mesh export.",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "USD",
-                    "url": "https://apps.apple.com/us/app/id6791591460"
-                },
-                "downloadUrl": "https://apps.apple.com/us/app/id6791591460",
-                "softwareHelp": "./support.html",
-                "privacyPolicy": "./policy.html",
-                "author": { "@id": "./#author" },
-                "publisher": { "@id": "./#organization" }
+            "breadcrumb": {
+                "@id": "./support.html#breadcrumb"
             },
-            {
-                "@type": "Organization",
-                "@id": "./#organization",
-                "name": "Iu Way",
-                "url": "./",
-                "logo": "./macOS512.png",
-                "email": "iuway@foowei.com",
-                "sameAs": [
-                    "https://x.com/aceway2024",
-                    "https://apps.apple.com/us/app/id6791591460"
-                ]
+            "author": {
+                "@id": "./#author"
             },
-            {
-                "@type": "Person",
-                "@id": "./#author",
-                "name": "Iu Way",
-                "email": "iuway@foowei.com",
-                "url": "https://x.com/aceway2024",
-                "sameAs": ["https://x.com/aceway2024"]
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "./support.html#breadcrumb",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "STEP Reviewer", "item": "./" },
-                    { "@type": "ListItem", "position": 2, "name": "Support", "item": "./support.html" }
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "./support.html#faq",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Which files can STEP Reviewer open?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "The release version opens STEP (.step and .stp) and IGES (.iges and .igs) files. STL and GLB import are not supported in the release version." }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Which formats can STEP Reviewer export?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "STEP Reviewer exports tessellated mesh data as binary STL, GLB, USDA, USDC, and USDZ. Export does not preserve editable B-rep features or PMI." }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Does STEP Reviewer support measurements on visionOS?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "Measurement and spatial PMI are not available in the current visionOS release. Measurement and imported PMI review are available on supported iOS and macOS workflows." }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Does STEP Reviewer work offline?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "Model import, review, capture, and export are performed on device. Internet access is needed for App Store purchase, subscription, and restore operations and may be needed by a file provider you choose." }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do I contact STEP Reviewer support?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "Email iuway@foowei.com." }
-                    }
-                ]
+            "publisher": {
+                "@id": "./#organization"
             }
-        ]
-    }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "./#website",
+            "url": "./",
+            "name": "STEP Reviewer",
+            "publisher": {
+                "@id": "./#organization"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "@id": "./#software",
+            "name": "STEP Reviewer",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "macOS, iOS, visionOS",
+            "description": "Apple-native STEP and IGES viewer for assembly inspection, model interaction, measurement, cross sections, capture, spatial review, and tessellated mesh export.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "url": "https://apps.apple.com/us/app/id6791591460"
+            },
+            "downloadUrl": "https://apps.apple.com/us/app/id6791591460",
+            "softwareHelp": "./support.html",
+            "privacyPolicy": "./policy.html",
+            "author": {
+                "@id": "./#author"
+            },
+            "publisher": {
+                "@id": "./#organization"
+            }
+        },
+        {
+            "@type": "Organization",
+            "@id": "./#organization",
+            "name": "Iu Way",
+            "url": "./",
+            "logo": "./macOS512.png",
+            "email": "iuway@foowei.com",
+            "sameAs": [
+                "https://apps.apple.com/us/app/id6791591460"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "./#author",
+            "name": "Iu Way",
+            "email": "iuway@foowei.com"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "./support.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "STEP Reviewer",
+                    "item": "./"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Support",
+                    "item": "./support.html"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "./support.html#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What are STEP and IGES?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "STEP is the ISO 10303 family of standards for exchanging product-model data. IGES is an earlier neutral exchange format used for curves, surfaces, and solids. The quality and completeness of either format depend on the exporting CAD system and its settings."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can STEP Reviewer edit or repair CAD models?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. STEP Reviewer is a review, inspection, capture, and tessellated-export app. It does not provide feature-history editing, constraint editing, geometric healing controls, or STEP export."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does STEP Reviewer work offline?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes for local model import, review, capture, and export. App Store purchases, subscription status refresh, and Restore Purchases require Apple's services. A cloud file provider may also require a network connection to download a selected file."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is Open CASCADE Technology?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Open CASCADE Technology (OCCT) is an open-source 3D modeling and CAD data-exchange library. STEP Reviewer uses OCCT on device for STEP and IGES import, geometry transfer, tessellation, assembly metadata, materials, and supported PMI extraction. License and acknowledgement details are available in About STEP Reviewer inside the app."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which files can STEP Reviewer open?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "STEP Reviewer opens STEP (.step,.stp) and IGES (.iges,.igs) files. STL and GLB files cannot be imported."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does STEP Reviewer support measurements on visionOS?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not in the current visionOS version. Measurement and PMI review are available on iOS and macOS."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I contact STEP Reviewer support?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Email iuway@foowei.com."
+                    }
+                }
+            ]
+        }
+    ]
+}
     </script>
 </head>
 <body>
@@ -289,6 +343,21 @@
                     <h3 id="faq-occt">What is <a href="https://dev.opencascade.org/doc/overview/html/index.html" target="_blank" rel="noopener noreferrer">Open CASCADE Technology</a>?</h3>
                     <p><a href="https://dev.opencascade.org/doc/overview/html/index.html" target="_blank" rel="noopener noreferrer">Open CASCADE Technology (OCCT)</a> is an open-source 3D modeling and CAD data-exchange library. STEP Reviewer uses <a href="https://dev.opencascade.org/doc/overview/html/index.html" target="_blank" rel="noopener noreferrer">OCCT</a> on device for STEP and IGES import, geometry transfer, tessellation, assembly metadata, materials, and supported PMI extraction. License and acknowledgement details are available in <strong>About STEP Reviewer</strong> inside the app.</p>
                 </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-open">
+                    <h3 id="faq-open">Which files can STEP Reviewer open?</h3>
+                    <p>STEP Reviewer opens STEP (.step, .stp) and IGES (.iges, .igs) files. STL and GLB files cannot be imported.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-visionos-measure">
+                    <h3 id="faq-visionos-measure">Does STEP Reviewer support measurements on visionOS?</h3>
+                    <p>Not in the current visionOS version. Measurement and PMI review are available on iOS and macOS.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-contact">
+                    <h3 id="faq-contact">How do I contact STEP Reviewer support?</h3>
+                    <p>Email <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>.</p>
+                </section>
             </div>
         </div>
 
@@ -299,7 +368,7 @@
                     <h2 class="section-heading" id="contact-support">How do I get help?</h2>
                     <p>For a bug report, include the platform, OS version, device model, file format, model size, exact error text, and reproducible steps. Do not send confidential CAD files unless you are authorized to share them.</p>
                     <p>
-                        <a href="mailto:iuway@foowei.com">iuway@foowei.com</a><br>
+                        <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>
                     </p>
                 </section>
 

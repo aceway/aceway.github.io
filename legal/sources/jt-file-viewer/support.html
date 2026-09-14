@@ -21,194 +21,189 @@
     <link rel="icon" type="image/png" href="./macOS512.png">
     <link rel="stylesheet" href="./lite3d.css">
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": "./support.html#webpage",
-                "url": "./support.html",
-                "name": "JT File Viewer Support",
-                "description": "Support, features, and system requirements for JT File Viewer, a native offline JT viewer for macOS, iOS, and visionOS.",
-                "inLanguage": "en",
-                "datePublished": "2026-07-01",
-                "dateModified": "2026-07-03",
-                "isPartOf": {
-                    "@id": "./#website"
-                },
-                "about": {
-                    "@id": "./#software"
-                },
-                "breadcrumb": {
-                    "@id": "./support.html#breadcrumb"
-                },
-                "author": {
-                    "@id": "./#author"
-                },
-                "publisher": {
-                    "@id": "./#organization"
-                }
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "./support.html#webpage",
+            "url": "./support.html",
+            "name": "JT File Viewer Support",
+            "description": "Support, features, and system requirements for JT File Viewer, a native offline JT viewer for macOS, iOS, and visionOS.",
+            "inLanguage": "en",
+            "datePublished": "2026-07-01",
+            "dateModified": "2026-07-03",
+            "isPartOf": {
+                "@id": "./#website"
             },
-            {
-                "@type": "WebSite",
-                "@id": "./#website",
-                "url": "./",
-                "name": "JT File Viewer",
-                "publisher": {
-                    "@id": "./#organization"
-                }
+            "about": {
+                "@id": "./#software"
             },
-            {
-                "@type": "SoftwareApplication",
-                "@id": "./#software",
-                "name": "JT File Viewer",
-                "applicationCategory": "BusinessApplication",
-                "operatingSystem": "macOS, iOS, visionOS",
-                "description": "Native Apple JT viewer for opening Siemens JT engineering visualization files offline with product structure inspection, Metal and RealityKit rendering, and STL or GLB export.",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "USD",
-                    "url": "https://apps.apple.com/us/app/id6786113990"
-                },
-                "downloadUrl": "https://apps.apple.com/us/app/id6786113990",
-                "softwareHelp": "./support.html",
-                "privacyPolicy": "./policy.html",
-                "author": {
-                    "@id": "./#author"
-                },
-                "publisher": {
-                    "@id": "./#organization"
-                }
+            "breadcrumb": {
+                "@id": "./support.html#breadcrumb"
             },
-            {
-                "@type": "Organization",
-                "@id": "./#organization",
-                "name": "Dan Jian",
-                "url": "./",
-                "logo": "./macOS512.png",
-                "email": "danjian42@gmail.com",
-                "sameAs": [
-                    "https://x.com/aceway2024",
-                    "https://apps.apple.com/us/app/id6786113990"
-                ]
+            "author": {
+                "@id": "./#author"
             },
-            {
-                "@type": "Person",
-                "@id": "./#author",
-                "name": "Dan Jian",
-                "email": "danjian42@gmail.com",
-                "url": "https://x.com/aceway2024",
-                "sameAs": [
-                    "https://x.com/aceway2024"
-                ]
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "./support.html#breadcrumb",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "JT File Viewer",
-                        "item": "./"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Support",
-                        "item": "./support.html"
-                    }
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "./support.html#faq",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "What is a JT file?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "A JT file (.jt) is an open 3D visualization format widely used to share product and assembly data in engineering and manufacturing workflows. Its structure and data rules are defined by ISO 14306, the international standard for the JT format, which covers product structure, tessellated geometry, and related visualization content."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What is the relationship between JT files and Siemens?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "The JT format was originally developed by Siemens for lightweight 3D visualization and collaboration. It is now maintained as an open format under ISO 14306 and is widely used with Siemens products such as NX and Teamcenter, as well as by other CAD and PLM tools that publish JT visualization data. JT File Viewer is an independent viewer and is not affiliated with Siemens."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What is JT File Viewer?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "JT File Viewer is a native Apple app for opening Siemens JT engineering visualization files on Mac, iPhone, iPad, and Apple Vision. It is a viewer, not a CAD editor."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Does JT File Viewer import formats other than JT?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "No. JT File Viewer imports JT (.jt) files only. It can export tessellated model data to STL and GLB."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Can JT File Viewer open multi-file JT assemblies?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. JT File Viewer can open JT assemblies that reference local part files when the referenced files are available and the app has folder access on supported platforms."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Does JT File Viewer work offline?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. JT import, viewport review, screenshots, screen recording, and STL or GLB export run offline on your device. JT File Viewer does not upload your files to a server."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do subscriptions, cancellations, and refunds work?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "JT File Viewer purchases and subscriptions are handled by Apple through the App Store. Manage or cancel subscriptions in your Apple ID subscription settings. Refund requests are handled by Apple through reportaproblem.apple.com."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What platforms does JT File Viewer support?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "JT File Viewer supports macOS, iOS, and visionOS. macOS and iOS use native Metal rendering, and visionOS uses RealityKit for spatial review."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What are the system requirements for JT File Viewer?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "JT File Viewer requires macOS 26, iOS 26, or visionOS 26 or later."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do I contact support for JT File Viewer?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Email danjian42@gmail.com."
-                        }
-                    }
-                ]
+            "publisher": {
+                "@id": "./#organization"
             }
-        ]
-    }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "./#website",
+            "url": "./",
+            "name": "JT File Viewer",
+            "publisher": {
+                "@id": "./#organization"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "@id": "./#software",
+            "name": "JT File Viewer",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "macOS, iOS, visionOS",
+            "description": "Native Apple JT viewer for opening Siemens JT engineering visualization files offline with product structure inspection, Metal and RealityKit rendering, and STL or GLB export.",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "url": "https://apps.apple.com/us/app/id6786113990"
+            },
+            "downloadUrl": "https://apps.apple.com/us/app/id6786113990",
+            "softwareHelp": "./support.html",
+            "privacyPolicy": "./policy.html",
+            "author": {
+                "@id": "./#author"
+            },
+            "publisher": {
+                "@id": "./#organization"
+            }
+        },
+        {
+            "@type": "Organization",
+            "@id": "./#organization",
+            "name": "Dan Jian",
+            "url": "./",
+            "logo": "./macOS512.png",
+            "email": "iuway@foowei.com",
+            "sameAs": [
+                "https://apps.apple.com/us/app/id6786113990"
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "./#author",
+            "name": "Dan Jian",
+            "email": "iuway@foowei.com"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "./support.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "JT File Viewer",
+                    "item": "./"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Support",
+                    "item": "./support.html"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "./support.html#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a JT file?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A JT file (.jt) is an open 3D visualization format widely used to share product and assembly data in engineering and manufacturing workflows. Its structure and data rules are defined by ISO 14306, the international standard for the JT format, which covers product structure, tessellated geometry, and related visualization content."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the relationship between JT files and Siemens?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The JT format was originally developed by Siemens for lightweight 3D visualization and collaboration. It is now maintained as an open format under ISO 14306 and is widely used with Siemens products such as NX and Teamcenter, as well as by other CAD and PLM tools that publish JT visualization data. JT File Viewer is an independent viewer and is not affiliated with Siemens."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is JT File Viewer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JT File Viewer is a native Apple app for opening Siemens JT engineering visualization files on Mac, iPhone, iPad, and Apple Vision. It is a viewer, not a CAD editor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does JT File Viewer import formats other than JT?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. JT File Viewer imports JT (.jt) files only. It can export tessellated model data to STL and GLB."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can JT File Viewer open multi-file JT assemblies?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. JT File Viewer can open JT assemblies that reference local part files when the referenced files are available and the app has folder access on supported platforms."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does JT File Viewer work offline?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. JT import, viewport review, screenshots, screen recording, and STL or GLB export run offline on your device. JT File Viewer does not upload your files to a server."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do subscriptions, cancellations, and refunds work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JT File Viewer purchases and subscriptions are handled by Apple through the App Store. Manage or cancel subscriptions in Apple ID subscription settings. Refund requests are handled by Apple through reportaproblem.apple.com."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What platforms does JT File Viewer support?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JT File Viewer supports macOS, iOS, and visionOS. macOS and iOS use native Metal rendering, and visionOS uses RealityKit for spatial review."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What are the system requirements for JT File Viewer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JT File Viewer requires macOS 26, iOS 26, or visionOS 26 or later."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I contact support for JT File Viewer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Email iuway@foowei.com."
+                    }
+                }
+            ]
+        }
+    ]
+}
     </script>
 </head>
 <body>
@@ -342,7 +337,7 @@
 
                 <section class="group-item faq-item" aria-labelledby="faq-contact">
                     <h3 id="faq-contact">How do I contact support for JT File Viewer?</h3>
-                    <p>Email <a href="mailto:danjian42@gmail.com">danjian42@gmail.com</a>.</p>
+                    <p>Email <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>.</p>
                 </section>
             </div>
         </div>
@@ -354,7 +349,7 @@
                     <h2 class="section-heading" id="contact-support">How do you get help with JT File Viewer?</h2>
                     <p>Have a question, bug report, or feature request?</p>
                     <p>
-                        <a href="mailto:danjian42@gmail.com">danjian42@gmail.com</a>
+                        <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>
                     </p>
                 </section>
 
