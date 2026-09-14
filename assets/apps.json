@@ -53,7 +53,11 @@
         "title": "Large STEP assemblies on device",
         "content": "Engineering STEP files are often hundreds of megabytes, with tessellations that exceed a million triangles. STEP Reviewer is built for that class of review: OCCT import on device, assembly structure, measurement and PMI on iOS and macOS, sections, capture, and tessellated export. It is not a lightweight STEP previewer and not a CAD editor — source files stay local."
       },
-      "slug": "step-reviewer"
+      "slug": "step-reviewer",
+      "author": {
+        "@type": "Organization",
+        "name": "foowei.com"
+      }
     },
     {
       "id": "6786113990",
@@ -98,7 +102,11 @@
         "title": "The JT format (ISO 14306)",
         "content": "JT is an ISO 14306 standard for lightweight 3D visualization and product data exchange. It is widely used in engineering and manufacturing to share tessellated assemblies without sending full CAD authoring data. JT File Viewer targets JT V8, V9, and V10 for on-device review of tessellated geometry, product structure, and focused inspection tools. Compatibility can vary by exporter, model content, compression, metadata, and proprietary extensions — JT File Viewer is an independent app and is not affiliated with Siemens."
       },
-      "slug": "jt-file-viewer"
+      "slug": "jt-file-viewer",
+      "author": {
+        "@type": "Organization",
+        "name": "foowei.com"
+      }
     },
     {
       "id": "6801400880",
@@ -639,7 +647,11 @@
         "content": "Commissioning a Modbus device usually means guessing byte orders and hoping a write landed. BaudHub shows the raw request and reply behind every decoded value, explains exception codes and timeouts in plain language, and treats writes as a deliberate act: every connection starts read-only, a write must be unlocked, previewed, sent once and confirmed by reading the register back. A built-in slave simulator lets you rehearse the same session before touching real hardware."
       },
       "slug": "baudhub",
-      "previewShape": "landscape"
+      "previewShape": "landscape",
+      "author": {
+        "@type": "Organization",
+        "name": "foowei.com"
+      }
     }
   ]
 }

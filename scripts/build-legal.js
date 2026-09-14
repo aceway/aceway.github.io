@@ -302,7 +302,7 @@ function appSchema(app, canonicalHref) {
     url: canonicalHref,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description: app.desc,
-    author: { '@type': 'Person', name: 'Wei Ai' }
+    author: app.author || { '@type': 'Person', name: 'Wei Ai' }
   };
   if (app.links && app.links.policy) schema.privacyPolicy = `${DOMAIN}${app.links.policy}`;
   if (app.links && app.links.support) schema.softwareHelp = `${DOMAIN}${app.links.support}`;
