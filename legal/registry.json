@@ -140,6 +140,15 @@
       "icon": "icon.jpg",
       "listed": true,
       "legacyBase": "https://h53d.github.io/sr"
+    },
+    {
+      "slug": "baudhub",
+      "name": "BaudHub",
+      "id": "6809827203",
+      "source": "legal/sources/baudhub",
+      "assetDir": "BaudHub",
+      "icon": "icon.png",
+      "listed": true
     }
   ]
 }

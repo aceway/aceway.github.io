@@ -478,8 +478,8 @@
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": app.name,
-            "operatingSystem": "iOS, iPadOS, macOS",
-            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": app.operatingSystem || "iOS, iPadOS, macOS",
+            "applicationCategory": app.applicationCategory || "UtilitiesApplication",
             "url": canonicalHref,
             "offers": {
                 "@type": "Offer",
@@ -524,7 +524,7 @@
         const iconPath = app.icon ? `/assets/${safeName}/${app.icon}` : null;
         const iconDiv = document.getElementById('detailIcon');
         if (iconPath) {
-            iconDiv.innerHTML = `<img src="${iconPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')}" class="w-full h-full object-cover" alt="${app.name}" onerror="this.onerror=null;this.src=this.src.replace(/\.webp$/i,'.jpg')">`;
+            iconDiv.innerHTML = `<img src="${iconPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')}" class="w-full h-full object-cover" alt="${app.name}" onerror="this.onerror=null;this.src='${iconPath}'">`;
         } else {
             iconDiv.innerHTML = `<div class="w-full h-full flex items-center justify-center text-2xl font-bold text-slate-500">${app.name.substring(0,2)}</div>`;
         }

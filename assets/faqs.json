@@ -231,5 +231,27 @@
       "q": "Is anything sent to a server?",
       "a": "No. Processing is local and the app is fully offline — no data leaves your device."
     }
+  ],
+  "baudhub": [
+    {
+      "q": "Which adapters work with BaudHub?",
+      "a": "USB-RS485 and RS232 adapters that appear as a serial port on macOS, including FTDI, CP210x, PL2303 and CH340/CH341. For CH343 or CH9102, BaudHub explains which vendor driver to install."
+    },
+    {
+      "q": "Does BaudHub support Modbus RTU and Modbus TCP?",
+      "a": "Yes: RTU over a serial port and TCP over Ethernet or Wi-Fi. This version does not open Modbus RTU over TCP connections."
+    },
+    {
+      "q": "Can I test without a device?",
+      "a": "Yes. Start the built-in slave simulator and connect to it from BaudHub or from your own master, PLC or SCADA system."
+    },
+    {
+      "q": "Is writing to a device safe?",
+      "a": "Every connection starts read-only. Writes need an explicit unlock, show the request first, are never resent automatically and are confirmed by reading the register back."
+    },
+    {
+      "q": "Does BaudHub collect data or need an account?",
+      "a": "No. There is no account, analytics, tracking or advertising. BaudHub talks only to the devices you connect."
+    }
   ]
 }

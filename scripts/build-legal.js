@@ -174,8 +174,38 @@ function writePage(app, filename) {
   }
   const outDir = path.join(ROOT, 'apps', app.slug);
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, filename), rewrite(raw, app, filename));
+  const out = path.join(outDir, filename);
+  // Legal pages get edited by hand in apps/<slug>/ too. Each build stamps the
+  // output with a hash of what it wrote; if the file no longer matches, someone
+  // changed it since, so keep it rather than silently overwriting their edit.
+  if (fs.existsSync(out) && isHandEdited(fs.readFileSync(out, 'utf8'))) {
+    console.warn(`keep ${path.relative(ROOT, out)}: edited since the last build — copy the change into ${path.relative(ROOT, src)}, then rebuild`);
+    return false;
+  }
+  fs.writeFileSync(out, stampOutput(rewrite(raw, app, filename), path.relative(ROOT, src)));
   return true;
+}
+
+function sha256(text) {
+  return require('crypto').createHash('sha256').update(text).digest('hex');
+}
+
+const STAMP_RE = /<!-- generated from \S+ sha256:([0-9a-f]{64}) -->\n/;
+
+function stampOutput(content, srcRel) {
+  const marker = `<!-- generated from ${srcRel} sha256:${sha256(content)} -->\n`;
+  const doctype = content.match(/^<!doctype[^>]*>\r?\n/i);
+  // after the doctype: nothing may precede it without risking quirks mode
+  return doctype
+    ? content.slice(0, doctype[0].length) + marker + content.slice(doctype[0].length)
+    : marker + content;
+}
+
+function isHandEdited(existing) {
+  const m = existing.match(STAMP_RE);
+  if (!m) return false; // never stamped, so there is nothing to compare against
+  const body = existing.slice(0, m.index) + existing.slice(m.index + m[0].length);
+  return sha256(body) !== m[1];
 }
 
 function writeSlugMap() {
@@ -267,8 +297,8 @@ function appSchema(app, canonicalHref) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: app.name,
-    operatingSystem: 'iOS, iPadOS, macOS',
-    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: app.operatingSystem || 'iOS, iPadOS, macOS',
+    applicationCategory: app.applicationCategory || 'UtilitiesApplication',
     url: canonicalHref,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     description: app.desc,
@@ -356,7 +386,8 @@ function prerenderDetail(template, app, ui, allApps) {
   const headExtras = [
     `<meta property="og:url" content="${canonicalHref}">`,
     `<link rel="canonical" href="${canonicalHref}">`,
-    `<meta name="apple-itunes-app" content="app-id=${app.id}">`,
+    // Smart App Banners are an iOS feature; a Mac-only app has nothing to offer there
+    app.links && app.links.ios ? `<meta name="apple-itunes-app" content="app-id=${app.id}">` : '',
     `<link rel="icon" type="image/jpeg" href="${assetBase}/${app.icon}">`,
     `<link rel="apple-touch-icon" href="${assetBase}/${app.icon}">`,
     `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`,
@@ -373,7 +404,7 @@ function prerenderDetail(template, app, ui, allApps) {
   if (videos) {
     headExtras.push(`<script id="video-schema" type="application/ld+json">${JSON.stringify(videos)}</script>`);
   }
-  html = html.replace(/(<meta name="twitter:image"[^>]*>)/, `$1\n  ${headExtras.join('\n  ')}`);
+  html = html.replace(/(<meta name="twitter:image"[^>]*>)/, `$1\n  ${headExtras.filter(Boolean).join('\n  ')}`);
 
   // --- visible content (runtime JS overwrites these nodes with the same data) ---
   html = fillById(html, /<h1 id="detailTitle"[^>]*>/, escapeHtml(name));
@@ -515,7 +546,8 @@ function prerenderIndex() {
     const appleImg = ui.appleIconIOS
       ? `<img src="assets/${ui.appleIconIOS}" width="120" height="40" class="h-8 w-auto object-contain select-none" alt="App Store">`
       : '<span class="text-[10px] font-bold bg-black text-white px-2 py-1 rounded">GET</span>';
-    const qrTrigger = app.slug
+    // QR codes are scanned with an iPhone, so only apps with an iOS listing get one
+    const qrTrigger = app.slug && app.links && app.links.ios
       ? `<a href="${storeLinkOf(app)}" class="qr-trigger hidden lg:block p-1.5 pb-1 bg-white rounded-lg border border-slate-200 hover:border-blue-400 transition" data-name="${escapeHtml(app.name)}" data-qr="assets/qr/${app.slug}.svg" title="Show a larger QR code to scan" aria-label="Show QR code for ${escapeHtml(app.name)}"><img src="assets/qr/${app.slug}.svg" alt="QR code to install ${escapeHtml(app.name)} from the App Store" width="90" height="90" loading="lazy" class="block w-[90px] h-[90px]"><span class="block mt-1 text-center font-mono font-bold text-[8px] tracking-wide text-slate-600">SCAN TO INSTALL</span></a>`
       : '';
     return `

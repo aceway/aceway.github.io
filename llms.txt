@@ -24,6 +24,7 @@ Notes:
 - [pcAI Photo Retouch](https://apps.h53d.xyz/apps/pcai-photo-retouch/detail.html): Old photos clear, Styles appear — Want to make your old photos clear again? Want to turn photos into sketches, oil paintings, or even Van Gogh’s Starry Night style? AI can do it...
 - [CutoutCraft](https://apps.h53d.xyz/apps/cutoutcraft/detail.html): Tap. Cut. Style. Export — AI CutoutCraft is a smart image editing tool powered entirely by on-device AI.
 - [ShareGuard](https://apps.h53d.xyz/apps/shareguard/detail.html): Secure sharing made easy — ShareGuard protects sensitive information in your images — including hidden metadata as well as visible faces and text — giving you full control before sharing.
+- [BaudHub](https://apps.h53d.xyz/apps/baudhub/detail.html): Modbus RTU/TCP Serial Debugger — BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac.
 
 ## App Store listings
 
@@ -41,6 +42,7 @@ Notes:
 - [pcAI Photo Retouch on the App Store](https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [CutoutCraft on the App Store](https://apps.apple.com/us/app/cutoutcraft/id6745748800?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [ShareGuard on the App Store](https://apps.apple.com/us/app/shareguard/id6752704315?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
+- [BaudHub on the App Store](https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12): Official listing for iPhone, iPad, and Mac where available.
 
 ## Optional
 
@@ -72,4 +74,6 @@ Notes:
 - [CutoutCraft support](https://apps.h53d.xyz/apps/cutoutcraft/support.html): Supported formats, usage notes, and troubleshooting.
 - [ShareGuard privacy policy](https://apps.h53d.xyz/apps/shareguard/policy.html): How ShareGuard handles files and data on device.
 - [ShareGuard support](https://apps.h53d.xyz/apps/shareguard/support.html): Supported formats, usage notes, and troubleshooting.
+- [BaudHub privacy policy](https://apps.h53d.xyz/apps/baudhub/policy.html): How BaudHub handles files and data on device.
+- [BaudHub support](https://apps.h53d.xyz/apps/baudhub/support.html): Supported formats, usage notes, and troubleshooting.
 - [Sitemap](https://apps.h53d.xyz/sitemap.xml): Every indexable page on this site.

@@ -588,6 +588,50 @@
         "content": "Every digital photo carries hidden metadata known as Exif. It records not just aperture and shutter speed, but often your precise GPS coordinates. ShareGuard leverages the low-level ImageIO framework to surgically strip this invisible data without re-encoding pixels, ensuring your digital footprint remains yours alone. Whether you’re preparing screenshots, photos, or documents, ShareGuard provides flexible masking options and detailed export controls. Choose from color masks, mosaic-style masks, or smart detection modes that automatically recognize sensitive content."
       },
       "slug": "shareguard"
+    },
+    {
+      "id": "6809827203",
+      "name": "BaudHub",
+      "desc": "BaudHub is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA or master without hardware.",
+      "promotional": "Modbus RTU/TCP Serial Debugger",
+      "icon": "icon.png",
+      "screenshots": [],
+      "links": {
+        "macos": "https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12",
+        "policy": "/apps/baudhub/policy.html",
+        "support": "/apps/baudhub/support.html",
+        "detail": "/apps/baudhub/detail.html"
+      },
+      "operatingSystem": "macOS",
+      "applicationCategory": "DeveloperApplication",
+      "features": [
+        "Modbus master over serial (RTU) and Modbus TCP: coils, discrete inputs, holding and input registers, single and multiple writes.",
+        "USB adapters with FTDI, CP210x, PL2303 and CH34x chips, with driver guidance when an adapter needs one.",
+        "28 display formats: 16-, 32- and 64-bit integers, float, BCD, hex, binary and ASCII, all 32-bit byte orders, 0- or 1-based addresses, scaling and units.",
+        "Side-by-side decodes, raw HEX and the source frame of every value.",
+        "Frame log that explains requests, replies, exception codes and timeouts in plain language, with filters, search and CSV export.",
+        "Bus scan across unit IDs, baud rates and parity, plus a guided unit address change.",
+        "Read-only by default: writes show the exact request, need confirmation, are sent once, are read back and are kept in an audit log.",
+        "Live charts with time windows, thresholds and a link from any sample to its frame.",
+        "Modbus RTU and TCP slave simulator with several unit IDs and changing values.",
+        "Serial terminal with ASCII and HEX, timestamps, send history and recording.",
+        "Templates for SunSpec, SMA, Fronius, SolarEdge, KOSTAL, KEBA, go-e, Chint DDSU666/DTSU666, Schneider PM5xxx and Eastron SDM630, each with its source and verification status.",
+        "Stale values are marked, and the connection returns after an adapter is replugged or the Mac wakes.",
+        "Serial, TCP and Simulator workspaces, extra app instances for parallel jobs, and session export.",
+        "No account, analytics, tracking or advertising — BaudHub talks only to the devices you connect."
+      ],
+      "audience": [
+        "Commissioning Engineers",
+        "PLC & SCADA Integrators",
+        "Solar, Battery, EV Charger & Heat Pump Installers",
+        "Energy Meter Technicians",
+        "Embedded & IoT Developers"
+      ],
+      "knowledge": {
+        "title": "Modbus you can verify, frame by frame",
+        "content": "Commissioning a Modbus device usually means guessing byte orders and hoping a write landed. BaudHub shows the raw request and reply behind every decoded value, explains exception codes and timeouts in plain language, and treats writes as a deliberate act: every connection starts read-only, a write must be unlocked, previewed, sent once and confirmed by reading the register back. A built-in slave simulator lets you rehearse the same session before touching real hardware."
+      },
+      "slug": "baudhub"
     }
   ]
 }

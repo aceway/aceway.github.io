@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" href="/assets/BaudHub/icon.png">
+	<link rel="shortcut icon" href="/assets/BaudHub/icon.png" media="(prefers-color-scheme: light)" />
+	<link rel="shortcut icon" href="/assets/BaudHub/icon.png" media="(prefers-color-scheme: dark)"/>
+	<link rel="icon" type="image/png" href="/assets/BaudHub/icon.png">
+    <title>Support - BaudHub Modbus RTU/TCP Debugger for Mac</title>
+    <style>
+        :root {
+            --accent-color: #007AFF;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --border-radius: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #000000;
+                --card-bg: #1c1c1e;
+                --text-primary: #f5f5f7;
+                --text-secondary: #86868b;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background-image: url('/assets/BaudHub/icon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .purpose-tag {
+            display: inline-block;
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 18px 0 6px;
+        }
+
+        a {
+            color: var(--accent-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .plain-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .plain-list li {
+            margin-bottom: 6px;
+        }
+
+        .tech-specs {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .tech-specs div {
+            margin-bottom: 6px;
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            padding-bottom: 30px;
+        }
+    </style>
+    <meta name="description" content="Help for BaudHub, the Modbus RTU/TCP debugger and slave simulator for Mac: USB-RS485 adapters, safe writes, troubleshooting and purchases.">
+    <link rel="canonical" href="https://apps.h53d.xyz/apps/baudhub/support.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Support - BaudHub">
+    <meta property="og:description" content="Help for BaudHub on Mac: USB-RS485 and RS232 adapters, Modbus TCP, the slave simulator, safe writes, troubleshooting and purchases.">
+    <meta property="og:url" content="https://apps.h53d.xyz/apps/baudhub/support.html">
+    <meta property="og:image" content="https://apps.h53d.xyz/assets/BaudHub/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"Support - BaudHub","url":"https://apps.h53d.xyz/apps/baudhub/support.html","description":"Support and FAQ for BaudHub, the native Modbus RTU and Modbus TCP debugger, slave simulator and serial terminal for Mac.","inLanguage":"en","datePublished":"2026-09-14","dateModified":"2026-09-14","about":{"@type":"SoftwareApplication","name":"BaudHub","alternateName":"BaudHub Modbus RTU/TCP Serial Debugger","description":"Native Modbus RTU and Modbus TCP debugger and serial terminal for Mac with frame explanations, safe writes with read-back and a built-in Modbus slave simulator.","operatingSystem":"macOS 26 or later","applicationCategory":"DeveloperApplication","inLanguage":["en","de","zh-Hans"],"downloadUrl":"https://apps.apple.com/us/app/id6809827203","softwareHelp":"https://apps.h53d.xyz/apps/baudhub/support.html","privacyPolicy":"https://apps.h53d.xyz/apps/baudhub/policy.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Wei Ai","url":"https://x.com/aceway2024"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which USB-RS485 and RS232 adapters work with BaudHub?","acceptedAnswer":{"@type":"Answer","text":"Adapters that appear as a serial port on macOS, including FTDI, CP210x, PL2303 and CH340/CH341 chips. CH343, CH9102 and some newer PL2303 models need a vendor driver; BaudHub recognizes the chip and links to the driver."}},{"@type":"Question","name":"Does BaudHub support Modbus RTU and Modbus TCP?","acceptedAnswer":{"@type":"Answer","text":"Yes. BaudHub is a Modbus master over a serial port (RTU) and over Ethernet or Wi-Fi (TCP). This version does not open Modbus RTU over TCP connections."}},{"@type":"Question","name":"Can I test a Modbus master without hardware on a Mac?","acceptedAnswer":{"@type":"Answer","text":"Yes. Start the built-in Modbus TCP or RTU slave simulator and connect to it from BaudHub or from your own master, PLC or SCADA system."}},{"@type":"Question","name":"Is writing registers safe?","acceptedAnswer":{"@type":"Answer","text":"Every connection starts read-only. Writes need an explicit unlock, show the exact request first, are sent once without automatic resend, are read back to confirm and are kept in an audit log."}},{"@type":"Question","name":"Is there a Modbus Poll alternative for Mac?","acceptedAnswer":{"@type":"Answer","text":"BaudHub is a native macOS Modbus master, slave simulator and serial terminal, so Mac users can read, write and scan Modbus devices without a Windows virtual machine."}},{"@type":"Question","name":"How do I restore BaudHub Pro on another Mac?","acceptedAnswer":{"@type":"Answer","text":"Sign in with the same Apple Account, then choose Restore Purchases in BaudHub Settings or on the plan sheet. No BaudHub account is needed."}}]}]}</script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12" aria-label="BaudHub on the Mac App Store"><div class="app-icon"></div></a>
+        <h1><a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12">BaudHub</a></h1>
+        <div class="subtitle">Modbus RTU/TCP Serial Debugger for Mac</div>
+        <div class="purpose-tag">Read • Explain • Write Safely</div>
+    </header>
+
+    <section>
+        <h2>Purpose</h2>
+        <p><a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12">BaudHub</a> is a native Modbus RTU and Modbus TCP debugger and serial terminal for Mac. Connect a USB-RS485 or RS232 adapter or a Modbus TCP device, read your first register value in minutes, see the exact frame behind every value, and write settings safely with automatic read-back. A built-in Modbus slave simulator lets you test a PLC, SCADA system or master without hardware.</p>
+        <p>BaudHub is made for commissioning engineers, PLC and SCADA integrators, solar, battery, EV charger and heat pump installers, energy meter technicians, and embedded and IoT developers. No account, no analytics, no ads.</p>
+    </section>
+
+    <section>
+        <h2>Key Features</h2>
+        <ul class="feature-list">
+            <li><strong>Modbus master:</strong> RTU over serial and Modbus TCP; coils, discrete inputs, holding and input registers; single and multiple writes</li>
+            <li><strong>Adapters:</strong> FTDI, CP210x, PL2303 and CH34x USB adapters, with driver guidance when a chip needs one</li>
+            <li><strong>Decoding:</strong> 28 display formats (16-, 32- and 64-bit integers, float, BCD, hex, binary, ASCII), all 32-bit byte orders, 0- or 1-based addresses, scaling and units</li>
+            <li><strong>Evidence:</strong> side-by-side decodes, raw HEX and a link from every value to its source frame</li>
+            <li><strong>Frame log:</strong> requests, replies, exception codes and timeouts explained in plain language, with filters, search and CSV export</li>
+            <li><strong>Bus scan:</strong> unit IDs, baud rates and parity, plus a guided unit address change</li>
+            <li><strong>Safe writes:</strong> read-only by default; preview, confirm, send once, read back and audit log</li>
+            <li><strong>Charts:</strong> live series with time windows, thresholds and a link from any sample to its frame</li>
+            <li><strong>Slave simulator:</strong> Modbus RTU and TCP slave with several unit IDs and changing values</li>
+            <li><strong>Serial terminal:</strong> ASCII and HEX, timestamps, send history, macros, NMEA decoding and recording</li>
+            <li><strong>Templates:</strong> SunSpec, SMA, Fronius, SolarEdge, KOSTAL, KEBA, go-e, Chint DDSU666/DTSU666, Schneider PM5xxx and Eastron SDM630, each with its source and verification status</li>
+            <li><strong>Field-ready:</strong> stale values are marked, connections return after a replug or wake, sessions export as one package, and extra app instances run parallel jobs</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Technical Specifications</h2>
+        <div class="tech-specs">
+            <div>• Requires macOS 26 or later; runs natively on Apple silicon and Intel Macs.</div>
+            <div>• English, German and Simplified Chinese, following your macOS language.</div>
+            <div>• Serial devices need a USB-RS485 or RS232 adapter that macOS shows as a serial port.</div>
+            <div>• Modbus TCP devices need a network route from your Mac, usually port 502 (SolarEdge and KOSTAL often use 1502).</div>
+            <div>• Works without an internet connection; purchases and restores use the App Store.</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Getting Started</h2>
+        <ol class="plain-list">
+            <li>Plug in your adapter, or make sure your Mac can reach the device's IP address.</li>
+            <li>Choose <em>New Connection…</em> (⌘N). For serial, pick the port and enter the device's baud rate, data bits, parity and stop bits (often 9600 8N1). For TCP, enter the host and port.</li>
+            <li>In <em>Add Device</em>, enter the unit ID and choose a template, or add a register block with the function, start address, count and format from the vendor's register map.</li>
+            <li>The first valid reply turns the guide green and shows the value with its frame number. Select a row to see decodes and evidence in the inspector.</li>
+        </ol>
+        <p>Don't know the unit ID or line settings? Use <em>Scan Bus…</em> on the connection.</p>
+    </section>
+
+    <section>
+        <h2>Plans and Purchases</h2>
+        <ul class="plain-list">
+            <li><strong>Free:</strong> one device each in the Serial and TCP workspaces, two register blocks per device, a scan of unit IDs 1–16, the HEX frame log, charts, the terminal and one simulator.</li>
+            <li><strong>BaudHub Pro</strong> (one-time purchase): unlimited devices, full scan, frame explanations, writes, all display formats, export, template import and more simulators.</li>
+            <li><strong>7-Day and 30-Day Site Passes:</strong> every Pro feature for a job. They do not renew and return to Free when they end.</li>
+        </ul>
+        <p>To use your purchase on another Mac, sign in with the same Apple Account and choose <em>Restore Purchases</em> in BaudHub Settings or on the plan sheet. Refunds are handled by Apple at <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>. See the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (EULA)</a>.</p>
+    </section>
+
+    <section>
+        <h2>Troubleshooting</h2>
+        <h3>My serial port is not in the list</h3>
+        <p>Plug the adapter in and click the refresh button next to <em>Port</em>. If BaudHub shows <em>Driver needed for …</em>, the chip (often CH343, CH9102 or a newer PL2303) needs the vendor's driver: install it from the link and replug the adapter. Still nothing? Try another USB cable; some cables carry power only.</p>
+        <h3>"Port in use"</h3>
+        <p>Another app or BaudHub instance holds the port, for example <code>screen</code>, the Arduino IDE or another debugger. Close it there and retry.</p>
+        <h3>Connected, but no values</h3>
+        <p>Open the Frame Log tab and look at the colors:</p>
+        <ul class="plain-list">
+            <li><strong>Yellow (timeout):</strong> the device did not answer. Check the unit ID (or scan), swap A and B, and confirm the device has power.</li>
+            <li><strong>Red (CRC or mismatch):</strong> baud rate or parity usually differ from the device. Compare with its nameplate.</li>
+            <li><strong>Orange (exception):</strong> the device is online but refused the request, usually an address out of range or the wrong function (input vs holding registers).</li>
+            <li><strong>Grey:</strong> data arrived without a request; another master may be active on the bus.</li>
+        </ul>
+        <h3>A Modbus TCP connection is refused or reset</h3>
+        <p>Many inverters and gateways accept only one Modbus client. Disconnect evcc, Home Assistant or another computer first. Check that Modbus TCP is enabled on the device (KEBA and go-e ship with it off), that the port is right, and that your Mac and the device are on the same subnet. If macOS asked about local network access, allow BaudHub in System Settings › Privacy &amp; Security › Local Network.</p>
+        <h3>Values look wrong</h3>
+        <p>Absurd numbers usually mean the wrong format or byte order: compare the side-by-side decodes in the inspector. Values off by 10× or 100× need a scale factor. Values that belong to the neighboring register point to a 0- vs 1-based address mix-up.</p>
+        <h3>Write is unavailable</h3>
+        <p>Unlock writes with the lock in the toolbar (⌘L). Writes also stay unavailable while disconnected, on registers marked read-only, in imported sessions, and on the Free plan. The lock closes again after every reconnect.</p>
+        <h3>Everything turned grey</h3>
+        <p>The link dropped, for example after an unplug, a device restart or sleep. BaudHub reconnects on its own; grey values are kept but marked stale until fresh replies arrive.</p>
+        <h3>Another computer cannot reach my simulator</h3>
+        <p>Use one of the listen addresses the simulator shows, check that macOS Firewall allows BaudHub, and make sure the simulator is still running. When a USB adapter sits in between, set the master's timeout to 100 ms or more.</p>
+    </section>
+
+    <section>
+        <h2>Frequently Asked Questions</h2>
+        <h3>What is the difference between Modbus RTU and Modbus TCP?</h3>
+        <p>Modbus RTU sends binary frames with a CRC over a serial line such as RS485 or RS232. Modbus TCP carries the same requests over Ethernet or Wi-Fi with an MBAP header instead of a CRC. BaudHub supports both; this version does not open Modbus RTU over TCP connections.</p>
+        <h3>Is there a Modbus Poll alternative for Mac?</h3>
+        <p>BaudHub is a native macOS Modbus master, slave simulator and serial terminal, so you can read, write and scan Modbus devices on a Mac without running Windows tools in a virtual machine.</p>
+        <h3>Can I test without a device?</h3>
+        <p>Yes. Choose <em>New Simulator…</em> in the Simulator workspace, start it, and connect to <code>127.0.0.1</code> on its port from BaudHub, or from your own master, PLC or SCADA system.</p>
+        <h3>Can I run two jobs at the same time?</h3>
+        <p>Yes. Choose <em>File › New BaudHub Instance</em> to open a separate app process with its own workspace, for example one for a serial bus and one for a TCP gateway.</p>
+        <h3>Are the device templates verified?</h3>
+        <p>Each template names the vendor document it was built from and shows its verification status. Check critical registers against your device's documentation before writing. Vendor names identify register maps only; BaudHub is not affiliated with these companies.</p>
+        <h3>What does a session export contain?</h3>
+        <p><em>Export Session…</em> saves connections, devices and register definitions, last values, frame log, value history and the write audit log as one <code>.baudhubsession</code> package. Imported sessions open read-only.</p>
+    </section>
+
+    <section class="contact-box">
+        <h2>Support &amp; Contact</h2>
+        <p>Have questions, found a bug or need a device template?</p>
+        <p>Please include your macOS version, adapter chip or device model, connection settings and the text from <em>Copy Diagnostic</em> or an exported frame log. Only share site data you are allowed to share.</p>
+        <p>
+            <a href="mailto:iuway@foowei.com" class="contact-link">iuway@foowei.com</a><br>
+            <a href="https://x.com/aceway2024" class="contact-link">X.com: @aceway2024</a>
+        </p>
+    </section>
+
+    <p id="appBacklink" style="max-width:820px;margin:1.5rem auto 2rem;padding:0 1.25rem;text-align:center;font-size:0.9rem;">
+      <a href="https://apps.h53d.xyz/apps/baudhub/policy.html">BaudHub privacy policy</a>
+      &nbsp;·&nbsp;
+      <a href="https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12">BaudHub on the Mac App Store</a>
+      &nbsp;·&nbsp;
+      <a href="https://apps.h53d.xyz/">All apps by Wei Ai</a>
+    </p>
+    <footer>
+        &copy; 2026 foowei.com. Built for people who commission Modbus devices.<br>
+        Modbus Poll is a product of Witte Software; BaudHub is independent and not affiliated with it or with the Modbus Organization.
+    </footer>
+</div>
+
+</body>
+</html>

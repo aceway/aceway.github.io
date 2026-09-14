@@ -22,6 +22,7 @@ This repository is the source of that site: a static portfolio with a detail, pr
 | **pcAI Photo Retouch** | Old photos clear, Styles appear. | [Details](https://apps.h53d.xyz/apps/pcai-photo-retouch/detail.html) · [Privacy](https://apps.h53d.xyz/apps/pcai-photo-retouch/policy.html) · [Support](https://apps.h53d.xyz/apps/pcai-photo-retouch/support.html) · [App Store](https://apps.apple.com/us/app/pcai-photo-retouch/id6751140211?pt=127352688&ct=apps.h53d.xyz&mt=8) |
 | **CutoutCraft** | Tap. Cut. Style. Export. | [Details](https://apps.h53d.xyz/apps/cutoutcraft/detail.html) · [Privacy](https://apps.h53d.xyz/apps/cutoutcraft/policy.html) · [Support](https://apps.h53d.xyz/apps/cutoutcraft/support.html) · [App Store](https://apps.apple.com/us/app/cutoutcraft/id6745748800?pt=127352688&ct=apps.h53d.xyz&mt=8) |
 | **ShareGuard** | Secure sharing made easy | [Details](https://apps.h53d.xyz/apps/shareguard/detail.html) · [Privacy](https://apps.h53d.xyz/apps/shareguard/policy.html) · [Support](https://apps.h53d.xyz/apps/shareguard/support.html) · [App Store](https://apps.apple.com/us/app/shareguard/id6752704315?pt=127352688&ct=apps.h53d.xyz&mt=8) |
+| **BaudHub** | Modbus RTU/TCP Serial Debugger | [Details](https://apps.h53d.xyz/apps/baudhub/detail.html) · [Privacy](https://apps.h53d.xyz/apps/baudhub/policy.html) · [Support](https://apps.h53d.xyz/apps/baudhub/support.html) · [App Store](https://apps.apple.com/us/app/id6809827203?pt=129278145&ct=apps.h53d.xyz&mt=12) |
 
 ## Build
 

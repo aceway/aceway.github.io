@@ -13,6 +13,7 @@ https://apps.h53d.xyz/apps/sheetcollector/detail.html
 https://apps.h53d.xyz/apps/pcai-photo-retouch/detail.html
 https://apps.h53d.xyz/apps/cutoutcraft/detail.html
 https://apps.h53d.xyz/apps/shareguard/detail.html
+https://apps.h53d.xyz/apps/baudhub/detail.html
 https://apps.h53d.xyz/apps/forgeshape/policy.html
 https://apps.h53d.xyz/apps/forgeshape/support.html
 https://apps.h53d.xyz/apps/jt-file-viewer/policy.html
@@ -41,3 +42,5 @@ https://apps.h53d.xyz/apps/shareguard/policy.html
 https://apps.h53d.xyz/apps/shareguard/support.html
 https://apps.h53d.xyz/apps/step-reviewer/policy.html
 https://apps.h53d.xyz/apps/step-reviewer/support.html
+https://apps.h53d.xyz/apps/baudhub/policy.html
+https://apps.h53d.xyz/apps/baudhub/support.html
