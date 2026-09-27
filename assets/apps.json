@@ -78,7 +78,7 @@
       "features": [
         "Import STL (ASCII or binary, including .stlb), OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ.",
         "Export STL, OBJ, GLB, FBX, 3MF, USDA, USDC, or USDZ, retaining materials and textures supported by the source and destination. STL retains geometry only; unsupported appearance channels are reported.",
-        "Convert a single file and compare source and result previews. Single-file STL, OBJ, and GLB output is free; all supported input formats are available without a format purchase.",
+        "Convert a single file and compare source and result previews. Single-file STL and OBJ output is free; all supported input formats are available without a format purchase.",
         "Convert multiple models to one target format with Batch Files; each source produces its own output.",
         "Scan a folder with source-format filters and optional subfolders. Folder conversion preserves the source folder structure.",
         "On Mac, explicitly start folder monitoring to convert new or changed files while the app is running. Monitoring stops when the app quits; iPhone and iPad support folder conversion only.",

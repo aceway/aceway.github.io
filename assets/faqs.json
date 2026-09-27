@@ -261,7 +261,7 @@
     },
     {
       "q": "What can I use for free?",
-      "a": "All supported input formats are available without a format purchase. Single-file conversion to STL, OBJ, or GLB is free. More export formats, batch conversion, and folder conversion have separate lifetime purchases; an active Pro subscription includes all three. Advanced batch or folder output requires both format and workflow access."
+      "a": "All supported input formats are available without a format purchase. Single-file conversion to STL or OBJ is free. GLB and other paid export formats, batch conversion, and folder conversion have separate lifetime purchases; an active Pro subscription includes all three. Advanced batch or folder output requires both format and workflow access."
     },
     {
       "q": "Does folder monitoring work on iPhone or iPad?",
