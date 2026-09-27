@@ -253,5 +253,31 @@
       "q": "Does BaudHub collect data or need an account?",
       "a": "No. There is no account, analytics, tracking or advertising. BaudHub talks only to the devices you connect."
     }
+  ],
+  "local-3d-model-converter": [
+    {
+      "q": "Which formats can I convert?",
+      "a": "Import STL, OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ. Export STL, OBJ, GLB, FBX, 3MF, USDA, USDC, and USDZ. Conversion transfers mesh geometry only; materials, textures, animation, skinning, cameras, and lights are not preserved."
+    },
+    {
+      "q": "What can I use for free?",
+      "a": "All supported input formats are available without a format purchase. Single-file conversion to STL, OBJ, or GLB is free. More export formats, batch conversion, and folder conversion have separate lifetime purchases; an active Pro subscription includes all three. Advanced batch or folder output requires both format and workflow access."
+    },
+    {
+      "q": "Does folder monitoring work on iPhone or iPad?",
+      "a": "iPhone, iPad, and Mac support folder conversion. Continuous folder monitoring is Mac-only, starts when you explicitly enable it, and requires the app to remain running. It does not continue after the app quits."
+    },
+    {
+      "q": "Can I convert STEP or IGES, repair meshes, or keep textures?",
+      "a": "No. This app converts existing mesh geometry. It does not import STEP or IGES, recover CAD solids, repair meshes, generate models from photos, or preserve textures and materials."
+    },
+    {
+      "q": "Which devices are supported?",
+      "a": "iPhone and iPad require iOS / iPadOS 26 or later. Mac requires macOS 26 or later and Apple silicon. There is no visionOS version."
+    },
+    {
+      "q": "Are my models uploaded?",
+      "a": "Conversion and preview run locally with no account, tracking, or model uploads to the developer. Cloud-backed input files, App Store purchases and restoration, and sharing to online destinations may require a connection."
+    }
   ]
 }

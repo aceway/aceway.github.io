@@ -13,5 +13,6 @@ window.SLUG_BY_ID = {
   "6745748800": "cutoutcraft",
   "6752704315": "shareguard",
   "6791591460": "step-reviewer",
-  "6809827203": "baudhub"
+  "6809827203": "baudhub",
+  "6815480133": "local-3d-model-converter"
 };

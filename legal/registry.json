@@ -149,6 +149,15 @@
       "assetDir": "BaudHub",
       "icon": "icon.png",
       "listed": true
+    },
+    {
+      "slug": "local-3d-model-converter",
+      "name": "Local 3D Model Converter",
+      "id": "6815480133",
+      "source": "legal/sources/local-3d-model-converter",
+      "assetDir": "Local 3D Model Converter",
+      "icon": "icon.png",
+      "listed": true
     }
   ]
 }

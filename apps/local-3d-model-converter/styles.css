@@ -1,39 +1,22 @@
-/* Product overrides for the shared STEP Reviewer-style legal page layout. */
-:root {
-  --app-icon: url("/apps/local-3d-model-converter/icon.png");
-  --tint: #005cbd;
-  --text-secondary: #55555f;
-  --text-tertiary: #62626c;
-}
-body { font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+/* Shared layout and typography come from /legal/docs.css, as in STEP Reviewer. */
+body { overflow-wrap: anywhere; }
 a:focus-visible { outline: 3px solid var(--tint); outline-offset: 4px; border-radius: 4px; }
 main:focus { outline: none; }
-.top-bar-brand { min-height: 44px; }
 .top-bar-title { white-space: normal; overflow: visible; }
-.top-bar-pill { min-height: 44px; justify-content: center; }
-.eyebrow { color: var(--text-secondary); margin: 0 0 8px; font-size: 14px; }
 .page-title { line-height: 1.2; }
-.meta-line { line-height: 1.5; }
 .quick-answer-label { margin-top: 0; }
 .page-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 18px; }
 .page-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
 .page-nav a[aria-current="page"] { color: var(--text-label); font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
-.group-item { padding: 22px; }
-.section-heading { font-size: 17px; line-height: 1.4; align-items: baseline; scroll-margin-top: 20px; }
+.section-heading { scroll-margin-top: 20px; }
 .section-heading::before { flex: 0 0 auto; }
 .group-item p a { text-decoration: underline; text-underline-offset: 3px; }
-.bullet-list, .feature-list, .steps { margin-bottom: 12px; }
 .steps { padding-left: 24px; }
 .steps li { margin-bottom: 10px; padding-left: 4px; }
-.related-text-link { min-height: 44px; height: auto; padding-top: 10px; padding-bottom: 10px; }
-.page-footer .page-footer-legal { margin-top: 8px; }
-@media (prefers-color-scheme: dark) {
-  :root { --tint: #6ab5ff; --text-secondary: #b6b6c0; --text-tertiary: #aaaab4; }
-}
+.page-footer .page-footer-legal { margin-top: 10px; }
 @media (max-width: 640px) {
   .top-bar-brand { justify-content: center; }
   .top-bar-title { text-align: center; }
-  .group-item { padding: 18px 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .page-shell { animation: none; }

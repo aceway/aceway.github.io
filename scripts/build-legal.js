@@ -362,7 +362,7 @@ function prerenderDetail(template, app, ui, allApps) {
   const assetBase = `/assets/${encodeURIComponent(name)}`;
   const canonicalHref = `${DOMAIN}/apps/${app.slug}/detail.html`;
   const title = app.promotional ? `${name} — ${app.promotional} | Wei Ai` : `${name} | Wei Ai Portfolio`;
-  const metaDesc = `${name}: ${app.desc}. Built with local AI technology.`;
+  const metaDesc = app.metaDescription || `${name}: ${app.desc}. Built with local AI technology.`;
   const ogImage = `${DOMAIN}${assetBase}/${(app.screenshots && app.screenshots[0]) || app.icon}`;
   const storeLink = storeLinkOf(app);
   const badgeSrc = ui.appleIconIOS ? `/assets/${ui.appleIconIOS}` : '';
@@ -388,7 +388,7 @@ function prerenderDetail(template, app, ui, allApps) {
     `<link rel="canonical" href="${canonicalHref}">`,
     // Smart App Banners are an iOS feature; a Mac-only app has nothing to offer there
     app.links && app.links.ios && app.operatingSystem !== 'macOS' ? `<meta name="apple-itunes-app" content="app-id=${app.id}">` : '',
-    `<link rel="icon" type="image/jpeg" href="${assetBase}/${app.icon}">`,
+    `<link rel="icon" type="${/\.png$/i.test(app.icon) ? 'image/png' : 'image/jpeg'}" href="${assetBase}/${app.icon}">`,
     `<link rel="apple-touch-icon" href="${assetBase}/${app.icon}">`,
     `<script id="dynamic-schema" type="application/ld+json">${JSON.stringify(appSchema(app, canonicalHref))}</script>`,
     `<script id="breadcrumb-schema" type="application/ld+json">${JSON.stringify({
@@ -454,7 +454,7 @@ function prerenderDetail(template, app, ui, allApps) {
 
   // Mac screenshots are landscape marketing images that already carry their
   // own device frame; show them in a plain 16:10 card instead of the phone
-  if (app.previewShape === 'mac' || app.previewShape === 'landscape') {
+  if (app.previewShape === 'mac' || app.previewShape === 'landscape' || app.previewShape === 'icon') {
     html = html.replace('id="detailPreviewSticky"', `id="detailPreviewSticky" data-shape="${app.previewShape}"`);
   }
 
@@ -506,6 +506,13 @@ function prerenderDetail(template, app, ui, allApps) {
       /<div id="sliderContainer"[^>]*>/,
       `<picture><source srcset="${webpOf(assetBase + '/' + app.screenshots[0])}" type="image/webp"><img src="${assetBase}/${app.screenshots[0]}" alt="${escapeHtml(name)} screenshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:15;"></picture>`
     );
+  } else {
+    const preview = [
+      app.icon ? `<img class="preview-app-icon" src="${assetBase}/${app.icon}" alt="" width="112" height="112">` : '',
+      `<strong class="preview-app-name">${escapeHtml(name)}</strong>`,
+      app.promotional ? `<span class="preview-app-promo">${escapeHtml(app.promotional)}</span>` : ''
+    ].join('');
+    html = html.replace(/(<div id="screenPlaceholder"[^>]*>)[\s\S]*?(<\/div>)/, `$1${preview}$2`);
   }
 
   return html;
@@ -565,7 +572,7 @@ function prerenderIndex() {
                   <div class="flex-1 min-w-0">
                     ${promoBadge}
                     <div class="flex justify-between items-start">
-                      <h4 class="text-xl font-bold text-slate-800 truncate group-hover:text-blue-600 transition-colors"><a href="/apps/${app.slug}/detail.html" class="detail-link" title="${escapeHtml(app.name)} — features, screenshots, and download">${escapeHtml(app.name)}</a></h4>
+                      <h4 class="text-xl font-bold text-slate-800 break-words group-hover:text-blue-600 transition-colors"><a href="/apps/${app.slug}/detail.html" class="detail-link" title="${escapeHtml(app.name)} — features, screenshots, and download">${escapeHtml(app.name)}</a></h4>
                     </div>
                     <p class="text-sm text-slate-500 mt-2 line-clamp-2 mb-5 leading-relaxed font-light">${escapeHtml(app.desc)}</p>
                     <div class="flex gap-3 items-center flex-wrap">

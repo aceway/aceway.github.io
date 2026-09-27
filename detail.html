@@ -27,6 +27,8 @@
 
   <!-- GSAP -->
   <script src="/assets/gsap.min.js"></script>
+  <link rel="stylesheet" href="/assets/app-preview.css">
+  <script src="/assets/app-preview.js"></script>
 
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-18BJ8L26CB"></script>
@@ -249,7 +251,7 @@
             
             <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
-                <div class="flex gap-6 items-start">
+                <div class="flex flex-col sm:flex-row gap-6 items-start">
                     <div class="flex flex-col items-center gap-4 shrink-0">
                         <div id="detailIcon" class="app-icon-lg"></div>
                         <a id="qrLink" href="#" class="hidden lg:block p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
@@ -489,7 +491,7 @@
         // --- 2. Meta Description ---
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.setAttribute("content", `${app.name}: ${app.desc}. Built with local AI technology.`);
+            metaDesc.setAttribute("content", app.metaDescription || `${app.name}: ${app.desc}. Built with local AI technology.`);
         }
 
         // --- 3. (SoftwareApplication Schema) ---
@@ -611,6 +613,7 @@
             currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
         } else {
             currentSlides = [];
+            H53D_PREVIEW.renderIcon(screenPlaceholder, app);
         }
         currentIndex = 0;
         loadFirstSlide();
@@ -807,7 +810,7 @@
     // images that already include their own device frame.
     function applyPreviewShape(el, shape) {
         if (!el) return;
-        if (shape === 'mac' || shape === 'landscape') el.setAttribute('data-shape', shape);
+        if (shape === 'mac' || shape === 'landscape' || shape === 'icon') el.setAttribute('data-shape', shape);
         else el.removeAttribute('data-shape');
     }
 

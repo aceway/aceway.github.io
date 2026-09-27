@@ -36,6 +36,8 @@
 
   <!-- GSAP -->
   <script src="/assets/gsap.min.js"></script>
+  <link rel="stylesheet" href="/assets/app-preview.css">
+  <script src="/assets/app-preview.js"></script>
 
   <!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-18BJ8L26CB"></script>
@@ -258,7 +260,7 @@
             
             <!-- Left Column -->
             <div class="lg:col-span-7 space-y-10" id="detailInfoCol" tabindex="0">
-                <div class="flex gap-6 items-start">
+                <div class="flex flex-col sm:flex-row gap-6 items-start">
                     <div class="flex flex-col items-center gap-4 shrink-0">
                         <div id="detailIcon" class="app-icon-lg"><picture><source srcset="/assets/P2V%20Converter/icon.webp" type="image/webp"><img src="/assets/P2V%20Converter/icon.jpg" class="w-full h-full object-cover" width="120" height="120" alt="P2V Converter"></picture></div>
                         <a id="qrLink" href="https://apps.apple.com/app/id6752116587?pt=127352688&ct=apps.h53d.xyz-qr&mt=8" aria-label="P2V Converter on the App Store" class="hidden lg:block p-2 bg-white rounded-xl border border-slate-200 shadow-sm">
@@ -370,7 +372,7 @@
                         <span class="w-1 h-6 bg-blue-400 rounded-full"></span>
                         MORE APPS
                     </h3>
-                    <div id="relatedApps" class="flex flex-wrap gap-2"><a href="/apps/step-reviewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP Reviewer</a><a href="/apps/jt-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">JT File Viewer</a><a href="/apps/forgeshape/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ForgeShape</a><a href="/apps/step-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP File Viewer</a><a href="/apps/3d-model-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">3D Model Viewer</a><a href="/apps/dxf-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">DXF Assistant</a><a href="/apps/stl-to-step-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STL to STEP Assistant</a><a href="/apps/numisgallery/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">NumisGallery</a><a href="/apps/shine3d/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Shine3D</a><a href="/apps/sheetcollector/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">SheetCollector</a><a href="/apps/pcai-photo-retouch/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">pcAI Photo Retouch</a><a href="/apps/cutoutcraft/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">CutoutCraft</a><a href="/apps/shareguard/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ShareGuard</a><a href="/apps/baudhub/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">BaudHub</a></div>
+                    <div id="relatedApps" class="flex flex-wrap gap-2"><a href="/apps/step-reviewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP Reviewer</a><a href="/apps/local-3d-model-converter/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Local 3D Model Converter</a><a href="/apps/jt-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">JT File Viewer</a><a href="/apps/forgeshape/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ForgeShape</a><a href="/apps/step-file-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STEP File Viewer</a><a href="/apps/3d-model-viewer/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">3D Model Viewer</a><a href="/apps/dxf-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">DXF Assistant</a><a href="/apps/stl-to-step-assistant/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">STL to STEP Assistant</a><a href="/apps/numisgallery/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">NumisGallery</a><a href="/apps/shine3d/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">Shine3D</a><a href="/apps/sheetcollector/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">SheetCollector</a><a href="/apps/pcai-photo-retouch/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">pcAI Photo Retouch</a><a href="/apps/cutoutcraft/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">CutoutCraft</a><a href="/apps/shareguard/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">ShareGuard</a><a href="/apps/baudhub/detail.html" class="px-3 py-1.5 rounded-full border border-slate-200 bg-white/60 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition">BaudHub</a></div>
                 </div>
             </div>
 
@@ -540,7 +542,7 @@
         // --- 2. Meta Description ---
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
-            metaDesc.setAttribute("content", `${app.name}: ${app.desc}. Built with local AI technology.`);
+            metaDesc.setAttribute("content", app.metaDescription || `${app.name}: ${app.desc}. Built with local AI technology.`);
         }
 
         // --- 3. (SoftwareApplication Schema) ---
@@ -662,6 +664,7 @@
             currentSlides = app.screenshots.map(s => `/assets/${safeName}/${s}`.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
         } else {
             currentSlides = [];
+            H53D_PREVIEW.renderIcon(screenPlaceholder, app);
         }
         currentIndex = 0;
         loadFirstSlide();
@@ -858,7 +861,7 @@
     // images that already include their own device frame.
     function applyPreviewShape(el, shape) {
         if (!el) return;
-        if (shape === 'mac' || shape === 'landscape') el.setAttribute('data-shape', shape);
+        if (shape === 'mac' || shape === 'landscape' || shape === 'icon') el.setAttribute('data-shape', shape);
         else el.removeAttribute('data-shape');
     }
 

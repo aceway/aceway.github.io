@@ -11,6 +11,7 @@ Notes:
 ## Apps
 
 - [STEP Reviewer](https://apps.h53d.xyz/apps/step-reviewer/detail.html): 100MB+ STEP · 1M+ Facets — Built for CAD review: STEP files in the hundreds of MB and faceted models above 1 million triangles, plus measurement, cross sections, PMI, and mesh export.
+- [Local 3D Model Converter](https://apps.h53d.xyz/apps/local-3d-model-converter/detail.html): Select. Convert. Save — Convert 3D mesh models locally on iPhone, iPad, and Mac.
 - [JT File Viewer](https://apps.h53d.xyz/apps/jt-file-viewer/detail.html): Open JT files offline on Apple devices — JT File Viewer is a native Apple app for opening and reviewing JT (.jt) files on macOS, iPhone, iPad, and Apple Vision Pro.
 - [ForgeShape](https://apps.h53d.xyz/apps/forgeshape/detail.html): STL, STEP check and convert on device — ForgeShape opens STL, STEP, IGES, OBJ, GLB, and 3MF models on your device, finds what blocks printing — open edges, wrong normals, thin walls, overhangs — repairs it, and exports STL or 3MF for your slicer.
 - [STEP File Viewer](https://apps.h53d.xyz/apps/step-file-viewer/detail.html): A lightweight, ad-free STEP viewer built for productivity — STEP File Viewer is a lightweight tool built for viewing .step and .stp files across macOS, iPad, and iPhone.
@@ -29,6 +30,7 @@ Notes:
 ## App Store listings
 
 - [STEP Reviewer on the App Store](https://apps.apple.com/us/app/id6791591460?pt=129278145&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
+- [Local 3D Model Converter on the App Store](https://apps.apple.com/us/app/id6815480133?ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [JT File Viewer on the App Store](https://apps.apple.com/us/app/jt-file-viewer/id6786113990?pt=129278145&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [ForgeShape on the App Store](https://apps.apple.com/us/app/id6801400880?pt=129278145&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
 - [STEP File Viewer on the App Store](https://apps.apple.com/us/app/step-file-viewer/id6755721056?pt=127352688&ct=apps.h53d.xyz&mt=8): Official listing for iPhone, iPad, and Mac where available.
@@ -48,6 +50,8 @@ Notes:
 
 - [STEP Reviewer privacy policy](https://apps.h53d.xyz/apps/step-reviewer/policy.html): How STEP Reviewer handles files and data on device.
 - [STEP Reviewer support](https://apps.h53d.xyz/apps/step-reviewer/support.html): Supported formats, usage notes, and troubleshooting.
+- [Local 3D Model Converter privacy policy](https://apps.h53d.xyz/apps/local-3d-model-converter/policy.html): How Local 3D Model Converter handles files and data on device.
+- [Local 3D Model Converter support](https://apps.h53d.xyz/apps/local-3d-model-converter/support.html): Supported formats, usage notes, and troubleshooting.
 - [JT File Viewer privacy policy](https://apps.h53d.xyz/apps/jt-file-viewer/policy.html): How JT File Viewer handles files and data on device.
 - [JT File Viewer support](https://apps.h53d.xyz/apps/jt-file-viewer/support.html): Supported formats, usage notes, and troubleshooting.
 - [ForgeShape privacy policy](https://apps.h53d.xyz/apps/forgeshape/policy.html): How ForgeShape handles files and data on device.

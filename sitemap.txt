@@ -1,5 +1,6 @@
 https://apps.h53d.xyz/
 https://apps.h53d.xyz/apps/step-reviewer/detail.html
+https://apps.h53d.xyz/apps/local-3d-model-converter/detail.html
 https://apps.h53d.xyz/apps/jt-file-viewer/detail.html
 https://apps.h53d.xyz/apps/forgeshape/detail.html
 https://apps.h53d.xyz/apps/step-file-viewer/detail.html
@@ -44,3 +45,5 @@ https://apps.h53d.xyz/apps/step-reviewer/policy.html
 https://apps.h53d.xyz/apps/step-reviewer/support.html
 https://apps.h53d.xyz/apps/baudhub/policy.html
 https://apps.h53d.xyz/apps/baudhub/support.html
+https://apps.h53d.xyz/apps/local-3d-model-converter/policy.html
+https://apps.h53d.xyz/apps/local-3d-model-converter/support.html
