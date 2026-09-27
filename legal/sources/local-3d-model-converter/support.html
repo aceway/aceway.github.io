@@ -40,7 +40,7 @@
 </header>
 <section class="quick-answer" aria-labelledby="quick-answer-label">
 <h2 class="quick-answer-label" id="quick-answer-label">Select. Convert. Save.</h2>
-<p>Convert existing 3D models on iPhone, iPad, and Mac. Choose Single File, Batch Files, or Folder Scan, select an output format, and receive a geometry-only file saved on your device.</p>
+<p>Convert existing 3D models on iPhone, iPad, and Mac. Choose Single File, Batch Files, or Folder Scan, select an output format, and receive a model saved on your device, with supported materials and textures.</p>
 </section>
 <nav class="page-nav" aria-label="Page navigation">
 <a href="detail.html">Overview</a>
@@ -69,7 +69,9 @@
 <h2 class="section-heading" id="formats">Which formats are supported?</h2>
 <p><strong>Import:</strong> STL (ASCII or binary, including the binary .stlb alias), OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ.</p>
 <p><strong>Export:</strong> STL, OBJ, GLB, FBX, 3MF, USDA, USDC, and USDZ.</p>
-<p>Conversion is <strong>geometry only</strong>. Materials, textures, animation, skinning, cameras, and lights are not preserved. OBJ material files and texture companions are not loaded. Prefer self-contained GLB and packaged models; external companion resources are not automatically discovered.</p>
+<p>Conversion retains <strong>supported materials, colors, UVs, and textures</strong> when the source and destination can represent them. STL contains geometry only. Custom shaders and some texture mappings may be simplified; review the conversion warnings. Animation, skinning, cameras, and lights are not preserved.</p>
+<p>Referenced MTL, image, and buffer files must be accessible. Use Folder Scan to grant access to their folder if selecting a model alone cannot read its companions. Missing required resources stop conversion with an explanation.</p>
+<p>GLB, 3MF, and USDZ contain their resources. OBJ, FBX, USDA, and USDC may have a sibling resource folder: keep it beside the model. The Share action packages multi-file outputs as ZIP; Open in Files or Finder lets you copy the complete output. ZIP sharing currently supports up to 512 MiB.</p>
 <p>This app converts existing mesh models. It does not generate 3D models from photos, repair meshes, recover CAD solids, or import STEP/IGES. There is no guaranteed maximum file size: available memory, geometry complexity, and source-file structure affect conversion.</p>
 </section>
     </div>
@@ -132,7 +134,7 @@
 <ol class="steps">
 <li>Confirm that the extension is supported and that the file contains mesh geometry. Renaming an unsupported file does not convert its contents.</li>
 <li>If the file is stored with a cloud provider, download it fully first. Select it again if it was moved or file access expired.</li>
-<li>Use a self-contained export from the source app. For glTF workflows, try GLB when the source depends on external resources.</li>
+<li>Keep the model’s referenced resources together and accessible. Use Folder Scan to grant folder access, or export a self-contained GLB from the source app.</li>
 <li>Check available storage and the error shown in Records. For a complex file, try a smaller export; you can turn off preview for batch and folder conversion.</li>
 <li>If an output format is locked, review the format and workflow purchases described above.</li>
 </ol>
@@ -141,7 +143,7 @@
 <section class="group-item" aria-labelledby="geometry">
 <h2 class="section-heading" id="geometry">Why do size, orientation, or appearance differ?</h2>
 <p>The app uses a valid declared unit when available, otherwise the format default. STL and OBJ have no reliable unit declaration here and are treated as millimeters. Check the source application’s unit settings before export if the result appears too large or too small.</p>
-<p>Materials and textures are omitted, so appearance may differ even when geometry converts. Preview up-axis, shading, and camera controls change only the display; they do not rotate or edit the exported model.</p>
+<p>Materials and textures are converted within the supported profile, but rendering and unsupported shader features may differ between apps. The in-app preview confirms geometry and does not display converted materials or textures. Preview up-axis, shading, and camera controls change only the display; they do not rotate or edit the exported model.</p>
 <p>USD outputs use meters and declare Y-up without rotating source coordinates. Verify the output in your destination application when its axis or unit conventions differ.</p>
 </section>
     </div>

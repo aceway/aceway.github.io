@@ -64,7 +64,7 @@
       "name": "Local 3D Model Converter",
       "desc": "Convert 3D mesh models locally on iPhone, iPad, and Mac. Work with a single file, a batch, or an entire folder, and monitor folders on Mac for new or changed models. Geometry stays on your device, with no account or model uploads.",
       "promotional": "Select. Convert. Save.",
-      "metaDescription": "Convert STL, OBJ, GLB/glTF, FBX, 3MF, and USD models locally on iPhone, iPad, and Mac. Single-file, batch, and folder workflows with geometry-only output.",
+      "metaDescription": "Convert STL, OBJ, GLB/glTF, FBX, 3MF, and USD models locally on iPhone, iPad, and Mac, retaining supported materials and textures.",
       "icon": "icon.png",
       "screenshots": [],
       "previewShape": "icon",
@@ -77,7 +77,7 @@
       },
       "features": [
         "Import STL (ASCII or binary, including .stlb), OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ.",
-        "Export mesh geometry as STL, OBJ, GLB, FBX, 3MF, USDA, USDC, or USDZ. Materials, textures, animation, skinning, cameras, and lights are not preserved.",
+        "Export STL, OBJ, GLB, FBX, 3MF, USDA, USDC, or USDZ, retaining materials and textures supported by the source and destination. STL retains geometry only; unsupported appearance channels are reported.",
         "Convert a single file and compare source and result previews. Single-file STL, OBJ, and GLB output is free; all supported input formats are available without a format purchase.",
         "Convert multiple models to one target format with Batch Files; each source produces its own output.",
         "Scan a folder with source-format filters and optional subfolders. Folder conversion preserves the source folder structure.",
@@ -95,8 +95,8 @@
         "Mesh Conversion Workflows"
       ],
       "knowledge": {
-        "title": "Geometry-only model conversion",
-        "content": "Local 3D Model Converter transfers mesh geometry between supported formats. It does not preserve materials or textures, generate models from photos, repair meshes, recover CAD solids, or import STEP and IGES. Prefer self-contained GLB or packaged models: external companion resources are not automatically discovered, and OBJ material files are not loaded. Check the result in your destination app; source structure, units, geometry complexity, and available memory affect conversion."
+        "title": "Materials, textures, and complete outputs",
+        "content": "Local 3D Model Converter retains supported material colors, UVs, and image textures when converting existing mesh models. STL does not carry standard materials or textures. Keep referenced MTL and image files accessible; Folder Scan can grant access to their folder. OBJ, FBX, USDA, and USDC may use companion resources, which are included in ZIP sharing. Custom shaders and some mappings may be simplified; check conversion warnings and the result in your destination app. Animation, skinning, cameras, lights, CAD solids, mesh repair, and image-to-3D are outside this conversion profile."
       },
       "slug": "local-3d-model-converter",
       "operatingSystem": "iOS 26+, iPadOS 26+, macOS 26+ (Apple silicon)",

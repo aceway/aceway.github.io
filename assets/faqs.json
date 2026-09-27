@@ -257,7 +257,7 @@
   "local-3d-model-converter": [
     {
       "q": "Which formats can I convert?",
-      "a": "Import STL, OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ. Export STL, OBJ, GLB, FBX, 3MF, USDA, USDC, and USDZ. Conversion transfers mesh geometry only; materials, textures, animation, skinning, cameras, and lights are not preserved."
+      "a": "Import STL, OBJ, GLB/glTF, FBX, 3MF, USDA, USDC, and USDZ. Export STL, OBJ, GLB, FBX, 3MF, USDA, USDC, and USDZ. Supported materials, UVs, and textures are converted; STL is geometry-only. Unsupported shader channels are reported. Animation, skinning, cameras, and lights are not preserved."
     },
     {
       "q": "What can I use for free?",
@@ -268,8 +268,8 @@
       "a": "iPhone, iPad, and Mac support folder conversion. Continuous folder monitoring is Mac-only, starts when you explicitly enable it, and requires the app to remain running. It does not continue after the app quits."
     },
     {
-      "q": "Can I convert STEP or IGES, repair meshes, or keep textures?",
-      "a": "No. This app converts existing mesh geometry. It does not import STEP or IGES, recover CAD solids, repair meshes, generate models from photos, or preserve textures and materials."
+      "q": "Are materials and textures retained?",
+      "a": "Supported material colors, UVs, and image textures are retained when the target format can represent them. Keep referenced resources accessible, or use Folder Scan to select their folder. Share multi-file outputs as the prepared ZIP. STL cannot retain appearance; custom shaders and some mappings may be simplified. This app does not import STEP/IGES, repair meshes, or generate models from photos."
     },
     {
       "q": "Which devices are supported?",
