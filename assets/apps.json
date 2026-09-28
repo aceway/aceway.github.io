@@ -66,8 +66,12 @@
       "promotional": "Select. Convert. Save.",
       "metaDescription": "Convert STL, OBJ, GLB/glTF, FBX, 3MF, and USD models locally on iPhone, iPad, and Mac, retaining supported materials and textures.",
       "icon": "icon.png",
-      "screenshots": [],
-      "previewShape": "icon",
+      "screenshots": [
+        "screen.jpg",
+        "screen1.jpg",
+        "screen2.jpg",
+        "screen3.jpg"
+      ],
       "links": {
         "ios": "https://apps.apple.com/us/app/id6815480133?ct=apps.h53d.xyz&mt=8",
         "macos": "https://apps.apple.com/us/app/id6815480133?ct=apps.h53d.xyz&mt=8&platform=mac",
