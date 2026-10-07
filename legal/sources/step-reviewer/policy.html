@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEP Reviewer Privacy Policy - On-Device CAD Review</title>
-    <meta name="description" content="STEP Reviewer processes STEP and IGES CAD files on your device. Learn how local files, optional capture permissions, spatial anchoring, and App Store purchases are handled.">
+    <meta name="description" content="How STEP Reviewer handles local CAD files, optional Dual connections, iPhone camera and motion input, pairing records, permissions, purchases, and support email.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://h53d.github.io/sr/policy.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="STEP Reviewer Privacy Policy">
-    <meta property="og:description" content="On-device STEP and IGES review with no developer analytics, advertising, accounts, or CAD file uploads.">
+    <meta property="og:description" content="Local CAD processing with optional encrypted Dual control between your iPhone and Mac. No developer analytics, advertising, or automatic model uploads.">
     <meta property="og:url" content="https://h53d.github.io/sr/policy.html">
     <meta property="og:image" content="https://h53d.github.io/sr/macOS512.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="STEP Reviewer Privacy Policy">
-    <meta name="twitter:description" content="How STEP Reviewer handles CAD files, recent models, capture permissions, spatial anchoring, and purchases.">
+    <meta name="twitter:description" content="Local CAD review, optional Dual data exchange, camera and motion input, pairing records, and your privacy choices.">
     <link rel="apple-touch-icon" href="./macOS512.png">
     <link rel="shortcut icon" href="./macOS512.png" media="(prefers-color-scheme: light)">
     <link rel="shortcut icon" href="./macOS512.png" media="(prefers-color-scheme: dark)">
@@ -29,10 +29,10 @@
             "@id": "./policy.html#webpage",
             "url": "./policy.html",
             "name": "STEP Reviewer Privacy Policy",
-            "description": "Privacy policy for STEP Reviewer covering on-device CAD processing, local recent-file storage, optional system permissions, and App Store purchases.",
+            "description": "Privacy policy for STEP Reviewer covering local CAD processing, optional Dual peer connections, camera and motion input, pairing records, permissions, purchases, and support email.",
             "inLanguage": "en",
             "datePublished": "2026-07-20",
-            "dateModified": "2026-07-20",
+            "dateModified": "2026-10-07",
             "isPartOf": {
                 "@id": "./#website"
             },
@@ -125,7 +125,39 @@
                     "name": "Does STEP Reviewer upload my CAD models?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "No. The app does not upload CAD files, derived meshes, captures, or measurements to developer servers. A file may be transferred only when you explicitly choose a cloud-backed location or sharing destination."
+                        "text": "No automatic CAD upload occurs. Dual sends controls and limited review information, including model names, existing measurements, and note text, to your paired device, but does not send CAD files or meshes. Files may be transferred when you choose a cloud-backed or sharing destination, or attach them to an email."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does Dual need the camera for every control?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. The iPhone rear camera supports spatial panning through local ARKit tracking. Rotation and zoom use motion sensors; pairing and remote menu actions do not require camera access. Camera tracking starts with connected controls and can remain active between button presses until you leave Dual or the iPhone app moves to the background."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are Dual camera images sent to the Mac or developer?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Camera images are processed locally on the iPhone and are not displayed, saved, or sent by STEP Reviewer. Only resulting control values are sent to your paired Mac."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What information can my paired device see?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Dual can show model and recent-file names, assembly and part names, model summaries, existing measurement values and descriptions, review-note text and status, and PMI view names. It also exchanges controls and operation status. Model files, camera images, and diagnostic logs are not transferred over Dual."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does exiting Dual remove the saved pairing?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Exit Dual stops the session and clears transient remote review and control state. To remove trust in the saved peer, use Pair Again… and confirm Forget Pairing on each device where you want it removed. Your own local identity key and discovery identifier remain."
                     }
                 },
                 {
@@ -165,7 +197,7 @@
                     "name": "How do I contact the developer about privacy?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "For privacy questions, email the developer: iuway@foowei.com"
+                        "text": "For privacy questions or requests about support correspondence, email the developer: iuway@foowei.com"
                     }
                 }
             ]
@@ -189,12 +221,12 @@
         <header class="hero">
             <div class="hero-icon" aria-hidden="true"></div>
             <h1 class="page-title">STEP Reviewer Privacy Policy</h1>
-            <p class="meta-line">Effective date: July 20, 2026</p>
+            <p class="meta-line">Effective date: October 7, 2026</p>
         </header>
 
         <section class="quick-answer" aria-labelledby="quick-answer-label">
             <span class="quick-answer-label" id="quick-answer-label">Quick answer</span>
-            <p>STEP Reviewer processes your CAD models on your device. The app does not operate developer analytics, advertising, or user accounts, and it does not upload your models to developer servers. Optional permissions are requested only when you choose the related capture, save, audio, or spatial-anchor action.</p>
+            <p>STEP Reviewer processes CAD models locally and does not operate developer analytics, advertising, or user accounts. Optional Dual connects an iPhone to a Mac you select, exchanging encrypted controls and limited review information between the paired devices without a developer server. Camera images and model files are not sent over Dual. You choose whether to enable Dual, grant related permissions, share files, or send support email.</p>
         </section>
 
         <div class="section-group">
@@ -202,14 +234,14 @@
             <div class="group-card">
                 <section class="group-item" aria-labelledby="data-collection">
                     <h2 class="section-heading" id="data-collection">What data does STEP Reviewer collect?</h2>
-                    <p><strong>STEP Reviewer</strong> does not collect or transmit personal data to the developer and does not include advertising or developer analytics SDKs.</p>
+                    <p><strong>STEP Reviewer</strong> does not automatically collect model content or personal data for the developer and does not include advertising or developer analytics SDKs. Local processing, device-to-device Dual communication, and email you choose to send to the developer are described separately below.</p>
                     <ul class="bullet-list">
                         <li>No STEP Reviewer account or sign-in</li>
                         <li>No behavioral analytics, advertising, fingerprinting, or cross-app tracking</li>
-                        <li>No upload of STEP, IGES, screenshots, recordings, measurements, or exports to developer servers</li>
+                        <li>No automatic upload of STEP, IGES, screenshots, recordings, measurements, review notes, or exports to developer servers</li>
                         <li>No sale of personal data</li>
                     </ul>
-                    <p>Your files may leave the device only when you explicitly use a system feature such as Share, save to a cloud-backed Files location, or enable a system synchronization service. Those destinations are selected and controlled by you.</p>
+                    <p>Model files, captures, and exports may leave the device when you choose a system sharing destination, save to a cloud-backed location, or enable system synchronization. Dual separately exchanges controls and selected review information with your paired device; it does not transfer those files. Support email is sent only when you choose to send it in your mail app.</p>
                 </section>
 
                 <section class="group-item" aria-labelledby="model-processing">
@@ -218,19 +250,51 @@
                     <p>When you choose a file, the app receives access through Apple system file-selection APIs and creates an app-managed working copy in its sandbox. If the source is in iCloud Drive or another file provider, that provider may download or synchronize the file under its own terms; STEP Reviewer does not control that service.</p>
                 </section>
 
+                <section class="group-item" aria-labelledby="dual-data">
+                    <h2 class="section-heading" id="dual-data">What does Dual exchange between devices?</h2>
+                    <p>Dual is an optional STEP Reviewer feature that lets an iPhone control a model displayed on a Mac. You explicitly start Dual and choose a Wi-Fi/local-network or Bluetooth connection. Core solo review remains available without Dual. Dual is not currently available on iPad or visionOS.</p>
+                    <p>After pairing and authentication, the devices exchange only the information needed for control and remote review:</p>
+                    <ul class="bullet-list">
+                        <li>Control commands, motion-derived control values, view settings, connection status, and operation progress or results.</li>
+                        <li>Model and recent-file display names, assembly and part names, model summary information, and available review controls.</li>
+                        <li>Existing measurement values and descriptions, review-note text and status, and PMI view names when needed for remote display. These names and notes may contain information you or the model author entered.</li>
+                    </ul>
+                    <p>Dual does not transmit CAD files, geometric meshes, full local file paths, camera images, depth data, environment maps, screenshots, recordings, exported files, or diagnostic logs. The developer does not receive the Dual traffic or operate a server that relays it.</p>
+                    <p>Opening, exporting, or capturing a model through the iPhone controls runs the operation on the Mac. Result files stay on the Mac or at the destination you select there. Measurements and review notes are view-only through Dual. Their underlying data remains with the model-review data on the Mac.</p>
+                </section>
+
+                <section class="group-item" aria-labelledby="dual-discovery">
+                    <h2 class="section-heading" id="dual-discovery">How are devices discovered and paired?</h2>
+                    <p>During Wi-Fi discovery, the Mac advertises its system computer name and a short, locally generated installation label. Bluetooth advertises a short label such as <code>Mac-ABCDEF</code>. Nearby devices able to discover the service may see these labels before pairing; a computer name may include your name. The installation label is not a hardware serial number or advertising identifier.</p>
+                    <p>For a new pairing, compare the code on both devices and confirm on each device. Control and review information is exchanged only after authentication and confirmation, using an encrypted connection to the selected peer. Saved pairings allow later connections to verify the same peer. Discovery labels are public hints, not secret credentials or proof of trust.</p>
+                    <p>Discovery and connections run only as part of an explicitly started Dual session. Exit Dual stops its discovery, advertising, connections, and input. If the iPhone app moves to the background, its Dual session ends.</p>
+                </section>
+
+                <section class="group-item" aria-labelledby="dual-camera">
+                    <h2 class="section-heading" id="dual-camera">Why does Dual use the iPhone camera and motion sensors?</h2>
+                    <p>Spatial panning needs to estimate how far and in which direction the iPhone moves. ARKit combines the rear camera's view of the surroundings with motion sensing to estimate that movement locally. Rotation and zoom use Core Motion device-orientation information independently of the camera. Dual does not use GPS or request geographic-location access.</p>
+                    <p>When you enter the connected Dual controls, the app starts local tracking, subject to permission and device support. Tracking can remain active while no control button is held so it is ready for your next action. Releasing a control button stops model manipulation but does not immediately turn off the camera. Leaving Dual or putting the iPhone app in the background stops camera tracking and motion input.</p>
+                    <p>Camera images are processed on the iPhone. STEP Reviewer does not display, save, or transmit these images, depth data, or AR environment maps. Only the resulting control values are sent to the paired Mac. Denying camera permission disables spatial panning; rotation, zoom, and remote menu actions can remain available when their other requirements are met.</p>
+                </section>
+
                 <section class="group-item" aria-labelledby="local-storage">
                     <h2 class="section-heading" id="local-storage">What does STEP Reviewer store on the device?</h2>
-                    <p>The app stores recent-model metadata, app-managed imported copies, user preferences, capture settings such as watermark text, measurement state for the active session, and cached StoreKit entitlement information. This data supports reopening models and preserving your chosen settings.</p>
+                    <p>The app stores recent-model metadata, app-managed imported copies, user preferences, capture settings such as watermark text, saved measurements and review notes, and cached StoreKit entitlement information. This data supports reopening models and preserving your chosen settings and review work.</p>
                     <p>App-managed model copies are stored under the app's <code>Documents/imported</code> directory. Removing an individual recent model or confirming <strong>Clear Recent Models</strong> removes the corresponding managed copy. Your original source file is not deleted.</p>
+                    <p>Dual stores a locally generated discovery identifier in app preferences and an app identity key and paired-device public key in the local Keychain. The Keychain records are device-only and are not synchronized through iCloud. They support device discovery and recognition of a previously confirmed peer. Remote review pages and live control state are held for the session and cleared on disconnect; Dual does not create a local copy of the Mac model on the iPhone.</p>
                     <p>Screenshots, recordings, and exports remain at the location you choose. Removing STEP Reviewer does not necessarily remove copies previously saved to Files, Finder, Photos, or a shared destination.</p>
                 </section>
 
                 <section class="group-item" aria-labelledby="permissions">
                     <h2 class="section-heading" id="permissions">Why does STEP Reviewer request system permissions?</h2>
                     <ul class="feature-list">
+                        <li><strong>Camera on iPhone:</strong> requested when starting local tracking for connected Dual controls; used for spatial panning as described above. Mac, iPad, and visionOS do not request camera access for Dual.</li>
+                        <li><strong>Motion on iPhone:</strong> used in Dual to translate device orientation into rotation and zoom controls, subject to system authorization and availability.</li>
+                        <li><strong>Local network on iPhone and Mac:</strong> used when you choose the Wi-Fi connection path in Dual, to discover and communicate with your selected device.</li>
+                        <li><strong>Bluetooth on iPhone and Mac:</strong> used when you choose the Bluetooth connection path in Dual. iPad and visionOS do not start Dual discovery or request its network, Bluetooth, camera, or motion access.</li>
                         <li><strong>Selected files and folders:</strong> used to open models and save files at locations you choose.</li>
                         <li><strong>Microphone:</strong> requested only when you enable synchronized narration for a screen or model-view recording.</li>
-                        <li><strong>Photos on iOS and visionOS:</strong> requested only when you choose to save a screenshot or recording to the photo library.</li>
+                        <li><strong>Add to Photos on iOS and visionOS:</strong> requested only when you choose to save a screenshot or recording to the photo library. Dual does not require access to your existing photo library.</li>
                         <li><strong>Screen recording on macOS:</strong> requested only when you start the full app-window recording mode. STEP Reviewer records its own app window, not an unattended recording of your device.</li>
                         <li><strong>World sensing on visionOS:</strong> requested only when you choose a world or horizontal-plane spatial anchor. View-centered spatial review does not require room anchoring.</li>
                     </ul>
@@ -245,7 +309,14 @@
                 <section class="group-item" aria-labelledby="retention-deletion">
                     <h2 class="section-heading" id="retention-deletion">How can I remove locally stored data?</h2>
                     <p>Use the recent-model controls to remove one managed model or confirm <strong>Clear Recent Models</strong> to remove all managed recent copies. You can delete saved captures and exports from Files, Finder, or Photos. Uninstalling the app removes its sandbox according to the operating system's behavior.</p>
-                    <p>Because STEP Reviewer does not maintain a developer account or developer-hosted personal-data store, there is no server profile to request or delete.</p>
+                    <p>To remove a saved Dual pairing, leave any active connection, choose <strong>Pair Again…</strong> in the Dual connection panel, and confirm <strong>Forget Pairing</strong>. This stops the current connection attempt and deletes the saved peer key on that device. Repeat on the other device if you want to remove its saved pairing too. This does not delete either device's own identity key, its discovery identifier, model files, or review data. Exiting Dual alone leaves the saved pairing available for later use.</p>
+                    <p>The app identity key and discovery identifier remain for later Dual use. Keychain records may survive app removal; uninstalling is not a guaranteed way to forget a peer. There is no STEP Reviewer server account or profile to delete. Email you choose to send is handled separately below.</p>
+                </section>
+
+                <section class="group-item" aria-labelledby="support-email">
+                    <h2 class="section-heading" id="support-email">What happens when I contact the developer?</h2>
+                    <p><strong>Contact Developer</strong> opens your system-selected mail app with <code>iuway@foowei.com</code> and a feedback subject. STEP Reviewer does not automatically include model files, captures, logs, device identifiers, or attachments, and does not send the message for you.</p>
+                    <p>If you send a message, the developer receives your email address and the content or attachments you choose to include. Your email provider processes delivery under its own terms. Support correspondence is used to respond to your request and investigate reported issues, not for advertising or tracking. It is retained only as needed to handle the request and meet applicable legal obligations. You may contact the same address to request deletion of your correspondence, subject to those obligations.</p>
                 </section>
 
                 <section class="group-item" aria-labelledby="policy-changes">
@@ -260,7 +331,27 @@
             <div class="group-card" id="faq">
                 <section class="group-item faq-item" aria-labelledby="faq-upload">
                     <h3 id="faq-upload">Does STEP Reviewer upload my CAD models?</h3>
-                    <p>No. The app does not upload CAD files, derived meshes, captures, or measurements to developer servers. A file may be transferred only when you explicitly choose a cloud-backed location or sharing destination.</p>
+                    <p>No automatic CAD upload occurs. Dual sends controls and limited review information, including model names, existing measurements, and note text, to your paired device, but does not send CAD files or meshes. Files may be transferred when you choose a cloud-backed or sharing destination, or attach them to an email.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-dual-camera">
+                    <h3 id="faq-dual-camera">Does Dual need the camera for every control?</h3>
+                    <p>No. The iPhone rear camera supports spatial panning through local ARKit tracking. Rotation and zoom use motion sensors; pairing and remote menu actions do not require camera access. Camera tracking starts with connected controls and can remain active between button presses until you leave Dual or the iPhone app moves to the background.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-dual-images">
+                    <h3 id="faq-dual-images">Are Dual camera images sent to the Mac or developer?</h3>
+                    <p>No. Camera images are processed locally on the iPhone and are not displayed, saved, or sent by STEP Reviewer. Only resulting control values are sent to your paired Mac.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-dual-data">
+                    <h3 id="faq-dual-data">What information can my paired device see?</h3>
+                    <p>Dual can show model and recent-file names, assembly and part names, model summaries, existing measurement values and descriptions, review-note text and status, and PMI view names. It also exchanges controls and operation status. Model files, camera images, and diagnostic logs are not transferred over Dual.</p>
+                </section>
+
+                <section class="group-item faq-item" aria-labelledby="faq-dual-exit">
+                    <h3 id="faq-dual-exit">Does exiting Dual remove the saved pairing?</h3>
+                    <p>No. Exit Dual stops the session and clears transient remote review and control state. To remove trust in the saved peer, use Pair Again… and confirm Forget Pairing on each device where you want it removed. Your own local identity key and discovery identifier remain.</p>
                 </section>
 
                 <section class="group-item faq-item" aria-labelledby="faq-recent">
@@ -290,7 +381,7 @@
             <div class="group-card">
                 <section class="group-item contact-panel" aria-labelledby="contact-privacy">
                     <h2 class="section-heading" id="contact-privacy">How do I contact the developer about privacy?</h2>
-                    <p>For privacy questions, email the developer:</p>
+                    <p>For privacy questions or requests about support correspondence, email the developer:</p>
                     <p>
                         <a href="mailto:iuway@foowei.com">iuway@foowei.com</a>
                     </p>
