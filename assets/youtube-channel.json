@@ -2,6 +2,8 @@
   "channel": "https://www.youtube.com/@aceway-AI",
   "channelId": "UCUrN27O02vVWSbe2cyRMGpQ",
   "videos": [
+    {"id": "B_oHZnr-blc", "title": "Control 3D CAD Models on Your Mac with iPhone | STEP Reviewer Pro Dual", "description": "STEP Reviewer Pro Dual: use an iPhone to pan, rotate, and scale 3D CAD models on a Mac over Wi-Fi or Bluetooth.", "short": true, "slug": "step-reviewer", "thumb": "https://i.ytimg.com/vi/B_oHZnr-blc/hqdefault.jpg", "uploadDate": "2026-10-13T00:06:54-07:00"},
+
     {"id": "fA8Uovnrv-8", "title": "BaudHub for macOS — Debug Modbus RTU and TCP Without Hardware", "description": "BaudHub macOS Modbus RTU TCP debugger built-in slave simulator virtual serial line register chart frame inspector", "short": false, "slug": "baudhub", "thumb": "https://i.ytimg.com/vi/fA8Uovnrv-8/hqdefault.jpg", "uploadDate": "2026-09-17T20:15:01-07:00"},
 
     {"id": "ZWbmRxjImo0", "title": "STEP File Viewer - Pin review notes on a 3D CAD model — and export a PDF report", "description": "STEP File Viewer pin review notes 3D CAD model design review PDF report iPhone annotation", "short": true, "slug": "step-file-viewer", "thumb": "https://i.ytimg.com/vi/ZWbmRxjImo0/hqdefault.jpg", "uploadDate": "2026-09-05T05:17:57-07:00"},
